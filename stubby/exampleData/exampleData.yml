@@ -1,0 +1,9 @@
+- request:
+    url: ^/api/v1/test$
+    method: GET
+  response:
+    status: 200
+    latency: 200
+    # headers:
+    #   Authorization: '123'
+    file: exampleData/payload.json
