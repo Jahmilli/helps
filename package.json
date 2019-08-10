@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "startStubby": "gulp concat-stubby && concurrently -k -s first 'stubby -d stubby/stubby.yml' ",
-    "startStubbyWd": "gulp concat-stubby && node node_modules/concurrently/bin/concurrently.js  -k -s first 'stubby -d stubby/stubby.yml' ",
+    "startStubbyWd": "gulp concat-stubby && node node_modules/concurrently/bin/concurrently.js  -k -s first 'node node_modules/stubby/bin/stubby -d stubby/stubby.yml' ",
     "startWithStubby": "yarn startStubby 'yarn start'",
     "startWithStubbyWd": "yarn startStubbyWd 'yarn start'",
     "build": "react-scripts build",
