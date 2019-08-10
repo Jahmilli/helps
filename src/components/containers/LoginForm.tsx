@@ -92,20 +92,12 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
                             <Typography className={classes.title} variant="h2">Login</Typography>
                             <Typography className={classes.textFieldHeader} variant="body1">Email Address</Typography>
                             <TextField
-<<<<<<< HEAD
-                                defaultValue="color"
-=======
->>>>>>> develop
                                 className={classes.textField}
                                 InputProps={{className: classes.input}}
                                 InputLabelProps={{
                                     className: classes.floatingLabelFocusStyle,
                                 }}
-<<<<<<< HEAD
-                                id="outlined-name"
-=======
                                 id="username"
->>>>>>> develop
                                 label="example@email.com"
                                 variant="filled"
                                 onChange={handleChange('username')}
@@ -114,20 +106,12 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
                             <Typography className={classes.textFieldHeader} variant="body1">Password</Typography>
                             <TextField
                                 type="password"
-<<<<<<< HEAD
-                                defaultValue="color"
-=======
->>>>>>> develop
                                 className={classes.textField}
                                 InputProps={{className: classes.input}}
                                 InputLabelProps={{
                                     className: classes.floatingLabelFocusStyle,
                                 }}
-<<<<<<< HEAD
-                                id="outlined-name"
-=======
                                 id="password"
->>>>>>> develop
                                 label="Password123"
                                 variant="filled"
                                 onChange={handleChange('password')}
