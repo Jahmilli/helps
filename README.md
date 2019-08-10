@@ -10,7 +10,8 @@
 2. Run: `yarn install`
 
 If you want to run with stubby:
-3. Run: `yarn run startWithStubby` (Expect the application to startup and open your browser to 'localhost:3000')
+3. __WINDOWS__ Run: `yarn run startWithStubbyWd` (Expect the application to startup and open your browser to 'localhost:3000')
+3. __UNIX/Linux/Mac__ Run: `yarn run startWithStubby` (Expect the application to startup and open your browser to 'localhost:3000')
 If you want to run with the helps-backend:
 3. Run: `yarn run start` (Expect the application to startup and open your browser to 'localhost:3000')
 
