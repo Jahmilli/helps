@@ -1,0 +1,26 @@
+[
+    {
+        "name" : "My Information",
+        "path" : "/myInformation"
+    },
+    {
+        "name" : "My Bookings",
+        "path" : "/myBookings"
+    },
+    {
+        "name" : "Workshop Registration",
+        "path" : "/workshopRegistration"
+    },
+    {
+        "name" : "Programs",
+        "path" : "/programs"
+    },
+    {
+        "name" : "FAQ",
+        "path" : "/faq"
+    },
+    {
+        "name" : "Exit",
+        "path" : "/exit"
+    }
+]
