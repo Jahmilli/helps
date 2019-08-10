@@ -20,6 +20,6 @@ The proxy configuration will be used to either point the application at stubby o
 The two proxy hosts are:
 - http://localhost:8882 (Stubby)
 - http://localhost:3001 (helps-backend)
-In the package.json, you should see one of the proxy configurations, to change it just replace the port with the alternative. Then rerun the development environment.
+In the package.json, you should see one of the proxy configurations, to change it just replace the port with the alternative. Then restart the development environment (Ie if changed to point to helps-backend run `yarn run start`).
 
 If you have any issues, please ask someone in the group :)
