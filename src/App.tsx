@@ -1,7 +1,12 @@
 import React from 'react';
 import Routing from './components/pages/Routing';
 
-const App: React.FC = () => {
+interface Props {
+  name: string;
+  auth: any;
+}
+
+const App: React.FC<Props> = ({name, auth}) => {
   return (
     <Routing />
   );

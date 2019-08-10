@@ -1,14 +1,25 @@
-import React from 'react';
-import { FormControl, FormHelperText, Grid, TextField, InputLabel, Input, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Auth from '../../logic/functions/core/Auth'
+
+interface UserDetails {
+    username: string;
+    password: string;
+}
 
 const useStyles = makeStyles(theme => ({
     textField: {
-        width: '100%',
+        width: '100%'
+     },
+    input: {
+        color: 'white'
+    },
+    floatingLabelFocusStyle: {
         color: 'white'
     },
     gridLockup: {
-        background: 'rgba(0,0,0,0.5)',
+        background: 'rgba(0,0,0,0.4)',
         textAlign: 'center',
         margin: '7% 0 0 0'
     },
@@ -24,12 +35,12 @@ const useStyles = makeStyles(theme => ({
         margin: '10px 0 0 0',                
     },
     forgotPassword: {
-        float: 'right',        
+        float: 'right',
     },
     signIn: {
-        display: 'block',
-        clear: 'both',
-        margin: '50px 0 10px 0'
+        margin: '50px 0 10px 0',
+        color: 'white',
+        justifyContent: 'center'
     },
     createAccountLink: {
         display: 'inline-block',
@@ -41,7 +52,25 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+function login(userDetails: UserDetails) {
+    console.log(userDetails);
+    const auth = new Auth();
+    auth.login(userDetails.username, userDetails.password);
+}
+
 const LoginForm: React.FunctionComponent = () => {
+    const [userDetails, setUserDetails] = useState({
+        username: '',
+        password: ''
+    });
+    
+    const handleChange = (name: any) => (event: any) => {
+        setUserDetails({
+            ...userDetails,
+            [name]: event.target.value
+        });
+    }
+    
     const classes = useStyles();
     return (
         <div style={{ display: 'flex'}}>
@@ -52,20 +81,36 @@ const LoginForm: React.FunctionComponent = () => {
                             <Typography className={classes.title} variant="h2">Login</Typography>
                             <Typography className={classes.textFieldHeader} variant="body1">Email Address</Typography>
                             <TextField
-                            className={classes.textField}
-                            id="outlined-name"
-                            label="example@email.com"
-                            variant="filled"
-                            />
+                                defaultValue="color"
+                                className={classes.textField}
+                                InputProps={{className: classes.input}}
+                                InputLabelProps={{
+                                    className: classes.floatingLabelFocusStyle,
+                                }}
+                                id="outlined-name"
+                                label="example@email.com"
+                                variant="filled"
+                                onChange={handleChange('username')}
+                                value={userDetails.username}
+                                />
                             <Typography className={classes.textFieldHeader} variant="body1">Password</Typography>
                             <TextField
-                            className={classes.textField}
-                            id="outlined-name"
-                            label="Password123"
-                            variant="filled"
-                            />
+                                type="password"
+                                defaultValue="color"
+                                className={classes.textField}
+                                InputProps={{className: classes.input}}
+                                InputLabelProps={{
+                                    className: classes.floatingLabelFocusStyle,
+                                }}
+                                id="outlined-name"
+                                label="Password123"
+                                variant="filled"
+                                onChange={handleChange('password')}
+                                value={userDetails.password}
+                                />
                             <Typography className={classes.forgotPassword} variant="body1">Forgot Password?</Typography>
-                            <Typography className={classes.signIn} variant="h5">Sign in!</Typography>
+                            {/* <Typography className={classes.signIn} variant="h5" onClick={() => login(userDetails)}>Sign in!</Typography> */}
+                            <Button className={classes.signIn} color="primary" size="large" onClick={() => login(userDetails)}>Sign In</Button>
                             <Typography className={classes.createAccountLink} variant="body1">Don't have an account?</Typography>
                             <Typography className={classes.createAccountLink} variant="body1">Click here</Typography>
                             <Typography className={classes.questionsLink} variant="body1">Have questions?</Typography>
