@@ -1,12 +1,9 @@
 import React from 'react';
 import Routing from './components/pages/Routing';
+import Auth from './logic/functions/core/Auth';
 
-interface Props {
-  name: string;
-  auth: any;
-}
-
-const App: React.FC<Props> = ({name, auth}) => {
+const App: React.FC = () => {
+  const auth = new Auth();
   return (
     <Routing auth={auth}/>
   );

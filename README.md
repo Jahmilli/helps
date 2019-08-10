@@ -34,3 +34,6 @@ How it should work:
   - Once user is registered, they will then be directed to setting up user details
 
 If the user navigates to any page on the app that requires them to login, they should be redirected to the login page
+### Authentication
+Authentication is done using Auth0. They have a global authentication feature but because we need a custom UI for our login/account creation, we have had to use their SDK and manage the auth ourselves.
+For documentation on their SDK see: https://auth0.com/docs/libraries/auth0js/v9
