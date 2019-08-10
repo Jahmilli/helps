@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Auth from './logic/functions/core/Auth';
 import * as serviceWorker from './serviceWorker';
 import 'typeface-roboto';
 

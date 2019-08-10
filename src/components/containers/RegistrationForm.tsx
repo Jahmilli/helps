@@ -34,24 +34,7 @@ const useStyles = makeStyles(theme => ({
         margin: '10px 0'
     },
     textFieldHeader: {
-        float: 'left',
         margin: '10px 0 0 0',                
-    },
-    forgotPassword: {
-        float: 'right',
-    },
-    signIn: {
-        margin: '50px 0 10px 0',
-        color: 'white',
-        justifyContent: 'center'
-    },
-    createAccountLink: {
-        display: 'inline-block',
-        margin: '5px 3px'
-    },
-    questionsLink: {
-        display: 'inline-block',
-        margin: '5px 3px'
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
@@ -63,25 +46,27 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({auth}
   const [values, setValues] = React.useState({
     age: '',
     name: 'hai',
+    gender: '',
+    degree: '',
+    status: '',
   });
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
 
-  function handleChange(event: any) {
-    setValues(oldValues => ({
-      ...oldValues,
-      [event.target.name]: event.target.value,
-    }));
-  }
-    
+  const handleChange = (name: any) => (event: any) => {
+    setValues({
+        ...values,
+        [name]: event.target.value
+    });
+}
     
     const classes = useStyles();
     return (
         <div style={{ display: 'flex'}}>
-            <Grid container direction="column">        
+            <Grid container  justify="space-evenly" alignItems="center">        
                 <Grid container item spacing={0} justify="center" >
-                    <Grid item xs={12} className={classes.gridLockup}>
+                    <Grid item xs={12}  className={classes.gridLockup}>
                         <div className={classes.registrationLockup}>
                             <Typography className={classes.title} variant="h2">Student Registration</Typography>
                             <Typography className={classes.textFieldHeader} variant="body1">Student ID</Typography>
@@ -135,9 +120,9 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({auth}
                                 />
                             <Typography className={classes.textFieldHeader} variant="body1">Gender</Typography>
                             <Select
-                                value={values.age}
-                                onChange={handleChange}
-                                input={<OutlinedInput labelWidth={labelWidth} name="age" id="outlined-age-simple" />}
+                                value={values.gender}
+                                onChange={handleChange("gender")}
+                                input={<OutlinedInput labelWidth={labelWidth} name="gender"/>}
                                 >
                                 <MenuItem value={10}>Male</MenuItem>
                                 <MenuItem value={20}>Female</MenuItem>
@@ -145,19 +130,27 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({auth}
                             </Select>
                             <Typography className={classes.textFieldHeader} variant="body1">Degree</Typography>
                             <Select
-                                value={values.age}
-                                onChange={handleChange}
-                                input={<OutlinedInput labelWidth={labelWidth} name="age" id="outlined-age-simple" />}
+                                value={values.degree}
+                                onChange={handleChange("degree")}
+                                input={<OutlinedInput labelWidth={labelWidth} name="degree"/>}
                                 >
                                 <MenuItem value={10}>Undergraduate</MenuItem>
                                 <MenuItem value={20}>Postgraduate</MenuItem>
                             </Select>
                             <Typography className={classes.textFieldHeader} variant="body1">Status</Typography>
                             <Select
-                                value={values.age}
-                                onChange={handleChange}
-                                input={<OutlinedInput labelWidth={labelWidth} name="age" id="outlined-age-simple" />}
+                                value={values.status}
+                                onChange={handleChange("status")}
+                                input={<OutlinedInput labelWidth={labelWidth} name="status" />}
+                                // renderValue={(selected: any) => { //TODO
+                                //     if (selected.length === 0) {
+                                //       return <em>Placeholder</em>;
+                                //     }
+                                //   }}
                                 >
+                                <MenuItem disabled value="">
+                                    <em>Placeholder</em>
+                                </MenuItem>
                                 <MenuItem value={10}>Resident</MenuItem>
                                 <MenuItem value={20}>International</MenuItem>
                             </Select>
