@@ -23,3 +23,14 @@ The two proxy hosts are:
 In the package.json, you should see one of the proxy configurations, to change it just replace the port with the alternative. Then restart the development environment (Ie if changed to point to helps-backend run `yarn run start`).
 
 If you have any issues, please ask someone in the group :)
+
+# STEPS
+1. Authentication
+  - Authentication should be the same for admins and students (they will have different pages though)
+How it should work:
+  - User goes to create account
+  - User inputs email and password
+  - This registers with Auth0 which then returns a JWT containing their session
+  - Once user is registered, they will then be directed to setting up user details
+
+If the user navigates to any page on the app that requires them to login, they should be redirected to the login page
