@@ -1,6 +1,8 @@
 
 const AUTH_TOKEN = 'auth-token';
 export type Options = {};
+
+// Will be used with the JWT token
 export type AuthToken = {
     type: string;
     name: string;
@@ -45,6 +47,7 @@ const coreFetch = async (
     });
 };
 
+// Will be used to get the JWT token
 const getAuthToken = (): string => {
     let authToken: string | null = localStorage.getItem(AUTH_TOKEN);
     return authToken != null ? (JSON.parse(authToken) as AuthToken).value : '';
