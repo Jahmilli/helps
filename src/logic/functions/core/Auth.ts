@@ -5,7 +5,7 @@ const ACCESS_TOKEN = 'access_token';
 const ID_TOKEN = 'id_token';
 const EXPIRES_AT = 'expires_at';
 
-interface UserProfile {
+type UserProfile = {
     nickname: string;
     name: string;
     updated_at: string;
@@ -64,7 +64,7 @@ export default class Auth {
                 profile = this.getProfile();
                 console.log('profile is');
                 console.log(profile);
-                
+
                 if (profile.isRegisteredUser) {
                     window.location.pathname = '/home'
                 } else {
