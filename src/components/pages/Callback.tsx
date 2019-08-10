@@ -2,11 +2,11 @@ import * as React from 'react';
 import { getTestData } from '../../logic/functions/testFetch';
 import Auth from '../../logic/functions/core/Auth';
 
-interface HomePageProps {
-    auth: Auth; 
+interface CallbackProps {
+    auth: Auth;
 };
 
-const HomePage: React.FunctionComponent<HomePageProps> = ({ auth }) => {
+const Callback: React.FunctionComponent<CallbackProps> = ({ auth }) => {
     React.useEffect(() => {
         const callGetTest = async () => {
             let data = await getTestData();
@@ -17,11 +17,9 @@ const HomePage: React.FunctionComponent<HomePageProps> = ({ auth }) => {
     }, []);
 
     return (
-        <div>
-            <h1>Hello World</h1>
-        </div>
+        <h1>Loading</h1>
     );
 };
     
 
-export default HomePage;
+export default Callback;

@@ -23,3 +23,7 @@ The two proxy hosts are:
 In the package.json, you should see one of the proxy configurations, to change it just replace the port with the alternative. Then restart the development environment (Ie if changed to point to helps-backend run `yarn run start`).
 
 If you have any issues, please ask someone in the group :)
+
+### Authentication
+Authentication is done using Auth0. They have a global authentication feature but because we need a custom UI for our login/account creation, we have had to use their SDK and manage the auth ourselves.
+For documentation on their SDK see: https://auth0.com/docs/libraries/auth0js/v9

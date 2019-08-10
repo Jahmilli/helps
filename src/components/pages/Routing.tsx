@@ -1,15 +1,34 @@
 import * as React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import HomePage from './HomePage';
+import LoginPage from './LoginPage';
+import Callback from './Callback';
+import Auth from '../../logic/functions/core/Auth';
 
-const Routing: React.FunctionComponent = () => {
+interface RoutingProps {
+    auth: Auth;
+}
+
+const PrivateRoute = ({ component: Component, auth, ...rest }: any) => (
+    <Route
+        {...rest}
+        render={(props) => auth.isAuthenticated() === true
+          ? <Component auth={auth} {...props} />
+          : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+      />
+);
+
+const Routing: React.FunctionComponent<RoutingProps> = ({auth}) => {
     return (
-        <BrowserRouter>
+        <Router>
             <Switch>
-                <Route path="/" exact={true} render={() => <HomePage />} />
+                <Route path="/" exact={true} render={() => <HomePage auth={auth} />} />
+                <Route path="/login" render={() => <LoginPage auth={auth} />} />
+                <Route path="/callback" render={() => <Callback auth={auth} />} />
+                <PrivateRoute auth={auth} path="/home" component={HomePage} />
             </Switch>
-        </BrowserRouter>
+        </Router>
     );
 }
 
