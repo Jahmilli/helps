@@ -4,12 +4,28 @@ import jwtDecode from 'jwt-decode';
 const ACCESS_TOKEN = 'access_token';
 const ID_TOKEN = 'id_token';
 const EXPIRES_AT = 'expires_at';
+
+interface UserProfile {
+    nickname: string;
+    name: string;
+    updated_at: string;
+    exp: number;
+    isRegisteredUser?: boolean;
+};
+
+const initialUser = {
+    nickname: '',
+    name: '',
+    updated_at: '',
+    exp: 0
+};
+
 export default class Auth {
     // Our basic Auth0 config
     auth0 = new auth0.WebAuth({
         domain:       'uts-helps.au.auth0.com', // DO NOT CHANGE THIS
         clientID:     'RyhxZk3WQTUFsZY4zsZvLqZJSd2ZaTqg', // DO NOT CHANGE THIS
-        redirectUri: 'http://localhost:3000/home',
+        redirectUri: 'http://localhost:3000/callback',
         responseType: 'token id_token',
         scope: 'openid profile'
     });
@@ -35,7 +51,8 @@ export default class Auth {
     }
 
     handleAuthentication() {
-        let profile = {};
+        let profile: UserProfile = initialUser;
+
         this.auth0.parseHash((err, authResults: any) => {
             if (authResults && authResults.accessToken && authResults.idToken) {
                 let expiresAt = JSON.stringify((authResults.expiresIn * 1000 + new Date().getTime()));
@@ -44,7 +61,15 @@ export default class Auth {
                 localStorage.setItem(EXPIRES_AT, expiresAt);
                 window.location.hash = "";
                 window.location.href = "";
-                profile = this.getProfile;
+                profile = this.getProfile();
+                console.log('profile is');
+                console.log(profile);
+                
+                if (profile.isRegisteredUser) {
+                    window.location.pathname = '/home'
+                } else {
+                    window.location.pathname = '/setup'
+                }
             } else if (err) {
                 console.log('An error occurred during authentication')
                 console.log(err);
@@ -53,12 +78,14 @@ export default class Auth {
     }
 
     // Display the profile of the user
-    getProfile() {
+    getProfile(): UserProfile {
         if (localStorage.getItem(ID_TOKEN)) {
             console.log(jwtDecode(localStorage.getItem(ID_TOKEN) || ''));
-            return jwtDecode(localStorage.getItem(ID_TOKEN) || '');
+            let decodedJwt: any = jwtDecode(localStorage.getItem(ID_TOKEN) || '');
+            let { nickname, name, updated_at, exp, isRegisteredUser } = decodedJwt;
+            return { nickname, name, updated_at, exp, isRegisteredUser } as UserProfile;
         } else {
-            return {};
+            return initialUser;
         }
     }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Auth from '../../logic/functions/core/Auth';
 
 interface UserDetails {
     username: string;
@@ -8,7 +9,7 @@ interface UserDetails {
 }
 
 interface LoginFormProps {
-    auth: any;
+    auth: Auth;
 }
 
 const useStyles = makeStyles(theme => ({
