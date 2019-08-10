@@ -7,7 +7,6 @@ import * as serviceWorker from './serviceWorker';
 import 'typeface-roboto';
 
 const auth = new Auth();
-
 /* eslint no-restricted-globals: 0 */
 // let username = auth.getProfile().given_name || "seb"
 let initialState = {

@@ -2,12 +2,15 @@ import * as React from 'react';
 import { getTestData } from '../../logic/functions/testFetch';
 import Auth from '../../logic/functions/core/Auth';
 
-const HomePage: React.FunctionComponent = () => {
+interface HomePageProps {
+    auth: any
+};
+
+const HomePage: React.FunctionComponent<HomePageProps> = ({auth}) => {
     React.useEffect(() => {
         const callGetTest = async () => {
             let data = await getTestData();
             console.log(data);
-            const auth = new Auth();
             auth.handleAuthentication();
         };
 

@@ -11,13 +11,11 @@ export default class Auth {
         scope: 'openid profile'
     });
 
-    // getRedirectUri() {
-    //     return window.location.href.includes('localhost') ? `http://localhost:3000/callback` : `https://${DOMAIN_NAME}/callback`;
-    // }
     getRedirectUri() {
         // return window.location.href.includes('localhost') ? `http://localhost:3000/callback` : `https://${DOMAIN_NAME}/callback`;
         return 'http://localhost:3000/home'
     }
+
     authorise() {
         console.log('authorizing')
         this.auth0.authorize({
@@ -47,22 +45,25 @@ export default class Auth {
     handleAuthentication() {
         let profile = {};
         this.auth0.parseHash((err, authResults: any) => {
+            console.log('auth results');
+            console.log(authResults);
             if (authResults && authResults.accessToken && authResults.idToken) {
                 let expiresAt = JSON.stringify((authResults.expiresIn * 1000 + new Date().getTime()));
                 localStorage.setItem('access_token', authResults.accessToken);
                 localStorage.setItem('id_token', authResults.idToken);
                 localStorage.setItem("expires_at", expiresAt);
-                window.location.hash = "";
-                window.location.href = "";
+                // window.location.hash = "";
+                // window.location.href = "";
                 profile = this.getProfile;
                 console.log(profile);
                 // if (profile.occupation === null || profile.occupation === undefined) {
                 //     location.pathname = DOMAIN_NAME !== '' ? `${PATH}${LOGIN_FIRST_TIME_USER_PAGE}` : LOGIN_FIRST_TIME_USER_PAGE;
                 // } else {
                 //     location.pathname = DOMAIN_NAME !== '' ? `${PATH}${LOGIN_SUCCESS_PAGE}` : LOGIN_SUCCESS_PAGE;
-                // }                
+                // }
             } else if (err) {
                 // location.pathname = '';
+                console.log('An error occurred at authentication')
                 console.log(err);
             }
         });

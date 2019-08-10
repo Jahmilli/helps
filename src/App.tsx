@@ -8,7 +8,7 @@ interface Props {
 
 const App: React.FC<Props> = ({name, auth}) => {
   return (
-    <Routing />
+    <Routing auth={auth}/>
   );
 }
 

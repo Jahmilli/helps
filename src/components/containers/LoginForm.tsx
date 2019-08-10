@@ -8,6 +8,10 @@ interface UserDetails {
     password: string;
 }
 
+interface LoginFormProps {
+    auth: any;
+}
+
 const useStyles = makeStyles(theme => ({
     textField: {
         width: '100%'
@@ -52,17 +56,16 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function login(userDetails: UserDetails) {
-    console.log(userDetails);
-    const auth = new Auth();
-    auth.login(userDetails.username, userDetails.password);
-}
 
-const LoginForm: React.FunctionComponent = () => {
+const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
     const [userDetails, setUserDetails] = useState({
         username: '',
         password: ''
     });
+    
+    function login(userDetails: UserDetails) {
+        auth.login(userDetails.username, userDetails.password);
+    }
     
     const handleChange = (name: any) => (event: any) => {
         setUserDetails({

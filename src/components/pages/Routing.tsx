@@ -4,13 +4,17 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 
-const Routing: React.FunctionComponent = () => {
+interface RoutingProps {
+    auth: any;
+}
+
+const Routing: React.FunctionComponent<RoutingProps> = ({auth}) => {
     return (
         <Router>
             <Switch>
-                <Route path="/" exact={true} render={() => <HomePage />} />
-                <Route path="/login" render={() => <LoginPage />} />
-                <Route path="/home" render={() => <HomePage /> } />
+                <Route path="/" exact={true} render={() => <HomePage auth={auth} />} />
+                <Route path="/login" render={() => <LoginPage auth={auth} />} />
+                <Route path="/home" render={() => <HomePage auth={auth} /> } />
             </Switch>
         </Router>
     );

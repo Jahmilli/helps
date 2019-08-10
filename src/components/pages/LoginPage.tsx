@@ -4,7 +4,11 @@ import Auth from '../../logic/functions/core/Auth';
 import LoginForm from '../containers/LoginForm';
 import './styles.css';
 
-const LoginPage: React.FunctionComponent = () => {
+interface LoginPageProps {
+    auth: any;
+}
+
+const LoginPage: React.FunctionComponent<LoginPageProps> = ({auth}) => {
     React.useEffect(() => {
         const callGetTest = async () => {
             let data = await getTestData();
@@ -17,7 +21,7 @@ const LoginPage: React.FunctionComponent = () => {
 
     return (
         <div className="loginPage">
-            <LoginForm />
+            <LoginForm auth={auth} />
         </div>
     );
 };
