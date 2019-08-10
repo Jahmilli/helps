@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-<<<<<<< HEAD
-import Auth from '../../logic/functions/core/Auth'
-=======
 import Auth from '../../logic/functions/core/Auth';
->>>>>>> develop
 
 interface UserDetails {
     username: string;
@@ -13,11 +9,7 @@ interface UserDetails {
 }
 
 interface LoginFormProps {
-<<<<<<< HEAD
-    auth: any;
-=======
     auth: Auth;
->>>>>>> develop
 }
 
 const useStyles = makeStyles(theme => ({
