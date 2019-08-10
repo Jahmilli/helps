@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Auth from '../../logic/functions/core/Auth'
 
 interface UserDetails {
     username: string;
@@ -84,13 +83,12 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
                             <Typography className={classes.title} variant="h2">Login</Typography>
                             <Typography className={classes.textFieldHeader} variant="body1">Email Address</Typography>
                             <TextField
-                                defaultValue="color"
                                 className={classes.textField}
                                 InputProps={{className: classes.input}}
                                 InputLabelProps={{
                                     className: classes.floatingLabelFocusStyle,
                                 }}
-                                id="outlined-name"
+                                id="username"
                                 label="example@email.com"
                                 variant="filled"
                                 onChange={handleChange('username')}
@@ -99,13 +97,12 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
                             <Typography className={classes.textFieldHeader} variant="body1">Password</Typography>
                             <TextField
                                 type="password"
-                                defaultValue="color"
                                 className={classes.textField}
                                 InputProps={{className: classes.input}}
                                 InputLabelProps={{
                                     className: classes.floatingLabelFocusStyle,
                                 }}
-                                id="outlined-name"
+                                id="password"
                                 label="Password123"
                                 variant="filled"
                                 onChange={handleChange('password')}

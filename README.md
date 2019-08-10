@@ -24,13 +24,6 @@ In the package.json, you should see one of the proxy configurations, to change i
 
 If you have any issues, please ask someone in the group :)
 
-# STEPS
-1. Authentication
-  - Authentication should be the same for admins and students (they will have different pages though)
-How it should work:
-  - User goes to create account
-  - User inputs email and password
-  - This registers with Auth0 which then returns a JWT containing their session
-  - Once user is registered, they will then be directed to setting up user details
-
-If the user navigates to any page on the app that requires them to login, they should be redirected to the login page
+### Authentication
+Authentication is done using Auth0. They have a global authentication feature but because we need a custom UI for our login/account creation, we have had to use their SDK and manage the auth ourselves.
+For documentation on their SDK see: https://auth0.com/docs/libraries/auth0js/v9
