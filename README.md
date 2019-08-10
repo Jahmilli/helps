@@ -16,10 +16,10 @@ If you want to run with the helps-backend:
 3. Run: `yarn run start` (Expect the application to startup and open your browser to 'localhost:3000')
 
 ### Changing Proxy Configuration Setting
-The proxy configuration will be used to either point the application at stubby or our backend server (__Note:__ This requires you to have setup 'helps-backend' and run it locally for this to work).
+The proxy configuration will be used to either point the application at stubby or our backend server (__Note:__ This requires you to have setup 'helps-backend' and it needs to be running locally for this to work).
 The two proxy hosts are:
 - http://localhost:8882 (Stubby)
 - http://localhost:3001 (helps-backend)
-In the package.json, you should see one of the proxy configurations, to change it just replace the port with the alternative. Then rerun the development environment (Note if you have change)
+In the package.json, you should see one of the proxy configurations, to change it just replace the port with the alternative. Then rerun the development environment.
 
 If you have any issues, please ask someone in the group :)
