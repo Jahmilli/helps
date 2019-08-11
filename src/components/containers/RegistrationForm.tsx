@@ -133,8 +133,8 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = () => {
                 <div className={classes.leftLockup}>
                     {studentRegistrationFields.map((field: Field, index: number) => {
                         return (
-                            <div>
-                                <Typography key={index} className={classes.textFieldHeader} variant="body1">{field.title}</Typography>
+                            <div key={index}>
+                                <Typography className={classes.textFieldHeader} variant="body1">{field.title}</Typography>
                                 <TextField
                                     label={field.label}
                                     className={classes.textField}
@@ -209,9 +209,9 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = () => {
                 <div className={classes.rightLockup}>
                     <FormGroup>
                         {studentRegistrationEducationFields.map((field, index) => {
-                            return <div className={classes.educationForm}>
+                            return <div key={index} className={classes.educationForm}>
                                         <div className={classes.educationFormLeft}>
-                                            <FormControlLabel key={index}
+                                            <FormControlLabel
                                                 control={<Checkbox checked={educationalBackground[field.id].isChecked} onChange={updateEducationCheckbox(field.id)} value={field.id} />}
                                                 label={field.label}
                                                 />

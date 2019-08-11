@@ -6,8 +6,10 @@ import StudentNavbar from '../presentational/StudentDashboard/StudentNavbar';
 import logo from '../../images/uts-logo.png';
 import StudentFooter from '../presentational/StudentDashboard/StudentFooter';
 import StudentRegistrationContainer from '../containers/StudentDashboard/StudentRegistrationContainer';
+import Auth from '../../logic/functions/core/Auth';
 
 interface StudentHomePageProps {
+    auth: Auth;
     path: string;
 }
 
@@ -21,14 +23,14 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ path }) => {
+const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, path }) => {
     const classes = useStyles();
 
     return (
         <div>
             <img src={logo} className={classes.logo} alt="UTS Logo" />
             <Typography variant="h2">UTS: HELPS</Typography>
-            <StudentNavbar path={path} />
+            <StudentNavbar auth={auth} path={path} />
             <div>
                 <Route path={`${path}/registration`} render={() => <StudentRegistrationContainer /> } />
                 <Route path={`${path}/exit`} component={() => <h1>HI</h1>} />

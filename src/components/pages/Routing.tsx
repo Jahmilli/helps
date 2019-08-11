@@ -28,7 +28,7 @@ const Routing: React.FunctionComponent<RoutingProps> = ({auth}) => {
                 <Route path="/" exact={true} render={() => <HomePage auth={auth} />} />
                 <Route path="/login" render={() => <LoginPage auth={auth} />} />
                 <Route path="/callback" render={() => <Callback auth={auth} />} />
-                <Route path="/student" render={() => <StudentHomePage path={"/student"} />} />
+                <Route path="/student" render={() => <StudentHomePage auth={auth} path={"/student"} />} />
                 <PrivateRoute auth={auth} path="/home" component={HomePage} />
             </Switch>
         </Router>

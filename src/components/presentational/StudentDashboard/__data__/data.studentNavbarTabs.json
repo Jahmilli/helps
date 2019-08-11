@@ -1,26 +1,32 @@
 [
     {
         "name" : "My Information",
-        "path" : "/myInformation"
+        "path" : "/myInformation",
+        "requiresAuth": true
     },
     {
         "name" : "My Bookings",
-        "path" : "/myBookings"
+        "path" : "/myBookings",
+        "requiresAuth": true
     },
     {
         "name" : "Workshop Registration",
-        "path" : "/workshopRegistration"
+        "path" : "/workshopRegistration",
+        "requiresAuth": true
     },
     {
         "name" : "Programs",
-        "path" : "/programs"
+        "path" : "/programs",
+        "requiresAuth": false
     },
     {
         "name" : "FAQ",
-        "path" : "/faq"
+        "path" : "/faq",
+        "requiresAuth": false
     },
     {
         "name" : "Exit",
-        "path" : "/exit"
+        "path" : "/exit",
+        "requiresAuth": false
     }
 ]
