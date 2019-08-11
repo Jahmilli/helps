@@ -41,7 +41,7 @@ For documentation on their SDK see: https://auth0.com/docs/libraries/auth0js/v9
 ### Directory Structure
 ── README.md
 ├── cypress                  // Where cypress tests/config is stored
-├── cypress.json             // Cypress Manifest
+├── cypress.json             // Cypress Configuration
 ├── package.json             // Application Manifest
 ├── public
 │   ├── index.html           // Static application entry point

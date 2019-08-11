@@ -110,7 +110,7 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
                                 value={userDetails.password}
                                 />
                             <Typography className={classes.forgotPassword} variant="body1">Forgot Password?</Typography>
-                            <Button className={classes.signIn} color="primary" size="large" onClick={() => login(userDetails)}>Sign In</Button>
+                            <Button className={classes.signIn} id="signInButton" color="primary" size="large" onClick={() => login(userDetails)}>Sign In</Button>
                             <Typography className={classes.createAccountLink} variant="body1">Don't have an account?</Typography>
                             <Typography className={classes.createAccountLink} variant="body1">Click here</Typography>
                             <Typography className={classes.questionsLink} variant="body1">Have questions?</Typography>
