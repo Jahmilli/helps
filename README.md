@@ -37,3 +37,26 @@ If the user navigates to any page on the app that requires them to login, they s
 ### Authentication
 Authentication is done using Auth0. They have a global authentication feature but because we need a custom UI for our login/account creation, we have had to use their SDK and manage the auth ourselves.
 For documentation on their SDK see: https://auth0.com/docs/libraries/auth0js/v9
+
+### Directory Structure
+── README.md
+├── cypress                  // Where cypress tests/config is stored
+├── cypress.json             // Cypress Manifest
+├── package.json             // Application Manifest
+├── public
+│   ├── index.html           // Static application entry point
+├── src
+│   ├── App.tsx              // Root Application Component
+│   ├── components
+│   │   ├── common           // Where components common across the application should be stored
+│   │   ├── containers       // Where components managing state and logic should be saved
+│   │   ├── pages            // Where pages should be stored (Ie containing multiple components, navbar footer etc inside)
+│   │   └── presentational   // Where presentational components should be saved (Ie not containing any state/logic)
+│   ├── images               // Where images should be saved (TODO: Move to a cloud file storage with a CDN instead)
+│   ├── index.tsx            // React application entrypoint
+│   ├── logic
+│   │   ├── domains          // Where domain objects should be stored
+│   │   └── functions
+│   │       ├── core         // Where functions containing logic critical to the application should be stored
+│   │       └── testFetch.ts // Example Fetch Function 
+├── stubby                   // Stubbed endpoint configs
