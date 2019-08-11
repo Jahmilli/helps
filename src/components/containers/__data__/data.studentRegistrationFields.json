@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Student ID",
+        "label": "12345678",
+        "id": "studentID"
+    },
+    {
+        "title": "Student Name",
+        "label": "Full Name",
+        "id": "fullName"
+    },
+    {
+        "title": "Preferred Name",
+        "label": "First Name",
+        "id": "preferredName"
+    },
+    {
+        "title": "Faculty",
+        "label": "Engineering",
+        "id": "faculty"
+    },
+    {
+        "title": "Course ID",
+        "label": "C100026",
+        "id": "courseID"
+    },
+    {
+        "title": "Email",
+        "label": "student123@student.uts.edu.au",
+        "id": "email"
+    },
+    {
+        "title": "Preferred Contact Number",
+        "label": "0412345678",
+        "id": "preferredContactNumber"
+    },
+    {
+        "title": "Date of Birth",
+        "label": "01/01/2000",
+        "id": "dateOfBirth"
+    }
+]

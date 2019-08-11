@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
+
 import Callback from './Callback';
 import Auth from '../../logic/functions/core/Auth';
 import StudentHomePage from './StudentHomePage';
@@ -27,7 +28,7 @@ const Routing: React.FunctionComponent<RoutingProps> = ({auth}) => {
                 <Route path="/" exact={true} render={() => <HomePage auth={auth} />} />
                 <Route path="/login" render={() => <LoginPage auth={auth} />} />
                 <Route path="/callback" render={() => <Callback auth={auth} />} />
-                <Route path="/student" render={() => <StudentHomePage path={"/student"} />} />
+                <Route path="/student" render={() => <StudentHomePage auth={auth} path={"/student"} />} />
                 <PrivateRoute auth={auth} path="/home" component={HomePage} />
             </Switch>
         </Router>

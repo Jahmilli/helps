@@ -13,12 +13,7 @@ type UserProfile = {
     isRegisteredUser?: boolean;
 };
 
-const initialUser: UserProfile = {
-    nickname: '',
-    name: '',
-    updated_at: '',
-    exp: 0
-};
+const initialUser = {} as UserProfile;
 
 export default class Auth {
     // Our basic Auth0 config
@@ -65,13 +60,14 @@ export default class Auth {
                 console.log('profile is');
                 console.log(profile);
 
+                // TODO: Will need to check email or something to verify user is student or admin and redirect on that.
                 if (profile.isRegisteredUser) {
-                    window.location.pathname = '/home'
+                    window.location.pathname = '/student/home';
                 } else {
-                    window.location.pathname = '/setup'
+                    window.location.pathname = '/student/registration';
                 }
             } else if (err) {
-                console.log('An error occurred during authentication')
+                console.log('An error occurred during authentication');
                 console.log(err);
             }
         });

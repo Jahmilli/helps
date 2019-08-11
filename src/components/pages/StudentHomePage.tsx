@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { Route } from 'react-router';
 import StudentNavbar from '../presentational/StudentDashboard/StudentNavbar';
 import logo from '../../images/uts-logo.png';
-import StudentDashboardContainer from '../containers/StudentDashboard/StudentDashboardContainer';
 import StudentFooter from '../presentational/StudentDashboard/StudentFooter';
+import StudentRegistrationContainer from '../containers/StudentDashboard/StudentRegistrationContainer';
+import Auth from '../../logic/functions/core/Auth';
 
 interface StudentHomePageProps {
+    auth: Auth;
     path: string;
 }
 
@@ -21,15 +23,20 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ path }) => {
+const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, path }) => {
     const classes = useStyles();
 
     return (
         <div>
             <img src={logo} className={classes.logo} alt="UTS Logo" />
             <Typography variant="h2">UTS: HELPS</Typography>
-            <StudentNavbar path={path} />
-            <StudentDashboardContainer path={path} />
+            <StudentNavbar auth={auth} path={path} />
+            <div>
+                <Route path={`${path}/registration`} render={() => <StudentRegistrationContainer /> } />
+                <Route path={`${path}/exit`} component={() => <h1>HI</h1>} />
+                <Route path={`${path}/programs`} component={() => <h1>Hello</h1>} />
+                <Route path={`${path}/faq`} component={() => <h1>Chow</h1>} />
+            </div>
             <StudentFooter />
         </div>
     );
