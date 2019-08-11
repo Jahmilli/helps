@@ -13,7 +13,7 @@ type UserProfile = {
     isRegisteredUser?: boolean;
 };
 
-const initialUser = {
+const initialUser: UserProfile = {
     nickname: '',
     name: '',
     updated_at: '',
