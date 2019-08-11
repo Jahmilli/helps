@@ -1,164 +1,241 @@
 import React, { useState } from 'react';
-import { Button, Grid, TextField, Typography, Select, MenuItem, OutlinedInput, InputLabel } from '@material-ui/core';
+import { Checkbox, FormControlLabel, Radio, RadioGroup, TextField, Typography, FormGroup } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
-interface UserDetails {
-    username: string;
-    password: string;
-}
+import studentRegistrationFields from './__data__/data.studentRegistrationFields.json';
+import studentRegistrationEducationFields from './__data__/data.studentRegistrationEducationFields.json';
 
 interface RegistrationFormProps {
-    auth: any;
+
+}
+
+interface UserDetails {
+    [title: string]: string;
+    fullName: string;
+    preferredName: string;
+    faculty: string;
+    courseID: string;
+    email: string;
+    preferredContactNumber: string;
+    dateOfBirth: string;
+    age: string;
+    gender: string;
+    degree: string;
+    status: string;
+}
+
+interface EducationalBackground {
+    [hsc: string]: Education;
+    ielts: Education;
+    toefl: Education;
+    tafe: Education;
+    cult: Education;
+    insearchDeep: Education;
+    insearchDiploma: Education;
+    foundationCourse: Education;
+}
+
+class Education {
+    title = '';
+    mark = 0;
+    isChecked = false;
+}
+
+type Field = {
+    title: string;
+    label: string;
+    [id: string]: string;
 }
 
 const useStyles = makeStyles(theme => ({
+    registrationLockup: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexFlow: 'row nowrap',
+        margin: '0 10%'
+    },
     textField: {
         width: '100%'
-     },
+    },
     input: {
-        color: 'white'
+        color: 'black'
     },
     floatingLabelFocusStyle: {
-        color: 'white'
-    },
-    gridLockup: {
-        background: 'rgba(0,0,0,0.4)',
-        textAlign: 'center',
-        margin: '7% 0 0 0'
-    },
-    registrationLockup: {        
-        textAlign: 'center',
-        margin: '0 20%'
-    },
-    title: {
-        margin: '10px 0'
+        color: 'black'
     },
     textFieldHeader: {
-        margin: '10px 0 0 0',                
+        margin: '10px 0 0 0',
+        color: 'black' 
     },
-    selectEmpty: {
-        marginTop: theme.spacing(2),
+    leftLockup: {
+
     },
+    rightLockup: {
+
+    },
+    educationForm: {
+        display: 'flex',
+        flexFlow: 'row nowrap',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: '10px'
+    },
+    educationFormLeft: {
+        display: 'flex',
+    },
+    educationFormRight: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    educationText: {
+        color: 'black',
+        marginRight: '10px'
+    }
 }));
 
 
-const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({auth}) => {
-  const [values, setValues] = React.useState({
-    age: '',
-    name: 'hai',
-    gender: '',
-    degree: '',
-    status: '',
-  });
+const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = () => {
+    const userDetailsInitialState = {} as UserDetails;
+    const educationInitialState: EducationalBackground = {
+        hsc: new Education(),
+        ielts: new Education(),
+        toefl: new Education(),
+        tafe: new Education(),
+        cult: new Education(),
+        insearchDeep: new Education(),
+        insearchDiploma: new Education(),
+        foundationCourse: new Education()
+    };
+    const [values, setValues] = useState<UserDetails>(userDetailsInitialState);
+    const [educationalBackground, setEducationalBackground] = useState<EducationalBackground>(educationInitialState);
 
-  const inputLabel = React.useRef(null);
-  const [labelWidth, setLabelWidth] = React.useState(0);
-
-  const handleChange = (name: any) => (event: any) => {
-    setValues({
-        ...values,
-        [name]: event.target.value
-    });
-}
+    const handleUserDetailsChange = (name: string) => (event: any) => {
+        setValues({
+            ...values,
+            [name]: event.target.value
+        });
+    }
     
+    const updateEducationCheckbox = (name: any) => (event: any) => {
+        const details = {...educationalBackground};
+        details[name].isChecked = !details[name].isChecked;
+        setEducationalBackground(details);
+    }
+
+    const updateMark = (name: any) => (event: any) => {
+        const details = {...educationalBackground};
+        details[name].mark = event.target.value
+        setEducationalBackground(details);
+    }
+
     const classes = useStyles();
     return (
-        <div style={{ display: 'flex'}}>
-            <Grid container  justify="space-evenly" alignItems="center">        
-                <Grid container item spacing={0} justify="center" >
-                    <Grid item xs={12}  className={classes.gridLockup}>
-                        <div className={classes.registrationLockup}>
-                            <Typography className={classes.title} variant="h2">Student Registration</Typography>
-                            <Typography className={classes.textFieldHeader} variant="body1">Student ID</Typography>
-                            <TextField
-                                defaultValue="12345678"
-                                className={classes.textField}
-                                id="outlined-name"
-                                variant="filled"
-                                />
-                            <Typography className={classes.textFieldHeader} variant="body1">Student Name</Typography>
-                            <TextField
-                                defaultValue="Full name"
-                                id="outlined-name"
-                                variant="filled"
-                                />
-                            <Typography className={classes.textFieldHeader} variant="body1">Preferred Name</Typography>
-                            <TextField
-                                defaultValue="First name"
-                                id="outlined-name"
-                                variant="filled"
-                                />
-                            <Typography className={classes.textFieldHeader} variant="body1">Faculty</Typography>
-                            <TextField
-                                defaultValue="Engineering"
-                                id="outlined-name"
-                                variant="filled"
-                                />
-                            <Typography className={classes.textFieldHeader} variant="body1">Course ID</Typography>
-                            <TextField
-                                defaultValue="C100026"
-                                id="outlined-name"
-                                variant="filled"
-                                />
-                            <Typography className={classes.textFieldHeader} variant="body1">Email</Typography>
-                            <TextField
-                                defaultValue="Student123@student.uts.edu.au"
-                                id="outlined-name"
-                                variant="filled"
-                                />
-                            <Typography className={classes.textFieldHeader} variant="body1">Best Contact no</Typography>
-                            <TextField
-                                defaultValue="0412345678"
-                                id="outlined-name"
-                                variant="filled"
-                                />
-                            <Typography className={classes.textFieldHeader} variant="body1">DOB</Typography>
-                            <TextField
-                                defaultValue="01/01/2000"
-                                id="outlined-name"
-                                variant="filled"
-                                />
-                            <Typography className={classes.textFieldHeader} variant="body1">Gender</Typography>
-                            <Select
-                                value={values.gender}
-                                onChange={handleChange("gender")}
-                                input={<OutlinedInput labelWidth={labelWidth} name="gender"/>}
-                                >
-                                <MenuItem value={10}>Male</MenuItem>
-                                <MenuItem value={20}>Female</MenuItem>
-                                <MenuItem value={30}>Other</MenuItem>
-                            </Select>
-                            <Typography className={classes.textFieldHeader} variant="body1">Degree</Typography>
-                            <Select
-                                value={values.degree}
-                                onChange={handleChange("degree")}
-                                input={<OutlinedInput labelWidth={labelWidth} name="degree"/>}
-                                >
-                                <MenuItem value={10}>Undergraduate</MenuItem>
-                                <MenuItem value={20}>Postgraduate</MenuItem>
-                            </Select>
-                            <Typography className={classes.textFieldHeader} variant="body1">Status</Typography>
-                            <Select
-                                value={values.status}
-                                onChange={handleChange("status")}
-                                input={<OutlinedInput labelWidth={labelWidth} name="status" />}
-                                // renderValue={(selected: any) => { //TODO
-                                //     if (selected.length === 0) {
-                                //       return <em>Placeholder</em>;
-                                //     }
-                                //   }}
-                                >
-                                <MenuItem disabled value="">
-                                    <em>Placeholder</em>
-                                </MenuItem>
-                                <MenuItem value={10}>Resident</MenuItem>
-                                <MenuItem value={20}>International</MenuItem>
-                            </Select>
-                        </div>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </div>
+            <div className={classes.registrationLockup}>
+                <div className={classes.leftLockup}>
+                    {studentRegistrationFields.map((field: Field, index: number) => {
+                        return (
+                            <div>
+                                <Typography key={index} className={classes.textFieldHeader} variant="body1">{field.title}</Typography>
+                                <TextField
+                                    label={field.label}
+                                    className={classes.textField}
+                                    id={field.id}
+                                    variant="filled"
+                                    value={values[field.id]}
+                                    onChange={handleUserDetailsChange(field.id)}
+                                    /> 
+                            </div>
+                        );
+                    })}
+                    
+                    <Typography className={classes.textFieldHeader} variant="body1">Gender</Typography>
+                    <RadioGroup aria-label="position" name="gender" value={values.gender} onChange={handleUserDetailsChange("gender")} row>
+                        <FormControlLabel
+                            value="male"
+                            className={classes.input}
+                            control={<Radio color="primary" />}
+                            label="Male"
+                            labelPlacement="top"
+                            />
+                        <FormControlLabel
+                            value="female"
+                            className={classes.input}
+                            control={<Radio color="primary" />}
+                            label="Female"
+                            labelPlacement="top"
+                            />
+                        <FormControlLabel
+                            value="other"
+                            className={classes.input}
+                            control={<Radio color="primary" />}
+                            label="Other"
+                            labelPlacement="top"
+                            />
+                    </RadioGroup>
+                    <Typography className={classes.textFieldHeader} variant="body1">Degree</Typography>
+                    <RadioGroup aria-label="position" name="degree" value={values.degree} onChange={handleUserDetailsChange("degree")}row>
+                        <FormControlLabel
+                            value="undergraduate"
+                            className={classes.input}
+                            control={<Radio color="primary" />}
+                            label="Undergraduate"
+                            labelPlacement="top"
+                            />
+                        <FormControlLabel
+                            className={classes.input}
+                            value="postgraduate"
+                            control={<Radio color="primary" />}
+                            label="Postgraduate"
+                            labelPlacement="top"
+                            />
+                    </RadioGroup>
+                    <Typography className={classes.textFieldHeader} variant="body1">Status</Typography>
+                    <RadioGroup aria-label="position" name="status" value={values.status} onChange={handleUserDetailsChange("status")}row>
+                        <FormControlLabel
+                            value="resident"
+                            className={classes.input}
+                            control={<Radio color="primary" />}
+                            label="Resident"
+                            labelPlacement="top"
+                            />
+                        <FormControlLabel
+                            value="international"
+                            className={classes.input}
+                            control={<Radio color="primary" />}
+                            label="International"
+                            labelPlacement="top"
+                            />
+                    </RadioGroup>
+                </div>
+                <div className={classes.rightLockup}>
+                    <FormGroup>
+                        {studentRegistrationEducationFields.map((field, index) => {
+                            return <div className={classes.educationForm}>
+                                        <div className={classes.educationFormLeft}>
+                                            <FormControlLabel key={index}
+                                                control={<Checkbox checked={educationalBackground[field.id].isChecked} onChange={updateEducationCheckbox(field.id)} value={field.id} />}
+                                                label={field.label}
+                                                />
+                                        </div>
+                                        <div className={classes.educationFormRight}>
+                                            <TextField
+                                            type="number"
+                                            style={ educationalBackground[field.id].isChecked ? {visibility: 'visible'} : {visibility: 'hidden'}}
+                                            label="Mark"
+                                            className={classes.textField}
+                                            id={field.id}
+                                            value={values[field.id]}
+                                            onChange={updateMark(field.id)}
+                                            />  
+                                        </div>
+                                    </div>
+                        })}
+                    </FormGroup>
+                <Typography variant="h2" className={classes.input} onClick={() => {
+                    console.log(values);
+                    console.log(educationalBackground);
+                }}>Submit</Typography>
+                </div>
+            </div>
     );
 };
 

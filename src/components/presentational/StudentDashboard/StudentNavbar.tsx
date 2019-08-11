@@ -22,6 +22,7 @@ const StudentNavbar: React.FunctionComponent<StudentNavbarProps> = ({ path }) =>
         setValue(newValue);
     }
 
+    // TODO: Check if path is registration and change tabs on that
     return (
         <div>
             <Paper className={classes.root}>

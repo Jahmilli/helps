@@ -1,0 +1,34 @@
+[
+    {
+        "label": "HSC",
+        "id": "hsc"
+    },
+    {
+        "label": "IELTS",
+        "id": "ielts"
+    },
+    {
+        "label": "TOEFL",
+        "id": "toefl"
+    },
+    {
+        "label": "TAFE",
+        "id": "tafe"
+    },
+    {
+        "label": "CULT",
+        "id": "cult"
+    },
+    {
+        "label": "Insearch DEEP",
+        "id": "insearchDeep"
+    },
+    {
+        "label": "Insearch Diploma",
+        "id": "insearchDiploma"
+    },
+    {
+        "label": "Foundation Course",
+        "id": "foundationCourse"
+    }
+]
