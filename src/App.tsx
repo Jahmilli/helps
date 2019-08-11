@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Routing from './components/pages/Routing';
 import Auth from './logic/functions/core/Auth';
 

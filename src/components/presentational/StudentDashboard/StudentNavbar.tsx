@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { Paper, Tab, Tabs} from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import navbarTabs from './__data__/data.navbarTabs.json';
+import navbarTabs from './__data__/data.studentNavbarTabs.json';
+
+interface StudentNavbarProps {
+    path: string;
+}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -9,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const StudentNavbar: React.FunctionComponent = () => {
+const StudentNavbar: React.FunctionComponent<StudentNavbarProps> = ({ path }) => {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
   
@@ -28,7 +33,7 @@ const StudentNavbar: React.FunctionComponent = () => {
                     centered
                 >
                     {navbarTabs.map((tab, index) => {
-                        return <Tab key={index} label={tab.name} />
+                        return <Tab key={index} label={tab.name} component={Link} to={`${path}${tab.path}`} />
                     })}
                 </Tabs>
             </Paper>

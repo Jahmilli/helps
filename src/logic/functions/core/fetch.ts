@@ -1,5 +1,4 @@
-
-const AUTH_TOKEN = 'auth-token';
+const AUTH_TOKEN = 'access_token';
 export type Options = {};
 
 // Will be used with the JWT token
