@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import { Checkbox, FormControlLabel, Radio, RadioGroup, TextField, Typography, FormGroup } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import studentRegistrationFields from './__data__/data.studentRegistrationFields.json';
 import studentRegistrationEducationFields from './__data__/data.studentRegistrationEducationFields.json';
-
-interface RegistrationFormProps {
-
-}
+import { registrationFormStyles } from './styles';
 
 interface UserDetails {
     [title: string]: string;
@@ -24,17 +20,10 @@ interface UserDetails {
 }
 
 interface EducationalBackground {
-    [hsc: string]: Education;
-    ielts: Education;
-    toefl: Education;
-    tafe: Education;
-    cult: Education;
-    insearchDeep: Education;
-    insearchDiploma: Education;
-    foundationCourse: Education;
+    [course: string]: Course;
 }
 
-class Education {
+class Course {
     title = '';
     mark = 0;
     isChecked = false;
@@ -46,64 +35,17 @@ type Field = {
     [id: string]: string;
 }
 
-const useStyles = makeStyles(theme => ({
-    registrationLockup: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        flexFlow: 'row nowrap',
-        margin: '0 10%'
-    },
-    textField: {
-        width: '100%'
-    },
-    input: {
-        color: 'black'
-    },
-    floatingLabelFocusStyle: {
-        color: 'black'
-    },
-    textFieldHeader: {
-        margin: '10px 0 0 0',
-        color: 'black' 
-    },
-    leftLockup: {
-
-    },
-    rightLockup: {
-
-    },
-    educationForm: {
-        display: 'flex',
-        flexFlow: 'row nowrap',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginTop: '10px'
-    },
-    educationFormLeft: {
-        display: 'flex',
-    },
-    educationFormRight: {
-        display: 'flex',
-        alignItems: 'center'
-    },
-    educationText: {
-        color: 'black',
-        marginRight: '10px'
-    }
-}));
-
-
-const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = () => {
+const RegistrationForm: React.FunctionComponent = () => {
     const userDetailsInitialState = {} as UserDetails;
     const educationInitialState: EducationalBackground = {
-        hsc: new Education(),
-        ielts: new Education(),
-        toefl: new Education(),
-        tafe: new Education(),
-        cult: new Education(),
-        insearchDeep: new Education(),
-        insearchDiploma: new Education(),
-        foundationCourse: new Education()
+        hsc: new Course(),
+        ielts: new Course(),
+        toefl: new Course(),
+        tafe: new Course(),
+        cult: new Course(),
+        insearchDeep: new Course(),
+        insearchDiploma: new Course(),
+        foundationCourse: new Course()
     };
     const [values, setValues] = useState<UserDetails>(userDetailsInitialState);
     const [educationalBackground, setEducationalBackground] = useState<EducationalBackground>(educationInitialState);
@@ -127,7 +69,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = () => {
         setEducationalBackground(details);
     }
 
-    const classes = useStyles();
+    const classes = registrationFormStyles();
     return (
             <div className={classes.registrationLockup}>
                 <div className={classes.leftLockup}>
@@ -149,8 +91,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = () => {
                     
                     <Typography className={classes.textFieldHeader} variant="body1">Gender</Typography>
                     <RadioGroup aria-label="position" name="gender" value={values.gender} onChange={handleUserDetailsChange("gender")} row>
-                        <FormControlLabel
-                            value="male"
+                        <FormControlLabel value="male"
                             className={classes.input}
                             control={<Radio color="primary" />}
                             label="Male"
@@ -231,6 +172,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = () => {
                         })}
                     </FormGroup>
                 <Typography variant="h2" className={classes.input} onClick={() => {
+                    // Currently a test to check values, this should call a POST and submit to our backend
                     console.log(values);
                     console.log(educationalBackground);
                 }}>Submit</Typography>

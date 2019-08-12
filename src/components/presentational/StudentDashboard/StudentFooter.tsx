@@ -1,50 +1,12 @@
 import * as React from 'react';
 import { Link, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import studentFooterMainLinks from './__data__/data.studentFooterMainLinks.json';
 import studentFooterSecondaryLinks from './__data__/data.studentFooterSecondaryLinks.json';
 import Logo from '../../../images/uts-logo.png';
-
-const useStyle = makeStyles(theme => ({
-    footerLockup: {
-        display: 'flex',
-        flexFlow: 'row nowrap',
-        alignItems: 'center',
-        padding: '0 3%'
-    },
-    leftLockup: {
-        display: 'flex',
-        flexFlow: 'row wrap',
-        flexGrow: 2
-    },
-    linkLockup: {
-        display: 'flex',
-        flexDirection: 'row'
-    },
-    link: {
-        marginRight: '10px',
-    },
-    rightLockup: {
-        display: 'flex',
-        flexFlow: 'column wrap',
-        justifyContent: 'flex-end',
-        flexGrow: 1
-    },
-    logo: {
-        // height: '20%',
-        alignSelf: 'flex-end',
-        maxWidth: '20%',
-        maxHeigt: '20%'
-        // width: '20%'
-    },
-    rightLink: {
-        alignSelf: 'flex-end',
-        textAlign: 'right'
-    }
-}))
+import { StudentFooterStyles } from './styles';
 
 const StudentFooter: React.FunctionComponent = () => {
-    const classes = useStyle();
+    const classes = StudentFooterStyles();
     return (
         <div className={classes.footerLockup}>
             <div className={classes.leftLockup}>

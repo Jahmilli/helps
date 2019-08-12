@@ -11,7 +11,6 @@ const HomePage: React.FunctionComponent<HomePageProps> = ({ auth }) => {
         const callGetTest = async () => {
             let data = await getTestData();
             console.log(data);
-            auth.handleAuthentication();
         };
         callGetTest();
     }, []);
