@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const StudentFooterStyles = makeStyles(theme => ({
+export const StudentFooterStyles = makeStyles({
     footerLockup: {
         display: 'flex',
         flexFlow: 'row nowrap',
@@ -34,10 +34,10 @@ export const StudentFooterStyles = makeStyles(theme => ({
         alignSelf: 'flex-end',
         textAlign: 'right'
     }
-}));
+});
 
-export const studentNavbarStyles = makeStyles(theme => ({
+export const studentNavbarStyles = makeStyles({
   root: {
     flexGrow: 1,
   }
-}));
+});

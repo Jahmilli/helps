@@ -37,6 +37,7 @@ type Field = {
 
 const RegistrationForm: React.FunctionComponent = () => {
     const userDetailsInitialState = {} as UserDetails;
+    
     const educationInitialState: EducationalBackground = {
         hsc: new Course(),
         ielts: new Course(),
@@ -47,6 +48,7 @@ const RegistrationForm: React.FunctionComponent = () => {
         insearchDiploma: new Course(),
         foundationCourse: new Course()
     };
+
     const [values, setValues] = useState<UserDetails>(userDetailsInitialState);
     const [educationalBackground, setEducationalBackground] = useState<EducationalBackground>(educationInitialState);
 
