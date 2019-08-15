@@ -7,6 +7,7 @@ import LoginPage from './LoginPage';
 import Callback from './Callback';
 import Auth from '../../logic/functions/core/Auth';
 import StudentHomePage from './StudentHomePage';
+import AdminHomePage from './AdminHomePage';
 
 interface RoutingProps {
     auth: Auth;
@@ -29,6 +30,7 @@ const Routing: React.FunctionComponent<RoutingProps> = ({auth}) => {
                 <Route path="/login" render={() => <LoginPage auth={auth} />} />
                 <Route path="/callback" render={() => <Callback auth={auth} />} />
                 <Route path="/student" render={() => <StudentHomePage auth={auth} path={"/student"} />} />
+                <Route path="/admin" render={() => <AdminHomePage auth={auth} path={"/admin"} />} />
                 <PrivateRoute auth={auth} path="/home" component={HomePage} />
             </Switch>
         </Router>

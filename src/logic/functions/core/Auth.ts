@@ -39,8 +39,11 @@ export default class Auth {
             if (err) {
                 console.log(`An error occurred during authentication`);
                 console.log(err);
+                return err;
             } else {
                 console.log('Login successful');
+                console.log(result);
+                return result
             }
         });
     }
