@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Paper, Tab, Tabs} from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { studentNavbarStyles } from './styles';
 import navbarTabs from './__data__/data.studentNavbarTabs.json';
 import Auth from '../../../logic/functions/core/Auth.js';
 
@@ -10,14 +10,8 @@ interface StudentNavbarProps {
     path: string;
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  }
-}));
-
 const StudentNavbar: React.FunctionComponent<StudentNavbarProps> = ({ auth, path }) => {
-    const classes = useStyles();
+    const classes = studentNavbarStyles();
     const [isAuthenticatedUser, setIsAuthenticatedUser] = React.useState(false);
 
     React.useEffect(() => {
@@ -28,18 +22,13 @@ const StudentNavbar: React.FunctionComponent<StudentNavbarProps> = ({ auth, path
         // }
     }, []);
 
-
-
     // TODO: Check if path is registration and change tabs on that
     return (
         <div>
             <Paper className={classes.root}>
                 <Tabs
                     value={0}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    centered
-                >
+                    centered>
                     {navbarTabs.map((tab, index) => {
                         // Use this when we set isRegisteredUser to the JWT after registration
                         // if (tab.requiresAuth && !isAuthenticatedUser) {

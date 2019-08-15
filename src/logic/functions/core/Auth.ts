@@ -54,11 +54,9 @@ export default class Auth {
                 localStorage.setItem(ACCESS_TOKEN, authResults.accessToken);
                 localStorage.setItem(ID_TOKEN, authResults.idToken);
                 localStorage.setItem(EXPIRES_AT, expiresAt);
-                window.location.hash = "";
-                window.location.href = "";
+                window.location.hash = '';
+                window.location.href = '';
                 profile = this.getProfile();
-                console.log('profile is');
-                console.log(profile);
 
                 // TODO: Will need to check email or something to verify user is student or admin and redirect on that.
                 if (profile.isRegisteredUser) {
