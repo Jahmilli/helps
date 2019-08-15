@@ -39,6 +39,7 @@ Authentication is done using Auth0. They have a global authentication feature bu
 For documentation on their SDK see: https://auth0.com/docs/libraries/auth0js/v9
 
 ### Directory Structure
+```
 ── README.md
 ├── cypress                  // Where cypress tests/config is stored
 ├── cypress.json             // Cypress Configuration
@@ -60,3 +61,4 @@ For documentation on their SDK see: https://auth0.com/docs/libraries/auth0js/v9
 │   │       ├── core         // Where functions containing logic critical to the application should be stored
 │   │       └── testFetch.ts // Example Fetch Function 
 ├── stubby                   // Stubbed endpoint configs
+```
