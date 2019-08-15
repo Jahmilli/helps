@@ -7,8 +7,14 @@ import Auth from '../../logic/functions/core/Auth.js';
 interface StudentNavbarProps {
     auth: Auth;
     path: string;
-    navbarTabs: any;
+    navbarTabs: [NavbarTab];
     children: any;
+}
+
+export interface NavbarTab {
+    name: string;
+    path: string;
+    requiresAuth: boolean;
 }
 
 const StudentNavbar: React.FunctionComponent<StudentNavbarProps> = ({ auth, path, navbarTabs, children }) => {
@@ -30,7 +36,7 @@ const StudentNavbar: React.FunctionComponent<StudentNavbarProps> = ({ auth, path
                 <Tabs
                     value={0}
                     centered>
-                    {navbarTabs.map((tab: any, index: any) => {
+                    {navbarTabs.map((tab: NavbarTab, index: number) => {
                         // Use this when we set isRegisteredUser to the JWT after registration
                         // if (tab.requiresAuth && !isAuthenticatedUser) {
                         //     return;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Route } from 'react-router';
-import Navbar from '../common/Navbar';
+import Navbar, { NavbarTab } from '../common/Navbar';
 import logo from '../../images/uts-logo.png';
 import Footer from '../common/Footer';
 import Auth from '../../logic/functions/core/Auth';
@@ -29,7 +29,7 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, path
 
     return (
         <div>
-            <Navbar auth={auth} path={path} navbarTabs={navbarTabs}>
+            <Navbar auth={auth} path={path} navbarTabs={navbarTabs as [NavbarTab]}>
                 <img src={logo} className={classes.logo} alt="UTS Logo" />
                 <Typography variant="h2">UTS: HELPS</Typography>
             </Navbar>
