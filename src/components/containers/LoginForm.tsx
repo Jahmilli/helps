@@ -55,7 +55,7 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
                                 value={userDetails.password}
                             />
                         </FormControl>
-                        <Button className={classes.useWhite} color="primary" size="large" type="submit">Sign In</Button>
+                        <Button className={classes.useWhite} id="signInButton" color="primary" size="large" type="submit">Sign In</Button>
                     </form>
                 </div>
             </div>
