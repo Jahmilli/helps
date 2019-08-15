@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
-import { Button, Typography, FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core';
+import { Button, Typography, FormControl, InputLabel, Input, Icon, FormHelperText, Snackbar, SnackbarContent, IconButton } from '@material-ui/core';
+import { Close as CloseIcon } from '@material-ui/icons';
 import Auth from '../../logic/functions/core/Auth';
 import { loginFormStyles } from './styles';
+import MySnackbarContentWrapper from '../presentational/SnackBarContentWrapper';
 
 interface UserDetails {
     username: string;
     password: string;
+    authFailed: boolean;
 }
 
 interface LoginFormProps {
     auth: Auth;
 }
 
-const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
+const LoginForm: React.FunctionComponent<LoginFormProps> = ({ auth }) => {
     const initialUserDetailsState = {} as UserDetails;
     const [userDetails, setUserDetails] = useState<UserDetails>(initialUserDetailsState);
     
@@ -22,9 +25,23 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
             [name]: event.target.value
         });
     }
-    const handleSubmit = (event: any) => {
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
-        auth.login(userDetails.username, userDetails.password);
+        try {
+            await auth.login(userDetails.username, userDetails.password);
+        } catch (err) {
+            setUserDetails({
+                ...userDetails,
+                authFailed: true
+            })
+        }
+    }
+
+    const handleIconClick = (event: any) => {
+        setUserDetails({
+            ...userDetails,
+            authFailed: false
+        })
     }
     
     const classes = loginFormStyles();
@@ -46,7 +63,7 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
                         </FormControl>
 
                         <FormControl fullWidth={true}>
-                            <InputLabel htmlFor="password-field">Email address</InputLabel>
+                            <InputLabel htmlFor="password-field">Password</InputLabel>
                             <Input 
                                 aria-describedby="password-field" 
                                 type="password"
@@ -56,6 +73,18 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({auth}) => {
                             />
                         </FormControl>
                         <Button className={classes.useWhite} id="signInButton" color="primary" size="large" type="submit">Sign In</Button>
+                        { userDetails.authFailed ? 
+                        <MySnackbarContentWrapper
+                            variant="error"
+                            className={classes.margin}
+                            message="This is an error message!">
+                                <IconButton key="close" aria-label="close" color="inherit" onClick={handleIconClick}>
+                                    <CloseIcon className={classes.icon} />
+                                </IconButton>
+                            </MySnackbarContentWrapper>
+                         :
+                        ''
+                        }
                     </form>
                 </div>
             </div>

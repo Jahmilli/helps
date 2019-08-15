@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Paper, Tab, Tabs} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { studentNavbarStyles } from './styles';
-import Auth from '../../../logic/functions/core/Auth.js';
+import Auth from '../../logic/functions/core/Auth.js';
 
 interface StudentNavbarProps {
     auth: Auth;

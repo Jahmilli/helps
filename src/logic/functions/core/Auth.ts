@@ -31,21 +31,23 @@ export default class Auth {
         });
     }
     // Called at login
-    login(username: string, password: string) {
-        this.auth0.login({
-            username: username,
-            password: password,
-        }, (err, result) => {
-            if (err) {
-                console.log(`An error occurred during authentication`);
-                console.log(err);
-                return err;
-            } else {
-                console.log('Login successful');
-                console.log(result);
-                return result
-            }
-        });
+    async login(username: string, password: string) {
+        return new Promise((resolve, reject) => {
+            this.auth0.login({
+                username: username,
+                password: password,
+            }, (err, result) => {
+                if (err) {
+                    console.log(`An error occurred during authentication`);
+                    console.log(err);
+                    return reject(err);
+                } else {
+                    console.log('Login successful');
+                    console.log(result);
+                    return resolve(result);
+                }
+            });
+        }) 
     }
 
     handleAuthentication() {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link, Typography } from '@material-ui/core';
 import FooterMainLinks from './__data__/data.studentFooterMainLinks.json';
 import FooterSecondaryLinks from './__data__/data.studentFooterSecondaryLinks.json';
-import Logo from '../../../images/uts-logo.png';
+import Logo from '../../images/uts-logo.png';
 import { StudentFooterStyles } from './styles';
 
 

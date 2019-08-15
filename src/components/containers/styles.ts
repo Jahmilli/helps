@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const loginFormStyles = makeStyles({
+export const loginFormStyles = makeStyles(theme => ({
     gridLockup: {
         background: 'rgba(0,0,0,0.4)',
         textAlign: 'center',
@@ -15,8 +15,18 @@ export const loginFormStyles = makeStyles({
     },
     useWhite: {
         color: 'white'
-    }
-});
+    },
+    margin: {
+        margin: theme.spacing(1)
+    },
+    icon: {
+        fontSize: 20,
+    },
+    iconVariant: {
+        opacity: 0.9,
+        marginRight: theme.spacing(1),
+    },
+}));
 
 
 export const registrationFormStyles = makeStyles({
