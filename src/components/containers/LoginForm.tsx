@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Typography, FormControl, InputLabel, Input, Icon, FormHelperText, Snackbar, SnackbarContent, IconButton } from '@material-ui/core';
+import { Button, Typography, FormControl, InputLabel, Input, FormHelperText, IconButton } from '@material-ui/core';
 import { Close as CloseIcon } from '@material-ui/icons';
 import Auth from '../../logic/functions/core/Auth';
 import { loginFormStyles } from './styles';

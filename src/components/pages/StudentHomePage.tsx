@@ -42,7 +42,8 @@ const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, 
                 <Route path={`${path}/workshopRegistration`} component={() => <h1>Workshop Registration</h1>} />
                 <Route path={`${path}/programs`} component={() => <h1>Programs</h1>} />
                 <Route path={`${path}/faq`} component={() => <h1>FAQ</h1>} />
-                <Route path={`${path}/exit`} component={() => <h1>Exit</h1>} />
+                <Route path={`${path}/exit`} component={() => <div><h1>Logout</h1>
+                {auth.logout()}</div>} />
             </div>
             <Footer />
         </div>
