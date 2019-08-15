@@ -22,7 +22,7 @@ export const loginFormStyles = makeStyles({
 export const registrationFormStyles = makeStyles({
         registrationLockup: {
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'space-around',
             flexFlow: 'row nowrap',
             margin: '0 10%'
         },
