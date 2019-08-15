@@ -1,6 +1,6 @@
 
 export interface StudentDetails {
-    [title: string]: string;
+    [title: string]: string | Education;
     fullName: string;
     preferredName: string;
     faculty: string;
@@ -11,9 +11,10 @@ export interface StudentDetails {
     gender: string;
     degree: string;
     status: string;
+    education: Education;
 }
 
-export interface EducationalBackground {
+export interface Education {
     [course: string]: Course;
 }
 

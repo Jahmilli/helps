@@ -3,7 +3,8 @@ import { Checkbox, FormControlLabel, Radio, RadioGroup, TextField, Typography, F
 import studentRegistrationFields from './__data__/data.studentRegistrationFields.json';
 import studentRegistrationEducationFields from './__data__/data.studentRegistrationEducationFields.json';
 import { registrationFormStyles } from './styles';
-import { StudentDetails, EducationalBackground, Course } from '../../logic/domains/studentDetails.domain';
+import { StudentDetails, Education, Course } from '../../logic/domains/studentDetails.domain';
+import registerStudent from '../../logic/functions/registerStudent';
 
 type Field = {
     [title: string]: string;
@@ -18,7 +19,7 @@ type EducationField = {
 const RegistrationForm: React.FunctionComponent = () => {
     const studentDetailsInitialState = {} as StudentDetails;
     
-    const educationInitialState: EducationalBackground = {
+    const educationInitialState: Education = {
         hsc: new Course(),
         ielts: new Course(),
         toefl: new Course(),
@@ -29,8 +30,9 @@ const RegistrationForm: React.FunctionComponent = () => {
         foundationCourse: new Course()
     };
 
+    studentDetailsInitialState.education = educationInitialState;
+
     const [values, setValues] = useState<StudentDetails>(studentDetailsInitialState);
-    const [educationalBackground, setEducationalBackground] = useState<EducationalBackground>(educationInitialState);
 
     const handleStudentDetailsChange = (details: string) => (event: any) => {
         setValues({
@@ -40,15 +42,21 @@ const RegistrationForm: React.FunctionComponent = () => {
     }
     
     const updateEducationCheckbox = (value: string) => (event: any) => {
-        const details = {...educationalBackground};
-        details[value].isChecked = !details[value].isChecked;
-        setEducationalBackground(details);
+        const details = {...values};
+        details.education[value].isChecked = !details.education[value].isChecked;
+        setValues(details);
     }
 
     const updateMark = (name: string) => (event: any) => {
-        const details = {...educationalBackground};
-        details[name].mark = event.target.value
-        setEducationalBackground(details);
+        const details = {...values};
+        details.education[name].mark = event.target.value
+        setValues(details);
+    }
+
+    const registerStudent = (event: any) => {
+        event.preventDefault();
+        console.log(values);
+        registerStudent(values);
     }
 
     const classes = registrationFormStyles();
@@ -135,14 +143,14 @@ const RegistrationForm: React.FunctionComponent = () => {
                             return <div key={index} className={classes.educationForm}>
                                         <div className={classes.educationFormLeft}>
                                             <FormControlLabel
-                                                control={<Checkbox checked={educationalBackground[field.id].isChecked} onChange={updateEducationCheckbox(field.id)} value={field.id} />}
+                                                control={<Checkbox checked={values.education[field.id].isChecked} onChange={updateEducationCheckbox(field.id)} value={field.id} />}
                                                 label={field.label}
                                                 />
                                         </div>
                                         <div className={classes.educationFormRight}>
                                             <TextField
                                             type="number"
-                                            style={ educationalBackground[field.id].isChecked ? {visibility: 'visible'} : {visibility: 'hidden'}}
+                                            style={ values.education[field.id].isChecked ? {visibility: 'visible'} : {visibility: 'hidden'}}
                                             label="Mark"
                                             className={classes.textField}
                                             id={field.id}
@@ -153,11 +161,7 @@ const RegistrationForm: React.FunctionComponent = () => {
                                     </div>
                         })}
                     </FormGroup>
-                <Typography variant="h2" className={classes.input} onClick={() => {
-                    // Currently a test to check values, this should call a POST and submit to our backend
-                    console.log(values);
-                    console.log(educationalBackground);
-                }}>Submit</Typography>
+                <Typography variant="h2" className={classes.input} onClick={registerStudent}>Submit</Typography>
                 </div>
             </div>
     );
