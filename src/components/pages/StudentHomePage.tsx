@@ -30,7 +30,7 @@ const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, 
 
     return (
         <div>
-            <Navbar auth={auth} path={path} navbarTabs={navbarTabs as [NavbarTab]}>
+            <Navbar auth={auth} path={path} navbarTabs={navbarTabs as Array<NavbarTab>}>
                 <img src={logo} className={classes.logo} alt="UTS Logo" />
                 <Typography variant="h2">UTS: HELPS</Typography>
             </Navbar>

@@ -7,7 +7,7 @@ import Auth from '../../logic/functions/core/Auth.js';
 interface StudentNavbarProps {
     auth: Auth;
     path: string;
-    navbarTabs: [NavbarTab];
+    navbarTabs: Array<NavbarTab>;
     children: any;
 }
 

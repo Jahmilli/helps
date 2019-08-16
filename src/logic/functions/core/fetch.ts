@@ -29,7 +29,8 @@ const coreFetch = async (
     const init = { headers };
 
     if (method === 'post') {
-        Object.assign(init, { body, method });
+        headers.append("Content-Type", "application/json")
+        Object.assign(init, { body, method, headers });
     }
     return new Promise(async (resolve, reject) => {
         let response = undefined;
