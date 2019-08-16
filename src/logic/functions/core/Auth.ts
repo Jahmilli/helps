@@ -1,6 +1,7 @@
 import auth0 from 'auth0-js';
 import jwtDecode from 'jwt-decode';
 
+const DOMAIN = 'uts-helps.au.auth0.com'
 const ACCESS_TOKEN = 'access_token';
 const ID_TOKEN = 'id_token';
 const EXPIRES_AT = 'expires_at';
@@ -18,7 +19,7 @@ const initialUser = {} as UserProfile;
 export default class Auth {
     // Our basic Auth0 config
     auth0 = new auth0.WebAuth({
-        domain:       'uts-helps.au.auth0.com', // DO NOT CHANGE THIS
+        domain:       DOMAIN, // DO NOT CHANGE THIS
         clientID:     'RyhxZk3WQTUFsZY4zsZvLqZJSd2ZaTqg', // DO NOT CHANGE THIS
         redirectUri: 'http://localhost:3000/callback',
         responseType: 'token id_token',
@@ -31,18 +32,19 @@ export default class Auth {
         });
     }
     // Called at login
-    login(username: string, password: string) {
-        this.auth0.login({
-            username: username,
-            password: password,
-        }, (err, result) => {
-            if (err) {
-                console.log(`An error occurred during authentication`);
-                console.log(err);
-            } else {
-                console.log('Login successful');
-            }
-        });
+    async login(username: string, password: string) {
+        return new Promise((resolve, reject) => {
+            this.auth0.login({
+                username: username,
+                password: password,
+            }, (err, result) => {
+                if (err) {
+                    return reject(err);
+                } else {
+                    return resolve(result);
+                }
+            });
+        }) 
     }
 
     handleAuthentication() {
@@ -92,6 +94,7 @@ export default class Auth {
         localStorage.removeItem(ACCESS_TOKEN);
         localStorage.removeItem(ID_TOKEN);
         localStorage.removeItem(EXPIRES_AT);
-        window.location.pathname = '';
+        // window.location.replace(`https://${DOMAIN}/v2/logout`);
+        window.location.replace('http://localhost:3000/student/login');
     }
 };

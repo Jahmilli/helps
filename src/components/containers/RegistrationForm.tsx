@@ -3,40 +3,20 @@ import { Checkbox, FormControlLabel, Radio, RadioGroup, TextField, Typography, F
 import studentRegistrationFields from './__data__/data.studentRegistrationFields.json';
 import studentRegistrationEducationFields from './__data__/data.studentRegistrationEducationFields.json';
 import { registrationFormStyles } from './styles';
-
-interface UserDetails {
-    [title: string]: string;
-    fullName: string;
-    preferredName: string;
-    faculty: string;
-    courseID: string;
-    email: string;
-    preferredContactNumber: string;
-    dateOfBirth: string;
-    age: string;
-    gender: string;
-    degree: string;
-    status: string;
-}
-
-interface EducationalBackground {
-    [course: string]: Course;
-}
-
-class Course {
-    title = '';
-    mark = 0;
-    isChecked = false;
-}
+import { StudentDetails, EducationalBackground, Course } from '../../logic/domains/studentDetails.domain';
 
 type Field = {
-    title: string;
+    [title: string]: string;
     label: string;
-    [id: string]: string;
+    id: string;
+}
+type EducationField = {
+    [label: string]: string;
+    id: string;
 }
 
 const RegistrationForm: React.FunctionComponent = () => {
-    const userDetailsInitialState = {} as UserDetails;
+    const studentDetailsInitialState = {} as StudentDetails;
     
     const educationInitialState: EducationalBackground = {
         hsc: new Course(),
@@ -49,23 +29,23 @@ const RegistrationForm: React.FunctionComponent = () => {
         foundationCourse: new Course()
     };
 
-    const [values, setValues] = useState<UserDetails>(userDetailsInitialState);
+    const [values, setValues] = useState<StudentDetails>(studentDetailsInitialState);
     const [educationalBackground, setEducationalBackground] = useState<EducationalBackground>(educationInitialState);
 
-    const handleUserDetailsChange = (name: string) => (event: any) => {
+    const handleStudentDetailsChange = (details: string) => (event: any) => {
         setValues({
             ...values,
-            [name]: event.target.value
+            [details]: event.target.value
         });
     }
     
-    const updateEducationCheckbox = (name: any) => (event: any) => {
+    const updateEducationCheckbox = (value: string) => (event: any) => {
         const details = {...educationalBackground};
-        details[name].isChecked = !details[name].isChecked;
+        details[value].isChecked = !details[value].isChecked;
         setEducationalBackground(details);
     }
 
-    const updateMark = (name: any) => (event: any) => {
+    const updateMark = (name: string) => (event: any) => {
         const details = {...educationalBackground};
         details[name].mark = event.target.value
         setEducationalBackground(details);
@@ -85,14 +65,14 @@ const RegistrationForm: React.FunctionComponent = () => {
                                     id={field.id}
                                     variant="filled"
                                     value={values[field.id]}
-                                    onChange={handleUserDetailsChange(field.id)}
+                                    onChange={handleStudentDetailsChange(field.id)}
                                     /> 
                             </div>
                         );
                     })}
                     
                     <Typography className={classes.textFieldHeader} variant="body1">Gender</Typography>
-                    <RadioGroup aria-label="position" name="gender" value={values.gender} onChange={handleUserDetailsChange("gender")} row>
+                    <RadioGroup aria-label="position" name="gender" value={values.gender} onChange={handleStudentDetailsChange("gender")} row>
                         <FormControlLabel value="male"
                             className={classes.input}
                             control={<Radio color="primary" />}
@@ -115,7 +95,7 @@ const RegistrationForm: React.FunctionComponent = () => {
                             />
                     </RadioGroup>
                     <Typography className={classes.textFieldHeader} variant="body1">Degree</Typography>
-                    <RadioGroup aria-label="position" name="degree" value={values.degree} onChange={handleUserDetailsChange("degree")}row>
+                    <RadioGroup aria-label="position" name="degree" value={values.degree} onChange={handleStudentDetailsChange("degree")}row>
                         <FormControlLabel
                             value="undergraduate"
                             className={classes.input}
@@ -132,7 +112,7 @@ const RegistrationForm: React.FunctionComponent = () => {
                             />
                     </RadioGroup>
                     <Typography className={classes.textFieldHeader} variant="body1">Status</Typography>
-                    <RadioGroup aria-label="position" name="status" value={values.status} onChange={handleUserDetailsChange("status")}row>
+                    <RadioGroup aria-label="position" name="status" value={values.status} onChange={handleStudentDetailsChange("status")}row>
                         <FormControlLabel
                             value="resident"
                             className={classes.input}
@@ -151,7 +131,7 @@ const RegistrationForm: React.FunctionComponent = () => {
                 </div>
                 <div className={classes.rightLockup}>
                     <FormGroup>
-                        {studentRegistrationEducationFields.map((field, index) => {
+                        {studentRegistrationEducationFields.map((field: EducationField, index: number) => {
                             return <div key={index} className={classes.educationForm}>
                                         <div className={classes.educationFormLeft}>
                                             <FormControlLabel

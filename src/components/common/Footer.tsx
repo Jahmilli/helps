@@ -1,17 +1,18 @@
 import * as React from 'react';
 import { Link, Typography } from '@material-ui/core';
-import studentFooterMainLinks from './__data__/data.studentFooterMainLinks.json';
-import studentFooterSecondaryLinks from './__data__/data.studentFooterSecondaryLinks.json';
-import Logo from '../../../images/uts-logo.png';
+import FooterMainLinks from './__data__/data.studentFooterMainLinks.json';
+import FooterSecondaryLinks from './__data__/data.studentFooterSecondaryLinks.json';
+import Logo from '../../images/uts-logo.png';
 import { StudentFooterStyles } from './styles';
 
-const StudentFooter: React.FunctionComponent = () => {
+
+const Footer: React.FunctionComponent = () => {
     const classes = StudentFooterStyles();
     return (
         <div className={classes.footerLockup}>
             <div className={classes.leftLockup}>
                 <div className={classes.linkLockup}>
-                    {studentFooterMainLinks.map((link, index) => {
+                    {FooterMainLinks.map((link, index) => {
                         return <Link href={link.url} key={index} className={classes.link}>{link.name}</Link>
                     })}
                 </div>
@@ -20,7 +21,7 @@ const StudentFooter: React.FunctionComponent = () => {
                     <Typography variant="body1">The page is authorised by Director, SSU - Send comments to operations manager</Typography>
                 </div>
                 <div className={classes.linkLockup}>
-                    {studentFooterSecondaryLinks.map((link, index) => {
+                    {FooterSecondaryLinks.map((link, index) => {
                         return <Link href={link.url} key={index} className={classes.link}>{link.name}</Link>
                     })}
                 </div>
@@ -35,4 +36,4 @@ const StudentFooter: React.FunctionComponent = () => {
     );
 };
 
-export default StudentFooter;
+export default Footer;

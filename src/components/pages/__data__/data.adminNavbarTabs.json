@@ -1,0 +1,57 @@
+[
+    {
+        "name" : "Sessions",
+        "path" : "/sessions",
+        "requiresAuth": true
+    },
+    {
+        "name" : "Workshops",
+        "path" : "/workshops",
+        "requiresAuth": true
+    },
+    {
+        "name" : "Advisors",
+        "path" : "/advisors",
+        "requiresAuth": true
+    },
+    {
+        "name" : "Students",
+        "path" : "/students",
+        "requiresAuth": false
+    },
+    {
+        "name" : "Waiting List",
+        "path" : "/waitingList",
+        "requiresAuth": false
+    },
+    {
+        "name" : "Reports",
+        "path" : "/reports",
+        "requiresAuth": false
+    },
+    {
+        "name" : "Template",
+        "path" : "/template",
+        "requiresAuth": false
+    },
+    {
+        "name" : "Email",
+        "path" : "/email",
+        "requiresAuth": false
+    },
+    {
+        "name" : "Room",
+        "path" : "/room",
+        "requiresAuth": false
+    },
+    {
+        "name" : "Message",
+        "path" : "/message",
+        "requiresAuth": false
+    },
+    {
+        "name" : "Exit",
+        "path" : "/exit",
+        "requiresAuth": false
+    }
+]
