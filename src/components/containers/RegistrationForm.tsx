@@ -5,6 +5,11 @@ import studentRegistrationEducationFields from './__data__/data.studentRegistrat
 import { registrationFormStyles } from './styles';
 import { StudentDetails, Course } from '../../logic/domains/studentDetails.domain';
 import registerStudent from '../../logic/functions/registerStudent';
+import Auth from '../../logic/functions/core/Auth.js';
+
+interface RegistrationFormProps {
+    auth: Auth;
+}
 
 type Field = {
     [title: string]: string;
@@ -16,7 +21,7 @@ type EducationField = {
     id: string;
 }
 
-const RegistrationForm: React.FunctionComponent = () => {
+const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth }) => {
     const studentDetailsInitialState = {} as StudentDetails;
     
     const educationInitialState: Array<Course> = [
@@ -53,10 +58,20 @@ const RegistrationForm: React.FunctionComponent = () => {
         setValues(details);
     }
 
-    const submitStudentDetails = (event: any) => {
+    const submitStudentDetails = async (event: any) => {
         event.preventDefault();
         console.log(values);
-        registerStudent(values);
+        // console.log(auth.readUserMetaData());
+        try {
+            let auth0Response = await auth.updateUserMetaData();
+            console.log(auth0Response);
+            let response = await registerStudent(values);
+            console.log('response is ', response);
+        } catch (err) {
+            // TODO: Don't use an alert, display using a Snackbar or something
+            console.log('An error occured when registering', err);
+            alert('An error occured during registration, please try a different email or try again later...');
+        }
     }
 
     const classes = registrationFormStyles();

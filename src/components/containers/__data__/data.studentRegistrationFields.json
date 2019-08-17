@@ -5,6 +5,11 @@
         "id": "studentID"
     },
     {
+        "title": "Email",
+        "label": "student123@student.uts.edu.au",
+        "id": "email"
+    },
+    {
         "title": "Student Name",
         "label": "Full Name",
         "id": "fullName"
@@ -23,11 +28,6 @@
         "title": "Course ID",
         "label": "C100026",
         "id": "courseID"
-    },
-    {
-        "title": "Email",
-        "label": "student123@student.uts.edu.au",
-        "id": "email"
     },
     {
         "title": "Preferred Contact Number",
