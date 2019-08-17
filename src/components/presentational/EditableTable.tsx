@@ -20,7 +20,7 @@ import {
 
 
 interface EditableTableProps {
-    state: TableState;
+    state: any;
     setState: any;
     options?: any; // View https://material-table.com/#/docs/all-props for values that can be passed in for options
 }

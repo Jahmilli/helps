@@ -1,46 +1,43 @@
 import * as React from 'react';
-import CustomizedTables, { StyledTableRow, StyledTableCell } from '../../presentational/Table';
 import { Typography } from '@material-ui/core';
 import { getAvailableSessions } from '../../../logic/functions/getAvailableSessions';
 import { Session } from '../../../logic/domains/sessionDetails.domain';
+import EditableTable from '../../presentational/EditableTable';
 
 interface AvailableSessionsContainer {
 };
 
-// Column headings in the table used in this component
-const headRows = ["Date", "Start Time", "End Time", "Room", "Type", "Booked by", "Booked By"];
+
 const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainer> = () => {
-    // const initialState = [] as Array<Session>;
-    const [ sessions, setSessions ] = React.useState<Array<Session>>([]);
+    const [state, setState] = React.useState({});
 
     React.useEffect(() => {
         async function callGetSessions() {
             const details = await getAvailableSessions();
             console.log('details', details);
-            setSessions(details);
+            setState({
+                columns: [
+                  { title: 'Date', field: 'date' },
+                  { title: 'Start Time', field: 'startTime' },
+                  { title: 'End Time', field: 'endTime' },
+                  { title: 'Room', field: 'room' },
+                  // { title: 'A/NA', field: '' },
+                  { title: 'Type', field: 'type' },
+                  { title: 'Booked by', field: 'booked by' }, 
+                //   { title: 'Waiting', field: 'waiting' }, 
+                ],
+                data: details.map((session: Session, index: number) => {
+                    return session;
+                })
+              });
         }
         callGetSessions();
     }, []);
+
     return (
         <div>
             <Typography variant="h2">Sessions available</Typography>
-            <CustomizedTables headRows={headRows}>
-                {sessions.map((session: Session) => {
-                    return (
-                        <StyledTableRow key={session.id}>
-                            <StyledTableCell component="th" scope="row">
-                                {session.date}
-                            </StyledTableCell>
-                            <StyledTableCell>{session.startTime}</StyledTableCell>
-                            <StyledTableCell>{session.endTime}</StyledTableCell>
-                            <StyledTableCell>{session.room}</StyledTableCell>
-                            <StyledTableCell>{session.advisor}</StyledTableCell>
-                            <StyledTableCell>{session.bookedBy}</StyledTableCell>
-                            <StyledTableCell>{session.type}</StyledTableCell>
-                        </StyledTableRow> 
-                    )
-                })}
-            </CustomizedTables>
+            <EditableTable state={state} setState={setState} options={{ toolbar: false, paging: false }}/>
         </div>
     );
 };
