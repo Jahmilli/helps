@@ -7,7 +7,6 @@ import EditableTable from '../../presentational/EditableTable';
 interface AvailableSessionsContainer {
 };
 
-
 const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainer> = () => {
     const [state, setState] = React.useState({});
 

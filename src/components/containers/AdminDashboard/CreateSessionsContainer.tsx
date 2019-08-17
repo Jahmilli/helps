@@ -1,9 +1,9 @@
 import * as React from 'react';
-import CustomizedTables, { StyledTableRow, StyledTableCell } from '../../presentational/Table';
-import { Typography, TextField } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { Session } from '../../../logic/domains/sessionDetails.domain';
 import EditableTable from '../../presentational/EditableTable';
 import Close from '@material-ui/icons/Close';
+import { createNewSessions } from '../../../logic/functions/createNewSessions';
 
 
 interface CreateSessionsContainerProps {
@@ -11,9 +11,6 @@ interface CreateSessionsContainerProps {
 
 // Column headings in the table used in this component
 const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerProps> = () => {
-    const [ sessions, setSessions ] = React.useState<Array<Session>>([new Session()]);
-
-    const headRows = ["Date", "Start Time", "End Time", "Room", "A/NA", "Type", "", ""];
     const [state, setState] = React.useState({
       columns: [
         { title: 'Date', field: 'date' },
@@ -35,6 +32,34 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
         // callGetSessions();
     }, []);
 
+    const isEmpty = (str: string): boolean => {
+      return (!str || 0 === str.length);
+    }
+    const validateSessions = (): boolean => {
+      for (let session of state.data) {
+        if (isEmpty(session.date) || (isEmpty(session.startTime) || 
+            isEmpty(session.endTime) || isEmpty(session.room) || 
+            isEmpty(session.type))) {
+            return false;
+        }
+      }
+      return true;
+    }
+
+    const submitNewSessions = () => {
+      if (validateSessions()) {
+        const tempData = state.data as Array<Session>;
+        for (let index in state.data) {
+          // Insert advisor id 
+          tempData[index] = {...tempData[index], advisor: 'current advisor'}
+          // TODO: Splice the table data out
+        }
+        createNewSessions(tempData)
+      } else {
+        console.log('sessions were not filled in');
+      }
+    }
+
     return (
         <div>
             <Typography variant="body1">
@@ -47,7 +72,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
                 that session will not be added.
             </Typography>
             <EditableTable state={state} setState={setState} options={{ paging: false }}/>
-            <Close onClick={() => console.log(state)} />
+            <Close onClick={() => submitNewSessions()} />
         </div>
     );
 };
