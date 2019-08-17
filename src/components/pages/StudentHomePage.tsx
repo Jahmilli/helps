@@ -23,20 +23,21 @@ const useStyles = makeStyles(theme => ({
         height: '10%',
         width: '10%'
     }
-  }));
+}));
+
 
 const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, path }) => {
     const classes = useStyles();
-
+    
     return (
         <div>
-            <Navbar auth={auth} path={path} navbarTabs={navbarTabs as [NavbarTab]}>
+            <Navbar auth={auth} path={path} navbarTabs={navbarTabs as Array<NavbarTab>}>
                 <img src={logo} className={classes.logo} alt="UTS Logo" />
                 <Typography variant="h2">UTS: HELPS</Typography>
             </Navbar>
             <div>
                 <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
-                <Route path={`${path}/registration`} render={() => <StudentRegistrationContainer /> } />
+                <Route path={`${path}/register`} render={() => <StudentRegistrationContainer auth={auth} /> } />
                 <Route path={`${path}/myInformation`} component={() => <h1>My Information</h1>} />
                 <Route path={`${path}/myBookings`} component={() => <h1>My Bookings</h1>} />
                 <Route path={`${path}/workshopRegistration`} component={() => <h1>Workshop Registration</h1>} />
