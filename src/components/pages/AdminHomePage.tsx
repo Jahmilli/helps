@@ -8,6 +8,7 @@ import Footer from '../common/Footer';
 import Auth from '../../logic/functions/core/Auth';
 import LoginPage from './LoginPage';
 import navbarTabs from './__data__/data.adminNavbarTabs.json';
+import AdminSessionContainer from '../containers/AdminDashboard/AdminSessionContainer';
 
 interface AdminHomePageProps {
     auth: Auth;
@@ -35,6 +36,7 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, path
             </Navbar>
             <div>
                 <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
+                <Route path={`${path}/sessions`} render={() => <AdminSessionContainer /> } />
             </div>
             <Footer />
         </div>

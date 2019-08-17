@@ -1,0 +1,32 @@
+[
+    {
+        "id": "vasnd1082471204niodsa",
+        "date": "01/01/2000",
+        "startTime": "12:00:00",
+        "endTime": "15:00:00",
+        "room": "CB11.01.01",
+        "advisor": "John Kennedy",
+        "type": "Random Type",
+        "bookedBy": "Neil Sutherland"
+    },
+    {
+        "id": "va21410asdo120njsnad9",
+        "date": "20/04/2004",
+        "startTime": "09:30:00",
+        "endTime": "12:45:00",
+        "room": "CB11.01.01",
+        "advisor": "Phil Gilbert",
+        "type": "Random Type",
+        "bookedBy": "Jay Cartwright"
+    },
+    {
+        "id": "aaasd0824732204nadms",
+        "date": "19/09/2003",
+        "startTime": "17:00:00",
+        "endTime": "19:00:00",
+        "room": "CB11.01.01",
+        "advisor": "Mark Donovan",
+        "type": "Random Type",
+        "bookedBy": "Simon Cooper"
+    }
+]

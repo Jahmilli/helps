@@ -3,11 +3,11 @@ import StudentRegistrationForm from '../RegistrationForm';
 import '../../pages/styles.css';
 import Auth from '../../../logic/functions/core/Auth';
 
-interface StudentRegistrationPageProps {
+interface StudentRegistrationContainerProps {
     auth: Auth;
 };
 
-const StudentRegistrationContainer: React.FunctionComponent<StudentRegistrationPageProps> = ({ auth }) => {
+const StudentRegistrationContainer: React.FunctionComponent<StudentRegistrationContainerProps> = ({ auth }) => {
     return (
         <StudentRegistrationForm auth={auth} />
     );

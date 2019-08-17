@@ -1,0 +1,9 @@
+- request:
+    url: ^/api/v1/session$
+    method: GET
+  response:
+    status: 200
+    latency: 200
+    # headers:
+    #   Authorization: '123'
+    file: sessionData/payload.json
