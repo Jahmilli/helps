@@ -37,7 +37,7 @@ const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, 
             </Navbar>
             <div>
                 <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
-                <Route path={`${path}/registration`} render={() => <StudentRegistrationContainer auth={auth} /> } />
+                <Route path={`${path}/register`} render={() => <StudentRegistrationContainer auth={auth} /> } />
                 <Route path={`${path}/myInformation`} component={() => <h1>My Information</h1>} />
                 <Route path={`${path}/myBookings`} component={() => <h1>My Bookings</h1>} />
                 <Route path={`${path}/workshopRegistration`} component={() => <h1>Workshop Registration</h1>} />

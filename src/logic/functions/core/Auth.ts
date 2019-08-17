@@ -24,7 +24,7 @@ export default class Auth {
 
     constructor() {
         this.auth0 = new auth0.WebAuth({
-            domain:       DOMAIN, // DO NOT CHANGE THIS
+            domain: DOMAIN, // DO NOT CHANGE THIS
             audience: `https://uts-helps.au.auth0.com/api/v2/`,
             clientID:     'RyhxZk3WQTUFsZY4zsZvLqZJSd2ZaTqg', // DO NOT CHANGE THIS
             redirectUri: 'http://localhost:3000/callback',
