@@ -41,11 +41,6 @@ interface CustomizedTablesProps {
   children?: any;
 }
 
-// interface TableData {
-//   headRows: Array<string>;
-//   // bodyRows: Array<Session>;
-// }
-
 const CustomizedTables: React.FunctionComponent<CustomizedTablesProps> = ({ headRows, children }) => {
   const classes = useStyles();
   return (
@@ -54,12 +49,12 @@ const CustomizedTables: React.FunctionComponent<CustomizedTablesProps> = ({ head
         <TableHead>
           <TableRow>
             {headRows.map((title: string, index: number) => {
-              return <StyledTableCell>{title}</StyledTableCell> 
+              return <StyledTableCell key={index}>{title}</StyledTableCell> 
             })}
           </TableRow>
         </TableHead>
         <TableBody>
-          { children }
+          {children}
         </TableBody>
       </Table>
     </Paper>

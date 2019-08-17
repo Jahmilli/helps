@@ -8,7 +8,7 @@ interface AvailableSessionsContainer {
 };
 
 // Column headings in the table used in this component
-const headRows = ["Date", "Start Time", "End Time", "Room", "Advisor", "Type", "Booked By"];
+const headRows = ["Date", "Start Time", "End Time", "Room", "Type", "Booked by", "Booked By"];
 const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainer> = () => {
     // const initialState = [] as Array<Session>;
     const [ sessions, setSessions ] = React.useState<Array<Session>>([]);
@@ -35,8 +35,8 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
                             <StyledTableCell>{session.endTime}</StyledTableCell>
                             <StyledTableCell>{session.room}</StyledTableCell>
                             <StyledTableCell>{session.advisor}</StyledTableCell>
-                            <StyledTableCell>{session.type}</StyledTableCell>
                             <StyledTableCell>{session.bookedBy}</StyledTableCell>
+                            <StyledTableCell>{session.type}</StyledTableCell>
                         </StyledTableRow> 
                     )
                 })}
