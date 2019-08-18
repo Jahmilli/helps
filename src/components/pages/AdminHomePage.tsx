@@ -12,7 +12,7 @@ import AdminSessionContainer from '../containers/AdminDashboard/AdminSessionCont
 
 interface AdminHomePageProps {
     auth: Auth;
-    path: string;
+    props: any;
 }
 
 const useStyles = makeStyles(theme => ({
@@ -25,9 +25,9 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, path }) => {
+const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, props }) => {
     const classes = useStyles();
-
+    const { path } = props.match;
     return (
         <div>
             <Navbar auth={auth} path={path} navbarTabs={navbarTabs as Array<NavbarTab>}>

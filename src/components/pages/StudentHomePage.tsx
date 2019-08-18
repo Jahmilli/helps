@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Route } from 'react-router';
+import { Route, RouteComponentProps } from 'react-router';
 import Navbar, { NavbarTab } from '../common/Navbar';
 import logo from '../../images/uts-logo.png';
 import Footer from '../common/Footer';
@@ -12,7 +12,8 @@ import LoginPage from './LoginPage';
 
 interface StudentHomePageProps {
     auth: Auth;
-    path: string;
+    match?: RouteComponentProps;
+    props?: any;
 }
 
 const useStyles = makeStyles(theme => ({
@@ -26,9 +27,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, path }) => {
+const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, match, props }) => {
     const classes = useStyles();
-    
+    console.log('match is ', match);
+    console.log('props is ', props);
+    const { path } = props.match;
     return (
         <div>
             <Navbar auth={auth} path={path} navbarTabs={navbarTabs as Array<NavbarTab>}>

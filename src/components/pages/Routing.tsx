@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Redirect, Route, Switch } from 'react-router';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { Redirect, Route, Switch } from 'react-router';
+import { BrowserRouter as Router, Redirect, Route, Switch, RouteComponentProps } from 'react-router-dom';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 
@@ -29,8 +29,8 @@ const Routing: React.FunctionComponent<RoutingProps> = ({auth}) => {
                 <Route path="/" exact={true} render={() => <HomePage auth={auth} />} />
                 <Route path="/login" render={() => <LoginPage auth={auth} />} />
                 <Route path="/callback" render={() => <Callback auth={auth} />} />
-                <Route path="/student" render={() => <StudentHomePage auth={auth} path={"/student"} />} />
-                <Route path="/admin" render={() => <AdminHomePage auth={auth} path={"/admin"} />} />
+                <Route path="/student" render={(props: any) => <StudentHomePage auth={auth} props={props} />} />
+                <Route path="/admin" render={(props: any) => <AdminHomePage auth={auth} props={props} />} />
                 <PrivateRoute auth={auth} path="/home" component={HomePage} />
             </Switch>
         </Router>
