@@ -29,8 +29,6 @@ const useStyles = makeStyles(theme => ({
 
 const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, match, props }) => {
     const classes = useStyles();
-    console.log('match is ', match);
-    console.log('props is ', props);
     const { path } = props.match;
     return (
         <div>

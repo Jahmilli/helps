@@ -1,6 +1,5 @@
 import * as React from 'react';
-// import { Redirect, Route, Switch } from 'react-router';
-import { BrowserRouter as Router, Redirect, Route, Switch, RouteComponentProps } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 

@@ -5,14 +5,20 @@ import { Session, ISession } from '../../../logic/domains/sessionDetails.domain'
 import EditableTable from '../../presentational/EditableTable';
 import { Add } from '@material-ui/icons';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
+import { withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 
 const icons = {
     Add: () => <Add /> as React.ReactElement<SvgIconProps>
 }
 
-interface AvailableSessionsContainer {};
+// Your component own properties
+type AvailableSessionsContainerProps = RouteComponentProps<any> & {
+    // someString?: string,
+}
 
-const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainer> = () => {
+const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainerProps> = (props) => {
+    console.log('props are ', props);
     const BOOK_SESSION = 'Book this session';
     const [state, setState] = React.useState({});
 
@@ -28,12 +34,12 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
                   { title: 'Room', field: 'room' },
                   // { title: 'A/NA', field: '' },
                   { title: 'Type', field: 'type' },
-                  { title: 'Booked by', field: 'bookedBy', editable: 'never' }, 
+                  { title: 'Booked by', field: 'studentID', editable: 'never' }, 
                 //   { title: 'Waiting', field: 'waiting' }, 
                 ],
                 data: details.map((session: Session, index: number) => {
-                    if (!session.bookedBy || session.bookedBy.length === 0) {
-                        session.bookedBy = BOOK_SESSION
+                    if (!session.studentID || session.studentID.length === 0) {
+                        session.studentID = BOOK_SESSION
                     }
                     return session;
                 })
@@ -44,10 +50,16 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
 
     const handleBookSession = (eventData: ISession) => {
         // Navigate to a different page with the event data passed in
-        if (eventData.bookedBy !== BOOK_SESSION) {
+        if (eventData.studentID !== BOOK_SESSION) {
             alert('This session is already booked');
         } else {
             alert('LETS DO THIS!');
+            props.history.push({
+                pathname: `${props.match.path}/bookSession`,
+                state: {
+                    eventData
+                }
+            });
         }
     }
 
@@ -66,4 +78,4 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
 };
     
 
-export default AvailableSessionsContainer;
+export default withRouter(AvailableSessionsContainer);
