@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Typography, Box, FormControl, InputLabel, Input, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import Close from '@material-ui/icons/Close'
 import TextLockup from '../../presentational/TextLockup';
 import SessionBookingFields from '../__data__/data.sessionBooking.json';
-import { Session, ISession } from '../../../logic/domains/sessionDetails.domain';
+import { Session } from '../../../logic/domains/sessionDetails.domain';
 
 // Your component own properties
 type BookSessionContainerProps = RouteComponentProps<any> & {
@@ -12,16 +13,14 @@ type BookSessionContainerProps = RouteComponentProps<any> & {
 
 const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = (props) => {
     console.log(props.location.state);
-    const initialState: ISession = props.location.state.eventData;
-    const newSession = new Session(initialState);
-
-    console.log('initialstate is ', initialState);
-    const [sessionData, setSessionData] = React.useState<ISession>(newSession);
+    let initialState: Session = {...props.location.state.eventData,  reason: '', subjectName: '', assignmentType: '', isGroupAssignment: false, needsHelpWith: []};
+    const [sessionData, setSessionData] = React.useState<Session>(initialState);
 
     const handleChange = (name: string) => (event: any) => {
-        const data = sessionData;
-        data[name] = event.target.value;
-        setSessionData({...sessionData});
+        setSessionData({
+            ...sessionData,
+            [name]: event.target.value
+        });
     }
 
     return (
@@ -46,17 +45,53 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                     </FormControl>
                     );
                 })}
-
-                {/* <FormControl component="fieldset">
-                    <FormGroup aria-label="position" value="" row>
+                <FormControl component="fieldset">
+                    <FormGroup>
                         <FormControlLabel
                         value="top"
                         control={<Checkbox color="primary" />}
-                        label="Top"
-                        labelPlacement="top"
+                        label="Answering the assignment question (please provide the question to your advisor)"
+                        labelPlacement="end"
+                        />
+                        <FormControlLabel
+                        value="top"
+                        control={<Checkbox color="primary" />}
+                        label="Addressing the marking criteria (please provide the criteria to your advisor)"
+                        labelPlacement="end"
+                        />
+                        <FormControlLabel
+                        value="top"
+                        control={<Checkbox color="primary" />}
+                        label="Structure"
+                        labelPlacement="end"
+                        />
+                        <FormControlLabel
+                        value="top"
+                        control={<Checkbox color="primary" />}
+                        label="Paragraph development"
+                        labelPlacement="end"
+                        />
+                        <FormControlLabel
+                        value="top"
+                        control={<Checkbox color="primary" />}
+                        label="Referencing"
+                        labelPlacement="end"
+                        />
+                        <FormControlLabel
+                        value="top"
+                        control={<Checkbox color="primary" />}
+                        label="Grammar"
+                        labelPlacement="end"
+                        />
+                        <FormControlLabel
+                        value="top"
+                        control={<Checkbox color="primary" />}
+                        label="Other, please specify below"
+                        labelPlacement="end"
                         />
                     </FormGroup>
-                </FormControl> */}
+                </FormControl>
+                <Close onClick={() => console.log(sessionData)} />
             </form>
         </div>
     );

@@ -34,7 +34,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
     }
     const validateSessions = (): boolean => {
       for (let session of state.data) {
-        if (isEmpty(session.date) || (isEmpty(session.startTime) || 
+        if (isEmpty(session.date = '') || (isEmpty(session.startTime) || 
             isEmpty(session.endTime) || isEmpty(session.room) || 
             isEmpty(session.type))) {
             return false;
@@ -47,7 +47,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
       if (validateSessions()) {
         const tempData = state.data as Array<Session>;
         for (let index in state.data) {
-          // Insert advisor id 
+          // TODO: Insert advisor id 
           tempData[index] = {...tempData[index], advisor: 'current advisor'}
           // TODO: Splice the table data out
         }

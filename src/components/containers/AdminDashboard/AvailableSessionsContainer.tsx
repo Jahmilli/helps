@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Typography } from '@material-ui/core';
 import { getAvailableSessions } from '../../../logic/functions/getAvailableSessions';
-import { Session, ISession } from '../../../logic/domains/sessionDetails.domain';
+import { Session } from '../../../logic/domains/sessionDetails.domain';
 import EditableTable from '../../presentational/EditableTable';
 import { Add } from '@material-ui/icons';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
@@ -48,7 +48,7 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
         callGetSessions();
     }, []);
 
-    const handleBookSession = (eventData: ISession) => {
+    const handleBookSession = (eventData: Session) => {
         // Navigate to a different page with the event data passed in
         if (eventData.studentID !== BOOK_SESSION) {
             alert('This session is already booked');
