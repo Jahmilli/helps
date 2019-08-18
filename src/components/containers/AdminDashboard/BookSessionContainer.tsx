@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Typography, Box, FormControl, InputLabel, Input, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import Close from '@material-ui/icons/Close'
+import Close from '@material-ui/icons/Close';
 import TextLockup from '../../presentational/TextLockup';
 import SessionBookingFields from '../__data__/data.sessionBooking.json';
 import { Session } from '../../../logic/domains/sessionDetails.domain';
+import SessionBookingCheckboxFields from '../__data__/data.sessionBookingCheckboxFields.json';
 
 // Your component own properties
 type BookSessionContainerProps = RouteComponentProps<any> & {
@@ -47,48 +48,16 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 })}
                 <FormControl component="fieldset">
                     <FormGroup>
-                        <FormControlLabel
-                        value="top"
-                        control={<Checkbox color="primary" />}
-                        label="Answering the assignment question (please provide the question to your advisor)"
-                        labelPlacement="end"
-                        />
-                        <FormControlLabel
-                        value="top"
-                        control={<Checkbox color="primary" />}
-                        label="Addressing the marking criteria (please provide the criteria to your advisor)"
-                        labelPlacement="end"
-                        />
-                        <FormControlLabel
-                        value="top"
-                        control={<Checkbox color="primary" />}
-                        label="Structure"
-                        labelPlacement="end"
-                        />
-                        <FormControlLabel
-                        value="top"
-                        control={<Checkbox color="primary" />}
-                        label="Paragraph development"
-                        labelPlacement="end"
-                        />
-                        <FormControlLabel
-                        value="top"
-                        control={<Checkbox color="primary" />}
-                        label="Referencing"
-                        labelPlacement="end"
-                        />
-                        <FormControlLabel
-                        value="top"
-                        control={<Checkbox color="primary" />}
-                        label="Grammar"
-                        labelPlacement="end"
-                        />
-                        <FormControlLabel
-                        value="top"
-                        control={<Checkbox color="primary" />}
-                        label="Other, please specify below"
-                        labelPlacement="end"
-                        />
+                        {SessionBookingCheckboxFields.map((field: any, index: number) => {
+                           return (
+                            <FormControlLabel
+                                value={index}
+                                control={<Checkbox color="primary" />}
+                                label={field.label}
+                                labelPlacement="end"
+                                />
+                           );
+                        })}
                     </FormGroup>
                 </FormControl>
                 <Close onClick={() => console.log(sessionData)} />
