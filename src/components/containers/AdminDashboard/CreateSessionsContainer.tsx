@@ -6,8 +6,7 @@ import Close from '@material-ui/icons/Close';
 import { createNewSessions } from '../../../logic/functions/createNewSessions';
 
 
-interface CreateSessionsContainerProps {
-};
+interface CreateSessionsContainerProps {};
 
 // Column headings in the table used in this component
 const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerProps> = () => {
@@ -21,9 +20,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
         { title: 'Type', field: 'type' },
         
       ],
-      data: [
-        { date: '', startTime: '', endTime: '', room: '', type: '' }
-      ],
+      data: [{} as Session],
     });
 
     React.useEffect(() => {

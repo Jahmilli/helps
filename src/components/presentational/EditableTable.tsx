@@ -1,6 +1,6 @@
 import React from 'react';
 import MaterialTable from 'material-table';
-import { SvgIconProps } from '@material-ui/core/SvgIcon'
+import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import {
     Delete,
     Edit,
@@ -22,6 +22,7 @@ import {
 interface EditableTableProps {
     state: any;
     setState: any;
+    actions?: any;
     options?: any; // View https://material-table.com/#/docs/all-props for values that can be passed in for options
 }
 
@@ -36,6 +37,7 @@ interface Column {
     type?: string;
     lookup?: any
 }
+
 const icons = {
     Add: () => <Add /> as React.ReactElement<SvgIconProps>,
     Check: () => <Check /> as React.ReactElement<SvgIconProps>,
@@ -54,7 +56,7 @@ const icons = {
     DetailPanel: () => <ChevronRight /> as React.ReactElement<SvgIconProps>,
 }
 
-const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, options }) => {
+const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, actions, options }) => {
   return (
     <MaterialTable
       title="Create Sessions"
@@ -64,6 +66,7 @@ const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, set
       // @ts-ignore
       columns={state.columns}
       data={state.data}
+      actions={actions}
       editable={{
         onRowAdd: newData =>
           new Promise(resolve => {

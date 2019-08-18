@@ -3,7 +3,7 @@ import { Checkbox, FormControlLabel, Radio, RadioGroup, TextField, Typography, F
 import studentRegistrationFields from './__data__/data.studentRegistrationFields.json';
 import studentRegistrationEducationFields from './__data__/data.studentRegistrationEducationFields.json';
 import { registrationFormStyles } from './styles';
-import { StudentDetails, Course } from '../../logic/domains/studentDetails.domain';
+import { IStudentDetails, Course } from '../../logic/domains/studentDetails.domain';
 import registerStudent from '../../logic/functions/registerStudent';
 import Auth from '../../logic/functions/core/Auth.js';
 
@@ -22,7 +22,7 @@ type EducationField = {
 }
 
 const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth }) => {
-    const studentDetailsInitialState = {} as StudentDetails;
+    const studentDetailsInitialState = {} as IStudentDetails;
     
     const educationInitialState: Array<Course> = [
         new Course("hsc"),
@@ -37,7 +37,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
 
     studentDetailsInitialState.education = educationInitialState;
 
-    const [values, setValues] = useState<StudentDetails>(studentDetailsInitialState);
+    const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState);
 
     const handleStudentDetailsChange = (details: string) => (event: any) => {
         setValues({
