@@ -11,9 +11,13 @@ export interface Session {
     subjectName: string;
     assignmentType: string;
     isGroupAssignment: boolean;
-    needsHelpWith: Array<any>;
+    needsHelpWith: NeedsHelpWith;
     // attendedNotAttended: string; (not sure what this is)
     // waiting: string; (Not sure what this is)
+}
+
+export interface NeedsHelpWith {
+    [title: string]: boolean;
 }
 
 // Could probably be abstracted into a booking and used for workshop bookings as well

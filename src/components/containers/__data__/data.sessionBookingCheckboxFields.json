@@ -1,26 +1,31 @@
 [
     {
-        "label": "Answering the assignment question (please provide the question to your advisor"
+        "label": "Answering the assignment question (please provide the question to your advisor)",
+        "id": "checkbox1"
     },
     {
-        "label": "Addressing the marking criteria (please provide the criteria to your advisor)"
+        "label": "Addressing the marking criteria (please provide the criteria to your advisor)",
+        "id": "checkbox2"
     },
     {
-        "label": "Structure"
+        "label": "Structure",
+        "id": "checkbox3"
     },
     {
-        "label": "Paragraph development"
+        "label": "Paragraph development",
+        "id": "checkbox4"
     },
     {
-        "label": "Referencing"
+        "label": "Referencing",
+        "id": "checkbox5"
         
     },
     {
-        "label": "Grammar"
-        
+        "label": "Grammar",
+        "id": "checkbox6"
     },
     {
-        "label": "Other, please specify below"
-        
+        "label": "Other, please specify below",
+        "id": "checkbox6"
     }
 ]

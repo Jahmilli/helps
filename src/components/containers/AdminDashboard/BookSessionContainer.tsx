@@ -4,7 +4,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import Close from '@material-ui/icons/Close';
 import TextLockup from '../../presentational/TextLockup';
 import SessionBookingFields from '../__data__/data.sessionBooking.json';
-import { Session } from '../../../logic/domains/sessionDetails.domain';
+import { Session, NeedsHelpWith } from '../../../logic/domains/sessionDetails.domain';
 import SessionBookingCheckboxFields from '../__data__/data.sessionBookingCheckboxFields.json';
 
 // Your component own properties
@@ -12,9 +12,22 @@ type BookSessionContainerProps = RouteComponentProps<any> & {
     // someString?: string,
 }
 
+type CheckBoxField = {
+    id: string;
+    label: string;
+}
+
 const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = (props) => {
     console.log(props.location.state);
-    let initialState: Session = {...props.location.state.eventData,  reason: '', subjectName: '', assignmentType: '', isGroupAssignment: false, needsHelpWith: []};
+
+    // Add keys to object
+    let needsHelpWithIDs: NeedsHelpWith = {};
+    for (let field of SessionBookingCheckboxFields) {
+        let newId = field.id;
+        needsHelpWithIDs[newId] = false;
+    }
+
+    let initialState: Session = {...props.location.state.eventData,  reason: '', subjectName: '', assignmentType: '', isGroupAssignment: false, needsHelpWith: needsHelpWithIDs};
     const [sessionData, setSessionData] = React.useState<Session>(initialState);
 
     const handleChange = (name: string) => (event: any) => {
@@ -22,6 +35,12 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
             ...sessionData,
             [name]: event.target.value
         });
+    }
+
+    const handleCheckboxChange = (name: string) => (event: any) => {
+        const data: Session = sessionData;
+        data.needsHelpWith[name] = !event.target.value;
+        setSessionData(data);
     }
 
     return (
@@ -48,11 +67,12 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 })}
                 <FormControl component="fieldset">
                     <FormGroup>
-                        {SessionBookingCheckboxFields.map((field: any, index: number) => {
+                        {SessionBookingCheckboxFields.map((field: CheckBoxField) => {
                            return (
                             <FormControlLabel
-                                value={index}
-                                control={<Checkbox color="primary" />}
+                                key={field.id}
+                                value={field.id}
+                                control={<Checkbox color="primary" onChange={handleCheckboxChange(field.id)}/>}
                                 label={field.label}
                                 labelPlacement="end"
                                 />

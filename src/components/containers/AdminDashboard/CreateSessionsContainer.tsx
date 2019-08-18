@@ -32,6 +32,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
     const isEmpty = (str: string): boolean => {
       return (!str || 0 === str.length);
     }
+
     const validateSessions = (): boolean => {
       for (let session of state.data) {
         if (isEmpty(session.date) || (isEmpty(session.startTime) || 
