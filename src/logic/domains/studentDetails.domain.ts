@@ -1,5 +1,3 @@
-
-// This should be a class...
 export interface IStudentDetails {
     [email: string]: string | Array<Course>;
     studentID: string;

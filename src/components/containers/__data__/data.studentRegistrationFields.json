@@ -2,7 +2,7 @@
     {
         "title": "Student ID",
         "label": "12345678",
-        "id": "studentID"
+        "id": "studentId"
     },
     {
         "title": "Email",

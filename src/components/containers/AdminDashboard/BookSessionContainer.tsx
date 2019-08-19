@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { Typography, Box, FormControl, InputLabel, Input, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
+import { Typography, Box, FormControl, InputLabel, Input, FormGroup, FormControlLabel, Checkbox, Button } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import Close from '@material-ui/icons/Close';
 import TextLockup from '../../presentational/TextLockup';
 import SessionBookingFields from '../__data__/data.sessionBooking.json';
 import { Session, NeedsHelpWith } from '../../../logic/domains/sessionDetails.domain';
 import SessionBookingCheckboxFields from '../__data__/data.sessionBookingCheckboxFields.json';
+import bookSession from '../../../logic/functions/bookSession'; 
 
-// Your component own properties
-type BookSessionContainerProps = RouteComponentProps<any> & {
-    // someString?: string,
-}
+type BookSessionContainerProps = RouteComponentProps<any> & {}
 
 type CheckBoxField = {
     id: string;
@@ -27,6 +25,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         needsHelpWithIDs[newId] = false;
     }
 
+    // TODO: Setting these to '' and false is a problem. Need to determine whether we set these values when we create a session (either from front or backend)
     let initialState: Session = {...props.location.state.eventData,  reason: '', subjectName: '', assignmentType: '', isGroupAssignment: false, needsHelpWith: needsHelpWithIDs};
     const [sessionData, setSessionData] = React.useState<Session>(initialState);
 
@@ -39,8 +38,19 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
 
     const handleCheckboxChange = (name: string) => (event: any) => {
         const data: Session = sessionData;
-        data.needsHelpWith[name] = !event.target.value;
+        data.needsHelpWith[name] = event.target.checked;
         setSessionData(data);
+    }
+
+    const handleSubmit = async (event: any) => {
+        event.preventDefault();
+        try {
+            let response = await bookSession(sessionData);
+            console.log('response from book session is ', response)
+            alert('successfully updated booking');
+        } catch(err) {
+            console.log('An error occurred when booking session', err);
+        }
     }
 
     return (
@@ -51,7 +61,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
             <TextLockup label="Time:" value={`${sessionData.startTime} - ${sessionData.endTime}`}/>
             <TextLockup label="Campus:" value={sessionData.room} />
             <TextLockup label="Type:" value={sessionData.type}/>
-            <form>
+            <form onSubmit={(event) => handleSubmit(event)}>
                 {SessionBookingFields.map((field: any, index: number) => {
                     return (
                     <FormControl key={index} fullWidth={true}>
@@ -80,7 +90,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                         })}
                     </FormGroup>
                 </FormControl>
-                <Close onClick={() => console.log(sessionData)} />
+                <Button id="submitBooking" color="primary" size="large" type="submit">Book Session</Button>
             </form>
         </div>
     );

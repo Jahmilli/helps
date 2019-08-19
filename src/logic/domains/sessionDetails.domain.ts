@@ -6,7 +6,7 @@ export interface Session {
     room: string;
     advisor: string;
     type: string;
-    studentID?: string;
+    studentId?: string;
     reason: string // Taken from 'this appointment is for'
     subjectName: string;
     assignmentType: string;
@@ -17,7 +17,8 @@ export interface Session {
 }
 
 export interface NeedsHelpWith {
-    [title: string]: boolean;
+    // [title: string]: boolean;
+    [key: string]: boolean;
 }
 
 // Could probably be abstracted into a booking and used for workshop bookings as well

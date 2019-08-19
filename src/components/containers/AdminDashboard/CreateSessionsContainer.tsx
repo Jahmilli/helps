@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Typography } from '@material-ui/core';
 import { Session } from '../../../logic/domains/sessionDetails.domain';
 import EditableTable from '../../presentational/EditableTable';
-import Close from '@material-ui/icons/Close';
+import Add from '@material-ui/icons/Add';
 import { createNewSessions } from '../../../logic/functions/createNewSessions';
 
 
@@ -44,7 +44,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
       return true;
     }
 
-    const submitNewSessions = () => {
+    const submitNewSessions = async () => {
       if (validateSessions()) {
         const tempData = state.data as Array<Session>;
         for (let index in state.data) {
@@ -52,7 +52,8 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
           tempData[index] = {...tempData[index], advisor: 'current advisor'}
           // TODO: Splice the table data out
         }
-        createNewSessions(tempData)
+        let data = await createNewSessions(tempData);
+        alert('Session may or may not have been created');
       } else {
         console.log('sessions were not filled in');
       }
@@ -70,7 +71,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
                 that session will not be added.
             </Typography>
             <EditableTable state={state} setState={setState} options={{ paging: false }}/>
-            <Close onClick={() => submitNewSessions()} />
+            <Add onClick={() => submitNewSessions()} />
         </div>
     );
 };

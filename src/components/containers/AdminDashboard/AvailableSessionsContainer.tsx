@@ -12,10 +12,7 @@ const icons = {
     Add: () => <Add /> as React.ReactElement<SvgIconProps>
 }
 
-// Your component own properties
-type AvailableSessionsContainerProps = RouteComponentProps<any> & {
-    // someString?: string,
-}
+type AvailableSessionsContainerProps = RouteComponentProps<any> & {}
 
 const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainerProps> = (props) => {
     console.log('props are ', props);
@@ -34,12 +31,12 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
                   { title: 'Room', field: 'room' },
                   // { title: 'A/NA', field: '' },
                   { title: 'Type', field: 'type' },
-                  { title: 'Booked by', field: 'studentID', editable: 'never' }, 
+                  { title: 'Booked by', field: 'studentId', editable: 'never' }, 
                 //   { title: 'Waiting', field: 'waiting' }, 
                 ],
                 data: details.map((session: Session, index: number) => {
-                    if (!session.studentID || session.studentID.length === 0) {
-                        session.studentID = BOOK_SESSION
+                    if (!session.studentId || session.studentId.length === 0) {
+                        session.studentId = BOOK_SESSION
                     }
                     return session;
                 })
@@ -50,10 +47,9 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
 
     const handleBookSession = (eventData: Session) => {
         // Navigate to a different page with the event data passed in
-        if (eventData.studentID !== BOOK_SESSION) {
+        if (eventData.studentId !== BOOK_SESSION) {
             alert('This session is already booked');
         } else {
-            alert('LETS DO THIS!');
             props.history.push({
                 pathname: `${props.match.path}/bookSession`,
                 state: {

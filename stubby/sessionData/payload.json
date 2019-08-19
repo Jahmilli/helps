@@ -7,7 +7,7 @@
         "room": "CB11.01.01",
         "advisor": "John Kennedy",
         "type": "Random Type",
-        "studentID": "Neil Sutherland"
+        "studentId": "Neil Sutherland"
     },
     {
         "id": "va21410asdo120njsnad9",
@@ -17,7 +17,7 @@
         "room": "CB11.01.01",
         "advisor": "Phil Gilbert",
         "type": "Random Type",
-        "studentID": "Jay Cartwright"
+        "studentId": "Jay Cartwright"
     },
     {
         "id": "aaasd0824732204nadms",
@@ -27,6 +27,6 @@
         "room": "CB11.01.01",
         "advisor": "Mark Donovan",
         "type": "Random Type",
-        "studentID": ""
+        "studentId": ""
     }
 ]
