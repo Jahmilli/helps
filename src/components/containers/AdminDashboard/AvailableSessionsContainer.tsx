@@ -47,16 +47,16 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
 
     const handleBookSession = (eventData: Session) => {
         // Navigate to a different page with the event data passed in
-        if (eventData.studentId !== BOOK_SESSION) {
-            alert('This session is already booked');
-        } else {
+        // if (eventData.studentId !== BOOK_SESSION) {
+        //     alert('This session is already booked');
+        // } else {
             props.history.push({
                 pathname: `${props.match.path}/bookSession`,
                 state: {
                     eventData
                 }
             });
-        }
+        // }
     }
 
     return (

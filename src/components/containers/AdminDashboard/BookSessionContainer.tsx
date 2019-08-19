@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Typography, Box, FormControl, InputLabel, Input, FormGroup, FormControlLabel, Checkbox, Button } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import Close from '@material-ui/icons/Close';
 import TextLockup from '../../presentational/TextLockup';
 import SessionBookingFields from '../__data__/data.sessionBooking.json';
 import { Session, NeedsHelpWith } from '../../../logic/domains/sessionDetails.domain';
@@ -26,7 +25,11 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
     }
 
     // TODO: Setting these to '' and false is a problem. Need to determine whether we set these values when we create a session (either from front or backend)
-    let initialState: Session = {...props.location.state.eventData,  reason: '', subjectName: '', assignmentType: '', isGroupAssignment: false, needsHelpWith: needsHelpWithIDs};
+    let initialState: Session = {...props.location.state.eventData };
+    const { reason, subjectName, assignmentType, isGroupAssignment, needsHelpWith } = initialState;
+    console.log('needs help with', needsHelpWith);
+    initialState = {...initialState, reason: reason || '', subjectName: subjectName || '', assignmentType: assignmentType || '', isGroupAssignment: isGroupAssignment || false, needsHelpWith: needsHelpWith || needsHelpWithIDs}
+    console.log('initial sate is ', initialState);
     const [sessionData, setSessionData] = React.useState<Session>(initialState);
 
     const handleChange = (name: string) => (event: any) => {
@@ -37,9 +40,12 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
     }
 
     const handleCheckboxChange = (name: string) => (event: any) => {
+        console.log('name is ,', name);
+        console.log('clicked', event.target.checked);
         const data: Session = sessionData;
         data.needsHelpWith[name] = event.target.checked;
         setSessionData(data);
+        console.log('updated', data.needsHelpWith[name]);
     }
 
     const handleSubmit = async (event: any) => {
@@ -77,12 +83,13 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 })}
                 <FormControl component="fieldset">
                     <FormGroup>
-                        {SessionBookingCheckboxFields.map((field: CheckBoxField) => {
+                        {SessionBookingCheckboxFields.map((field: CheckBoxField, index: number) => {
+                            console.log('rendering now val is ', field.id, sessionData.needsHelpWith[field.id])
                            return (
                             <FormControlLabel
-                                key={field.id}
+                                key={index}
                                 value={field.id}
-                                control={<Checkbox color="primary" onChange={handleCheckboxChange(field.id)}/>}
+                                control={<Checkbox  color="primary" value={field.id} checked={sessionData.needsHelpWith[field.id]} onChange={handleCheckboxChange(field.id)}/>}
                                 label={field.label}
                                 labelPlacement="end"
                                 />
