@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { Typography, Box, FormControl, InputLabel, Input, FormGroup, FormControlLabel, Checkbox, Button } from '@material-ui/core';
+import { Typography, FormControl, InputLabel, Input, FormGroup, FormControlLabel, Checkbox, Button } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import TextLockup from '../../presentational/TextLockup';
-import SessionBookingFields from '../__data__/data.sessionBooking.json';
 import { Session, NeedsHelpWithOptions } from '../../../logic/domains/sessionDetails.domain';
-import SessionBookingCheckboxFields from '../__data__/data.sessionBookingCheckboxFields.json';
 import bookSession from '../../../logic/functions/bookSession'; 
-import { ContactSupportOutlined } from '@material-ui/icons';
+import HelpOption from '../../presentational/AdminDashboard/HelpOption';
+import SessionBookingField from '../../presentational/AdminDashboard/SessionBookingField';
 
 type BookSessionContainerProps = RouteComponentProps<any> & {}
 
@@ -18,11 +17,19 @@ type CheckBoxField = {
 const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = (props) => {
     console.log(props.location.state);
 
-    // TODO: Add in use effect, this component keeps being rendered...
-    // Add keys to object
-    let needsHelpWithInitialState: Array<NeedsHelpWithOptions> = SessionBookingCheckboxFields.map((field: CheckBoxField) => { 
-        return { id: field.id, value: false }
-    });
+    React.useEffect(() => {
+        
+    }, []);
+    
+    let needsHelpWithInitialState: Array<NeedsHelpWithOptions> = [
+        { id: "bookingAnswer1", value: false },
+        { id: "bookingAnswer2", value: false },
+        { id: "bookingAnswer3", value: false },
+        { id: "bookingAnswer4", value: false },
+        { id: "bookingAnswer5", value: false },
+        { id: "bookingAnswer6", value: false },
+        { id: "bookingAnswer7", value: false },
+    ]
 
     // TODO: Setting these to '' and false is a problem. Need to determine whether we set these values when we create a session (either from front or backend)
     let initialState: Session = {...props.location.state.eventData };
@@ -40,6 +47,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
     }
 
     const handleCheckboxChange = (id: string) => (event: any) => {
+        console.log('updating ', id);
         const data: Session = sessionData;
         for (let index in data.needsHelpWithOptions) {
             if (data.needsHelpWithOptions[index].id === id) {
@@ -71,32 +79,19 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
             <TextLockup label="Campus:" value={sessionData.room} />
             <TextLockup label="Type:" value={sessionData.type}/>
             <form onSubmit={(event) => handleSubmit(event)}>
-                {SessionBookingFields.map((field: any, index: number) => {
-                    return (
-                    <FormControl key={index} fullWidth={true}>
-                    <InputLabel htmlFor={`${field.id}-field`}>{field.title}</InputLabel>
-                    <Input 
-                        aria-describedby={`${field.id}-field`} 
-                        id={field.id}
-                        onChange={handleChange(field.id)}
-                        value={sessionData[field.id]}
-                    />
-                    </FormControl>
-                    );
-                })}
+                <SessionBookingField id="studentId" title="Student ID" value={sessionData.studentId} handleChange={handleChange} />
+                <SessionBookingField id="reason" title="This appointment is for..." value={sessionData.reason} handleChange={handleChange} />
+                <SessionBookingField id="subjectName" title="Subject Name" value={sessionData.subjectName} handleChange={handleChange} />
+                <SessionBookingField id="assignmentType" title="Assignment Type" value={sessionData.assignmentType} handleChange={handleChange} />
                 <FormControl component="fieldset">
                     <FormGroup>
-                        {SessionBookingCheckboxFields.map((field: CheckBoxField, index: number) => {
-                           return (
-                            <FormControlLabel
-                                key={index}
-                                value={field.id}
-                                control={<Checkbox  color="primary" value={field.id} onChange={handleCheckboxChange(field.id)}/>}
-                                label={field.label}
-                                labelPlacement="end"
-                                />
-                           );
-                        })}
+                        <HelpOption id="bookingAnswer1" label="Answering the assignment question (please provide the question to your advisor)" handleCheckboxChange={handleCheckboxChange}/>
+                        <HelpOption id="bookingAnswer2" label="Addressing the marking criteria (please provide the criteria to your advisor)" handleCheckboxChange={handleCheckboxChange}/>
+                        <HelpOption id="bookingAnswer3" label="Structure" handleCheckboxChange={handleCheckboxChange}/>
+                        <HelpOption id="bookingAnswer4" label="Paragraph development" handleCheckboxChange={handleCheckboxChange}/>
+                        <HelpOption id="bookingAnswer5" label="Referencing" handleCheckboxChange={handleCheckboxChange}/>
+                        <HelpOption id="bookingAnswer6" label="Grammar" handleCheckboxChange={handleCheckboxChange}/>
+                        <HelpOption id="bookingAnswer7" label="Other, please specify below" handleCheckboxChange={handleCheckboxChange}/>
                     </FormGroup>
                 </FormControl>
                 <Button id="submitBooking" color="primary" size="large" type="submit">Book Session</Button>
