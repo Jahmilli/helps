@@ -11,11 +11,12 @@ export interface Session {
     subjectName: string;
     assignmentType: string;
     isGroupAssignment: boolean;
-    needsHelpWith: NeedsHelpWith;
+    needsHelpWithOptions: Array<NeedsHelpWithOptions>;
     // attendedNotAttended: string; (not sure what this is)
     // waiting: string; (Not sure what this is)
 }
 
-export interface NeedsHelpWith {
-    [key: string]: boolean;
+export interface NeedsHelpWithOptions {
+    id: string;
+    value: boolean;
 }

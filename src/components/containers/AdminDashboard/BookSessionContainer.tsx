@@ -3,9 +3,10 @@ import { Typography, Box, FormControl, InputLabel, Input, FormGroup, FormControl
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import TextLockup from '../../presentational/TextLockup';
 import SessionBookingFields from '../__data__/data.sessionBooking.json';
-import { Session, NeedsHelpWith } from '../../../logic/domains/sessionDetails.domain';
+import { Session, NeedsHelpWithOptions } from '../../../logic/domains/sessionDetails.domain';
 import SessionBookingCheckboxFields from '../__data__/data.sessionBookingCheckboxFields.json';
 import bookSession from '../../../logic/functions/bookSession'; 
+import { ContactSupportOutlined } from '@material-ui/icons';
 
 type BookSessionContainerProps = RouteComponentProps<any> & {}
 
@@ -17,19 +18,18 @@ type CheckBoxField = {
 const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = (props) => {
     console.log(props.location.state);
 
+    // TODO: Add in use effect, this component keeps being rendered...
     // Add keys to object
-    let needsHelpWithIDs: NeedsHelpWith = {};
-    for (let field of SessionBookingCheckboxFields) {
-        let newId = field.id;
-        needsHelpWithIDs[newId] = false;
-    }
+    let needsHelpWithInitialState: Array<NeedsHelpWithOptions> = SessionBookingCheckboxFields.map((field: CheckBoxField) => { 
+        return { id: field.id, value: false }
+    });
 
     // TODO: Setting these to '' and false is a problem. Need to determine whether we set these values when we create a session (either from front or backend)
     let initialState: Session = {...props.location.state.eventData };
-    const { reason, subjectName, assignmentType, isGroupAssignment, needsHelpWith } = initialState;
-    console.log('needs help with', needsHelpWith);
-    initialState = {...initialState, reason: reason || '', subjectName: subjectName || '', assignmentType: assignmentType || '', isGroupAssignment: isGroupAssignment || false, needsHelpWith: needsHelpWith || needsHelpWithIDs}
-    console.log('initial sate is ', initialState);
+    let { reason, subjectName, assignmentType, isGroupAssignment, needsHelpWithOptions } = initialState;
+    needsHelpWithOptions = needsHelpWithOptions.length > 0 ? needsHelpWithOptions : needsHelpWithInitialState;
+
+    initialState = {...initialState, reason: reason || '', subjectName: subjectName || '', assignmentType: assignmentType || '', isGroupAssignment: isGroupAssignment || false, needsHelpWithOptions }
     const [sessionData, setSessionData] = React.useState<Session>(initialState);
 
     const handleChange = (name: string) => (event: any) => {
@@ -39,17 +39,20 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         });
     }
 
-    const handleCheckboxChange = (name: string) => (event: any) => {
-        console.log('name is ,', name);
-        console.log('clicked', event.target.checked);
+    const handleCheckboxChange = (id: string) => (event: any) => {
         const data: Session = sessionData;
-        data.needsHelpWith[name] = event.target.checked;
+        for (let index in data.needsHelpWithOptions) {
+            if (data.needsHelpWithOptions[index].id === id) {
+                data.needsHelpWithOptions[index].value = event.target.checked;
+                break;
+            }
+        }
         setSessionData(data);
-        console.log('updated', data.needsHelpWith[name]);
     }
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
+        console.log(sessionData);
         try {
             let response = await bookSession(sessionData);
             console.log('response from book session is ', response)
@@ -84,12 +87,11 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 <FormControl component="fieldset">
                     <FormGroup>
                         {SessionBookingCheckboxFields.map((field: CheckBoxField, index: number) => {
-                            console.log('rendering now val is ', field.id, sessionData.needsHelpWith[field.id])
                            return (
                             <FormControlLabel
                                 key={index}
                                 value={field.id}
-                                control={<Checkbox  color="primary" value={field.id} checked={sessionData.needsHelpWith[field.id]} onChange={handleCheckboxChange(field.id)}/>}
+                                control={<Checkbox  color="primary" value={field.id} onChange={handleCheckboxChange(field.id)}/>}
                                 label={field.label}
                                 labelPlacement="end"
                                 />
