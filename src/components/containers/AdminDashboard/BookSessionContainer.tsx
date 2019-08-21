@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Typography, FormControl, FormGroup, Button } from '@material-ui/core';
+import { Typography, FormGroup, Button } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import TextLockup from '../../presentational/TextLockup';
-import { Session, NeedsHelpWithOptions } from '../../../logic/domains/sessionDetails.domain';
+import { Session, ICheckBox } from '../../../logic/domains/sessionDetails.domain';
 import bookSession from '../../../logic/functions/bookSession'; 
 import HelpOption from '../../presentational/AdminDashboard/HelpOption';
 import SessionBookingField from '../../presentational/AdminDashboard/SessionBookingField';
@@ -21,7 +21,8 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         
     }, []);
     
-    let needsHelpWithInitialState: Array<NeedsHelpWithOptions> = [
+    // Not convinced an array of ICheckbox is best, seems like an object holding key values would be much better
+    let needsHelpWithInitialState: Array<ICheckBox> = [
         { id: "bookingAnswer1", value: false },
         { id: "bookingAnswer2", value: false },
         { id: "bookingAnswer3", value: false },
@@ -47,11 +48,11 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
     };
 
     const [sessionData, setSessionData] = React.useState<Session>(initialState);
-    const [additionalChecks, setAdditionalChecks] = React.useState({
-        emailStudent: false,
-        emailAdmin: false,
-        checkRule: false
-    });
+    const [additionalChecks, setAdditionalChecks] = React.useState<Array<ICheckBox>>([
+        { id: "emailStudent", value: false },
+        { id: "emailAdmin", value: false },
+        { id: "checkRule", value: false } // Might need to go in sessiondata
+    ]);
 
     const handleChange = (key: string) => (event: any) => {
         setSessionData({
@@ -72,20 +73,24 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         console.log(sessionData);
     }
 
-    const handleEmailCheckboxChange = (key: string) => (event: any) => {
-        console.log('updating ', key);
-        setAdditionalChecks({
-            ...additionalChecks, 
-            [key]: event.target.checked
-        });
+    const handleEmailCheckboxChange = (id: string) => (event: any) => {
+        let temp = additionalChecks;
+        for (let check of temp) {
+            if (check.id === id) {
+                check.value = event.target.checked;
+                break;
+            }
+        }
+        setAdditionalChecks(temp);
+        console.log('additional checks updated ', additionalChecks);
     }
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         console.log(sessionData);
         try {
-            let response = await bookSession(sessionData);
-            console.log('response from book session is ', response)
+            let response = await bookSession(sessionData, additionalChecks);
+            console.log('response from book session is ', response);
             alert('successfully updated booking');
         } catch(err) {
             console.log('An error occurred when booking session', err);

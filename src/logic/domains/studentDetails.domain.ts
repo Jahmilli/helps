@@ -1,10 +1,10 @@
 export interface IStudentDetails {
     [email: string]: string | Array<Course>;
-    studentID: string;
+    studentId: string;
     fullName: string;
     preferredName: string;
     faculty: string;
-    courseID: string;
+    courseId: string;
     preferredContactNumber: string;
     dateOfBirth: string;
     gender: string;

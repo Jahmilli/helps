@@ -63,8 +63,8 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
         console.log(values);
         // console.log(auth.readUserMetaData());
         try {
-            let auth0Response = await auth.updateUserMetaData();
-            console.log(auth0Response);
+            // let auth0Response = await auth.updateUserMetaData();
+            // console.log(auth0Response);
             let response = await registerStudent(values);
             console.log('response is ', response);
         } catch (err) {

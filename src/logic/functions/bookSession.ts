@@ -1,8 +1,8 @@
 import { post } from './core/fetch';
-import { Session } from '../domains/sessionDetails.domain';
+import { ICheckBox, Session } from '../domains/sessionDetails.domain';
 
-const bookSession = async (sessionDetails: Session) => {
-    return await post('/api/v1/session/book', JSON.stringify(sessionDetails));
+const bookSession = async (sessionDetails: Session, additionalOptions: Array<ICheckBox>) => {
+    return await post('/api/v1/session/book', JSON.stringify({...sessionDetails, additionalOptions}));
 }
 
 export default bookSession;
