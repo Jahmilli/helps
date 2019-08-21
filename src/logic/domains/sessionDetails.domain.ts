@@ -12,6 +12,7 @@ export interface Session {
     assignmentType: string;
     isGroupAssignment: boolean;
     needsHelpWithOptions: Array<ICheckBox>;
+    additionalHelpDetails: string;
     // attendedNotAttended: string; (not sure what this is)
     // waiting: string; (Not sure what this is)
 }

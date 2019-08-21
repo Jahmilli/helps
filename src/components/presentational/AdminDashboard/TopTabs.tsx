@@ -9,15 +9,15 @@ type Tab = {
 const sessionTabs = [
     {
         title: 'Book Sessions',
-        path: '/bookSessions'
+        path: '/admin/sessions'
     },
     {
         title: 'Admin Sessions',
-        path: '/adminSessions'
+        path: '/admin/sessions/adminSessions'
     },
     {
         title: 'No-show list',
-        path: '/noShow'
+        path: '/admin/sessions/noShow'
     }
 ];
     

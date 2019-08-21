@@ -4,23 +4,12 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import TextLockup from '../../presentational/TextLockup';
 import { Session, ICheckBox } from '../../../logic/domains/sessionDetails.domain';
 import bookSession from '../../../logic/functions/bookSession'; 
-import HelpOption from '../../presentational/AdminDashboard/HelpOption';
+import CheckboxOption from '../../presentational/AdminDashboard/CheckboxOption';
 import SessionBookingField from '../../presentational/AdminDashboard/SessionBookingField';
 
 type BookSessionContainerProps = RouteComponentProps<any> & {}
 
-type CheckBoxField = {
-    id: string;
-    label: string;
-}
-
 const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = (props) => {
-    console.log(props.location.state);
-
-    React.useEffect(() => {
-        
-    }, []);
-    
     // Not convinced an array of ICheckbox is best, seems like an object holding key values would be much better
     let needsHelpWithInitialState: Array<ICheckBox> = [
         { id: "bookingAnswer1", value: false },
@@ -35,7 +24,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
     // TODO: Setting these to '' and false is a problem. Need to determine whether we set these values when we create a session (either from front or backend)
     let initialState: Session = {...props.location.state.eventData };
     
-    let { reason, subjectName, assignmentType, isGroupAssignment, needsHelpWithOptions } = initialState;
+    let { reason, subjectName, assignmentType, isGroupAssignment, needsHelpWithOptions, additionalHelpDetails } = initialState;
     needsHelpWithOptions = needsHelpWithOptions.length > 0 ? needsHelpWithOptions : needsHelpWithInitialState;
 
     initialState = {
@@ -43,7 +32,8 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         reason: reason || '', 
         subjectName: subjectName || '', 
         assignmentType: assignmentType || '', 
-        isGroupAssignment: isGroupAssignment || false, 
+        isGroupAssignment: isGroupAssignment || false,
+        additionalHelpDetails: additionalHelpDetails || '',
         needsHelpWithOptions, 
     };
 
@@ -65,7 +55,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         const data: Session = sessionData;
         for (let index in data.needsHelpWithOptions) {
             if (data.needsHelpWithOptions[index].id === id) {
-                data.needsHelpWithOptions[index].value = event.target.checked;
+                data.needsHelpWithOptions[index].value = !data.needsHelpWithOptions[index].value;
                 break;
             }
         }
@@ -82,17 +72,17 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
             }
         }
         setAdditionalChecks(temp);
-        console.log('additional checks updated ', additionalChecks);
     }
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         console.log(sessionData);
         try {
-            let response = await bookSession(sessionData, additionalChecks);
-            console.log('response from book session is ', response);
+            await bookSession(sessionData, additionalChecks);
             alert('successfully updated booking');
+            props.history.push('/admin/sessions');
         } catch(err) {
+            alert('An error occurred when booking');
             console.log('An error occurred when booking session', err);
         }
     }
@@ -111,20 +101,21 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 <SessionBookingField id="subjectName" title="Subject Name" value={sessionData.subjectName} handleChange={handleChange} />
                 <SessionBookingField id="assignmentType" title="Assignment Type" value={sessionData.assignmentType} handleChange={handleChange} />
                 <FormGroup>
-                    <HelpOption id="bookingAnswer1" label="Answering the assignment question (please provide the question to your advisor)" handleCheckboxChange={handleCheckboxChange}/>
-                    <HelpOption id="bookingAnswer2" label="Addressing the marking criteria (please provide the criteria to your advisor)" handleCheckboxChange={handleCheckboxChange}/>
-                    <HelpOption id="bookingAnswer3" label="Structure" handleCheckboxChange={handleCheckboxChange}/>
-                    <HelpOption id="bookingAnswer4" label="Paragraph development" handleCheckboxChange={handleCheckboxChange}/>
-                    <HelpOption id="bookingAnswer5" label="Referencing" handleCheckboxChange={handleCheckboxChange}/>
-                    <HelpOption id="bookingAnswer6" label="Grammar" handleCheckboxChange={handleCheckboxChange}/>
-                    <HelpOption id="bookingAnswer7" label="Other, please specify below" handleCheckboxChange={handleCheckboxChange}/>
+                    <CheckboxOption value={sessionData.needsHelpWithOptions[0].value} id="bookingAnswer1" label="Answering the assignment question (please provide the question to your advisor)" handleCheckboxChange={handleCheckboxChange}/>
+                    <CheckboxOption value={sessionData.needsHelpWithOptions[1].value} id="bookingAnswer2" label="Addressing the marking criteria (please provide the criteria to your advisor)" handleCheckboxChange={handleCheckboxChange}/>
+                    <CheckboxOption value={sessionData.needsHelpWithOptions[2].value} id="bookingAnswer3" label="Structure" handleCheckboxChange={handleCheckboxChange}/>
+                    <CheckboxOption value={sessionData.needsHelpWithOptions[3].value} id="bookingAnswer4" label="Paragraph development" handleCheckboxChange={handleCheckboxChange}/>
+                    <CheckboxOption value={sessionData.needsHelpWithOptions[4].value} id="bookingAnswer5" label="Referencing" handleCheckboxChange={handleCheckboxChange}/>
+                    <CheckboxOption value={sessionData.needsHelpWithOptions[5].value} id="bookingAnswer6" label="Grammar" handleCheckboxChange={handleCheckboxChange}/>
+                    <CheckboxOption value={sessionData.needsHelpWithOptions[6].value} id="bookingAnswer7" label="Other, please specify below" handleCheckboxChange={handleCheckboxChange}/>
                 </FormGroup>
+                <SessionBookingField id="additionalHelpDetails" title="Specify any additional details here" value={sessionData.additionalHelpDetails} handleChange={handleChange} />
                 <Button id="submitBooking" color="primary" size="large" type="submit">Book Session</Button>
             </form>
             <FormGroup>
-                <HelpOption id="emailStudent" label="Send email to student" handleCheckboxChange={handleEmailCheckboxChange} />
-                <HelpOption id="emailAdmin" label="Send email to lecturer" handleCheckboxChange={handleEmailCheckboxChange} />
-                <HelpOption id="checkRule" label="Check rule" handleCheckboxChange={handleEmailCheckboxChange} />
+                <CheckboxOption value={additionalChecks[0].value} id="emailStudent" label="Send email to student" handleCheckboxChange={handleEmailCheckboxChange} />
+                <CheckboxOption value={additionalChecks[1].value} id="emailAdmin" label="Send email to lecturer" handleCheckboxChange={handleEmailCheckboxChange} />
+                <CheckboxOption value={additionalChecks[2].value} id="checkRule" label="Check rule" handleCheckboxChange={handleEmailCheckboxChange} />
             </FormGroup>
             <div>
                 <Typography variant="body1">Rule</Typography>

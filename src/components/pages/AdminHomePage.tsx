@@ -37,8 +37,8 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
             </Navbar>
             <div>
                 <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
-                <Route path={`${path}/sessions`} exact={true} render={() => <AdminSessionContainer /> } />
-                <Route path={`${path}/sessions/bookSession`} render={(props) => <BookSessionContainer {...props} /> } />
+                <Route path={`${path}/sessions`} render={(props) => <AdminSessionContainer props={props} /> } />
+                <Route path={`/admin/bookSession`} render={(props) => <BookSessionContainer /> } />
             </div>
             <Footer />
         </div>

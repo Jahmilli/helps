@@ -51,7 +51,7 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
         //     alert('This session is already booked');
         // } else {
             props.history.push({
-                pathname: `${props.match.path}/bookSession`,
+                pathname: `/admin/bookSession`,
                 state: {
                     eventData
                 }
