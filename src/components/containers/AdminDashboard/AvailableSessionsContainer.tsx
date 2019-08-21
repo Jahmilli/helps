@@ -19,6 +19,7 @@ type AvailableSessionsContainerProps = RouteComponentProps<any> & {
 const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainerProps> = (props) => {
     console.log('props are ', props);
     const BOOK_SESSION = 'Book this session';
+    const BOOKED = 'Booked';
     const [state, setState] = React.useState({});
 
     React.useEffect(() => {
@@ -37,10 +38,10 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
                 //   { title: 'Waiting', field: 'waiting' }, 
                 ],
                 data: details.map((session: Session) => {
-                    if (session.studentId && !props.isAdmin) {
-                        session.studentId = 'Booked';
-                    } else if (!session.studentId || session.studentId.length === 0) {
-                        session.studentId = BOOK_SESSION
+                    if (session.currentBooking.studentId && !props.isAdmin) {
+                        // session.currentBooking.studentId = BOOKED;
+                    } else if (!session.currentBooking.studentId || session.currentBooking.studentId.length === 0) {
+                        session.currentBooking.studentId = BOOK_SESSION
                     }
                     return session;
                 })
@@ -54,6 +55,7 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
         // if (eventData.studentId !== BOOK_SESSION) {
         //     alert('This session is already booked');
         // } else {
+            console.log(eventData);
             props.history.push({
                 pathname: `/admin/bookSession`,
                 state: {
