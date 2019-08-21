@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
+import { FormControlLabel, Checkbox } from '@material-ui/core';
 
 interface HelpOptionProps {
     id: string;
@@ -7,16 +7,14 @@ interface HelpOptionProps {
     handleCheckboxChange: Function;
 }
 
-const HelpOption:React.FunctionComponent<HelpOptionProps> = ({ id, label, handleCheckboxChange }) => {
-    return (
-        <FormControlLabel
-            key={id}
-            value={id}
-            control={<Checkbox  color="primary" value={id} onChange={handleCheckboxChange(id)}/>}
-            label={label}
-            labelPlacement="end"
-            />
-    );
-};
+const HelpOption:React.FunctionComponent<HelpOptionProps> = ({ id, label, handleCheckboxChange }) => (
+    <FormControlLabel
+        key={id}
+        value={id}
+        control={<Checkbox  color="primary" value={id} onChange={handleCheckboxChange(id)}/>}
+        label={label}
+        labelPlacement="end"
+        />
+);
 
 export default HelpOption;

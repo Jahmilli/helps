@@ -1,5 +1,5 @@
 export interface IStudentDetails {
-    [email: string]: string | Array<Course>;
+    email: string;
     studentId: string;
     fullName: string;
     preferredName: string;

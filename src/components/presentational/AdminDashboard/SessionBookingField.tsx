@@ -8,8 +8,7 @@ interface SessionBookingFieldProps {
     handleChange: Function;
 }
 
-const SessionBookingField:React.FunctionComponent<SessionBookingFieldProps> = ({ id, title, value, handleChange }) => {
-    return (
+const SessionBookingField:React.FunctionComponent<SessionBookingFieldProps> = ({ id, title, value, handleChange }) => (
     <div>
         <FormControl key={id} fullWidth={true}>
             <InputLabel htmlFor={`${id}-field`}>{title}</InputLabel>
@@ -21,7 +20,6 @@ const SessionBookingField:React.FunctionComponent<SessionBookingFieldProps> = ({
             />
         </FormControl>
     </div>
-    );
-};
+);
 
 export default SessionBookingField;
