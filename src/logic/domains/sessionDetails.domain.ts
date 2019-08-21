@@ -17,6 +17,16 @@ export interface Session {
     // waiting: string; (Not sure what this is)
 }
 
+export interface SessionDetails {
+    studentId?: string;
+    reason: string // Taken from 'this appointment is for'
+    subjectName: string;
+    assignmentType: string;
+    isGroupAssignment: boolean;
+    needsHelpWithOptions: Array<ICheckBox>;
+    additionalHelpDetails: string; 
+}
+
 export interface ICheckBox {
     id: string;
     value: boolean;

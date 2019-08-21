@@ -25,7 +25,10 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
     let initialState: Session = {...props.location.state.eventData };
     
     let { reason, subjectName, assignmentType, isGroupAssignment, needsHelpWithOptions, additionalHelpDetails } = initialState;
-    needsHelpWithOptions = needsHelpWithOptions.length > 0 ? needsHelpWithOptions : needsHelpWithInitialState;
+    
+    if (!needsHelpWithOptions) {
+      needsHelpWithOptions = needsHelpWithInitialState 
+    }
 
     initialState = {
         ...initialState, 

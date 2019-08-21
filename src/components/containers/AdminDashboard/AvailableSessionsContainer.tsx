@@ -12,7 +12,9 @@ const icons = {
     Add: () => <Add /> as React.ReactElement<SvgIconProps>
 }
 
-type AvailableSessionsContainerProps = RouteComponentProps<any> & {}
+type AvailableSessionsContainerProps = RouteComponentProps<any> & {
+    isAdmin: boolean;
+}
 
 const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainerProps> = (props) => {
     console.log('props are ', props);
@@ -34,8 +36,10 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
                   { title: 'Booked by', field: 'studentId', editable: 'never' }, 
                 //   { title: 'Waiting', field: 'waiting' }, 
                 ],
-                data: details.map((session: Session, index: number) => {
-                    if (!session.studentId || session.studentId.length === 0) {
+                data: details.map((session: Session) => {
+                    if (session.studentId && !props.isAdmin) {
+                        session.studentId = 'Booked';
+                    } else if (!session.studentId || session.studentId.length === 0) {
                         session.studentId = BOOK_SESSION
                     }
                     return session;

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button } from '@material-ui/core';
+import { Redirect } from 'react-router';
 
 type Tab = {
     title: string;
@@ -23,16 +24,28 @@ const sessionTabs = [
     
 
 const TopTabs:React.FunctionComponent = () => {
+    const [state, setState] = React.useState({
+        path: '',
+        doRedirect: false
+    });
+
+    const handleClick = (index: number) => (event: any) => {
+        setState({
+            path: sessionTabs[index].path,
+            doRedirect: true
+        })
+    }
     console.log(window.location.pathname);
     return (
         <div style={{display: 'flex', flexFlow: 'row nowrap'}}>
             {sessionTabs.map((tab: Tab, index: number) => {
                 return (
-                    <Button key={index} variant="contained" href={tab.path}>
+                    <Button key={index} variant="contained" onClick={handleClick(index)}>
                         {tab.title}
                     </Button>    
                 )
             })}
+            { state.doRedirect ? <Redirect to={state.path} /> : '' }
         </div>
     );
 };
