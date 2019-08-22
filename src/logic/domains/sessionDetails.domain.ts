@@ -18,11 +18,10 @@ export interface SessionDetails {
     subjectName: string;
     assignmentType: string;
     isGroupAssignment: boolean;
-    needsHelpWithOptions: Array<ICheckBox>;
+    needsHelpWithOptions: ICheckBox;
     additionalHelpDetails: string; 
 }
 
 export interface ICheckBox {
-    id: string;
-    value: boolean;
+    [id: string]: boolean;
 }

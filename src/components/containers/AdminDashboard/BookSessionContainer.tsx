@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Typography, FormGroup, Button } from '@material-ui/core';
+import { Typography, FormGroup, Button, Checkbox } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import TextLockup from '../../presentational/TextLockup';
-import { Session, ICheckBox } from '../../../logic/domains/sessionDetails.domain';
+import { Session } from '../../../logic/domains/sessionDetails.domain';
 import bookSession from '../../../logic/functions/bookSession'; 
 import CheckboxOption from '../../presentational/AdminDashboard/CheckboxOption';
 import SessionBookingField from '../../presentational/AdminDashboard/SessionBookingField';
@@ -10,23 +10,21 @@ import SessionBookingField from '../../presentational/AdminDashboard/SessionBook
 type BookSessionContainerProps = RouteComponentProps<any> & {}
 
 const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = (props) => {
-    // Not convinced an array of ICheckbox is best, seems like an object holding key values would be much better
-    let needsHelpWithInitialState: Array<ICheckBox> = [
-        { id: "bookingAnswer1", value: false },
-        { id: "bookingAnswer2", value: false },
-        { id: "bookingAnswer3", value: false },
-        { id: "bookingAnswer4", value: false },
-        { id: "bookingAnswer5", value: false },
-        { id: "bookingAnswer6", value: false },
-        { id: "bookingAnswer7", value: false },
-    ]
+    let needsHelpWithInitialState = {
+        bookingAnswer1: false, 
+        bookingAnswer2: false, 
+        bookingAnswer3: false, 
+        bookingAnswer4: false, 
+        bookingAnswer5: false, 
+        bookingAnswer6: false, 
+        bookingAnswer7: false, 
+    }
 
     // TODO: Setting these to '' and false is a problem. Need to determine whether we set these values when we create a session (either from front or backend)
     let initialState: Session = {...props.location.state.eventData };
-   
+    console.log('initial state is ', initialState);
     if (initialState.currentBooking) {
         let { reason, studentId, subjectName, assignmentType, isGroupAssignment, needsHelpWithOptions, additionalHelpDetails } = initialState.currentBooking;
-        needsHelpWithOptions = needsHelpWithInitialState 
         initialState = {
             ...initialState, 
             currentBooking: {
@@ -39,6 +37,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 needsHelpWithOptions
             }
         };
+        console.log('here', initialState);
     } else {
         initialState = {
             ...initialState,
@@ -60,54 +59,66 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
     const [sessionData, setSessionData] = React.useState<Session>(initialState);
     // Contains data for the current booking
     const [bookingState, setBookingState] = React.useState(bookingInitialState);
+    const [additionalChecks, setAdditionalChecks] = React.useState({
+        emailStudent: false,
+        emailAdmin: false,
+        checkRule: false
+    });
+    console.log('session data ', sessionData);
+    console.log('bookingstate ', bookingState);
+      
+      const handleChange = (key: string) => (event: any) => {
+          const data = sessionData;
+          setBookingState({
+              ...bookingState,
+              [key]: event.target.value
+            });
+        }
 
-    console.log('sessiondata is ', sessionData);
-    const [additionalChecks, setAdditionalChecks] = React.useState<Array<ICheckBox>>([
-        { id: "emailStudent", value: false },
-        { id: "emailAdmin", value: false },
-        { id: "checkRule", value: false } // Might need to go in sessiondata
-    ]);
-
-    const handleChange = (key: string) => (event: any) => {
-        const data = sessionData;
+    const handleHelpOptionsChange = (id: string) => (event: any) => {
+        console.log(event.target.value);
+        const parsedVal = event.target.value == 'false';
+        console.log(parsedVal);
+        // console.log('state is ', additionalChecks[id]);
         setBookingState({
             ...bookingState,
-            [key]: event.target.value
+            needsHelpWithOptions: {
+                ...bookingState.needsHelpWithOptions,
+                [id]: parsedVal
+            }
+        })
+        console.log(bookingState.needsHelpWithOptions);
+    }
+
+    const handleAdditionalOptionsChange = (id: string) => (event: any) => {
+        console.log(event.target.value);
+        const parsedVal = event.target.value == 'false';
+        console.log(parsedVal);
+        //@ts-ignore
+        console.log('state is ', additionalChecks[id]);
+        setAdditionalChecks({
+            ...additionalChecks,
+            [id]: parsedVal
         });
-    }
-
-    const handleCheckboxChange = (id: string) => (event: any) => {
-        const data: Session = sessionData;
-        for (let index in data.currentBooking.needsHelpWithOptions) {
-            if (data.currentBooking.needsHelpWithOptions[index].id === id) {
-                data.currentBooking.needsHelpWithOptions[index].value = !data.currentBooking.needsHelpWithOptions[index].value;
-                break;
-            }
-        }
-        setSessionData(data);
-    }
-
-    const handleEmailCheckboxChange = (id: string) => (event: any) => {
-        let temp = additionalChecks;
-        for (let check of temp) {
-            if (check.id === id) {
-                check.value = event.target.checked;
-                break;
-            }
-        }
-        setAdditionalChecks(temp);
+        console.log(additionalChecks);
     }
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         setSessionData({
             ...sessionData,
-            currentBooking: bookingState
+            currentBooking: bookingState,
         })
         console.log(sessionData);
-
+        let tempData = {
+            ...sessionData,
+            currentBooking: {
+                ...bookingState
+            }
+        }
+        console.log('temp data is ', tempData);
         try {
-            await bookSession(sessionData, additionalChecks);
+            await bookSession(tempData, additionalChecks);
             alert('successfully updated booking');
             props.history.push('/admin/sessions');
         } catch(err) {
@@ -118,33 +129,37 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
 
     return (
         <div style={{ margin: '0 5%' }}>
+            {/* <CheckboxOption value={needsHelpWithState.bookingAnswer1} id={"bookingAnswer1"} label="Answering the assignment question (please provide the question to your advisor)" handleCheckboxChange={handleHelpOptionsChange}/> */}
+            
             <Typography variant="h2">Book Session</Typography>
             <TextLockup label="Date:" value={sessionData.date}/>
             <TextLockup label="Advisor:" value={sessionData.advisor}/>
             <TextLockup label="Time:" value={`${sessionData.startTime} - ${sessionData.endTime}`}/>
             <TextLockup label="Campus:" value={sessionData.room} />
             <TextLockup label="Type:" value={sessionData.type}/>
+                  
             <form onSubmit={handleSubmit}>
                 <SessionBookingField id="studentId" title="Student ID" value={bookingState.studentId} handleChange={handleChange} />
                 <SessionBookingField id="reason" title="This appointment is for..." value={bookingState.reason} handleChange={handleChange} />
                 <SessionBookingField id="subjectName" title="Subject Name" value={bookingState.subjectName} handleChange={handleChange} />
                 <SessionBookingField id="assignmentType" title="Assignment Type" value={bookingState.assignmentType} handleChange={handleChange} />
                 <FormGroup>
-                    <CheckboxOption value={bookingState.needsHelpWithOptions[0].value} id="bookingAnswer1" label="Answering the assignment question (please provide the question to your advisor)" handleCheckboxChange={handleCheckboxChange}/>
-                    <CheckboxOption value={bookingState.needsHelpWithOptions[1].value} id="bookingAnswer2" label="Addressing the marking criteria (please provide the criteria to your advisor)" handleCheckboxChange={handleCheckboxChange}/>
-                    <CheckboxOption value={bookingState.needsHelpWithOptions[2].value} id="bookingAnswer3" label="Structure" handleCheckboxChange={handleCheckboxChange}/>
-                    <CheckboxOption value={bookingState.needsHelpWithOptions[3].value} id="bookingAnswer4" label="Paragraph development" handleCheckboxChange={handleCheckboxChange}/>
-                    <CheckboxOption value={bookingState.needsHelpWithOptions[4].value} id="bookingAnswer5" label="Referencing" handleCheckboxChange={handleCheckboxChange}/>
-                    <CheckboxOption value={bookingState.needsHelpWithOptions[5].value} id="bookingAnswer6" label="Grammar" handleCheckboxChange={handleCheckboxChange}/>
-                    <CheckboxOption value={bookingState.needsHelpWithOptions[6].value} id="bookingAnswer7" label="Other, please specify below" handleCheckboxChange={handleCheckboxChange}/>
+                    {/* <CheckboxOption value={needsHelpWithState.bookingAnswer1} id={"bookingAnswer1"} label="Answering the assignment question (please provide the question to your advisor)" handleCheckboxChange={handleHelpOptionsChange}/> */}
+                    <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer1} id="bookingAnswer1" label="Answering the assignment question (please provide the question to your advisor)" handleCheckboxChange={handleHelpOptionsChange}/>
+                    <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer2} id="bookingAnswer2" label="Addressing the marking criteria (please provide the criteria to your advisor)" handleCheckboxChange={handleHelpOptionsChange}/>
+                    <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer3} id="bookingAnswer3" label="Structure" handleCheckboxChange={handleHelpOptionsChange}/>
+                    <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer4} id="bookingAnswer4" label="Paragraph development" handleCheckboxChange={handleHelpOptionsChange}/>
+                    <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer5} id="bookingAnswer5" label="Referencing" handleCheckboxChange={handleHelpOptionsChange}/>
+                    <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer6} id="bookingAnswer6" label="Grammar" handleCheckboxChange={handleHelpOptionsChange}/>
+                    <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer7} id="bookingAnswer7" label="Other, please specify below" handleCheckboxChange={handleHelpOptionsChange}/>
                 </FormGroup>
                 <SessionBookingField id="additionalHelpDetails" title="Specify any additional details here" value={bookingState.additionalHelpDetails} handleChange={handleChange} />
                 <Button id="submitBooking" color="primary" size="large" type="submit">Book Session</Button>
             </form>
             <FormGroup>
-                <CheckboxOption value={additionalChecks[0].value} id="emailStudent" label="Send email to student" handleCheckboxChange={handleEmailCheckboxChange} />
-                <CheckboxOption value={additionalChecks[1].value} id="emailAdmin" label="Send email to lecturer" handleCheckboxChange={handleEmailCheckboxChange} />
-                <CheckboxOption value={additionalChecks[2].value} id="checkRule" label="Check rule" handleCheckboxChange={handleEmailCheckboxChange} />
+                <CheckboxOption value={additionalChecks.emailStudent} id="emailStudent" label="Send email to student" handleCheckboxChange={handleAdditionalOptionsChange} />
+                <CheckboxOption value={additionalChecks.emailAdmin} id="emailAdmin" label="Send email to lecturer" handleCheckboxChange={handleAdditionalOptionsChange} />
+                <CheckboxOption value={additionalChecks.checkRule} id="checkRule" label="Check rule" handleCheckboxChange={handleAdditionalOptionsChange} />
             </FormGroup>
             <div>
                 <Typography variant="body1">Rule</Typography>

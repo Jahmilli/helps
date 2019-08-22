@@ -38,11 +38,11 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
                 //   { title: 'Waiting', field: 'waiting' }, 
                 ],
                 data: details.map((session: Session) => {
-                    if (session.currentBooking.studentId && !props.isAdmin) {
-                        // session.currentBooking.studentId = BOOKED;
-                    } else if (!session.currentBooking.studentId || session.currentBooking.studentId.length === 0) {
-                        session.currentBooking.studentId = BOOK_SESSION
-                    }
+                    // if (session.currentBooking && session.currentBooking.studentId && !props.isAdmin) {
+                    //     // session.currentBooking.studentId = BOOKED;
+                    // } else if (session.currentBooking && !session.currentBooking.studentId || session.currentBooking.studentId.length === 0) {
+                    //     session.currentBooking.studentId = BOOK_SESSION
+                    // }
                     return session;
                 })
               });
