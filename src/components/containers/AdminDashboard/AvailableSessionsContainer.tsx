@@ -17,10 +17,23 @@ type AvailableSessionsContainerProps = RouteComponentProps<any> & {
 }
 
 const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainerProps> = (props) => {
-    console.log('props are ', props);
     const BOOK_SESSION = 'Book this session';
     const BOOKED = 'Booked';
     const [state, setState] = React.useState({});
+
+    const displayStudentId = (session: Session) => {
+        if (session.currentBooking === undefined) {
+            return BOOK_SESSION;
+        }
+        return props.isAdmin ? session.currentBooking.studentId : BOOKED;
+    }
+
+    const renderWaitingList = (session: Session) => {
+        if (session.waitingList.length === 0) {
+            return <a href='#'>Add</a>
+        }
+        return <a href='#'>{session.waitingList.length} Student(s)</a>
+    }
 
     React.useEffect(() => {
         async function callGetSessions() {
@@ -28,21 +41,16 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
             console.log('details', details);
             setState({
                 columns: [
-                  { title: 'Date', field: 'date' },
-                  { title: 'Start Time', field: 'startTime' },
-                  { title: 'End Time', field: 'endTime' },
-                  { title: 'Room', field: 'room' },
-                  // { title: 'A/NA', field: '' },
-                  { title: 'Type', field: 'type' },
-                  { title: 'Booked by', field: 'studentId', editable: 'never' }, 
-                //   { title: 'Waiting', field: 'waiting' }, 
+                    { title: 'Date', field: 'date' },
+                    { title: 'Start Time', field: 'startTime' },
+                    { title: 'End Time', field: 'endTime' },
+                    { title: 'Room', field: 'room' },
+                    // { title: 'A/NA', field: '' },
+                    { title: 'Type', field: 'type' },
+                    { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: Session) => <td>{displayStudentId(rowData)}</td> }, 
+                    { title: 'Waiting', field: 'waitingList', render: (rowData: Session) => <td>{renderWaitingList(rowData)}</td> }, 
                 ],
                 data: details.map((session: Session) => {
-                    // if (session.currentBooking && session.currentBooking.studentId && !props.isAdmin) {
-                    //     // session.currentBooking.studentId = BOOKED;
-                    // } else if (session.currentBooking && !session.currentBooking.studentId || session.currentBooking.studentId.length === 0) {
-                    //     session.currentBooking.studentId = BOOK_SESSION
-                    // }
                     return session;
                 })
               });

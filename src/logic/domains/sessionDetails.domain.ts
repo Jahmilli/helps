@@ -9,7 +9,6 @@ export interface Session {
     currentBooking: SessionDetails;
     waitingList: Array<SessionDetails>
     // attendedNotAttended: string; (not sure what this is)
-    // waiting: string; (Not sure what this is)
 }
 
 export interface SessionDetails {
