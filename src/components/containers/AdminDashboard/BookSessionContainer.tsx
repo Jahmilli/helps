@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography, FormGroup, Button, Checkbox } from '@material-ui/core';
+import { Typography, FormGroup, Button } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import TextLockup from '../../presentational/TextLockup';
 import { Session } from '../../../logic/domains/sessionDetails.domain';
@@ -20,9 +20,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         bookingAnswer7: false, 
     }
 
-    // TODO: Setting these to '' and false is a problem. Need to determine whether we set these values when we create a session (either from front or backend)
     let initialState: Session = {...props.location.state.eventData };
-    console.log('initial state is ', initialState);
     if (initialState.currentBooking) {
         let { reason, studentId, subjectName, assignmentType, isGroupAssignment, needsHelpWithOptions, additionalHelpDetails } = initialState.currentBooking;
         initialState = {
@@ -64,22 +62,17 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         emailAdmin: false,
         checkRule: false
     });
-    console.log('session data ', sessionData);
-    console.log('bookingstate ', bookingState);
-      
-      const handleChange = (key: string) => (event: any) => {
-          const data = sessionData;
-          setBookingState({
-              ...bookingState,
-              [key]: event.target.value
-            });
-        }
+
+    const handleChange = (key: string) => (event: any) => {
+        setBookingState({
+            ...bookingState,
+            [key]: event.target.value
+        });
+    }
 
     const handleHelpOptionsChange = (id: string) => (event: any) => {
-        console.log(event.target.value);
-        const parsedVal = event.target.value == 'false';
-        console.log(parsedVal);
-        // console.log('state is ', additionalChecks[id]);
+        // event.target.value is being passed as a string for whatever reason
+        const parsedVal = event.target.value === 'false';
         setBookingState({
             ...bookingState,
             needsHelpWithOptions: {
@@ -87,20 +80,15 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 [id]: parsedVal
             }
         })
-        console.log(bookingState.needsHelpWithOptions);
     }
 
     const handleAdditionalOptionsChange = (id: string) => (event: any) => {
-        console.log(event.target.value);
-        const parsedVal = event.target.value == 'false';
-        console.log(parsedVal);
-        //@ts-ignore
-        console.log('state is ', additionalChecks[id]);
+        // event.target.value is being passed as a string for whatever reason
+        const parsedVal = event.target.value === 'false';
         setAdditionalChecks({
             ...additionalChecks,
             [id]: parsedVal
         });
-        console.log(additionalChecks);
     }
 
     const handleSubmit = async (event: any) => {
@@ -117,8 +105,6 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 additionalOptions: additionalChecks
             }
         }
-        console.log('temp data is ', tempData);
-        console.log('additional checks', additionalChecks);
         try {
             await bookSession(tempData);
             alert('successfully updated booking');
@@ -144,7 +130,6 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 <SessionBookingField id="subjectName" title="Subject Name" value={bookingState.subjectName} handleChange={handleChange} />
                 <SessionBookingField id="assignmentType" title="Assignment Type" value={bookingState.assignmentType} handleChange={handleChange} />
                 <FormGroup>
-                    {/* <CheckboxOption value={needsHelpWithState.bookingAnswer1} id={"bookingAnswer1"} label="Answering the assignment question (please provide the question to your advisor)" handleCheckboxChange={handleHelpOptionsChange}/> */}
                     <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer1} id="bookingAnswer1" label="Answering the assignment question (please provide the question to your advisor)" handleCheckboxChange={handleHelpOptionsChange}/>
                     <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer2} id="bookingAnswer2" label="Addressing the marking criteria (please provide the criteria to your advisor)" handleCheckboxChange={handleHelpOptionsChange}/>
                     <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer3} id="bookingAnswer3" label="Structure" handleCheckboxChange={handleHelpOptionsChange}/>

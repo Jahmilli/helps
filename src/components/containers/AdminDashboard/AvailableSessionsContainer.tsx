@@ -56,6 +56,7 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
         //     alert('This session is already booked');
         // } else {
             console.log(eventData);
+            // Maybe we can use Redirect and control its rendering from here
             props.history.push({
                 pathname: `/admin/bookSession`,
                 state: {
