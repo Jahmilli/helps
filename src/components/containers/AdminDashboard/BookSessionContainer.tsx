@@ -113,12 +113,14 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         let tempData = {
             ...sessionData,
             currentBooking: {
-                ...bookingState
+                ...bookingState,
+                additionalOptions: additionalChecks
             }
         }
         console.log('temp data is ', tempData);
+        console.log('additional checks', additionalChecks);
         try {
-            await bookSession(tempData, additionalChecks);
+            await bookSession(tempData);
             alert('successfully updated booking');
             props.history.push('/admin/sessions');
         } catch(err) {
@@ -129,8 +131,6 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
 
     return (
         <div style={{ margin: '0 5%' }}>
-            {/* <CheckboxOption value={needsHelpWithState.bookingAnswer1} id={"bookingAnswer1"} label="Answering the assignment question (please provide the question to your advisor)" handleCheckboxChange={handleHelpOptionsChange}/> */}
-            
             <Typography variant="h2">Book Session</Typography>
             <TextLockup label="Date:" value={sessionData.date}/>
             <TextLockup label="Advisor:" value={sessionData.advisor}/>
