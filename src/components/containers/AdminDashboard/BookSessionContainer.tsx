@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Typography, FormGroup, Button } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import TextLockup from '../../presentational/TextLockup';
-import { Session } from '../../../logic/domains/sessionDetails.domain';
 import bookSession from '../../../logic/functions/bookSession'; 
 import CheckboxOption from '../../presentational/AdminDashboard/CheckboxOption';
 import SessionBookingField from '../../presentational/AdminDashboard/SessionBookingField';
@@ -20,8 +19,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         bookingAnswer7: false, 
     }
 
-    let initialState: Session = {...props.location.state.eventData };
-    let isCurrentBooking = props.location.state.isCurrentBooking;
+    let { initialState, isCurrentBooking } = props.location.state.eventData;
     let booking = isCurrentBooking ? initialState.currentBooking : initialState.waitingList[initialState.waitingList.length];
 
     let initialBookingState = {
@@ -43,8 +41,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
             subjectName,
             assignmentType,
             isGroupAssignment,
-            //@ts-ignore
-            needsHelpWithOptions, 
+            needsHelpWithOptions,
             additionalHelpDetails,
         };
     }
@@ -127,7 +124,6 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
             <TextLockup label="Time:" value={`${initialState.startTime} - ${initialState.endTime}`}/>
             <TextLockup label="Campus:" value={initialState.room} />
             <TextLockup label="Type:" value={initialState.type}/>
-                  
             <form onSubmit={handleSubmit}>
                 <SessionBookingField id="studentId" title="Student ID" value={bookingState.studentId} handleChange={handleChange} />
                 <SessionBookingField id="reason" title="This appointment is for..." value={bookingState.reason} handleChange={handleChange} />

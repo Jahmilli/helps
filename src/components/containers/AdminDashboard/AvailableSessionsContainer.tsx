@@ -50,10 +50,8 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
                     { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: Session) => <td>{displayStudentId(rowData)}</td> }, 
                     { title: 'Waiting', field: 'waitingList', render: (rowData: Session) => <td>{renderWaitingList(rowData)}</td> }, 
                 ],
-                data: details.map((session: Session) => {
-                    return session;
-                })
-              });
+                data: details.map((session: Session) => session)
+            });
         }
         callGetSessions();
     }, []);
@@ -91,7 +89,7 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
             <EditableTable state={state} setState={setState} actions={[{
                     icon: icons.Add,
                     tooltip: 'Book Session',
-                    onClick: (event: any, rowData: any) => handleBookSession(rowData)
+                    onClick: (event: any, rowData: Session) => handleBookSession(rowData)
                 }
             ]}
             options={{ toolbar: false, paging: false }}/>
