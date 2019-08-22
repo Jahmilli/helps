@@ -22,7 +22,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
 
     let initialState: Session = {...props.location.state.eventData };
     let isCurrentBooking = props.location.state.isCurrentBooking;
-    let booking = isCurrentBooking ? initialState.currentBooking : initialState.waitingList[0];
+    let booking = isCurrentBooking ? initialState.currentBooking : initialState.waitingList[initialState.waitingList.length];
 
     let initialBookingState = {
         studentId: '',
@@ -94,7 +94,8 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 currentBooking: {
                     ...bookingState,
                     additionalOptions: additionalChecks
-                }
+                },
+                isCurrentBooking: true
             }
         } else {
             tempData = {
@@ -102,8 +103,8 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 waitingList: [
                     ...initialState.waitingList,
                     {...bookingState}
-                    // additionalOptions: additionalChecks
-                ]
+                ],
+                isCurrentBooking: false
             }
         }
         console.log(tempData);

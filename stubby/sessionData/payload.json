@@ -7,7 +7,8 @@
         "room": "CB11.01.01",
         "advisor": "John Kennedy",
         "type": "Random Type",
-        "studentId": "Neil Sutherland"
+        "studentId": "Neil Sutherland",
+        "waitingList": []
     },
     {
         "id": "va21410asdo120njsnad9",
@@ -17,7 +18,8 @@
         "room": "CB11.01.01",
         "advisor": "Phil Gilbert",
         "type": "Random Type",
-        "studentId": "Jay Cartwright"
+        "studentId": "Jay Cartwright",
+        "waitingList": []
     },
     {
         "id": "aaasd0824732204nadms",
@@ -27,6 +29,7 @@
         "room": "CB11.01.01",
         "advisor": "Mark Donovan",
         "type": "Random Type",
-        "studentId": ""
+        "studentId": "",
+        "waitingList": []
     }
 ]

@@ -14,7 +14,7 @@ const AdminSessionContainer: React.FunctionComponent<AdminSessionContainerProps>
     return (
         <div style={{ margin: '0 5%' }}>
             <TopTabs />
-            <FilterSessions />
+            {/* <FilterSessions /> */}
             <Route path={`${path}`} exact={true} render={() => (
                 <div>
                     <AvailableSessionsContainer isAdmin={false} />
