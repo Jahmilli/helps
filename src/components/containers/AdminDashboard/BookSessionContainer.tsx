@@ -21,42 +21,36 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
     }
 
     let initialState: Session = {...props.location.state.eventData };
-    if (initialState.currentBooking) {
-        let { reason, studentId, subjectName, assignmentType, isGroupAssignment, needsHelpWithOptions, additionalHelpDetails } = initialState.currentBooking;
-        initialState = {
-            ...initialState, 
-            currentBooking: {
-                studentId,
-                reason,
-                subjectName,
-                assignmentType,
-                isGroupAssignment,
-                additionalHelpDetails,
-                needsHelpWithOptions
-            }
-        };
-        console.log('here', initialState);
-    } else {
-        initialState = {
-            ...initialState,
-            currentBooking: {
-                studentId: '',
-                reason: '',
-                subjectName: '',
-                assignmentType: '',
-                isGroupAssignment: false,
-                additionalHelpDetails: '',
-                needsHelpWithOptions: needsHelpWithInitialState 
-            }
-        }
+    let isCurrentBooking = props.location.state.isCurrentBooking;
+    let booking = isCurrentBooking ? initialState.currentBooking : initialState.waitingList[0];
+
+    let initialBookingState = {
+        studentId: '',
+        reason: '',
+        subjectName: '',
+        assignmentType: '',
+        isGroupAssignment: false,
+        additionalHelpDetails: '',
+        needsHelpWithOptions: needsHelpWithInitialState 
     }
-    
-    const bookingInitialState = initialState.currentBooking;
-   
-    // Contains data for the overall session
-    const [sessionData, setSessionData] = React.useState<Session>(initialState);
+
+    if (booking) {
+        let { reason, studentId, subjectName, assignmentType, isGroupAssignment, needsHelpWithOptions, additionalHelpDetails } = booking;
+        initialBookingState = {
+            ...initialBookingState,
+            studentId,
+            reason,
+            subjectName,
+            assignmentType,
+            isGroupAssignment,
+            //@ts-ignore
+            needsHelpWithOptions, 
+            additionalHelpDetails,
+        };
+    }
+
     // Contains data for the current booking
-    const [bookingState, setBookingState] = React.useState(bookingInitialState);
+    const [bookingState, setBookingState] = React.useState(initialBookingState);
     const [additionalChecks, setAdditionalChecks] = React.useState({
         emailStudent: false,
         emailAdmin: false,
@@ -93,19 +87,28 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
-        setSessionData({
-            ...sessionData,
-            currentBooking: bookingState,
-        })
-        console.log(sessionData);
-        let tempData = {
-            ...sessionData,
-            currentBooking: {
-                ...bookingState,
-                additionalOptions: additionalChecks
+        let tempData = {};
+        if (isCurrentBooking) {
+            tempData = {
+                ...initialState,
+                currentBooking: {
+                    ...bookingState,
+                    additionalOptions: additionalChecks
+                }
+            }
+        } else {
+            tempData = {
+                ...initialState,
+                waitingList: [
+                    ...initialState.waitingList,
+                    {...bookingState}
+                    // additionalOptions: additionalChecks
+                ]
             }
         }
+        console.log(tempData);
         try {
+            //@ts-ignore
             await bookSession(tempData);
             alert('successfully updated booking');
             props.history.push('/admin/sessions');
@@ -118,11 +121,11 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
     return (
         <div style={{ margin: '0 5%' }}>
             <Typography variant="h2">Book Session</Typography>
-            <TextLockup label="Date:" value={sessionData.date}/>
-            <TextLockup label="Advisor:" value={sessionData.advisor}/>
-            <TextLockup label="Time:" value={`${sessionData.startTime} - ${sessionData.endTime}`}/>
-            <TextLockup label="Campus:" value={sessionData.room} />
-            <TextLockup label="Type:" value={sessionData.type}/>
+            <TextLockup label="Date:" value={initialState.date}/>
+            <TextLockup label="Advisor:" value={initialState.advisor}/>
+            <TextLockup label="Time:" value={`${initialState.startTime} - ${initialState.endTime}`}/>
+            <TextLockup label="Campus:" value={initialState.room} />
+            <TextLockup label="Type:" value={initialState.type}/>
                   
             <form onSubmit={handleSubmit}>
                 <SessionBookingField id="studentId" title="Student ID" value={bookingState.studentId} handleChange={handleChange} />

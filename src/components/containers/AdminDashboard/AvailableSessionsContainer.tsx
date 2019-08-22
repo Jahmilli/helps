@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 import { getAvailableSessions } from '../../../logic/functions/getAvailableSessions';
 import { Session } from '../../../logic/domains/sessionDetails.domain';
 import EditableTable from '../../presentational/EditableTable';
@@ -30,9 +30,9 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
 
     const renderWaitingList = (session: Session) => {
         if (session.waitingList.length === 0) {
-            return <a href='#'>Add</a>
+            return <Button onClick={addToWaitingList(session)}>Add</Button>
         }
-        return <a href='#'>{session.waitingList.length} Student(s)</a>
+        return <Button onClick={addToWaitingList(session)}>{session.waitingList.length} Student(s)</Button>
     }
 
     React.useEffect(() => {
@@ -58,6 +58,16 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
         callGetSessions();
     }, []);
 
+    const addToWaitingList = (eventData: Session) => (event: React.MouseEvent) => {
+        props.history.push({
+            pathname: `/admin/bookSession`,
+            state: {
+                eventData,
+                isCurrentBooking: false
+            }
+        });
+    }
+
     const handleBookSession = (eventData: Session) => {
         // Navigate to a different page with the event data passed in
         // if (eventData.studentId !== BOOK_SESSION) {
@@ -68,7 +78,8 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
             props.history.push({
                 pathname: `/admin/bookSession`,
                 state: {
-                    eventData
+                    eventData,
+                    isCurrentBooking: true
                 }
             });
         // }
