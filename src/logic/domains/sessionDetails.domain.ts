@@ -9,7 +9,6 @@ export interface Session {
     currentBooking: SessionDetails;
     waitingList: Array<SessionDetails>
     // attendedNotAttended: string; (not sure what this is)
-    // waiting: string; (Not sure what this is)
 }
 
 export interface SessionDetails {
@@ -18,11 +17,10 @@ export interface SessionDetails {
     subjectName: string;
     assignmentType: string;
     isGroupAssignment: boolean;
-    needsHelpWithOptions: Array<ICheckBox>;
+    needsHelpWithOptions: ICheckBox;
     additionalHelpDetails: string; 
 }
 
 export interface ICheckBox {
-    id: string;
-    value: boolean;
+    [id: string]: boolean;
 }

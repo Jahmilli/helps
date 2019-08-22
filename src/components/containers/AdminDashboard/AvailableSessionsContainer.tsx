@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 import { getAvailableSessions } from '../../../logic/functions/getAvailableSessions';
 import { Session } from '../../../logic/domains/sessionDetails.domain';
 import EditableTable from '../../presentational/EditableTable';
@@ -17,10 +17,23 @@ type AvailableSessionsContainerProps = RouteComponentProps<any> & {
 }
 
 const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainerProps> = (props) => {
-    console.log('props are ', props);
     const BOOK_SESSION = 'Book this session';
     const BOOKED = 'Booked';
     const [state, setState] = React.useState({});
+
+    const displayStudentId = (session: Session) => {
+        if (session.currentBooking === undefined) {
+            return BOOK_SESSION;
+        }
+        return props.isAdmin ? session.currentBooking.studentId : BOOKED;
+    }
+
+    const renderWaitingList = (session: Session) => {
+        if (session.waitingList.length === 0) {
+            return <Button onClick={addToWaitingList(session)}>Add</Button>
+        }
+        return <Button onClick={addToWaitingList(session)}>{session.waitingList.length} Student(s)</Button>
+    }
 
     React.useEffect(() => {
         async function callGetSessions() {
@@ -28,21 +41,16 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
             console.log('details', details);
             setState({
                 columns: [
-                  { title: 'Date', field: 'date' },
-                  { title: 'Start Time', field: 'startTime' },
-                  { title: 'End Time', field: 'endTime' },
-                  { title: 'Room', field: 'room' },
-                  // { title: 'A/NA', field: '' },
-                  { title: 'Type', field: 'type' },
-                  { title: 'Booked by', field: 'studentId', editable: 'never' }, 
-                //   { title: 'Waiting', field: 'waiting' }, 
+                    { title: 'Date', field: 'date' },
+                    { title: 'Start Time', field: 'startTime' },
+                    { title: 'End Time', field: 'endTime' },
+                    { title: 'Room', field: 'room' },
+                    // { title: 'A/NA', field: '' },
+                    { title: 'Type', field: 'type' },
+                    { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: Session) => <td>{displayStudentId(rowData)}</td> }, 
+                    { title: 'Waiting', field: 'waitingList', render: (rowData: Session) => <td>{renderWaitingList(rowData)}</td> }, 
                 ],
                 data: details.map((session: Session) => {
-                    if (session.currentBooking.studentId && !props.isAdmin) {
-                        // session.currentBooking.studentId = BOOKED;
-                    } else if (!session.currentBooking.studentId || session.currentBooking.studentId.length === 0) {
-                        session.currentBooking.studentId = BOOK_SESSION
-                    }
                     return session;
                 })
               });
@@ -50,16 +58,28 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
         callGetSessions();
     }, []);
 
+    const addToWaitingList = (eventData: Session) => (event: React.MouseEvent) => {
+        props.history.push({
+            pathname: `/admin/bookSession`,
+            state: {
+                eventData,
+                isCurrentBooking: false
+            }
+        });
+    }
+
     const handleBookSession = (eventData: Session) => {
         // Navigate to a different page with the event data passed in
         // if (eventData.studentId !== BOOK_SESSION) {
         //     alert('This session is already booked');
         // } else {
             console.log(eventData);
+            // Maybe we can use Redirect and control its rendering from here
             props.history.push({
                 pathname: `/admin/bookSession`,
                 state: {
-                    eventData
+                    eventData,
+                    isCurrentBooking: true
                 }
             });
         // }
