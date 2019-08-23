@@ -121,7 +121,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
 
     return (
         <div style={{ margin: '0 5%' }}>
-            <Typography variant="h2">Book ISession</Typography>
+            <Typography variant="h2">Book Session</Typography>
             <TextLockup label="Date:" value={initialState.date}/>
             <TextLockup label="Advisor:" value={initialState.advisor}/>
             <TextLockup label="Time:" value={`${initialState.startTime} - ${initialState.endTime}`}/>
