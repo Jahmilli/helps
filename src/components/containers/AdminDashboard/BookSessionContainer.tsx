@@ -142,7 +142,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                     <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer7} id="bookingAnswer7" label="Other, please specify below" handleCheckboxChange={handleHelpOptionsChange}/>
                 </FormGroup>
                 <SessionBookingField id="additionalHelpDetails" title="Specify any additional details here" value={bookingState.additionalHelpDetails} handleChange={handleChange} />
-                <Button id="submitBooking" color="primary" size="large" type="submit">Book ISession</Button>
+                <Button id="submitBooking" color="primary" size="large" type="submit">Book Session</Button>
             </form>
             <FormGroup>
                 <CheckboxOption value={additionalChecks.emailStudent} id="emailStudent" label="Send email to student" handleCheckboxChange={handleAdditionalOptionsChange} />
