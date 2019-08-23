@@ -13,3 +13,7 @@
     method: POST
   response:
     status: 200
+    latency: 200
+    file: sessionData/createSessionPayload.json
+
+# TODO: Add in book session here

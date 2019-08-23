@@ -1,4 +1,4 @@
-export interface Session {
+export interface ISession {
     _id?: string;
     [date: string]: any;
     startTime: string; // Should be a date object
@@ -6,12 +6,12 @@ export interface Session {
     room: string;
     advisor: string;
     type: string;
-    currentBooking: SessionDetails;
-    waitingList: Array<SessionDetails>
+    currentBooking: ISessionDetails;
+    waitingList: Array<ISessionDetails>
     // attendedNotAttended: string; (not sure what this is)
 }
 
-export interface SessionDetails {
+export interface ISessionDetails {
     [studentId: string]: any;
     reason: string // Taken from 'this appointment is for'
     subjectName: string;

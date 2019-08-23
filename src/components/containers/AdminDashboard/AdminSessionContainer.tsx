@@ -4,12 +4,11 @@ import AvailableSessionsContainer from './AvailableSessionsContainer';
 import CreateSessionsContainer from './CreateSessionsContainer';
 import { Route } from 'react-router';
 import FilterSessions from '../../presentational/AdminDashboard/FilterSessions';
+import { RouteComponentProps } from 'react-router';
 
-interface AdminSessionContainerProps {
-    props: any;
-};
+type AdminSessionContainerProps = RouteComponentProps<any> & {}
 
-const AdminSessionContainer: React.FunctionComponent<AdminSessionContainerProps> = ({ props }) => {
+const AdminSessionContainer: React.FunctionComponent<AdminSessionContainerProps> = (props) => {
     const { path } = props.match;
     return (
         <div style={{ margin: '0 5%' }}>

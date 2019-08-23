@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Typography, Button } from '@material-ui/core';
 import { getAvailableSessions } from '../../../logic/functions/getAvailableSessions';
-import { Session } from '../../../logic/domains/sessionDetails.domain';
+import { ISession } from '../../../logic/domains/sessionDetails.domain';
 import EditableTable from '../../presentational/EditableTable';
 import { Add } from '@material-ui/icons';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
@@ -21,14 +21,14 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
     const BOOKED = 'Booked';
     const [state, setState] = React.useState({});
 
-    const displayStudentId = (session: Session) => {
+    const displayStudentId = (session: ISession) => {
         if (session.currentBooking === undefined) {
             return BOOK_SESSION;
         }
         return props.isAdmin ? session.currentBooking.studentId : BOOKED;
     }
 
-    const renderWaitingList = (session: Session) => {
+    const renderWaitingList = (session: ISession) => {
         if (session.waitingList.length === 0) {
             return <Button onClick={addToWaitingList(session)}>Add</Button>
         }
@@ -47,16 +47,16 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
                     { title: 'Room', field: 'room' },
                     // { title: 'A/NA', field: '' },
                     { title: 'Type', field: 'type' },
-                    { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: Session) => <td>{displayStudentId(rowData)}</td> }, 
-                    { title: 'Waiting', field: 'waitingList', render: (rowData: Session) => <td>{renderWaitingList(rowData)}</td> }, 
+                    { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: ISession) => <div>{displayStudentId(rowData)}</div> }, 
+                    { title: 'Waiting', field: 'waitingList', render: (rowData: ISession) => <div>{renderWaitingList(rowData)}</div> }, 
                 ],
-                data: details.map((session: Session) => session)
+                data: details.map((session: ISession) => session)
             });
         }
         callGetSessions();
     }, []);
 
-    const addToWaitingList = (eventData: Session) => (event: React.MouseEvent) => {
+    const addToWaitingList = (eventData: ISession) => (event: React.MouseEvent) => {
         props.history.push({
             pathname: `/admin/bookSession`,
             state: {
@@ -66,7 +66,7 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
         });
     }
 
-    const handleBookSession = (eventData: Session) => {
+    const handleBookSession = (eventData: ISession) => {
         // Navigate to a different page with the event data passed in
         // if (eventData.studentId !== BOOK_SESSION) {
         //     alert('This session is already booked');
@@ -89,7 +89,7 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
             <EditableTable state={state} setState={setState} actions={[{
                     icon: icons.Add,
                     tooltip: 'Book Session',
-                    onClick: (event: any, rowData: Session) => handleBookSession(rowData)
+                    onClick: (event: any, rowData: ISession) => handleBookSession(rowData)
                 }
             ]}
             options={{ toolbar: false, paging: false }}/>

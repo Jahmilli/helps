@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Typography, Button } from '@material-ui/core';
-import { Session } from '../../../logic/domains/sessionDetails.domain';
+import { ISession } from '../../../logic/domains/sessionDetails.domain';
 import EditableTable from '../../presentational/EditableTable';
 import { createNewSessions } from '../../../logic/functions/createNewSessions';
 import { createSessionContainerStyle } from './styles';
@@ -21,7 +21,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
         { title: 'Type', field: 'type' },
         
       ],
-      data: [{} as Session],
+      data: [{} as ISession],
     });
 
     const isEmpty = (str: string): boolean => {
@@ -29,6 +29,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
     }
 
     const validateSessions = (): boolean => {
+      console.log(state.data);
       for (let session of state.data) {
         if (isEmpty(session.date) || (isEmpty(session.startTime) || 
             isEmpty(session.endTime) || isEmpty(session.room) || 
@@ -41,7 +42,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
 
     const submitNewSessions = async () => {
       if (validateSessions()) {
-        const tempData = state.data as Array<Session>;
+        const tempData = state.data as Array<ISession>;
         for (let index in state.data) {
           tempData[index] = {...tempData[index], advisor: 'current advisor'}
           // TODO: delete tableData key and value

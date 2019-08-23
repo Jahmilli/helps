@@ -19,7 +19,8 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         bookingAnswer7: false, 
     }
 
-    let { initialState, isCurrentBooking } = props.location.state.eventData;
+    let initialState = props.location.state.eventData;
+    let isCurrentBooking = props.location.state.isCurrentBooking; 
     let booking = isCurrentBooking ? initialState.currentBooking : initialState.waitingList[initialState.waitingList.length];
 
     let initialBookingState = {
@@ -108,9 +109,11 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         try {
             //@ts-ignore
             await bookSession(tempData);
+            // TODO: Change alert to using a toast message or something
             alert('successfully updated booking');
             props.history.push('/admin/sessions');
         } catch(err) {
+            // TODO: Change alert to using a toast message or something
             alert('An error occurred when booking');
             console.log('An error occurred when booking session', err);
         }
@@ -118,7 +121,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
 
     return (
         <div style={{ margin: '0 5%' }}>
-            <Typography variant="h2">Book Session</Typography>
+            <Typography variant="h2">Book ISession</Typography>
             <TextLockup label="Date:" value={initialState.date}/>
             <TextLockup label="Advisor:" value={initialState.advisor}/>
             <TextLockup label="Time:" value={`${initialState.startTime} - ${initialState.endTime}`}/>
@@ -139,7 +142,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                     <CheckboxOption value={bookingState.needsHelpWithOptions.bookingAnswer7} id="bookingAnswer7" label="Other, please specify below" handleCheckboxChange={handleHelpOptionsChange}/>
                 </FormGroup>
                 <SessionBookingField id="additionalHelpDetails" title="Specify any additional details here" value={bookingState.additionalHelpDetails} handleChange={handleChange} />
-                <Button id="submitBooking" color="primary" size="large" type="submit">Book Session</Button>
+                <Button id="submitBooking" color="primary" size="large" type="submit">Book ISession</Button>
             </form>
             <FormGroup>
                 <CheckboxOption value={additionalChecks.emailStudent} id="emailStudent" label="Send email to student" handleCheckboxChange={handleAdditionalOptionsChange} />

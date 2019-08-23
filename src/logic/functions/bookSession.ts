@@ -1,7 +1,7 @@
 import { post } from './core/fetch';
-import { Session } from '../domains/sessionDetails.domain';
+import { ISession } from '../domains/sessionDetails.domain';
 
-const bookSession = async (sessionDetails: Session) => {
+const bookSession = async (sessionDetails: ISession) => {
     return await post('/api/v1/session/book', JSON.stringify(sessionDetails));
 }
 
