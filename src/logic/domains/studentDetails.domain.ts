@@ -20,7 +20,6 @@ export interface IStudentSessionIds {
     workshopSessionIds: Array<string>;
 }
 
-
 export class Course {
     constructor(title: string) {
         this.title = title;
