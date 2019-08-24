@@ -1,43 +1,42 @@
 import React, { useState } from 'react';
-import { Checkbox, FormControlLabel, Radio, RadioGroup, TextField, Typography, FormGroup, Button } from '@material-ui/core';
-import studentRegistrationFields from './__data__/data.studentRegistrationFields.json';
-import studentRegistrationEducationFields from './__data__/data.studentRegistrationEducationFields.json';
+import { FormControlLabel, Radio, RadioGroup, Typography, FormGroup, Button } from '@material-ui/core';
 import { registrationFormStyles } from './styles';
-import { StudentDetails, Course } from '../../logic/domains/studentDetails.domain';
+import { IStudentDetails, Course, IStudentSessionIds } from '../../logic/domains/studentDetails.domain';
 import registerStudent from '../../logic/functions/registerStudent';
 import Auth from '../../logic/functions/core/Auth.js';
+import RegistrationField from '../presentational/StudentDashboard/RegistrationField';
+import RegistrationCheckbox from '../presentational/StudentDashboard/RegistrationCheckbox';
 
 interface RegistrationFormProps {
     auth: Auth;
 }
 
-type Field = {
-    [title: string]: string;
-    label: string;
-    id: string;
-}
-type EducationField = {
-    [label: string]: string;
-    id: string;
-}
-
 const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth }) => {
-    const studentDetailsInitialState = {} as StudentDetails;
+    const courseTitles = ['hsc', 'ielts', 'toefl', 'tafe', 'cult', 'insearchDeep', 'insearchDiploma', 'foundationCourse'] ;
+    const educationInitialState: Array<Course> = courseTitles.map((title: string) => new Course(title));
+    const sessionObject = {
+        sessionIds: [],
+        workshopSessionIds: [],
+    } as IStudentSessionIds;
+
+    const studentDetailsInitialState = {
+        email: '',
+        studentId: '',
+        fullName: '',
+        preferredName: '',
+        faculty: '',
+        courseId: '',
+        preferredContactNumber: '',
+        dateOfBirth: '',
+        gender: '',
+        degree: '',
+        status: '',
+        education: educationInitialState,
+        upcomingSessions: sessionObject,
+        previousSessions: sessionObject,
+    } as IStudentDetails;
     
-    const educationInitialState: Array<Course> = [
-        new Course("hsc"),
-        new Course("ielts"),
-        new Course("toefl"),
-        new Course("tafe"),
-        new Course("cult"),
-        new Course("insearchDeep"),
-        new Course("insearchDiploma"),
-        new Course("foundationCourse")
-    ];
-
-    studentDetailsInitialState.education = educationInitialState;
-
-    const [values, setValues] = useState<StudentDetails>(studentDetailsInitialState);
+    const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState);
 
     const handleStudentDetailsChange = (details: string) => (event: any) => {
         setValues({
@@ -52,7 +51,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
         setValues(details);
     }
 
-    const updateMark = (index: number, name: string) => (event: any) => {
+    const updateMark = (index: number) => (event: any) => {
         const details = {...values};
         details.education[index].mark = event.target.value
         setValues(details);
@@ -63,10 +62,11 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
         console.log(values);
         // console.log(auth.readUserMetaData());
         try {
-            let auth0Response = await auth.updateUserMetaData();
-            console.log(auth0Response);
+            // let auth0Response = await auth.updateUserMetaData();
+            // console.log(auth0Response);
             let response = await registerStudent(values);
             console.log('response is ', response);
+            alert('Successfully registered');
         } catch (err) {
             // TODO: Don't use an alert, display using a Snackbar or something
             console.log('An error occured when registering', err);
@@ -78,21 +78,14 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
     return (
         <form className={classes.registrationLockup}>
             <div className={classes.leftLockup}>
-                {studentRegistrationFields.map((field: Field, index: number) => {
-                    return (
-                        <div key={index}>
-                            <Typography className={classes.textFieldHeader} variant="body1">{field.title}</Typography>
-                            <TextField
-                                label={field.label}
-                                className={classes.textField}
-                                id={field.id}
-                                variant="filled"
-                                value={values[field.id]}
-                                onChange={handleStudentDetailsChange(field.id)}
-                                /> 
-                        </div>
-                    );
-                })}
+                <RegistrationField id="studentId" title="Student ID" label="12345678" value={values.studentId} handleChange={handleStudentDetailsChange} classes={classes} />
+                <RegistrationField id="email" title="Email" label="student123@student.uts.edu.au" value={values.email} handleChange={handleStudentDetailsChange} classes={classes} />
+                <RegistrationField id="fullName" title="Student Name" label="Full Name" value={values.fullName} handleChange={handleStudentDetailsChange} classes={classes} />
+                <RegistrationField id="preferredName" title="Preferred Name" label="First Name" value={values.preferredName} handleChange={handleStudentDetailsChange} classes={classes} />
+                <RegistrationField id="faculty" title="Faculty" label="Engineering" value={values.faculty} handleChange={handleStudentDetailsChange} classes={classes} />
+                <RegistrationField id="courseId" title="Course ID" label="C10026" value={values.courseId} handleChange={handleStudentDetailsChange} classes={classes} />
+                <RegistrationField id="preferredContactNumber" title="Preferred Contact Number" value={values.preferredContactNumber} label="0412345678" handleChange={handleStudentDetailsChange} classes={classes} />
+                <RegistrationField id="dateOfBirth" title="Date of Birth" label="01/01/2000" value={values.dateOfBirth} handleChange={handleStudentDetailsChange} classes={classes} />
                 
                 <Typography className={classes.textFieldHeader} variant="body1">Gender</Typography>
                 <RadioGroup aria-label="position" name="gender" value={values.gender} onChange={handleStudentDetailsChange("gender")} row>
@@ -154,27 +147,14 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
             </div>
             <div className={classes.rightLockup}>
                 <FormGroup>
-                    {studentRegistrationEducationFields.map((field: EducationField, index: number) => {
-                        return <div key={index} className={classes.educationForm}>
-                                    <div className={classes.educationFormLeft}>
-                                        <FormControlLabel
-                                            control={<Checkbox checked={values.education[index].isChecked} onChange={updateEducationCheckbox(index)} value={field.id} />}
-                                            label={field.label}
-                                            />
-                                    </div>
-                                    <div className={classes.educationFormRight}>
-                                        <TextField
-                                        type="number"
-                                        style={ values.education[index].isChecked ? {visibility: 'visible'} : {visibility: 'hidden'}}
-                                        label="Mark"
-                                        className={classes.textField}
-                                        id={field.id}
-                                        value={values[field.id]}
-                                        onChange={updateMark(index, field.id)}
-                                        />  
-                                    </div>
-                                </div>
-                    })}
+                    <RegistrationCheckbox id="hsc" label="HSC" index={0} value={values.education[0]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
+                    <RegistrationCheckbox id="ielts" label="IELTS" index={1} value={values.education[1]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
+                    <RegistrationCheckbox id="toefl" label="TOEFL" index={2} value={values.education[2]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
+                    <RegistrationCheckbox id="tafe" label="TAFE" index={3} value={values.education[3]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
+                    <RegistrationCheckbox id="cult" label="CULT" index={4} value={values.education[4]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
+                    <RegistrationCheckbox id="insearchDeep" label="Insearch DEEP" index={5} value={values.education[5]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
+                    <RegistrationCheckbox id="insearchDiploma" label="Insearch Diploma" index={6} value={values.education[6]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
+                    <RegistrationCheckbox id="foundationCourse" label="Foundation Course" index={7} value={values.education[7]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
                 </FormGroup>
                 <Button className={classes.input} id="submitStudentDetailsBtn" color="primary" size="large" type="submit" onClick={submitStudentDetails}>Submit</Button>
             </div>

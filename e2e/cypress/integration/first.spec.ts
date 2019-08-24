@@ -25,7 +25,7 @@ describe('Login Test', () => {
   });
 
   it('should fill in the registration fields', () => {
-    cy.get('#studentID')
+    cy.get('#studentId')
       .type('12345678').should('have.value', '12345678');
     cy.get('#fullName')
       .type('Sebastian Southern').should('have.value', 'Sebastian Southern')
@@ -33,7 +33,7 @@ describe('Login Test', () => {
     .type('Sebastian').should('have.value', 'Sebastian')
     cy.get('#faculty')
       .type('Engineering').should('have.value', 'Engineering');
-    cy.get('#courseID')
+    cy.get('#courseId')
       .type('C100026').should('have.value', 'C100026');
     cy.get('#email')
       .type('test123@student.uts.edu.au').should('have.value', 'test123@student.uts.edu.au');

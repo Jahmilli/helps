@@ -8,10 +8,12 @@ import Footer from '../common/Footer';
 import Auth from '../../logic/functions/core/Auth';
 import LoginPage from './LoginPage';
 import navbarTabs from './__data__/data.adminNavbarTabs.json';
+import AdminSessionContainer from '../containers/AdminDashboard/AdminSessionContainer';
+import BookSessionContainer from '../containers/AdminDashboard/BookSessionContainer';
 
 interface AdminHomePageProps {
     auth: Auth;
-    path: string;
+    props: any;
 }
 
 const useStyles = makeStyles(theme => ({
@@ -24,9 +26,9 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, path }) => {
+const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, props }) => {
     const classes = useStyles();
-
+    const { path } = props.match;
     return (
         <div>
             <Navbar auth={auth} path={path} navbarTabs={navbarTabs as Array<NavbarTab>}>
@@ -35,6 +37,8 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, path
             </Navbar>
             <div>
                 <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
+                <Route path={`${path}/sessions`} render={(props) => <AdminSessionContainer {...props} /> } />
+                <Route path={`/admin/bookSession`} render={(props) => <BookSessionContainer /> } />
             </div>
             <Footer />
         </div>

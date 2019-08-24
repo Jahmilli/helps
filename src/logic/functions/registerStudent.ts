@@ -1,7 +1,7 @@
 import { post } from './core/fetch';
-import { StudentDetails } from '../domains/studentDetails.domain';
+import { IStudentDetails } from '../domains/studentDetails.domain';
 
-const registerStudent = async (studentDetails: StudentDetails) => {
+const registerStudent = async (studentDetails: IStudentDetails) => {
     return await post('/api/v1/student/register', JSON.stringify(studentDetails));
 }
 

@@ -19,3 +19,4 @@ export const MySnackbarContentWrapperStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
     },
 }));
+
