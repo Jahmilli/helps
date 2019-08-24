@@ -1,8 +1,7 @@
 import { get } from './core/fetch';
 
-// This returns all sessions for the student (This could probably be used for both admins/students)
 const getSessionsForStudents = async (studentId: string): Promise<any> => {
-    return await get(`/api/v1/session/student/${studentId}`);
+    return await get(`/api/v1/student/${studentId}/sessions`);
 }
 
 export default getSessionsForStudents;
