@@ -11,7 +11,16 @@ export interface IStudentDetails {
     degree: string;
     status: string;
     education: Array<Course>;
+    upcomingSessions: IStudentSessions;
+    previousSessions: IStudentSessions;
 }
+
+export interface IStudentSessions {
+    sessions: Array<string>;
+    workshopSessions: Array<string>;
+}
+
+
 export class Course {
     constructor(title: string) {
         this.title = title;

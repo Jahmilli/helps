@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormControlLabel, Radio, RadioGroup, Typography, FormGroup, Button } from '@material-ui/core';
 import { registrationFormStyles } from './styles';
-import { IStudentDetails, Course } from '../../logic/domains/studentDetails.domain';
+import { IStudentDetails, Course, IStudentSessions } from '../../logic/domains/studentDetails.domain';
 import registerStudent from '../../logic/functions/registerStudent';
 import Auth from '../../logic/functions/core/Auth.js';
 import RegistrationField from '../presentational/StudentDashboard/RegistrationField';
@@ -12,13 +12,30 @@ interface RegistrationFormProps {
 }
 
 const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth }) => {
-    const studentDetailsInitialState = {} as IStudentDetails;
     const courseTitles = ['hsc', 'ielts', 'toefl', 'tafe', 'cult', 'insearchDeep', 'insearchDiploma', 'foundationCourse'] ;
-    
     const educationInitialState: Array<Course> = courseTitles.map((title: string) => new Course(title));
+    const sessionObject = {
+        sessions: [],
+        workshopSessions: [],
+    } as IStudentSessions;
 
-    studentDetailsInitialState.education = educationInitialState;
-
+    const studentDetailsInitialState = {
+        email: '',
+        studentId: '',
+        fullName: '',
+        preferredName: '',
+        faculty: '',
+        courseId: '',
+        preferredContactNumber: '',
+        dateOfBirth: '',
+        gender: '',
+        degree: '',
+        status: '',
+        education: educationInitialState,
+        upcomingSessions: sessionObject,
+        previousSessions: sessionObject,
+    } as IStudentDetails;
+    
     const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState);
 
     const handleStudentDetailsChange = (details: string) => (event: any) => {
@@ -49,6 +66,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
             // console.log(auth0Response);
             let response = await registerStudent(values);
             console.log('response is ', response);
+            alert('Successfully registered');
         } catch (err) {
             // TODO: Don't use an alert, display using a Snackbar or something
             console.log('An error occured when registering', err);
@@ -63,7 +81,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
                 <RegistrationField id="studentId" title="Student ID" label="12345678" value={values.studentId} handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="email" title="Email" label="student123@student.uts.edu.au" value={values.email} handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="fullName" title="Student Name" label="Full Name" value={values.fullName} handleChange={handleStudentDetailsChange} classes={classes} />
-                <RegistrationField id="preferredName" title="Preferred Name" label="First Name" value={values.preferredContactNumber} handleChange={handleStudentDetailsChange} classes={classes} />
+                <RegistrationField id="preferredName" title="Preferred Name" label="First Name" value={values.preferredName} handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="faculty" title="Faculty" label="Engineering" value={values.faculty} handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="courseId" title="Course ID" label="C10026" value={values.courseId} handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="preferredContactNumber" title="Preferred Contact Number" value={values.preferredContactNumber} label="0412345678" handleChange={handleStudentDetailsChange} classes={classes} />
