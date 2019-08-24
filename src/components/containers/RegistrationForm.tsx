@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormControlLabel, Radio, RadioGroup, Typography, FormGroup, Button } from '@material-ui/core';
 import { registrationFormStyles } from './styles';
-import { IStudentDetails, Course, IStudentSessions } from '../../logic/domains/studentDetails.domain';
+import { IStudentDetails, Course, IStudentSessionIds } from '../../logic/domains/studentDetails.domain';
 import registerStudent from '../../logic/functions/registerStudent';
 import Auth from '../../logic/functions/core/Auth.js';
 import RegistrationField from '../presentational/StudentDashboard/RegistrationField';
@@ -15,9 +15,9 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
     const courseTitles = ['hsc', 'ielts', 'toefl', 'tafe', 'cult', 'insearchDeep', 'insearchDiploma', 'foundationCourse'] ;
     const educationInitialState: Array<Course> = courseTitles.map((title: string) => new Course(title));
     const sessionObject = {
-        sessions: [],
-        workshopSessions: [],
-    } as IStudentSessions;
+        sessionIds: [],
+        workshopSessionIds: [],
+    } as IStudentSessionIds;
 
     const studentDetailsInitialState = {
         email: '',

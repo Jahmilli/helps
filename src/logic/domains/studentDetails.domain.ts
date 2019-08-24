@@ -11,13 +11,13 @@ export interface IStudentDetails {
     degree: string;
     status: string;
     education: Array<Course>;
-    upcomingSessions: IStudentSessions;
-    previousSessions: IStudentSessions;
+    upcomingSessions: IStudentSessionIds;
+    previousSessions: IStudentSessionIds;
 }
 
-export interface IStudentSessions {
-    sessions: Array<string>;
-    workshopSessions: Array<string>;
+export interface IStudentSessionIds {
+    sessionIds: Array<string>;
+    workshopSessionIds: Array<string>;
 }
 
 
