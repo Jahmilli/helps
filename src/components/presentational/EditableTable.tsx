@@ -63,11 +63,10 @@ const icons = {
 }
 
 const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, actions, options, editOptions }) => {
-  let editOptionsObj = {};
+  let editOptionsObj: any = {};
   
   if (editOptions) {
     if (editOptions.canAdd) {
-      // @ts-ignore
       editOptionsObj.onRowAdd = (newData: any) =>
         new Promise(resolve => {
           setTimeout(() => {
@@ -79,20 +78,17 @@ const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, set
         }) 
     }
     if (editOptions.canUpdate) {
-      // @ts-ignore
       editOptionsObj.onRowUpdate = (newData: any, oldData: any) =>
       new Promise(resolve => {
         setTimeout(() => {
           resolve();
           const data = [...state.data];
-          // @ts-ignore
           data[data.indexOf(oldData)] = newData;
           setState({ ...state, data });
         }, 600);
       })
     }
     if (editOptions.canDelete) {
-      // @ts-ignore
       editOptionsObj.onRowDelete = (oldData: any) =>
       new Promise(resolve => {
         setTimeout(() => {

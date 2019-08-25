@@ -35,8 +35,7 @@ const StudentNavbar: React.FunctionComponent<StudentNavbarProps> = ({ auth, path
             {children}
             <AppBar position="static" className={classes.root}>
                 <Tabs
-                    value={tabValue}
-                    centered>
+                    value={tabValue} variant='scrollable'>
                     {navbarTabs.map((tab: NavbarTab, index: number) => {
                         // Use this when we set isRegisteredUser to the JWT after registration
                         // if (tab.requiresAuth && !isAuthenticatedUser) {
