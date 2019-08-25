@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Typography, Button } from '@material-ui/core';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
-import EditableTable from '../EditableTable';
+import EditableTable, { EditOptions } from '../EditableTable';
 import { Add } from '@material-ui/icons';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { withRouter } from 'react-router-dom';
@@ -12,13 +12,18 @@ const icons = {
 }
 
 type AvailableSessionsProps = RouteComponentProps<any> & {
-    sessionData: any;
+    sessionData: Array<ISession>;
     isAdmin: boolean;
 }
 
 const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (props) => {
     const BOOK_SESSION = 'Book this session';
     const BOOKED = 'Booked';
+    const editOptions = {
+        canUpdate: true,
+        canDelete: true
+    } as EditOptions;
+
     const [state, setState] = React.useState({});
 
     const displayStudentId = (session: ISession) => {
@@ -46,7 +51,7 @@ const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (prop
                     // { title: 'A/NA', field: '' },
                     { title: 'Type', field: 'type' },
                     { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: ISession) => <div>{displayStudentId(rowData)}</div> }, 
-                    { title: 'Waiting', field: 'waitingList', render: (rowData: ISession) => <div>{renderWaitingList(rowData)}</div> }, 
+                    { title: 'Waiting', field: 'waitingList', editable: 'never', render: (rowData: ISession) => <div>{renderWaitingList(rowData)}</div> }, 
                 ],
                 data: props.sessionData.map((session: ISession) => session)
             });
@@ -89,7 +94,7 @@ const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (prop
                     onClick: (event: any, rowData: ISession) => handleBookSession(rowData)
                 }
             ]}
-            options={{ toolbar: false, paging: false }}/>
+            options={{ toolbar: false, paging: false }} editOptions={editOptions} />
         </div>
     );
 };
