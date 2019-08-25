@@ -9,6 +9,7 @@ import Auth from '../../logic/functions/core/Auth';
 import LoginPage from './LoginPage';
 import navbarTabs from './__data__/data.adminNavbarTabs.json';
 import AdminSessionContainer from '../containers/AdminDashboard/AdminSessionContainer';
+import AdminWorkshopsContainer from '../containers/AdminDashboard/AdminWorkshopsContainer';
 import BookSessionContainer from '../containers/AdminDashboard/BookSessionContainer';
 
 interface AdminHomePageProps {
@@ -18,13 +19,13 @@ interface AdminHomePageProps {
 
 const useStyles = makeStyles(theme => ({
     root: {
-      flexGrow: 1,
+        flexGrow: 1,
     },
     logo: {
         height: '10%',
         width: '10%'
     }
-  }));
+}));
 
 const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, props }) => {
     const classes = useStyles();
@@ -36,9 +37,10 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
                 <Typography variant="h2">UTS: HELPS</Typography>
             </Navbar>
             <div>
-                <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
-                <Route path={`${path}/sessions`} render={(props) => <AdminSessionContainer {...props} /> } />
-                <Route path={`/admin/bookSession`} render={(props) => <BookSessionContainer /> } />
+                <Route path={`${path}/login`} render={() => <LoginPage auth={auth} />} />
+                <Route path={`${path}/sessions`} render={(props) => <AdminSessionContainer props={props} />} />
+                <Route path={`${path}/workshops`} render={(props) => <AdminWorkshopsContainer props={props} />} />
+                <Route path={`/admin/bookSession`} render={(props) => <BookSessionContainer />} />
             </div>
             <Footer />
         </div>
