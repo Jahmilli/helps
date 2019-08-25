@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Typography, Button } from '@material-ui/core';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
-import EditableTable from '../EditableTable';
+import EditableTable, { EditOptions } from '../EditableTable';
 import { createNewSessions } from '../../../logic/functions/createNewSessions';
 import { createSessionStyle } from './styles';
 
@@ -11,6 +11,12 @@ interface CreateSessionsProps {};
 // Column headings in the table used in this component
 const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
     const classes = createSessionStyle();
+    const editOptions = {
+      canAdd: true,
+      canUpdate: true,
+      canDelete: true
+    } as EditOptions;
+
     const [state, setState] = React.useState({
       columns: [
         { title: 'Date', field: 'date' },
@@ -69,7 +75,7 @@ const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
                 Please note: all the fields are compulsory, otherwise 
                 that session will not be added.
             </Typography>
-            <EditableTable state={state} setState={setState} options={{ paging: false }}/>
+            <EditableTable state={state} setState={setState} options={{ paging: false }} editOptions={editOptions} />
             <Button id="submitBooking" color="primary" size="large" onClick={submitNewSessions}>Book Session</Button>
         </div>
     );

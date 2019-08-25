@@ -1,13 +1,10 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import { IStudentDetails } from '../../../logic/domains/studentDetails.domain';
 import getCurrentSessions from '../../../logic/functions/getSessionsForStudent';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
 import StudentSessionsTable from '../../presentational/StudentDashboard/StudentSessions';
 
-interface StudentBookingsContainerProps {
-
-}
+interface StudentBookingsContainerProps {}
 
 const StudentBookingsContainer:React.FunctionComponent<StudentBookingsContainerProps> = () => {
     const [sessions, setSessions] = React.useState<Array<ISession>>([]);
@@ -27,7 +24,7 @@ const StudentBookingsContainer:React.FunctionComponent<StudentBookingsContainerP
     }, []);
 
     return (
-        <div style={{margin: '0 3%'}}>
+        <div style={{ margin: '0 3%' }}>
             { sessions.length === 0 ? 
             <Typography variant="body1">There are no sessions to display.</Typography> :
             <StudentSessionsTable data={sessions} /> 

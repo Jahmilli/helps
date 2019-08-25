@@ -10,7 +10,7 @@ const icons = {
 }
 
 interface StudentSessionsTableProps {
-    data: any;
+    data: Array<ISession>;
 }
 
 const StudentSessionsTable: React.FunctionComponent<StudentSessionsTableProps> = ({ data }) => {

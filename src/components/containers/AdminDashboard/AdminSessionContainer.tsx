@@ -22,10 +22,10 @@ const AdminSessionContainer: React.FunctionComponent<AdminSessionContainerProps>
             } catch(err) {
                 alert('An error occurred when getting sessions');
             }
-        }
-        
+        } 
         callGetSessions();
     }, []);
+    
     return (
         <div style={{ margin: '0 5%' }}>
             <TopTabs />
