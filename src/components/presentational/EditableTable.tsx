@@ -24,6 +24,12 @@ interface EditableTableProps {
     setState: any;
     actions?: any;
     options?: any; // View https://material-table.com/#/docs/all-props for values that can be passed in for options
+    editOptions?: EditOptions;
+}
+export interface EditOptions {
+  canAdd?: boolean;
+  canUpdate?: boolean;
+  canDelete?: boolean;
 }
 
 export interface TableState {
@@ -56,7 +62,44 @@ const icons = {
     DetailPanel: () => <ChevronRight /> as React.ReactElement<SvgIconProps>,
 }
 
-const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, actions, options }) => {
+const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, actions, options, editOptions }) => {
+  let editOptionsObj: any = {};
+  
+  if (editOptions) {
+    if (editOptions.canAdd) {
+      editOptionsObj.onRowAdd = (newData: any) =>
+        new Promise(resolve => {
+          setTimeout(() => {
+            resolve();
+            const data = [...state.data];
+            data.push(newData);
+            setState({ ...state, data });
+          }, 600);
+        }) 
+    }
+    if (editOptions.canUpdate) {
+      editOptionsObj.onRowUpdate = (newData: any, oldData: any) =>
+      new Promise(resolve => {
+        setTimeout(() => {
+          resolve();
+          const data = [...state.data];
+          data[data.indexOf(oldData)] = newData;
+          setState({ ...state, data });
+        }, 600);
+      })
+    }
+    if (editOptions.canDelete) {
+      editOptionsObj.onRowDelete = (oldData: any) =>
+      new Promise(resolve => {
+        setTimeout(() => {
+          resolve();
+          const data = [...state.data];
+          data.splice(data.indexOf(oldData), 1);
+          setState({ ...state, data });
+        }, 600);
+      })
+    }
+  }
   return (
     <MaterialTable
       title="Create Sessions"
@@ -67,36 +110,8 @@ const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, set
       columns={state.columns}
       data={state.data}
       actions={actions}
-      editable={{
-        onRowAdd: newData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              const data = [...state.data];
-              data.push(newData);
-              setState({ ...state, data });
-            }, 600);
-          }),
-        onRowUpdate: (newData, oldData) =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              const data = [...state.data];
-              // @ts-ignore
-              data[data.indexOf(oldData)] = newData;
-              setState({ ...state, data });
-            }, 600);
-          }),
-        onRowDelete: oldData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              const data = [...state.data];
-              data.splice(data.indexOf(oldData), 1);
-              setState({ ...state, data });
-            }, 600);
-          }),
-      }}
+      // @ts-ignore
+      editable={editOptionsObj}
     />
   );
 }

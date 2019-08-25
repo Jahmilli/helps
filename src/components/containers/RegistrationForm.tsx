@@ -60,12 +60,11 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
     const submitStudentDetails = async (event: any) => {
         event.preventDefault();
         console.log(values);
-        // console.log(auth.readUserMetaData());
         try {
-            // let auth0Response = await auth.updateUserMetaData();
-            // console.log(auth0Response);
-            let response = await registerStudent(values);
+            let response: any = await registerStudent(values);
             console.log('response is ', response);
+            let auth0Response = await auth.updateUserMetaData(response._id, true);
+            console.log(auth0Response);
             alert('Successfully registered');
         } catch (err) {
             // TODO: Don't use an alert, display using a Snackbar or something
