@@ -1,16 +1,17 @@
 import * as React from 'react';
-import TopTabs from '../../presentational/AdminDashboard/TopTabs';
+import WorkshopsOverview from "./WorkshopsOverview"
 
 export interface AdminWorkshopsContainerProps {
     props: any
 }
- 
+
 const AdminWorkshopsContainer: React.SFC<AdminWorkshopsContainerProps> = ({ props }) => {
     const { path } = props.match
-    return ( 
+    return (
         <div>
+            <WorkshopsOverview />
         </div>
-     );
+    );
 }
- 
+
 export default AdminWorkshopsContainer;

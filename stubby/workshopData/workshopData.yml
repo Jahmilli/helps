@@ -1,0 +1,15 @@
+- request:
+    url: ^/api/v1/workshop$
+    method: GET
+  response:
+    status: 200
+    latency: 200
+    # headers:
+    #   Authorization: '123'
+    file: workshopData/payload.json
+
+- request:
+    url: ^/api/v1/workshop/create$
+    method: POST
+  response:
+    status: 200
