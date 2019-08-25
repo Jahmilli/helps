@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Typography, Button } from '@material-ui/core';
-import { getAvailableSessions } from '../../../logic/functions/getAvailableSessions';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
-import EditableTable from '../../presentational/EditableTable';
+import EditableTable from '../EditableTable';
 import { Add } from '@material-ui/icons';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { withRouter } from 'react-router-dom';
@@ -12,11 +11,12 @@ const icons = {
     Add: () => <Add /> as React.ReactElement<SvgIconProps>
 }
 
-type AvailableSessionsContainerProps = RouteComponentProps<any> & {
+type AvailableSessionsProps = RouteComponentProps<any> & {
+    sessionData: any;
     isAdmin: boolean;
 }
 
-const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainerProps> = (props) => {
+const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (props) => {
     const BOOK_SESSION = 'Book this session';
     const BOOKED = 'Booked';
     const [state, setState] = React.useState({});
@@ -36,9 +36,7 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
     }
 
     React.useEffect(() => {
-        async function callGetSessions() {
-            const details = await getAvailableSessions();
-            console.log('details', details);
+        if (props.sessionData) {
             setState({
                 columns: [
                     { title: 'Date', field: 'date' },
@@ -50,11 +48,10 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
                     { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: ISession) => <div>{displayStudentId(rowData)}</div> }, 
                     { title: 'Waiting', field: 'waitingList', render: (rowData: ISession) => <div>{renderWaitingList(rowData)}</div> }, 
                 ],
-                data: details.map((session: ISession) => session)
+                data: props.sessionData.map((session: ISession) => session)
             });
         }
-        callGetSessions();
-    }, []);
+    }, [props.sessionData]);
 
     const addToWaitingList = (eventData: ISession) => (event: React.MouseEvent) => {
         props.history.push({
@@ -98,4 +95,4 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
 };
     
 
-export default withRouter(AvailableSessionsContainer);
+export default withRouter(AvailableSessions);
