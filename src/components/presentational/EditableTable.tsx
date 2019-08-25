@@ -104,23 +104,6 @@ const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, set
       })
     }
   }
-  // if (!editOptions) {
-  //   delete editOptionsObj.onRowAdd;
-  //   delete editOptionsObj.onRowDelete;
-  //   delete editOptionsObj.onRowUpdate;
-  // } else {
-  //   if (!editOptions.canAdd) {
-  //     delete editOptionsObj.onRowUpdate;
-  //   }
-  //   if (!editOptions.canUpdate) {
-  //     delete editOptionsObj.onRowUpdate;
-  //   }
-  //   if (!editOptions.canDelete) {
-  //     delete editOptionsObj.onRowDelete;
-  //   }
-  // }
-  
-
   return (
     <MaterialTable
       title="Create Sessions"
