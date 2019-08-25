@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Typography, Button } from '@material-ui/core';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
-import EditableTable from '../../presentational/EditableTable';
+import EditableTable from '../EditableTable';
 import { createNewSessions } from '../../../logic/functions/createNewSessions';
-import { createSessionContainerStyle } from './styles';
+import { createSessionStyle } from './styles';
 
 
-interface CreateSessionsContainerProps {};
+interface CreateSessionsProps {};
 
 // Column headings in the table used in this component
-const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerProps> = () => {
-    const classes = createSessionContainerStyle();
+const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
+    const classes = createSessionStyle();
     const [state, setState] = React.useState({
       columns: [
         { title: 'Date', field: 'date' },
@@ -76,4 +76,4 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
 };
     
 
-export default CreateSessionsContainer;
+export default CreateSessions;
