@@ -8,9 +8,11 @@ import { RouteComponentProps } from 'react-router';
 import { getAvailableSessions } from '../../../logic/functions/getAvailableSessions';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
 
-type AdminSessionContainerProps = RouteComponentProps<any> & {}
+export interface AdminSessionContainerProps {
+    props: any
+}
 
-const AdminSessionContainer: React.FunctionComponent<AdminSessionContainerProps> = (props) => {
+const AdminSessionContainer: React.FunctionComponent<AdminSessionContainerProps> = ({props}) => {
     const { path } = props.match;
 
     const [sessions, setSessions] = React.useState<Array<ISession>>([]);
