@@ -16,7 +16,11 @@ interface LoginFormProps {
 }
 
 const LoginForm: React.FunctionComponent<LoginFormProps> = ({ auth }) => {
-    const initialUserDetailsState = {} as UserDetails;
+    const initialUserDetailsState = {
+        username: '',
+        password: '',
+        authFailed: false
+    } as UserDetails;
     const [userDetails, setUserDetails] = useState<UserDetails>(initialUserDetailsState);
     
     const handleChange = (name: string) => (event: any) => {
@@ -77,13 +81,12 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({ auth }) => {
                         <MySnackbarContentWrapper
                             variant="error"
                             className={classes.margin}
-                            message="This is an error message!">
+                            message="Login Failed">
                                 <IconButton key="close" aria-label="close" color="inherit" onClick={handleIconClick}>
                                     <CloseIcon className={classes.icon} />
                                 </IconButton>
-                            </MySnackbarContentWrapper>
-                         :
-                        ''
+                        </MySnackbarContentWrapper>
+                        : ''
                         }
                     </form>
                 </div>

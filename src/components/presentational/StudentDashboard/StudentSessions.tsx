@@ -5,6 +5,7 @@ import EditableTable from '../EditableTable';
 import { Add } from '@material-ui/icons';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 
+
 const icons = {
     Add: () => <Add /> as React.ReactElement<SvgIconProps>
 }
@@ -15,7 +16,7 @@ interface StudentSessionsTableProps {
 
 const StudentSessionsTable: React.FunctionComponent<StudentSessionsTableProps> = ({ data }) => {
     const [state, setState] = React.useState({});
-
+    
     React.useEffect(() => {
         console.log('data is ', data);
         if (data) {
