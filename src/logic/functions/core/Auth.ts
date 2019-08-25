@@ -66,7 +66,7 @@ export default class Auth {
                 window.location.hash = '';
                 window.location.href = '';
                 // TODO: Will need to check email or something to verify user is student or admin and redirect on that.
-                window.location.pathname = '/student/myInformation';
+                window.location.pathname = '/student/register';
             } else if (err) {
                 console.log('An error occurred during authentication');
                 console.log(err);

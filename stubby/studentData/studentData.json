@@ -1,0 +1,65 @@
+{
+ "education": [
+    {
+        "title": "hsc",
+        "mark": 0,
+        "isChecked": true
+    },
+    {
+        "title": "ielts",
+        "mark": 0,
+        "isChecked": false
+    },
+    {
+        "title": "toefl",
+        "mark": 0,
+        "isChecked": false
+    },
+    {
+        "title": "tafe",
+        "mark": 0,
+        "isChecked": false
+    },
+    {
+        "title": "cult",
+        "mark": 0,
+        "isChecked": false
+    },
+    {
+        "title": "insearchDeep",
+        "mark": 0,
+        "isChecked": false
+    },
+    {
+        "title": "insearchDiploma",
+        "mark": 0,
+        "isChecked": false
+    },
+    {
+        "title": "foundationCourse",
+        "mark": 0,
+        "isChecked": false
+    }
+  ],
+  "email": "stan.marsh@gmail.com",
+  "studentId": "1234567",
+  "fullName": "Stan Marsh",
+  "preferredName": "Stan",
+  "faculty": "Faculty of Engineering & Information Technology",
+  "courseId": "C10026",
+  "preferredContactNumber": "0413123456",
+  "dateOfBirth": "01/01/1997",
+  "gender": "male",
+  "degree": "undergraduate",
+  "status": "resident",
+  "upcomingSessions": {
+      "sessionIds": [
+          "5d60a666c781ca6880b5b78a"
+      ],
+      "workshopSessionIds": []
+  },
+  "previousSessions": {
+      "sessionIds": [],
+      "workshopSessionIds": []
+  },
+}

@@ -1,16 +1,22 @@
 import * as React from 'react';
 import { Typography, Button } from '@material-ui/core';
-import { Session } from '../../../logic/domains/sessionDetails.domain';
-import EditableTable from '../../presentational/EditableTable';
+import { ISession } from '../../../logic/domains/sessionDetails.domain';
+import EditableTable, { EditOptions } from '../EditableTable';
 import { createNewSessions } from '../../../logic/functions/createNewSessions';
-import { createSessionContainerStyle } from './styles';
+import { createSessionStyle } from './styles';
 
 
-interface CreateSessionsContainerProps {};
+interface CreateSessionsProps {};
 
 // Column headings in the table used in this component
-const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerProps> = () => {
-    const classes = createSessionContainerStyle();
+const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
+    const classes = createSessionStyle();
+    const editOptions = {
+      canAdd: true,
+      canUpdate: true,
+      canDelete: true
+    } as EditOptions;
+
     const [state, setState] = React.useState({
       columns: [
         { title: 'Date', field: 'date' },
@@ -21,7 +27,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
         { title: 'Type', field: 'type' },
         
       ],
-      data: [{} as Session],
+      data: [{} as ISession],
     });
 
     const isEmpty = (str: string): boolean => {
@@ -29,6 +35,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
     }
 
     const validateSessions = (): boolean => {
+      console.log(state.data);
       for (let session of state.data) {
         if (isEmpty(session.date) || (isEmpty(session.startTime) || 
             isEmpty(session.endTime) || isEmpty(session.room) || 
@@ -41,7 +48,7 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
 
     const submitNewSessions = async () => {
       if (validateSessions()) {
-        const tempData = state.data as Array<Session>;
+        const tempData = state.data as Array<ISession>;
         for (let index in state.data) {
           tempData[index] = {...tempData[index], advisor: 'current advisor'}
           // TODO: delete tableData key and value
@@ -68,11 +75,11 @@ const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerPr
                 Please note: all the fields are compulsory, otherwise 
                 that session will not be added.
             </Typography>
-            <EditableTable state={state} setState={setState} options={{ paging: false }}/>
+            <EditableTable state={state} setState={setState} options={{ paging: false }} editOptions={editOptions} />
             <Button id="submitBooking" color="primary" size="large" onClick={submitNewSessions}>Book Session</Button>
         </div>
     );
 };
     
 
-export default CreateSessionsContainer;
+export default CreateSessions;

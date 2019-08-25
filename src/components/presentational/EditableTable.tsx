@@ -24,6 +24,12 @@ interface EditableTableProps {
     setState: any;
     actions?: any;
     options?: any; // View https://material-table.com/#/docs/all-props for values that can be passed in for options
+    editOptions?: EditOptions;
+}
+export interface EditOptions {
+  canAdd?: boolean;
+  canUpdate?: boolean;
+  canDelete?: boolean;
 }
 
 export interface TableState {
@@ -56,7 +62,65 @@ const icons = {
     DetailPanel: () => <ChevronRight /> as React.ReactElement<SvgIconProps>,
 }
 
-const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, actions, options }) => {
+const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, actions, options, editOptions }) => {
+  let editOptionsObj = {};
+  
+  if (editOptions) {
+    if (editOptions.canAdd) {
+      // @ts-ignore
+      editOptionsObj.onRowAdd = (newData: any) =>
+        new Promise(resolve => {
+          setTimeout(() => {
+            resolve();
+            const data = [...state.data];
+            data.push(newData);
+            setState({ ...state, data });
+          }, 600);
+        }) 
+    }
+    if (editOptions.canUpdate) {
+      // @ts-ignore
+      editOptionsObj.onRowUpdate = (newData: any, oldData: any) =>
+      new Promise(resolve => {
+        setTimeout(() => {
+          resolve();
+          const data = [...state.data];
+          // @ts-ignore
+          data[data.indexOf(oldData)] = newData;
+          setState({ ...state, data });
+        }, 600);
+      })
+    }
+    if (editOptions.canDelete) {
+      // @ts-ignore
+      editOptionsObj.onRowDelete = (oldData: any) =>
+      new Promise(resolve => {
+        setTimeout(() => {
+          resolve();
+          const data = [...state.data];
+          data.splice(data.indexOf(oldData), 1);
+          setState({ ...state, data });
+        }, 600);
+      })
+    }
+  }
+  // if (!editOptions) {
+  //   delete editOptionsObj.onRowAdd;
+  //   delete editOptionsObj.onRowDelete;
+  //   delete editOptionsObj.onRowUpdate;
+  // } else {
+  //   if (!editOptions.canAdd) {
+  //     delete editOptionsObj.onRowUpdate;
+  //   }
+  //   if (!editOptions.canUpdate) {
+  //     delete editOptionsObj.onRowUpdate;
+  //   }
+  //   if (!editOptions.canDelete) {
+  //     delete editOptionsObj.onRowDelete;
+  //   }
+  // }
+  
+
   return (
     <MaterialTable
       title="Create Sessions"
@@ -67,36 +131,8 @@ const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, set
       columns={state.columns}
       data={state.data}
       actions={actions}
-      editable={{
-        onRowAdd: newData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              const data = [...state.data];
-              data.push(newData);
-              setState({ ...state, data });
-            }, 600);
-          }),
-        onRowUpdate: (newData, oldData) =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              const data = [...state.data];
-              // @ts-ignore
-              data[data.indexOf(oldData)] = newData;
-              setState({ ...state, data });
-            }, 600);
-          }),
-        onRowDelete: oldData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              const data = [...state.data];
-              data.splice(data.indexOf(oldData), 1);
-              setState({ ...state, data });
-            }, 600);
-          }),
-      }}
+      // @ts-ignore
+      editable={editOptionsObj}
     />
   );
 }

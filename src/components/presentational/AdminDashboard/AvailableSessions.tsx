@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Typography, Button } from '@material-ui/core';
-import { getAvailableSessions } from '../../../logic/functions/getAvailableSessions';
-import { Session } from '../../../logic/domains/sessionDetails.domain';
-import EditableTable from '../../presentational/EditableTable';
+import { ISession } from '../../../logic/domains/sessionDetails.domain';
+import EditableTable, { EditOptions } from '../EditableTable';
 import { Add } from '@material-ui/icons';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { withRouter } from 'react-router-dom';
@@ -12,23 +11,29 @@ const icons = {
     Add: () => <Add /> as React.ReactElement<SvgIconProps>
 }
 
-type AvailableSessionsContainerProps = RouteComponentProps<any> & {
+type AvailableSessionsProps = RouteComponentProps<any> & {
+    sessionData: Array<ISession>;
     isAdmin: boolean;
 }
 
-const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsContainerProps> = (props) => {
+const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (props) => {
     const BOOK_SESSION = 'Book this session';
     const BOOKED = 'Booked';
+    const editOptions = {
+        canUpdate: true,
+        canDelete: true
+    } as EditOptions;
+
     const [state, setState] = React.useState({});
 
-    const displayStudentId = (session: Session) => {
+    const displayStudentId = (session: ISession) => {
         if (session.currentBooking === undefined) {
             return BOOK_SESSION;
         }
         return props.isAdmin ? session.currentBooking.studentId : BOOKED;
     }
 
-    const renderWaitingList = (session: Session) => {
+    const renderWaitingList = (session: ISession) => {
         if (session.waitingList.length === 0) {
             return <Button onClick={addToWaitingList(session)}>Add</Button>
         }
@@ -36,9 +41,7 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
     }
 
     React.useEffect(() => {
-        async function callGetSessions() {
-            const details = await getAvailableSessions();
-            console.log('details', details);
+        if (props.sessionData) {
             setState({
                 columns: [
                     { title: 'Date', field: 'date' },
@@ -47,18 +50,15 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
                     { title: 'Room', field: 'room' },
                     // { title: 'A/NA', field: '' },
                     { title: 'Type', field: 'type' },
-                    { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: Session) => <td>{displayStudentId(rowData)}</td> }, 
-                    { title: 'Waiting', field: 'waitingList', render: (rowData: Session) => <td>{renderWaitingList(rowData)}</td> }, 
+                    { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: ISession) => <div>{displayStudentId(rowData)}</div> }, 
+                    { title: 'Waiting', field: 'waitingList', editable: 'never', render: (rowData: ISession) => <div>{renderWaitingList(rowData)}</div> }, 
                 ],
-                data: details.map((session: Session) => {
-                    return session;
-                })
-              });
+                data: props.sessionData.map((session: ISession) => session)
+            });
         }
-        callGetSessions();
-    }, []);
+    }, [props.sessionData]);
 
-    const addToWaitingList = (eventData: Session) => (event: React.MouseEvent) => {
+    const addToWaitingList = (eventData: ISession) => (event: React.MouseEvent) => {
         props.history.push({
             pathname: `/admin/bookSession`,
             state: {
@@ -68,7 +68,7 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
         });
     }
 
-    const handleBookSession = (eventData: Session) => {
+    const handleBookSession = (eventData: ISession) => {
         // Navigate to a different page with the event data passed in
         // if (eventData.studentId !== BOOK_SESSION) {
         //     alert('This session is already booked');
@@ -91,13 +91,13 @@ const AvailableSessionsContainer: React.FunctionComponent<AvailableSessionsConta
             <EditableTable state={state} setState={setState} actions={[{
                     icon: icons.Add,
                     tooltip: 'Book Session',
-                    onClick: (event: any, rowData: any) => handleBookSession(rowData)
+                    onClick: (event: any, rowData: ISession) => handleBookSession(rowData)
                 }
             ]}
-            options={{ toolbar: false, paging: false }}/>
+            options={{ toolbar: false, paging: false }} editOptions={editOptions} />
         </div>
     );
 };
     
 
-export default withRouter(AvailableSessionsContainer);
+export default withRouter(AvailableSessions);

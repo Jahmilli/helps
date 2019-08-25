@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Typography, FormGroup, Button } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import TextLockup from '../../presentational/TextLockup';
-import { Session } from '../../../logic/domains/sessionDetails.domain';
 import bookSession from '../../../logic/functions/bookSession'; 
 import CheckboxOption from '../../presentational/AdminDashboard/CheckboxOption';
 import SessionBookingField from '../../presentational/AdminDashboard/SessionBookingField';
@@ -20,9 +19,9 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         bookingAnswer7: false, 
     }
 
-    let initialState: Session = {...props.location.state.eventData };
-    let isCurrentBooking = props.location.state.isCurrentBooking;
-    let booking = isCurrentBooking ? initialState.currentBooking : initialState.waitingList[0];
+    let initialState = props.location.state.eventData;
+    let isCurrentBooking = props.location.state.isCurrentBooking; 
+    let booking = isCurrentBooking ? initialState.currentBooking : initialState.waitingList[initialState.waitingList.length];
 
     let initialBookingState = {
         studentId: '',
@@ -43,8 +42,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
             subjectName,
             assignmentType,
             isGroupAssignment,
-            //@ts-ignore
-            needsHelpWithOptions, 
+            needsHelpWithOptions,
             additionalHelpDetails,
         };
     }
@@ -94,7 +92,8 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 currentBooking: {
                     ...bookingState,
                     additionalOptions: additionalChecks
-                }
+                },
+                isCurrentBooking: true
             }
         } else {
             tempData = {
@@ -102,17 +101,19 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 waitingList: [
                     ...initialState.waitingList,
                     {...bookingState}
-                    // additionalOptions: additionalChecks
-                ]
+                ],
+                isCurrentBooking: false
             }
         }
         console.log(tempData);
         try {
             //@ts-ignore
             await bookSession(tempData);
+            // TODO: Change alert to using a toast message or something
             alert('successfully updated booking');
             props.history.push('/admin/sessions');
         } catch(err) {
+            // TODO: Change alert to using a toast message or something
             alert('An error occurred when booking');
             console.log('An error occurred when booking session', err);
         }
@@ -126,7 +127,6 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
             <TextLockup label="Time:" value={`${initialState.startTime} - ${initialState.endTime}`}/>
             <TextLockup label="Campus:" value={initialState.room} />
             <TextLockup label="Type:" value={initialState.type}/>
-                  
             <form onSubmit={handleSubmit}>
                 <SessionBookingField id="studentId" title="Student ID" value={bookingState.studentId} handleChange={handleChange} />
                 <SessionBookingField id="reason" title="This appointment is for..." value={bookingState.reason} handleChange={handleChange} />

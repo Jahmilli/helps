@@ -7,7 +7,25 @@
         "room": "CB11.01.01",
         "advisor": "John Kennedy",
         "type": "Random Type",
-        "studentId": "Neil Sutherland"
+        "currentBooking": {
+            "studentId": "12097365",
+            "reason": "Learning how to design a Highly available architecture",
+            "subjectName": "Software Architecture",
+            "assignmentType": "Group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Additional answers go here...",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            
+            }
+        },
+        "waitingList": []
     },
     {
         "id": "va21410asdo120njsnad9",
@@ -17,7 +35,44 @@
         "room": "CB11.01.01",
         "advisor": "Phil Gilbert",
         "type": "Random Type",
-        "studentId": "Jay Cartwright"
+        "currentBooking": {
+            "studentId": "12097365",
+            "reason": "Figuring out the meaning of life...",
+            "subjectName": "Business Requirements & Modelling",
+            "assignmentType": "Group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Additional answers go here...",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            
+            }
+        },
+        "waitingList": [
+            {
+                "studentId": "12097397",
+                "reason": "Learning how to implement a breadth first traversal",
+                "subjectName": "Data Structures & Algorithms",
+                "assignmentType": "I don't know",
+                "isGroupAssignment": false,
+                "additionalHelpDetails": "I need help...",
+                "needsHelpWithOptions": {
+                    "bookingAnswer1": false,
+                    "bookingAnswer2": true,
+                    "bookingAnswer3": true,
+                    "bookingAnswer4": false,
+                    "bookingAnswer5": true,
+                    "bookingAnswer6": true,
+                    "bookingAnswer7": true
+                
+                }
+            }
+        ]
     },
     {
         "id": "aaasd0824732204nadms",
@@ -27,6 +82,6 @@
         "room": "CB11.01.01",
         "advisor": "Mark Donovan",
         "type": "Random Type",
-        "studentId": ""
+        "waitingList": []
     }
 ]
