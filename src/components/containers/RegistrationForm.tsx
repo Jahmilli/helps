@@ -9,7 +9,6 @@ import RegistrationCheckbox from '../presentational/StudentDashboard/Registratio
 
 interface RegistrationFormProps {
     auth: Auth;
-    userDetails?: any;
 }
 
 const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth }) => {
@@ -37,7 +36,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
         previousSessions: sessionObject,
     } as IStudentDetails;
     
-    const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState); 
+    const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState);
 
     const handleStudentDetailsChange = (details: string) => (event: any) => {
         setValues({
