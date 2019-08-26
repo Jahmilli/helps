@@ -16,7 +16,7 @@ const RegistrationCheckbox: React.FunctionComponent<RegistrationCheckboxProps> =
     <div className={classes.educationForm}>
         <div className={classes.educationFormLeft}>
             <FormControlLabel
-                control={<Checkbox onChange={updateEducationCheckbox(index)} value={id} />}
+                control={<Checkbox checked={value.isChecked} onChange={updateEducationCheckbox(index)} value={id} />}
                 label={label}
                 />
         </div>

@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
-import { FormControlLabel, Radio, RadioGroup, Typography, FormGroup, Button } from '@material-ui/core';
-import { registrationFormStyles } from './styles';
-import { IStudentDetails, Course, IStudentSessionIds } from '../../logic/domains/studentDetails.domain';
-import registerStudent from '../../logic/functions/registerStudent';
-import Auth from '../../logic/functions/core/Auth.js';
-import RegistrationField from '../presentational/StudentDashboard/RegistrationField';
-import RegistrationCheckbox from '../presentational/StudentDashboard/RegistrationCheckbox';
+import { FormControlLabel, Radio, RadioGroup, Typography, FormGroup } from '@material-ui/core';
+import { registrationFormStyles } from '../../containers/styles';
+import { IStudentDetails, Course, IStudentSessionIds } from '../../../logic/domains/studentDetails.domain';
+import RegistrationField from './RegistrationField';
+import RegistrationCheckbox from './RegistrationCheckbox';
+import UserContext from '../../../UserContext';
 
-interface RegistrationFormProps {
-    auth: Auth;
-    userDetails?: any;
-}
+interface StudentDetailsProps {}
 
-const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth }) => {
+const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
     const courseTitles = ['hsc', 'ielts', 'toefl', 'tafe', 'cult', 'insearchDeep', 'insearchDiploma', 'foundationCourse'] ;
     const educationInitialState: Array<Course> = courseTitles.map((title: string) => new Course(title));
+    const userDetails = React.useContext(UserContext);
+
     const sessionObject = {
         sessionIds: [],
         workshopSessionIds: [],
     } as IStudentSessionIds;
 
-    const studentDetailsInitialState = {
+    let studentDetailsInitialState = {
         email: '',
         studentId: '',
         fullName: '',
@@ -37,8 +35,16 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
         previousSessions: sessionObject,
     } as IStudentDetails;
     
-    const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState); 
-
+    const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState);
+    React.useEffect(() => {
+        if (userDetails.userDetails) {
+            console.log('user detais are ', userDetails);
+            setValues(userDetails.userDetails);
+        } else {
+            console.log('user details are empty', userDetails);
+        }
+    }, [userDetails]);
+    
     const handleStudentDetailsChange = (details: string) => (event: any) => {
         setValues({
             ...values,
@@ -56,22 +62,6 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
         const details = {...values};
         details.education[index].mark = event.target.value
         setValues(details);
-    }
-
-    const submitStudentDetails = async (event: any) => {
-        event.preventDefault();
-        console.log(values);
-        try {
-            let response: any = await registerStudent(values);
-            console.log('response is ', response);
-            let auth0Response = await auth.updateUserMetaData(response._id, true);
-            console.log(auth0Response);
-            alert('Successfully registered');
-        } catch (err) {
-            // TODO: Don't use an alert, display using a Snackbar or something
-            console.log('An error occured when registering', err);
-            alert('An error occured during registration, please try a different email or try again later...');
-        }
     }
 
     const classes = registrationFormStyles();
@@ -156,10 +146,9 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
                     <RegistrationCheckbox id="insearchDiploma" label="Insearch Diploma" index={6} value={values.education[6]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
                     <RegistrationCheckbox id="foundationCourse" label="Foundation Course" index={7} value={values.education[7]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
                 </FormGroup>
-                <Button className={classes.input} id="submitStudentDetailsBtn" color="primary" size="large" type="submit" onClick={submitStudentDetails}>Submit</Button>
             </div>
         </form>
     );
 };
 
-export default RegistrationForm;
+export default StudentDetails;
