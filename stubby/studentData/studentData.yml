@@ -1,5 +1,5 @@
 - request:
-    url: ^/api/v1/student/(\d+)/details$
+    url: ^/api/v1/student/(.*)/details$
     method: GET
   response:
     status: 200
@@ -7,9 +7,9 @@
     file: studentData/studentData.json
 
 - request:
-    url: ^/api/v1/student/(\d+)/sessions$
+    url: ^/api/v1/student/(.*)/sessions$
     method: GET
   response:
     status: 200
     latency: 200
-    file: studentData/studentData.json
+    file: sessionData/payload.json
