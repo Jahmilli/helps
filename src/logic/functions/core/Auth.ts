@@ -42,6 +42,7 @@ export default class Auth {
 
     // Called at login
     async login(username: string, password: string): Promise<auth0.LoginOptions | auth0.Auth0Error> {
+        console.log('username is ' + username + '\tpassword is ' + password);
         return new Promise((resolve, reject) => {
             this.auth0.login({
                 username: username,

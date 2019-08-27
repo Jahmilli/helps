@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Typography, FormControl, InputLabel, Input, FormHelperText, IconButton } from '@material-ui/core';
+import { Button, Typography, FormControl, InputLabel, Input, FormHelperText, IconButton, TextField } from '@material-ui/core';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { Close as CloseIcon } from '@material-ui/icons';
 import Auth from '../../logic/functions/core/Auth';
 import { loginFormStyles } from './styles';
 import MySnackbarContentWrapper from '../presentational/SnackBarContentWrapper';
-
-interface UserDetails {
-    username: string;
-    password: string;
-    authFailed: boolean;
-}
 
 interface LoginFormProps {
     auth: Auth;
@@ -17,78 +13,67 @@ interface LoginFormProps {
 
 const LoginForm: React.FunctionComponent<LoginFormProps> = ({ auth }) => {
     const initialUserDetailsState = {
-        username: '',
-        password: '',
-        authFailed: false
-    } as UserDetails;
-    const [userDetails, setUserDetails] = useState<UserDetails>(initialUserDetailsState);
+        email: 'test@test.com',
+        password: 'Password123'
+    };
     
-    const handleChange = (name: string) => (event: any) => {
-        setUserDetails({
-            ...userDetails,
-            [name]: event.target.value
-        });
-    }
-    const handleSubmit = async (event: any) => {
-        event.preventDefault();
+    const handleSubmit = async (values: any) => {    
+        // event.preventDefault();
+        console.log('values are ', values);
         try {
-            await auth.login(userDetails.username, userDetails.password);
+            await auth.login(values.email, values.password);
         } catch (err) {
-            setUserDetails({
-                ...userDetails,
-                authFailed: true
-            })
+            alert('failed ' + err);
         }
     }
 
-    const handleIconClick = (event: any) => {
-        setUserDetails({
-            ...userDetails,
-            authFailed: false
-        })
+
+    const validateForm = (values: any) => {
+        let errors: any = {};
+        if (!values.email) {
+          errors.email = 'Email Required';
+        } 
+        if (!values.password) {
+            errors.password = 'Password Required';
+        }
+        return errors;
     }
+
+    const SignupSchema = Yup.object().shape({
+        email: Yup.string()
+            .email('Invalid email')
+            .required('Email Required'),
+        password: Yup.string()
+            .required('Password Required')
+    });
+    
     
     const classes = loginFormStyles();
     return (
         <div style={{ display: 'flex', justifyContent: 'center'}}>
             <div className={classes.gridLockup}>
                 <div className={classes.loginLockup}>
-                <form onSubmit={handleSubmit}>
-                    <Typography className={classes.title} variant="h2">Login</Typography>
-                        <FormControl fullWidth={true}>
-                            <InputLabel htmlFor="username-field">Email address</InputLabel>
-                            <Input 
-                            aria-describedby="username-field"
-                                id="username"
-                                onChange={handleChange('username')}
-                                value={userDetails.username}
-                            />
-                            <FormHelperText id="username-field">We'll never share your email.</FormHelperText>
-                        </FormControl>
-
-                        <FormControl fullWidth={true}>
-                            <InputLabel htmlFor="password-field">Password</InputLabel>
-                            <Input 
-                                aria-describedby="password-field" 
-                                type="password"
-                                id="password"
-                                onChange={handleChange('password')}
-                                value={userDetails.password}
-                            />
-                        </FormControl>
-                        <Button className={classes.useWhite} id="signInButton" color="primary" size="large" type="submit">Sign In</Button>
-                        { userDetails.authFailed ? 
-                        <MySnackbarContentWrapper
-                            variant="error"
-                            className={classes.margin}
-                            message="Login Failed">
-                                <IconButton key="close" aria-label="close" color="inherit" onClick={handleIconClick}>
-                                    <CloseIcon className={classes.icon} />
-                                </IconButton>
-                        </MySnackbarContentWrapper>
-                        : ''
-                        }
-                    </form>
+                    <Formik
+                    initialValues={initialUserDetailsState}
+                    validationSchema={SignupSchema}
+                    onSubmit={(values: any) => handleSubmit(values)}
+                    >
+                    {({ errors, touched }) => (
+                        <Form>
+                            <Typography variant="body1">Email</Typography>
+                            <Field name="email" />
+                            {errors.email && touched.email ? (
+                                <div>{errors.email}</div>
+                            ) : null}
+                            <Typography variant="body1">Password</Typography>
+                            <Field name="password" />
+                            {errors.password && touched.password ? (
+                                <div>{errors.password}</div>
+                            ) : null}
+                            <button type="submit">Submit</button>
+                        </Form>
+                    )}
+                    </Formik>
                 </div>
             </div>
         </div>
