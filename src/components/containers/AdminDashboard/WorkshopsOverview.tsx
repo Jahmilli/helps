@@ -3,6 +3,7 @@ import { getCurrentWorkshops, getArchivedWorkshops } from './../../../logic/func
 import { Workshop } from '../../../logic/domains/workshopDetails.domain';
 import EditableTable, { EditOptions } from '../../presentational/EditableTable';
 import { Add } from '@material-ui/icons';
+import { Button } from '@material-ui/core';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 
 export interface WorkshopOverviewProps {
@@ -15,11 +16,16 @@ const icons = {
 
 const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ tab }) => {
     const editOptions = {
+        canAdd: true,
         canUpdate: true,
         canDelete: true
     } as EditOptions;
 
     const [state, setState] = React.useState({});
+
+    const renderWaitingList = () => {
+        return <Button color="primary" variant="outlined">Details</Button>
+    }
 
     React.useEffect(() => {
         if (tab) {
@@ -35,7 +41,8 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ tab }) => {
                     columns: [
                         { title: 'No', field: 'no' },
                         { title: 'Skill-Set', field: 'skillSet' },
-                        { title: 'Short Title', field: 'shortTitle' }
+                        { title: 'Short Title', field: 'shortTitle' },
+                        { title: 'Details', field: 'details', editable: 'never', render: (rowData: "Test") => <div>{renderWaitingList()}</div> },
                         // { title: 'Room', field: 'room' },
                         // { title: 'A/NA', field: '' },
                         // { title: 'Type', field: 'type' },
@@ -55,12 +62,8 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ tab }) => {
         <div>
             <br />
             <br />
-            <EditableTable state={state} setState={setState} actions={[{
-                icon: icons.Add,
-                tooltip: 'Create Workshop',
-            }
-            ]}
-                options={{ toolbar: false, paging: false }} editOptions={editOptions} />
+            <EditableTable state={state} setState={setState}
+                options={{ paging: false }} editOptions={editOptions} title={'Workshop'} />
         </div>
     );
 }

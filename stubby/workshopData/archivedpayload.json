@@ -1,6 +1,13 @@
 [{
-    "id": "1",
-    "no": "1",
-    "skillSet": "M:Pass",
-    "shortTitle": "M:Pass"
-}]
+        "id": "1",
+        "no": "1",
+        "skillSet": "Writing",
+        "shortTitle": "Writing"
+    },
+    {
+        "id": "2",
+        "no": "2",
+        "skillSet": "Math",
+        "shortTitle": "Math"
+    }
+]
