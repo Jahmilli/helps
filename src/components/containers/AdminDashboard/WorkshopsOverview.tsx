@@ -7,6 +7,7 @@ import { Button } from '@material-ui/core';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 
 export interface WorkshopOverviewProps {
+    props: any
     tab: string
 }
 
@@ -14,7 +15,7 @@ const icons = {
     Add: () => <Add /> as React.ReactElement<SvgIconProps>
 }
 
-const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ tab }) => {
+const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
     const editOptions = {
         canAdd: true,
         canUpdate: true,
@@ -23,8 +24,18 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ tab }) => {
 
     const [state, setState] = React.useState({});
 
-    const renderWaitingList = () => {
-        return <Button color="primary" variant="outlined">Details</Button>
+    const renderWaitingList = (workshop: Workshop) => {
+        return <Button color="primary" variant="outlined" onClick={amendDetails(workshop)}>Details</Button>
+    }
+
+    const amendDetails = (eventData: Workshop) => (event: React.MouseEvent) => {
+        props.history.push({
+            pathname: `${props.match.path}/amendDetails/${eventData._id}`,
+            state: {
+                eventData,
+                isCurrentBooking: false
+            }
+        });
     }
 
     React.useEffect(() => {
@@ -42,7 +53,7 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ tab }) => {
                         { title: 'No', field: 'no' },
                         { title: 'Skill-Set', field: 'skillSet' },
                         { title: 'Short Title', field: 'shortTitle' },
-                        { title: 'Details', field: 'details', editable: 'never', render: (rowData: "Test") => <div>{renderWaitingList()}</div> },
+                        { title: 'Details', field: 'details', editable: 'never', render: (rowData: Workshop) => <div>{renderWaitingList(rowData)}</div> },
                         // { title: 'Room', field: 'room' },
                         // { title: 'A/NA', field: '' },
                         // { title: 'Type', field: 'type' },

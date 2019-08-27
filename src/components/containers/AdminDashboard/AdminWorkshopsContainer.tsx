@@ -34,7 +34,7 @@ const AdminWorkshopsContainer: React.SFC<AdminWorkshopsContainerProps> = ({ prop
             <Typography variant="h3">Workshops</Typography>
             <CenteredTabs workshopTabs={workshopTabs} props={props} callbackTab={myCallbackTab} />
             {console.log("tab:" + state.tab)}
-            {state.tab === "Current" ? (<WorkshopsOverview tab={state.tab} />) : (<WorkshopsOverview tab={state.tab} />)}
+            {state.tab === "Current" ? (<WorkshopsOverview props={props} tab={state.tab} />) : (<WorkshopsOverview props={props} tab={state.tab} />)}
 
         </div>
     );

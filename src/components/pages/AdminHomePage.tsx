@@ -41,6 +41,7 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
                 <Route path={`${path}/sessions`} render={(props) => <AdminSessionContainer props={props} />} />
                 <Route path={`${path}/workshops`} render={(props) => <AdminWorkshopsContainer props={props} />} />
                 <Route path={`/admin/bookSession`} render={(props) => <BookSessionContainer />} />
+                {/* <Route path={`${path}/workshops/amendDetails/:workshop`} render={(props) => ()} /> */}
             </div>
             <Footer />
         </div>
