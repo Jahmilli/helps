@@ -114,7 +114,7 @@ export default class Auth {
         return auth0Manage;
     }
 
-    updateUserMetaData(_id: string, isStudent: boolean = true): Promise<Auth0UserProfile | string> {
+    updateUserMetaData(_id: string, isStudent: boolean): Promise<Auth0UserProfile | string> {
         const userData: UserProfile = this.getProfile();
         const metaDataObject = {
             isRegisteredUser: true,
