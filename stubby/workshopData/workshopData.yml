@@ -1,12 +1,22 @@
 - request:
-    url: ^/api/v1/workshop$
+    url: ^/api/v1/workshop/current$
     method: GET
   response:
     status: 200
     latency: 200
     # headers:
     #   Authorization: '123'
-    file: workshopData/payload.json
+    file: workshopData/currentpayload.json
+
+- request:
+    url: ^/api/v1/workshop/archived$
+    method: GET
+  response:
+    status: 200
+    latency: 200
+    # headers:
+    #   Authorization: '123'
+    file: workshopData/archivedpayload.json
 
 - request:
     url: ^/api/v1/workshop/create$

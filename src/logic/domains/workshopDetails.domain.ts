@@ -1,13 +1,13 @@
 export interface Workshop {
     _id?: string;
-    [date: string]: any;
-    startTime: string; // Should be a date object
-    endTime: string; // Should be a date object
-    room: string;
-    advisor: string;
-    type: string;
-    currentBooking: WorkshopDetails;
-    waitingList: Array<WorkshopDetails>
+    no: ICheckBox; // Should be a date object
+    skillSet: string; // Should be a date object
+    shortTitle: string;
+
+    // advisor: string;
+    // type: string;
+    // currentBooking: WorkshopDetails;
+    // waitingList: Array<WorkshopDetails>
     // attendedNotAttended: string; (not sure what this is)
 }
 
