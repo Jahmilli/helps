@@ -5,7 +5,9 @@ import * as Yup from 'yup';
 import { Close as CloseIcon } from '@material-ui/icons';
 import Auth from '../../logic/functions/core/Auth';
 import { loginFormStyles } from './styles';
+import logo from '../../images/uts-logo.png';
 import MySnackbarContentWrapper from '../presentational/SnackBarContentWrapper';
+import { fontSize } from '@material-ui/system';
 
 interface LoginFormProps {
     auth: Auth;
@@ -13,8 +15,8 @@ interface LoginFormProps {
 
 const LoginForm: React.FunctionComponent<LoginFormProps> = ({ auth }) => {
     const initialUserDetailsState = {
-        email: 'test@test.com',
-        password: 'Password123'
+        email: '',
+        password: ''
     };
     
     const handleSubmit = async (values: any) => {    
@@ -42,7 +44,7 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({ auth }) => {
     const SignupSchema = Yup.object().shape({
         email: Yup.string()
             .email('Invalid email')
-            .required('Email Required'),
+            .required('Student Email Required'),
         password: Yup.string()
             .required('Password Required')
     });
@@ -59,18 +61,16 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({ auth }) => {
                     onSubmit={(values: any) => handleSubmit(values)}
                     >
                     {({ errors, touched }) => (
-                        <Form>
-                            <Typography variant="body1">Email</Typography>
-                            <Field name="email" />
-                            {errors.email && touched.email ? (
-                                <div>{errors.email}</div>
-                            ) : null}
-                            <Typography variant="body1">Password</Typography>
-                            <Field name="password" />
-                            {errors.password && touched.password ? (
-                                <div>{errors.password}</div>
-                            ) : null}
-                            <button type="submit">Submit</button>
+                        <Form style={{width:'30%'}}>
+                            <img src={logo} className={classes.logo} alt="UTS Logo" />
+                            <Typography variant="h1" style={{fontSize: 32, fontWeight: 'bold', color: 'black', textAlign:'start'}}>Log In</Typography>
+                            <Typography variant="body1" style={{color: 'black', textAlign:'start'}}>Email</Typography>
+                            <Field name="email" type="email" className={errors.email && touched.email ? classes.textInputError : classes.textInput}/>
+                            <ErrorMessage name="email" component="div" className={classes.fieldError}></ErrorMessage>
+                            <Typography variant="body1" style={{color: 'black', textAlign:'start'}}>Password</Typography>
+                            <Field name="password" type="password" className={errors.password && touched.password ? classes.textInputError : classes.textInput}/>
+                            <ErrorMessage name="password" component="div" className={classes.fieldError}></ErrorMessage>
+                            <button type="submit" className={classes.submitBtn}>Submit</button>
                         </Form>
                     )}
                     </Formik>
