@@ -4,12 +4,11 @@ import Auth from '../../logic/functions/core/Auth';
 import logo from '../../images/uts-logo.png';
 
 interface LoginFormProps {
-    auth: Auth;
     classes: any;
     formikProps: any;
 }
 
-const LoginForm: React.FunctionComponent<LoginFormProps> = ({ auth, classes, formikProps }) => {
+const LoginForm: React.FunctionComponent<LoginFormProps> = ({ classes, formikProps }) => {
     return (
         <form onSubmit={formikProps.handleSubmit}>
             <img src={logo} className={classes.logo} alt="UTS Logo" />

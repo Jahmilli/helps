@@ -11,7 +11,7 @@ interface LoginPageProps {
     auth: Auth;
 }
 
-const LoginPage: React.FunctionComponent<LoginPageProps> = ({auth}) => {
+const LoginPage: React.FunctionComponent<LoginPageProps> = ({ auth }) => {
     React.useEffect(() => {
         const callGetTest = async () => {
             let data = await getTestData();
@@ -54,9 +54,7 @@ const LoginPage: React.FunctionComponent<LoginPageProps> = ({auth}) => {
                     validationSchema={SignupSchema}
                     onSubmit={(values: any) => handleSubmit(values)}
                     >
-                        {(props) => { 
-                            return <LoginForm auth={auth} classes={classes} formikProps={props} />
-                        }}
+                        {(props) => <LoginForm classes={classes} formikProps={props} /> }
                    </Formik>
                 </div>
             </div>
