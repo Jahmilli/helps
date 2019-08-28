@@ -25,7 +25,7 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
     const [state, setState] = React.useState({});
 
     const renderWaitingList = (workshop: Workshop) => {
-        return <Button color="primary" variant="outlined" onClick={amendDetails(workshop)}>Details</Button>
+        return <Button color="primary" variant="outlined" onClick={amendDetails(workshop)}>Set Workshop</Button>
     }
 
     const amendDetails = (eventData: Workshop) => (event: React.MouseEvent) => {
@@ -53,7 +53,7 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
                         { title: 'No', field: 'no' },
                         { title: 'Skill-Set', field: 'skillSet' },
                         { title: 'Short Title', field: 'shortTitle' },
-                        { title: 'Details', field: 'details', editable: 'never', render: (rowData: Workshop) => <div>{renderWaitingList(rowData)}</div> },
+                        { title: 'Set Workshop', field: 'setWorkshops', editable: 'never', render: (rowData: Workshop) => <div>{renderWaitingList(rowData)}</div> },
                         // { title: 'Room', field: 'room' },
                         // { title: 'A/NA', field: '' },
                         // { title: 'Type', field: 'type' },
