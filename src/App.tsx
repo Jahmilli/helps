@@ -15,7 +15,7 @@ const App: React.FC<AppProps> = ({ auth }) => {
   React.useEffect(() => {
     async function getUserDetails() {
       const metaData: any = await auth.readUserMetaData();
-      if (metaData.isStudent) {
+      if (metaData && metaData.isStudent) {
         try {
           const details = await getStudentDetails(metaData._id);
           console.log('details are', details);

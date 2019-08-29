@@ -42,7 +42,6 @@ export default class Auth {
 
     // Called at login
     async login(username: string, password: string): Promise<auth0.LoginOptions | auth0.Auth0Error> {
-        console.log('username is ' + username + '\tpassword is ' + password);
         return new Promise((resolve, reject) => {
             this.auth0.login({
                 username: username,
@@ -122,6 +121,7 @@ export default class Auth {
             isStudent,
             _id
         };
+        console.log('updating user meta data', metaDataObject);
 
         return new Promise((resolve, reject) => {
             this.auth0Manage.patchUserMetadata(userData.userId, 
@@ -141,15 +141,18 @@ export default class Auth {
     readUserMetaData(): Promise<any> {
         const profile = this.getProfile();
         if (!profile.userId) {
-            return Promise.reject('You have not logged in....');
+            return Promise.reject(null);
         }
         console.log('reading user metadata');
         return new Promise((resolve, reject) => {
             this.auth0Manage.getUser(profile.userId, 
                 (err: auth0.Auth0Error | null, userProfile: auth0.Auth0UserProfile) => {
                     if (err) {
+                        console.log('err occurred when reading metadata');
                         return reject(err);
                     }
+                    console.log('profile is ', profile);
+                    
                     console.log('profile is ', userProfile.user_metadata);
                     profile.isRegisteredUser = userProfile.user_metadata.isRegisteredUser;
                     return resolve(userProfile.user_metadata);

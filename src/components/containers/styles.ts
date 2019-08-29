@@ -12,13 +12,6 @@ export const loginFormStyles = makeStyles(theme => ({
     title: {
         margin: '10px 0'
     },
-    fieldError: {
-        color: 'red',
-        fontSize: 14,
-        display: 'flex',
-        justifyContent: 'flex-start',
-        width: '100%'
-    },
     textInputError: {
         borderColor: 'red',
         borderWidth: 1,

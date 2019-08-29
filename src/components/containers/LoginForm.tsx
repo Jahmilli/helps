@@ -32,7 +32,6 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({ classes, formikPro
                 onBlur={formikProps.handleBlur}
                 helperText={(formikProps.errors.password && formikProps.touched.password) && formikProps.errors.password}
             />
-            {/* <ErrorMessage name="password" component="div" className={classes.fieldError}></ErrorMessage> */}
             <button type="submit" className={classes.submitBtn}>Submit</button>
         </form>
     );

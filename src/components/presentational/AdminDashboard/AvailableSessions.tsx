@@ -94,7 +94,7 @@ const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (prop
                     onClick: (event: any, rowData: ISession) => handleBookSession(rowData)
                 }
             ]}
-            options={{ toolbar: false, paging: false }} editOptions={editOptions} />
+            options={{ toolbar: false, paging: true }} editOptions={editOptions} />
         </div>
     );
 };
