@@ -18,7 +18,6 @@ const StudentSessionsTable: React.FunctionComponent<StudentSessionsTableProps> =
     const [state, setState] = React.useState({});
     
     React.useEffect(() => {
-        console.log('data is ', data);
         if (data) {
             setState({
                 columns: [

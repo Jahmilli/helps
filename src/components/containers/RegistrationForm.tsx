@@ -59,16 +59,13 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
 
     const submitStudentDetails = async (event: any) => {
         event.preventDefault();
-        console.log(values);
         try {
             let response: any = await registerStudent(values);
-            console.log('response is ', response);
             let auth0Response = await auth.updateUserMetaData(response._id, true);
-            console.log(auth0Response);
             alert('Successfully registered');
         } catch (err) {
             // TODO: Don't use an alert, display using a Snackbar or something
-            console.log('An error occured when registering', err);
+            console.error('An error occured when registering', err);
             alert('An error occured during registration, please try a different email or try again later...');
         }
     }

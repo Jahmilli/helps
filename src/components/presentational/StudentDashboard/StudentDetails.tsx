@@ -38,10 +38,7 @@ const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
     const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState);
     React.useEffect(() => {
         if (userDetails.userDetails) {
-            console.log('user detais are ', userDetails);
             setValues(userDetails.userDetails);
-        } else {
-            console.log('user details are empty', userDetails);
         }
     }, [userDetails]);
     

@@ -18,10 +18,9 @@ const App: React.FC<AppProps> = ({ auth }) => {
       if (metaData && metaData.isStudent) {
         try {
           const details = await getStudentDetails(metaData._id);
-          console.log('details are', details);
           setUserDetails(details);
         } catch(err) {
-          console.log('An error occurred when getting student details', err);
+          console.error('An error occurred when getting student details', err);
         }
       }
 

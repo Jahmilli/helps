@@ -73,7 +73,6 @@ const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (prop
         // if (eventData.studentId !== BOOK_SESSION) {
         //     alert('This session is already booked');
         // } else {
-            console.log(eventData);
             // Maybe we can use Redirect and control its rendering from here
             props.history.push({
                 pathname: `/admin/bookSession`,
