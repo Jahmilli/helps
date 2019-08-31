@@ -35,7 +35,6 @@ const TopTabs:React.FunctionComponent = () => {
             doRedirect: true
         })
     }
-    console.log(window.location.pathname);
     return (
         <div style={{display: 'flex', flexFlow: 'row nowrap'}}>
             {sessionTabs.map((tab: Tab, index: number) => {

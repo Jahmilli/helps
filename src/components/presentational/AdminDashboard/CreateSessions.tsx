@@ -35,7 +35,6 @@ const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
     }
 
     const validateSessions = (): boolean => {
-      console.log(state.data);
       for (let session of state.data) {
         if (isEmpty(session.date) || (isEmpty(session.startTime) || 
             isEmpty(session.endTime) || isEmpty(session.room) || 

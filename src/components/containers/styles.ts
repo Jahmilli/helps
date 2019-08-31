@@ -2,30 +2,51 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const loginFormStyles = makeStyles(theme => ({
     gridLockup: {
-        background: 'rgba(0,0,0,0.4)',
-        textAlign: 'center',
-        margin: '7% 0 0 0'
+        // background: 'white',
+        // borderWidth: 1,
+        margin: '5% 0 0 0',
+        width: '250px'
     },
     loginLockup: {        
-        textAlign: 'center',
-        margin: '0 20%'
     },
     title: {
         margin: '10px 0'
     },
-    useWhite: {
-        color: 'white'
+    textInputError: {
+        borderColor: 'red',
+        borderWidth: 1,
+        padding: .5,
+        fontSize: 16,
+        display: 'flex',
+        justifyContent: 'flex-start',
+        borderRadius: 4,
+        width: '100%'
     },
-    margin: {
-        margin: theme.spacing(1)
+    submitBtn: {
+        maxWidth: 150,
+        margin: '20px 0px',
+        padding: '12px 20px',
+        borderRadius: 5,
+        background: '#08c',
+        shadow: '0px 2px 2px rgba(0, 0, 0, 0.15)',
+        fontSize: 17,
+        fontWeight: 500,
+        color: '#fff',
+        cursor: 'pointer',
+        outline: 'none',
+        display: 'flex'
     },
-    icon: {
-        fontSize: 20,
+    logo: {
+        maxWidth: '60%',
+        maxHeigt: '60%',
+        marginBottom: 20,
+        display: 'flex',
+        justifyContent: 'flex-start'
     },
-    iconVariant: {
-        opacity: 0.9,
-        marginRight: theme.spacing(1),
-    },
+    textfield: {
+        width: '100%',
+        marginBottom: '10px'
+    }
 }));
 
 
