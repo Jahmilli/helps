@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Typography, Button, Icon } from '@material-ui/core';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
 import EditableTable, { EditOptions } from '../EditableTable';
-import { Add, RemoveRedEye } from '@material-ui/icons';
+import { Add } from '@material-ui/icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
+import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { AvailableSessionsStyle } from './styles';
