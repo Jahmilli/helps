@@ -17,7 +17,4 @@ export const AvailableSessionsStyle = makeStyles(theme => ({
         height: '25px',
         width: '25px'
     },
-    table: {
-        clear: 'both'
-    }
 }));

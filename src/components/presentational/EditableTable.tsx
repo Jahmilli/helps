@@ -25,7 +25,6 @@ interface EditableTableProps {
     actions?: any;
     options?: any; // View https://material-table.com/#/docs/all-props for values that can be passed in for options
     editOptions?: EditOptions;
-    className?: any;
 }
 export interface EditOptions {
   canAdd?: boolean;
@@ -63,7 +62,7 @@ const icons = {
     DetailPanel: () => <ChevronRight /> as React.ReactElement<SvgIconProps>,
 }
 
-const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, actions, options, editOptions, className }) => {
+const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, actions, options, editOptions }) => {
   let editOptionsObj: any = {};
   
   if (editOptions) {
@@ -103,7 +102,6 @@ const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, set
   }
   return (
     <MaterialTable
-      className={className}
       title="Create Sessions"
       options={{...options, search: false}}
       // @ts-ignore

@@ -101,7 +101,7 @@ const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (prop
                 <FontAwesomeIcon className={classes.displayIcon} icon={ isAdminDisplay ? faEye : faEyeSlash } />
             </div>
 
-            <EditableTable className={classes.table} state={state} setState={setState} actions={[{
+            <EditableTable state={state} setState={setState} actions={[{
                     icon: icons.Add,
                     tooltip: 'Book Session',
                     onClick: (event: any, rowData: ISession) => handleBookSession(rowData)
