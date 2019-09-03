@@ -27,21 +27,24 @@ const AdminAdvisorsContainer: React.FunctionComponent<AdminAdvisorsContainerProp
     }, []);
     
     return (
-        <div style={{ margin: '0 5%' }}>
-            <TopTabs />
-            {/* <FilterSessions /> */}
-            <Route path={`${path}`} exact={true} render={() => (
-                <div>
-                    <AvailableSessions sessionData={sessions} isAdmin={false} />
-                    <CreateSessions />
-                </div>
-                )} />
-            <Route path={`${path}/adminSessions`} exact={true} render={() => (
-                <div>
-                    <AvailableSessions sessionData={sessions} isAdmin={true} />
-                    <CreateSessions />
-                </div>
-                )} />
+        // <div style={{ margin: '0 5%' }}>
+        //     <TopTabs />
+        //     {/* <FilterSessions /> */}
+        //     <Route path={`${path}`} exact={true} render={() => (
+        //         <div>
+        //             <AvailableSessions sessionData={sessions} isAdmin={false} />
+        //             <CreateSessions />
+        //         </div>
+        //         )} />
+        //     <Route path={`${path}/adminSessions`} exact={true} render={() => (
+        //         <div>
+        //             <AvailableSessions sessionData={sessions} isAdmin={true} />
+        //             <CreateSessions />
+        //         </div>
+        //         )} />
+        // </div>
+        <div>
+            <h1>Hello World</h1>
         </div>
     );
 };
