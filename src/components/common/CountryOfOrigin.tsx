@@ -34,7 +34,7 @@ const CountryOfOriginSelect:React.FunctionComponent<CountryOfOriginSelectProps> 
                 <MenuItem value="Armenia">Armenia</MenuItem>
                 <MenuItem value="Aruba">Aruba</MenuItem>
                 <MenuItem value="Ascension Island">Ascension Island</MenuItem>
-                <MenuItem value="Australia" selected={true}>Australia</MenuItem>
+                <MenuItem value="Australia">Australia</MenuItem>
                 <MenuItem value="Austria">Austria</MenuItem>
                 <MenuItem value="Azerbaijan">Azerbaijan</MenuItem>
                 <MenuItem value="Bahamas">Bahamas</MenuItem>

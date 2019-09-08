@@ -52,7 +52,7 @@ const LanguageSelect:React.FunctionComponent<LanguageSelectProps> = ({ value, ha
                 <MenuItem value="Danish">Danish</MenuItem>
                 <MenuItem value="Dhivehi">Dhivehi</MenuItem>
                 <MenuItem value="Dutch">Dutch</MenuItem>
-                <MenuItem value="English" selected={true}>English</MenuItem>
+                <MenuItem value="English">English</MenuItem>
                 <MenuItem value="Esperanto">Esperanto</MenuItem>
                 <MenuItem value="Estonian">Estonian</MenuItem>
                 <MenuItem value="Faroese">Faroese</MenuItem>
