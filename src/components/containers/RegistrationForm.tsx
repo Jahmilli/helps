@@ -6,6 +6,8 @@ import registerStudent from '../../logic/functions/registerStudent';
 import Auth from '../../logic/functions/core/Auth.js';
 import RegistrationField from '../presentational/StudentDashboard/RegistrationField';
 import RegistrationCheckbox from '../presentational/StudentDashboard/RegistrationCheckbox';
+import LanguageSelect from '../common/LanguageSelect';
+import CountryOfOriginSelect from '../common/CountryOfOrigin';
 
 interface RegistrationFormProps {
     auth: Auth;
@@ -31,6 +33,8 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
         gender: '',
         degree: '',
         status: '',
+        language: '',
+        countryOfOrigin: '',
         education: educationInitialState,
         upcomingSessions: sessionObject,
         previousSessions: sessionObject,
@@ -140,6 +144,8 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
                         labelPlacement="top"
                         />
                 </RadioGroup>
+                <LanguageSelect handleChange={handleStudentDetailsChange} value={values.language} />
+                <CountryOfOriginSelect handleChange={handleStudentDetailsChange} value={values.countryOfOrigin} />
             </div>
             <div className={classes.rightLockup}>
                 <FormGroup>

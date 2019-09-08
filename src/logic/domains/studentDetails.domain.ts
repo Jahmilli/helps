@@ -10,6 +10,8 @@ export interface IStudentDetails {
     gender: string;
     degree: string;
     status: string;
+    language: string;
+    countryOfOrigin: string;
     education: Array<Course>;
     upcomingSessions: IStudentSessionIds;
     previousSessions: IStudentSessionIds;
