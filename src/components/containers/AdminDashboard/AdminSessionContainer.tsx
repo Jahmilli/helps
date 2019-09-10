@@ -32,13 +32,7 @@ const AdminSessionContainer: React.FunctionComponent<AdminSessionContainerProps>
             {/* <FilterSessions /> */}
             <Route path={`${path}`} exact={true} render={() => (
                 <div>
-                    <AvailableSessions sessionData={sessions} isAdmin={false} />
-                    <CreateSessions />
-                </div>
-                )} />
-            <Route path={`${path}/adminSessions`} exact={true} render={() => (
-                <div>
-                    <AvailableSessions sessionData={sessions} isAdmin={true} />
+                    <AvailableSessions sessionData={sessions} />
                     <CreateSessions />
                 </div>
                 )} />

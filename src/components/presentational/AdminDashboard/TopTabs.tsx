@@ -13,10 +13,6 @@ const sessionTabs = [
         path: '/admin/sessions'
     },
     {
-        title: 'Admin Sessions',
-        path: '/admin/sessions/adminSessions'
-    },
-    {
         title: 'No-show list',
         path: '/admin/sessions/noShow'
     }
