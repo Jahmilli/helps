@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getCurrentWorkshops, getArchivedWorkshops } from './../../../logic/functions/getAvailableWorkshops';
+import { getCurrentWorkshops, getArchivedWorkshops, postWorkshop } from './../../../logic/functions/getAvailableWorkshops';
 import { Workshop } from '../../../logic/domains/workshopDetails.domain';
 import EditableTable, { EditOptions } from '../../presentational/EditableTable';
 import { Add } from '@material-ui/icons';
@@ -22,7 +22,17 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
         canDelete: true
     } as EditOptions;
 
-    const [state, setState] = React.useState({});
+    // const [state, setState] = React.useState({});
+
+    const [state, setState] = React.useState({
+        columns: [
+            { title: 'No', field: 'no' },
+            { title: 'Skill-Set', field: 'skillSet' },
+            { title: 'Short Title', field: 'shortTitle' },
+            { title: 'Set Workshop', field: 'setWorkshops', editable: 'never', render: (rowData: Workshop) => <div>{renderWaitingList(rowData)}</div> },
+        ],
+        data: [{} as Workshop],
+    });
 
     const renderWaitingList = (workshop: Workshop) => {
         return <Button color="primary" variant="outlined" onClick={amendDetails(workshop)}>Set Workshop</Button>
@@ -36,6 +46,40 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
                 isCurrentBooking: false
             }
         });
+    }
+
+    const isEmpty = (str: string): boolean => {
+        return (!str || 0 === str.length);
+    }
+
+    const validateWorkshops = (): boolean => {
+        console.log(state.data);
+        for (let workshop of state.data) {
+            if (isEmpty(workshop.no.toString()) ||
+                isEmpty(workshop.skillSet) ||
+                isEmpty(workshop.shortTitle)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    const submitNewWorkshops = async () => {
+        if (validateWorkshops()) {
+            const tempData = state.data as Array<Workshop>;
+            for (let index in state.data) {
+                tempData[index] = { ...tempData[index] }
+                // TODO: delete tableData key and value
+            }
+            try {
+                await postWorkshop(tempData);
+                alert('Sessions created');
+            } catch (err) {
+                alert('An error occurred when creating the sessions');
+            }
+        } else {
+            alert('Please fill in all fields for your new sessions');
+        }
     }
 
     React.useEffect(() => {
@@ -54,11 +98,6 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
                         { title: 'Skill-Set', field: 'skillSet' },
                         { title: 'Short Title', field: 'shortTitle' },
                         { title: 'Set Workshop', field: 'setWorkshops', editable: 'never', render: (rowData: Workshop) => <div>{renderWaitingList(rowData)}</div> },
-                        // { title: 'Room', field: 'room' },
-                        // { title: 'A/NA', field: '' },
-                        // { title: 'Type', field: 'type' },
-                        // { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: Workshop) => <td>{displayStudentId(rowData)}</td> },
-                        // { title: 'Waiting', field: 'waitingList', render: (rowData: Workshop) => <td>{renderWaitingList(rowData)}</td> },
                     ],
                     data: details.map((Workshop: Workshop) => {
                         return Workshop;
@@ -75,6 +114,7 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
             <br />
             <EditableTable state={state} setState={setState}
                 options={{ paging: false }} editOptions={editOptions} title={'Workshop'} />
+            <Button id="submitBooking" color="primary" size="large" onClick={submitNewWorkshops}>Save Workshops</Button>
         </div>
     );
 }

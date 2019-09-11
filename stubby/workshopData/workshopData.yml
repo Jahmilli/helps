@@ -19,7 +19,9 @@
     file: workshopData/archivedpayload.json
 
 - request:
-    url: ^/api/v1/workshop/create$
+    url: ^/api/v1/workshop/current/create$
     method: POST
   response:
     status: 200
+    latency: 200
+    file: workshopData/currentpayload.json
