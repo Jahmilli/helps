@@ -15,7 +15,7 @@ import {
 	Add,
 	Check,
 	FilterList,
-	Remove,
+    Remove,
 } from '@material-ui/icons'
 
 
@@ -30,7 +30,7 @@ interface EditableTableProps {
 export interface EditOptions {
 	canAdd?: boolean;
 	canUpdate?: boolean;
-	canDelete?: boolean;
+    canDelete?: boolean;
 }
 
 export interface TableState {
@@ -49,7 +49,7 @@ const icons = {
 	Add: () => <Add /> as React.ReactElement<SvgIconProps>,
 	Check: () => <Check /> as React.ReactElement<SvgIconProps>,
 	Edit: () => <Edit /> as React.ReactElement<SvgIconProps>,
-	Delete: () => <Delete /> as React.ReactElement<SvgIconProps>,
+    Delete: () => <Delete /> as React.ReactElement<SvgIconProps>,
 	Clear: () => <Clear /> as React.ReactElement<SvgIconProps>,
 	Export: () => <SaveAlt /> as React.ReactElement<SvgIconProps>,
 	Filter: () => <FilterList /> as React.ReactElement<SvgIconProps>,
@@ -92,18 +92,18 @@ const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, set
 					}, 600);
 				})
 		}
-		if (editOptions.canDelete) {
-			// @ts-ignore
-			editOptionsObj.onRowDelete = (oldData: any) =>
-				new Promise(resolve => {
-					setTimeout(() => {
-						resolve();
-						const data = [...state.data];
-						data.splice(data.indexOf(oldData), 1);
-						setState({ ...state, data });
-					}, 600);
-				})
-		}
+        if (editOptions.canDelete) {
+            // @ts-ignore
+            editOptionsObj.onRowDelete = (oldData: any) =>
+                new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve();
+                        const data = [...state.data];
+                        data.splice(data.indexOf(oldData), 1);
+                        setState({ ...state, data });
+                    }, 600);
+                })
+        }
 	}
 	// if (!editOptions) {
 	//   delete editOptionsObj.onRowAdd;

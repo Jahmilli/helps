@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { getCurrentWorkshops, getArchivedWorkshops, postWorkshop } from './../../../logic/functions/getAvailableWorkshops';
+import { getCurrentWorkshops, getArchivedWorkshops, postWorkshop, setWorkshopToArchive, setWorkshopToCurrent } from './../../../logic/functions/getAvailableWorkshops';
 import { Workshop } from '../../../logic/domains/workshopDetails.domain';
 import EditableTable, { EditOptions } from '../../presentational/EditableTable';
-import { Add } from '@material-ui/icons';
+import { Add, Archive, Details } from '@material-ui/icons';
 import { Button } from '@material-ui/core';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 
@@ -12,14 +12,16 @@ export interface WorkshopOverviewProps {
 }
 
 const icons = {
-    Add: () => <Add /> as React.ReactElement<SvgIconProps>
+    Add: () => <Add /> as React.ReactElement<SvgIconProps>,
+    Archive: () => <Archive /> as React.ReactElement<SvgIconProps>,
 }
 
 const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
     const editOptions = {
         canAdd: true,
         canUpdate: true,
-        canDelete: true
+        canDelete: true,
+        canArchive: true
     } as EditOptions;
 
     // const [state, setState] = React.useState({});
@@ -108,11 +110,25 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
         }
     }, [tab]);
 
+    const handleArchiveWorkshop = (eventData: Workshop) => {
+        if (tab == 'Current') {
+            setWorkshopToArchive(eventData);
+            
+        } else {
+            setWorkshopToCurrent(eventData);
+        }
+    }
+
     return (
         <div>
             <br />
             <br />
-            <EditableTable state={state} setState={setState}
+            <EditableTable state={state} setState={setState} actions={[{
+                icon: icons.Archive,
+                tooltip: tab == 'Current'? 'Archive': 'Unarchive',
+                onClick: (event: any, rowData: Workshop) => handleArchiveWorkshop(rowData)
+            }
+            ]}
                 options={{ paging: false }} editOptions={editOptions} title={'Workshop'} />
             <Button id="submitBooking" color="primary" size="large" onClick={submitNewWorkshops}>Save Workshops</Button>
         </div>
