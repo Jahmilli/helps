@@ -7,6 +7,7 @@ import logo from '../../images/uts-logo.png';
 import Footer from '../common/Footer';
 import Auth from '../../logic/functions/core/Auth';
 import LoginPage from './LoginPage';
+import WaitingList from './WaitingList';
 import navbarTabs from './__data__/data.adminNavbarTabs.json';
 import AdminSessionContainer from '../containers/AdminDashboard/AdminSessionContainer';
 import BookSessionContainer from '../containers/AdminDashboard/BookSessionContainer';
@@ -39,6 +40,7 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
                 <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
                 <Route path={`${path}/sessions`} render={(props) => <AdminSessionContainer {...props} /> } />
                 <Route path={`/admin/bookSession`} render={(props) => <BookSessionContainer /> } />
+                <Route path={`${path}/waitingList`} render={(props) => <WaitingList/> } />
             </div>
             <Footer />
         </div>

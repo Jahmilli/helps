@@ -1,0 +1,69 @@
+import React from 'react';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: '100%',
+      marginTop: theme.spacing(3),
+      overflowX: 'auto',
+    },
+    table: {
+      minWidth: 650,
+    },
+  }),
+);
+
+
+
+function createData(studentId: number, name: string, date: string, startTime: string, room: string,type:string) {
+  return { studentId,name,date,startTime,room,type};
+}
+
+const rows = [
+  createData(12000000,"Jack","01/01/2019","12:00:00","CB11.01.01","	Random Type"),
+
+];
+// export default withRouter(WaitingList);
+
+export default function WaitingList() {
+  const classes = useStyles();
+
+  return (
+    <Paper className={classes.root}>
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            <TableCell>StudentID</TableCell>
+            <TableCell align="right">Name</TableCell>
+            <TableCell align="right">Date&nbsp;(g)</TableCell>
+            <TableCell align="right">StartTime&nbsp;(g)</TableCell>
+            <TableCell align="right">Room&nbsp;(g)</TableCell>
+            <TableCell align="right">Type&nbsp;(g)</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map(row => (
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row">
+                {row.studentId}
+              </TableCell>
+              <TableCell align="right">{row.name}</TableCell>
+              <TableCell align="right">{row.date}</TableCell>
+              <TableCell align="right">{row.startTime}</TableCell>
+              <TableCell align="right">{row.room}</TableCell>
+              <TableCell align="right">{row.type}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Paper>
+  );
+}

@@ -18,6 +18,7 @@ const icons = {
 
 type AvailableSessionsProps = RouteComponentProps<any> & {
     sessionData: Array<ISession>;
+
 }
 
 const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (props) => {
