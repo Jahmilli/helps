@@ -40,7 +40,7 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
                 <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
                 <Route path={`${path}/sessions`} render={(props) => <AdminSessionContainer {...props} /> } />
                 <Route path={`/admin/bookSession`} render={(props) => <BookSessionContainer /> } />
-                <Route path={`${path}/waitingList`} render={(props) => <WaitingList/> } />
+                <Route path={`${path}/waitingList`} render={(props) => <WaitingList{...props}/> } />
             </div>
             <Footer />
         </div>
