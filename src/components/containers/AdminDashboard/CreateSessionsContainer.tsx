@@ -1,21 +1,15 @@
 import * as React from "react";
 import { Typography, Button } from "@material-ui/core";
 import { ISession } from "../../../logic/domains/sessionDetails.domain";
-import EditableTable, { EditOptions } from "../EditableTable";
+import EditableTable from "../../presentational/EditableTable";
 import { createNewSessions } from "../../../logic/functions/createNewSessions";
-import { createSessionStyle } from "./styles";
+import { createSessionContainerStyle } from "./styles";
 
-interface CreateSessionsProps {}
+interface CreateSessionsContainerProps {}
 
 // Column headings in the table used in this component
-const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
-	const classes = createSessionStyle();
-	const editOptions = {
-		canAdd: true,
-		canUpdate: true,
-		canDelete: true
-	} as EditOptions;
-
+const CreateSessionsContainer: React.FunctionComponent<CreateSessionsContainerProps> = () => {
+	const classes = createSessionContainerStyle();
 	const [state, setState] = React.useState({
 		columns: [
 			{ title: "Date", field: "date" },
@@ -81,7 +75,6 @@ const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
 				state={state}
 				setState={setState}
 				options={{ paging: false }}
-				editOptions={editOptions}
 				tableTitle={"Create Sessions"}
 			/>
 			<Button id="submitBooking" color="primary" size="large" onClick={submitNewSessions}>
@@ -91,4 +84,4 @@ const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
 	);
 };
 
-export default CreateSessions;
+export default CreateSessionsContainer;

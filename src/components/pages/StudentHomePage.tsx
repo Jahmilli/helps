@@ -9,7 +9,6 @@ import StudentRegistrationContainer from '../containers/StudentDashboard/Student
 import navbarTabs from './__data__/data.studentNavbarTabs.json';
 import Auth from '../../logic/functions/core/Auth';
 import LoginPage from './LoginPage';
-import StudentBookingsContainer from '../containers/StudentDashboard/StudentBookingsContainer';
 
 interface StudentHomePageProps {
     auth: Auth;
@@ -28,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, props }) => {
+const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, match, props }) => {
     const classes = useStyles();
     const { path } = props.match;
     return (
@@ -41,7 +40,7 @@ const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, 
                 <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
                 <Route path={`${path}/register`} render={() => <StudentRegistrationContainer auth={auth} /> } />
                 <Route path={`${path}/myInformation`} component={() => <h1>My Information</h1>} />
-                <Route path={`${path}/myBookings`} component={() => <StudentBookingsContainer />} />
+                <Route path={`${path}/myBookings`} component={() => <h1>My Bookings</h1>} />
                 <Route path={`${path}/workshopRegistration`} component={() => <h1>Workshop Registration</h1>} />
                 <Route path={`${path}/programs`} component={() => <h1>Programs</h1>} />
                 <Route path={`${path}/faq`} component={() => <h1>FAQ</h1>} />

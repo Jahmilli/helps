@@ -1,6 +1,6 @@
-import React from 'react';
-import MaterialTable from 'material-table';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
+import React from "react";
+import MaterialTable from "material-table";
+import { SvgIconProps } from "@material-ui/core/SvgIcon";
 import {
 	Delete,
 	Edit,
@@ -15,26 +15,25 @@ import {
 	Add,
 	Check,
 	FilterList,
-    Remove,
-} from '@material-ui/icons'
-
+	Remove
+} from "@material-ui/icons";
 
 interface EditableTableProps {
 	state: any;
 	setState: any;
 	actions?: any;
-	title?: string;
 	options?: any; // View https://material-table.com/#/docs/all-props for values that can be passed in for options
 	editOptions?: EditOptions;
+	tableTitle: any;
 }
 export interface EditOptions {
 	canAdd?: boolean;
 	canUpdate?: boolean;
-    canDelete?: boolean;
+	canDelete?: boolean;
 }
 
 export interface TableState {
-	columns: Array<Column>
+	columns: Array<Column>;
 	data: any;
 }
 
@@ -42,14 +41,14 @@ interface Column {
 	title: string;
 	field: string;
 	type?: string;
-	lookup?: any
+	lookup?: any;
 }
 
 const icons = {
 	Add: () => <Add /> as React.ReactElement<SvgIconProps>,
 	Check: () => <Check /> as React.ReactElement<SvgIconProps>,
 	Edit: () => <Edit /> as React.ReactElement<SvgIconProps>,
-    Delete: () => <Delete /> as React.ReactElement<SvgIconProps>,
+	Delete: () => <Delete /> as React.ReactElement<SvgIconProps>,
 	Clear: () => <Clear /> as React.ReactElement<SvgIconProps>,
 	Export: () => <SaveAlt /> as React.ReactElement<SvgIconProps>,
 	Filter: () => <FilterList /> as React.ReactElement<SvgIconProps>,
@@ -60,15 +59,21 @@ const icons = {
 	Search: () => <Search /> as React.ReactElement<SvgIconProps>,
 	ThirdStateCheck: () => <Remove /> as React.ReactElement<SvgIconProps>,
 	ViewColumn: () => <ViewColumn /> as React.ReactElement<SvgIconProps>,
-	DetailPanel: () => <ChevronRight /> as React.ReactElement<SvgIconProps>,
-}
+	DetailPanel: () => <ChevronRight /> as React.ReactElement<SvgIconProps>
+};
 
-const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, actions, options, editOptions, title }) => {
-	let editOptionsObj = {};
+const EditableTable: React.FunctionComponent<EditableTableProps> = ({
+	state,
+	setState,
+	actions,
+	options,
+	editOptions,
+	tableTitle
+}) => {
+	let editOptionsObj: any = {};
 
 	if (editOptions) {
 		if (editOptions.canAdd) {
-			// @ts-ignore
 			editOptionsObj.onRowAdd = (newData: any) =>
 				new Promise(resolve => {
 					setTimeout(() => {
@@ -77,54 +82,34 @@ const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, set
 						data.push(newData);
 						setState({ ...state, data });
 					}, 600);
-				})
+				});
 		}
 		if (editOptions.canUpdate) {
-			// @ts-ignore
 			editOptionsObj.onRowUpdate = (newData: any, oldData: any) =>
 				new Promise(resolve => {
 					setTimeout(() => {
 						resolve();
 						const data = [...state.data];
-						// @ts-ignore
 						data[data.indexOf(oldData)] = newData;
 						setState({ ...state, data });
 					}, 600);
-				})
+				});
 		}
-        if (editOptions.canDelete) {
-            // @ts-ignore
-            editOptionsObj.onRowDelete = (oldData: any) =>
-                new Promise(resolve => {
-                    setTimeout(() => {
-                        resolve();
-                        const data = [...state.data];
-                        data.splice(data.indexOf(oldData), 1);
-                        setState({ ...state, data });
-                    }, 600);
-                })
-        }
+		if (editOptions.canDelete) {
+			editOptionsObj.onRowDelete = (oldData: any) =>
+				new Promise(resolve => {
+					setTimeout(() => {
+						resolve();
+						const data = [...state.data];
+						data.splice(data.indexOf(oldData), 1);
+						setState({ ...state, data });
+					}, 600);
+				});
+		}
 	}
-	// if (!editOptions) {
-	//   delete editOptionsObj.onRowAdd;
-	//   delete editOptionsObj.onRowDelete;
-	//   delete editOptionsObj.onRowUpdate;
-	// } else {
-	//   if (!editOptions.canAdd) {
-	//     delete editOptionsObj.onRowUpdate;
-	//   }
-	//   if (!editOptions.canUpdate) {
-	//     delete editOptionsObj.onRowUpdate;
-	//   }
-	//   if (!editOptions.canDelete) {
-	//     delete editOptionsObj.onRowDelete;
-	//   }
-	// }
-
-
 	return (
 		<MaterialTable
-			title={title}
+			title={tableTitle}
 			options={{ ...options, search: false }}
 			// @ts-ignore
 			icons={icons}
@@ -136,6 +121,6 @@ const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, set
 			editable={editOptionsObj}
 		/>
 	);
-}
+};
 
 export default EditableTable;
