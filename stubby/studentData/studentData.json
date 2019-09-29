@@ -52,6 +52,8 @@
   "gender": "male",
   "degree": "undergraduate",
   "status": "resident",
+  "language": "English",
+  "countryOfOrigin": "Australia",
   "upcomingSessions": {
       "sessionIds": [
           "5d60a666c781ca6880b5b78a"
@@ -61,5 +63,5 @@
   "previousSessions": {
       "sessionIds": [],
       "workshopSessionIds": []
-  },
+  }
 }

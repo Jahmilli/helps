@@ -10,6 +10,8 @@ export interface IStudentDetails {
     gender: string;
     degree: string;
     status: string;
+    language: string;
+    countryOfOrigin: string;
     education: Array<Course>;
     upcomingSessions: IStudentSessionIds;
     previousSessions: IStudentSessionIds;
@@ -19,7 +21,6 @@ export interface IStudentSessionIds {
     sessionIds: Array<string>;
     workshopSessionIds: Array<string>;
 }
-
 
 export class Course {
     constructor(title: string) {

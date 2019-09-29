@@ -8,21 +8,21 @@ interface CheckboxOptionProps {
     handleCheckboxChange: Function;
 }
 
-const CheckboxOption:React.FunctionComponent<CheckboxOptionProps> = ({ id, label, value, handleCheckboxChange }) => (
- 
-     <FormControlLabel
+const CheckboxOption: React.FunctionComponent<CheckboxOptionProps> = ({ id, label, value, handleCheckboxChange }) => (
+
+    <FormControlLabel
         control={<Checkbox
             checked={value}
             onChange={handleCheckboxChange(id)}
             value={value}
             color="primary"
             inputProps={{
-            'aria-label': 'secondary checkbox',
+                'aria-label': 'secondary checkbox',
             }}
         />}
         label={label}
         labelPlacement="end"
-        />
+    />
 );
 
 export default CheckboxOption;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import WorkshopsOverview from "./WorkshopsOverview";
+import WorkshopsOverview from "../../presentational/AdminDashboard/WorkshopsOverview";
 import CenteredTabs from "../../presentational/CenteredTabs";
 import { Typography } from "@material-ui/core";
 import { RouteComponentProps } from "react-router";
@@ -36,8 +36,8 @@ const AdminWorkshopsContainer: React.SFC<AdminWorkshopsContainerProps> = props =
 			{state.tab === "Current" ? (
 				<WorkshopsOverview props={props} tab={state.tab} />
 			) : (
-				<WorkshopsOverview props={props} tab={state.tab} />
-			)}
+					<WorkshopsOverview props={props} tab={state.tab} />
+				)}
 		</div>
 	);
 };

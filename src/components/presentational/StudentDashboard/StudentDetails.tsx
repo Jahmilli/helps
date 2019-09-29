@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { FormControlLabel, Radio, RadioGroup, Typography, FormGroup, Button } from '@material-ui/core';
-import { registrationFormStyles } from './styles';
-import { IStudentDetails, Course, IStudentSessionIds } from '../../logic/domains/studentDetails.domain';
-import registerStudent from '../../logic/functions/registerStudent';
-import Auth from '../../logic/functions/core/Auth.js';
-import RegistrationField from '../presentational/StudentDashboard/RegistrationField';
-import RegistrationCheckbox from '../presentational/StudentDashboard/RegistrationCheckbox';
-import LanguageSelect from '../common/LanguageSelect';
-import CountryOfOriginSelect from '../common/CountryOfOrigin';
+import { registrationFormStyles } from '../../containers/styles';
+import { IStudentDetails, Course, IStudentSessionIds } from '../../../logic/domains/studentDetails.domain';
+import RegistrationField from './RegistrationField';
+import RegistrationCheckbox from './RegistrationCheckbox';
+import UserContext from '../../../UserContext';
+import LanguageSelect from '../../common/LanguageSelect';
+import CountryOfOriginSelect from '../../common/CountryOfOrigin';
+import updateStudentDetails from '../../../logic/functions/updateStudentDetails';
 
-interface RegistrationFormProps {
-    auth: Auth;
-}
+interface StudentDetailsProps {}
 
-const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth }) => {
+const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
     const courseTitles = ['hsc', 'ielts', 'toefl', 'tafe', 'cult', 'insearchDeep', 'insearchDiploma', 'foundationCourse'] ;
     const educationInitialState: Array<Course> = courseTitles.map((title: string) => new Course(title));
+    const userDetails = React.useContext(UserContext);
+
     const sessionObject = {
         sessionIds: [],
         workshopSessionIds: [],
     } as IStudentSessionIds;
 
-    const studentDetailsInitialState = {
+    let studentDetailsInitialState = {
         email: '',
         studentId: '',
         fullName: '',
@@ -41,7 +41,12 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
     } as IStudentDetails;
     
     const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState);
-
+    React.useEffect(() => {
+        if (userDetails.userDetails) {
+            setValues(userDetails.userDetails);
+        }
+    }, [userDetails]);
+    
     const handleStudentDetailsChange = (details: string) => (event: any) => {
         setValues({
             ...values,
@@ -64,19 +69,16 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
     const submitStudentDetails = async (event: any) => {
         event.preventDefault();
         try {
-            let response: any = await registerStudent(values);
-            let auth0Response = await auth.updateUserMetaData(response._id, true);
-            alert('Successfully registered');
+            let response: any = await updateStudentDetails(values);
+            alert('Successfully updated');
         } catch (err) {
-            // TODO: Don't use an alert, display using a Snackbar or something
-            console.error('An error occured when registering', err);
             alert('An error occured during registration, please try a different email or try again later...');
         }
     }
 
     const classes = registrationFormStyles();
     return (
-        <form className={classes.registrationLockup}>
+        <form className={classes.registrationLockup} onSubmit={submitStudentDetails}>
             <div className={classes.leftLockup}>
                 <RegistrationField id="studentId" title="Student ID" label="12345678" value={values.studentId} handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="email" title="Email" label="student123@student.uts.edu.au" value={values.email} handleChange={handleStudentDetailsChange} classes={classes} />
@@ -158,10 +160,10 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
                     <RegistrationCheckbox id="insearchDiploma" label="Insearch Diploma" index={6} value={values.education[6]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
                     <RegistrationCheckbox id="foundationCourse" label="Foundation Course" index={7} value={values.education[7]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
                 </FormGroup>
-                <Button className={classes.input} id="submitStudentDetailsBtn" color="primary" size="large" type="submit" onClick={submitStudentDetails}>Submit</Button>
+                <Button id="submitStudentDetailsBtn" color="primary" size="large" type="submit">Submit</Button>
             </div>
         </form>
     );
 };
 
-export default RegistrationForm;
+export default StudentDetails;

@@ -7,7 +7,7 @@ const ID_TOKEN = 'id_token';
 const EXPIRES_AT = 'expires_at';
 
 type UserProfile = {
-    userID: string;
+    userId: string;
     nickname: string;
     name: string;
     updated_at: string;
@@ -68,8 +68,7 @@ export default class Auth {
                 // TODO: Will need to check email or something to verify user is student or admin and redirect on that.
                 window.location.pathname = '/student/register';
             } else if (err) {
-                console.log('An error occurred during authentication');
-                console.log(err);
+                console.error('An error occurred during authentication', err);
             }
         });
     }
@@ -79,8 +78,8 @@ export default class Auth {
         if (localStorage.getItem(ID_TOKEN)) {
             let decodedJwt: any = jwtDecode(localStorage.getItem(ID_TOKEN) || '');
             let { nickname, name, updated_at, sub, exp, isRegisteredUser } = decodedJwt;
-            const userID = sub;
-            return { userID, nickname, name, updated_at, exp, isRegisteredUser } as UserProfile;
+            const userId = sub;
+            return { userId, nickname, name, updated_at, exp, isRegisteredUser } as UserProfile;
         } else {
             return this.initialUser;
         }
@@ -106,7 +105,6 @@ export default class Auth {
         // if (!TEMPORARY_ACCESS_TOKEN) {
         //     return;
         // }
-        console.log('setting up auth manage');
         const auth0Manage = new auth0.Management({
             domain: 'uts-helps.au.auth0.com',
             token: TEMPORARY_ACCESS_TOKEN || ''
@@ -114,18 +112,20 @@ export default class Auth {
         return auth0Manage;
     }
 
-    updateUserMetaData(): Promise<Auth0UserProfile | string> {
+    updateUserMetaData(_id: string, isStudent: boolean): Promise<Auth0UserProfile | string> {
         const userData: UserProfile = this.getProfile();
         const metaDataObject = {
-            isRegisteredUser: true 
+            isRegisteredUser: true,
+            isStudent,
+            _id
         };
 
         return new Promise((resolve, reject) => {
-            this.auth0Manage.patchUserMetadata(userData.userID, 
+            this.auth0Manage.patchUserMetadata(userData.userId, 
                 metaDataObject, 
                 (err: auth0.Auth0Error | null, profile: Auth0UserProfile) => {
                     if (err) {
-                        console.log('An error occurred when updating usermetadata', err);
+                        console.error('An error occurred when updating usermetadata', err);
                         return reject('error occurred when updating usermetadata');
                         // throw Error('error occurred when updating usermetadata');
                     } else {
@@ -137,14 +137,17 @@ export default class Auth {
 
     readUserMetaData(): Promise<any> {
         const profile = this.getProfile();
-        console.log('readinguser metadata');
+        if (!profile.userId) {
+            return Promise.reject(null);
+        }
         return new Promise((resolve, reject) => {
-            this.auth0Manage.getUser(profile.userID, 
+            this.auth0Manage.getUser(profile.userId, 
                 (err: auth0.Auth0Error | null, userProfile: auth0.Auth0UserProfile) => {
                     if (err) {
+                        console.error('err occurred when reading metadata', err);
                         return reject(err);
                     }
-                    console.log('profile is ', userProfile.user_metadata);
+                    
                     profile.isRegisteredUser = userProfile.user_metadata.isRegisteredUser;
                     return resolve(userProfile.user_metadata);
             }); 

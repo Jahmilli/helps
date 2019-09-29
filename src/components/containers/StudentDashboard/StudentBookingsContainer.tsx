@@ -3,24 +3,27 @@ import { Typography } from '@material-ui/core';
 import getCurrentSessions from '../../../logic/functions/getSessionsForStudent';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
 import StudentSessionsTable from '../../presentational/StudentDashboard/StudentSessions';
+import UserContext from '../../../UserContext';
 
 interface StudentBookingsContainerProps {}
 
 const StudentBookingsContainer:React.FunctionComponent<StudentBookingsContainerProps> = () => {
     const [sessions, setSessions] = React.useState<Array<ISession>>([]);
     // const [workshopSessions, setWorkshopSession] = React.useState<any>();
+    const context = React.useContext(UserContext);
 
     React.useEffect(() => {
         async function callGetCurrentSessions() {
             try {
-                let details = await getCurrentSessions('12345678');
+                let details = await getCurrentSessions(context.userDetails.studentId);
                 setSessions(details);
-                console.log('sessions are ', details);
             } catch(err) {
                 alert('An error occurred when getting current sessions');
             }
         }
-        callGetCurrentSessions();
+        if (context.userDetails) {
+            callGetCurrentSessions();
+        }
     }, []);
 
     return (
