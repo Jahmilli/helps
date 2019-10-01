@@ -13,3 +13,11 @@
     status: 200
     latency: 200
     file: sessionData/payload.json
+
+- request:
+    url: ^/api/v1/student/(.*)/workshops$
+    method: GET
+  response:
+    status: 200
+    latency: 200
+    file: studentData/studentWorkshops.json

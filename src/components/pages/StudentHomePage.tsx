@@ -6,6 +6,7 @@ import Navbar, { NavbarTab } from '../common/Navbar';
 import logo from '../../images/uts-logo.png';
 import Footer from '../common/Footer';
 import StudentRegistrationContainer from '../containers/StudentDashboard/StudentRegistrationContainer';
+import StudentWorkshopRegistration from '../containers/StudentDashboard/StudentWorkshopRegistration';
 import navbarTabs from './__data__/data.studentNavbarTabs.json';
 import Auth from '../../logic/functions/core/Auth';
 import LoginPage from './LoginPage';
@@ -43,7 +44,7 @@ const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, 
                 <Route path={`${path}/register`} render={() => <StudentRegistrationContainer auth={auth} /> } />
                 <Route path={`${path}/myInformation`} component={() => <StudentDetails />} />
                 <Route path={`${path}/myBookings`} component={() => <StudentBookingsContainer />} />
-                <Route path={`${path}/workshopRegistration`} component={() => <h1>Workshop Registration</h1>} />
+                <Route path={`${path}/workshopRegistration`} component={() => <StudentWorkshopRegistration />} />
                 <Route path={`${path}/programs`} component={() => <h1>Programs</h1>} />
                 <Route path={`${path}/faq`} component={() => <h1>FAQ</h1>} />
                 <Route path={`${path}/exit`} component={() => <div><h1>Logout</h1>
