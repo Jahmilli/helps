@@ -6,7 +6,7 @@ export interface Workshop {
 }
 
 export interface WorkshopDetails {
-    [studentId: string]: any;
+    [workshopId: string]: any;
     reason: string // Taken from 'this appointment is for'
     subjectName: string;
     assignmentType: string;
