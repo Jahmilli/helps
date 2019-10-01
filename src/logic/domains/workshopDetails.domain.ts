@@ -3,12 +3,6 @@ export interface Workshop {
     no: ICheckBox; // Should be a date object
     skillSet: string; // Should be a date object
     shortTitle: string;
-
-    // advisor: string;
-    // type: string;
-    // currentBooking: WorkshopDetails;
-    // waitingList: Array<WorkshopDetails>
-    // attendedNotAttended: string; (not sure what this is)
 }
 
 export interface WorkshopDetails {

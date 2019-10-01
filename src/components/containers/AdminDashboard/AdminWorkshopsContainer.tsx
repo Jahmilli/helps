@@ -6,7 +6,7 @@ import { RouteComponentProps } from "react-router";
 type AdminWorkshopsContainerProps = RouteComponentProps<any> & {};
 
 
-var workshopTabs = ["Current", "Archived"];
+const workshopTabs = ["Current", "Archived"];
 
 const AdminWorkshopsContainer: React.SFC<AdminWorkshopsContainerProps> = props => {
 	const [state, setState] = React.useState({
