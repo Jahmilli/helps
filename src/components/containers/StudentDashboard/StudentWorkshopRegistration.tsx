@@ -3,6 +3,9 @@ import UserContext from '../../../UserContext';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
 import getStudentWorkshops from '../../../logic/functions/getStudentWorkshops';
 import MaterialTable from 'material-table';
+import { Route } from 'react-router';
+import { Link } from 'react-router-dom';
+import StudentWorkshopDetail from '../../presentational/StudentDashboard/StudentWorkshopDetails';
 
 interface StudentWorkShopProps { }
 
@@ -26,7 +29,7 @@ const StudentWorkshopRegistration: React.FunctionComponent<StudentWorkShopProps>
         }
     }, []);
 
-    return (
+    return (      
         <div style={{ margin: '0 3%' }}>
             <h1>Here are some workshops</h1>
             <MaterialTable
@@ -34,11 +37,15 @@ const StudentWorkshopRegistration: React.FunctionComponent<StudentWorkShopProps>
                 // @ts-ignore
                 columns={[
                     { title: 'Id', field: 'id' },
-                    { title: 'name', field: 'name' }]
+                    { title: 'name', field: 'name' },
+                    {render: rowData => <Link to={{
+                        pathname: '/student/StudentWorkshopDetail',
+                        state: [{id: 1, name: 'Ford', color: 'red'}]
+                      }}> Your Page </Link>}
+                ]
                 }
                 data={workshopData}
             />
-            );
         </div>
     );
 };

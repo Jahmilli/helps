@@ -12,6 +12,8 @@ import Auth from '../../logic/functions/core/Auth';
 import LoginPage from './LoginPage';
 import StudentBookingsContainer from '../containers/StudentDashboard/StudentBookingsContainer';
 import StudentDetails from '../presentational/StudentDashboard/StudentDetails';
+import StudentWorkshopDetail from '../presentational/StudentDashboard/StudentWorkshopDetails';
+import { ISessionDetails } from '../../logic/domains/sessionDetails.domain';
 
 interface StudentHomePageProps {
     auth: Auth;
@@ -49,6 +51,7 @@ const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, 
                 <Route path={`${path}/faq`} component={() => <h1>FAQ</h1>} />
                 <Route path={`${path}/exit`} component={() => <div><h1>Logout</h1>
                 {auth.logout()}</div>} />
+                <Route path={`/student/StudentWorkshopDetail`} component={() => <StudentWorkshopDetail />} />
             </div>
             <Footer />
         </div>
