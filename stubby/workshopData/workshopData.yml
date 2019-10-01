@@ -1,0 +1,27 @@
+- request:
+    url: ^/api/v1/workshop/current$
+    method: GET
+  response:
+    status: 200
+    latency: 200
+    # headers:
+    #   Authorization: '123'
+    file: workshopData/currentpayload.json
+
+- request:
+    url: ^/api/v1/workshop/archived$
+    method: GET
+  response:
+    status: 200
+    latency: 200
+    # headers:
+    #   Authorization: '123'
+    file: workshopData/archivedpayload.json
+
+- request:
+    url: ^/api/v1/workshop/current/create$
+    method: POST
+  response:
+    status: 200
+    latency: 200
+    file: workshopData/currentpayload.json

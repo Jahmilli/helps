@@ -1,0 +1,17 @@
+{
+    "python.linting.pylintArgs": ["--load-plugins=pylint_django"],
+    "window.zoomLevel": -1,
+    "editor.wordWrap": "off",
+    "editor.formatOnSave": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "terminal.integrated.rendererType": "dom",
+    "explorer.confirmDragAndDrop": false,
+    "editor.minimap.enabled": false,
+    "explorer.confirmDelete": false,
+    "prettier.tabWidth": 4,
+    "prettier.useTabs": true,
+    "editor.tabCompletion": "on",
+    "prettier.printWidth": 100,
+    "prettier.proseWrap": "never",
+    "html.format.wrapAttributes": "force-aligned",
+}

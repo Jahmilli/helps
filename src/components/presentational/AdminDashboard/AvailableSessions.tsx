@@ -60,8 +60,8 @@ const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (prop
                     { title: 'Room', field: 'room' },
                     // { title: 'A/NA', field: '' },
                     { title: 'Type', field: 'type' },
-                    { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: ISession) => <div>{displayStudentId(rowData)}</div> }, 
-                    { title: 'Waiting', field: 'waitingList', editable: 'never', render: (rowData: ISession) => <div>{renderWaitingList(rowData)}</div> }, 
+                    { title: 'Booked by', field: 'studentId', editable: 'never', render: (rowData: ISession) => <div>{displayStudentId(rowData)}</div> },
+                    { title: 'Waiting', field: 'waitingList', editable: 'never', render: (rowData: ISession) => <div>{renderWaitingList(rowData)}</div> },
                 ],
                 data: props.sessionData.map((session: ISession) => session)
             });
@@ -83,14 +83,14 @@ const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (prop
         // if (eventData.studentId !== BOOK_SESSION) {
         //     alert('This session is already booked');
         // } else {
-            // Maybe we can use Redirect and control its rendering from here
-            props.history.push({
-                pathname: `/admin/bookSession`,
-                state: {
-                    eventData,
-                    isCurrentBooking: true
-                }
-            });
+        // Maybe we can use Redirect and control its rendering from here
+        props.history.push({
+            pathname: `/admin/bookSession`,
+            state: {
+                eventData,
+                isCurrentBooking: true
+            }
+        });
         // }
     }
 
@@ -98,19 +98,20 @@ const AvailableSessions: React.FunctionComponent<AvailableSessionsProps> = (prop
         <div>
             <Typography variant="h2">Sessions available</Typography>
             <div className={classes.displayIconLockup} onClick={handleAdminDisplayChange}>
-                <FontAwesomeIcon className={classes.displayIcon} icon={ isAdminDisplay ? faEye : faEyeSlash } />
+                <FontAwesomeIcon className={classes.displayIcon} icon={isAdminDisplay ? faEye : faEyeSlash} />
             </div>
 
             <EditableTable state={state} setState={setState} actions={[{
-                    icon: icons.Add,
-                    tooltip: 'Book Session',
-                    onClick: (event: any, rowData: ISession) => handleBookSession(rowData)
-                }
+                icon: icons.Add,
+                tooltip: 'Book Session',
+                onClick: (event: any, rowData: ISession) => handleBookSession(rowData)
+            }
             ]}
-            options={{ toolbar: false, paging: true }} editOptions={editOptions} />
+                options={{ toolbar: false, paging: true }} editOptions={editOptions}
+                tableTitle={"Avaliable Sessions"} />
         </div>
     );
 };
-    
+
 
 export default withRouter(AvailableSessions);
