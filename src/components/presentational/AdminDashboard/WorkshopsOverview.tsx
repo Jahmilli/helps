@@ -30,8 +30,6 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 		canArchive: true
 	} as EditOptions;
 
-	// const [state, setState] = React.useState({});
-
 	const [state, setState] = React.useState({
 		columns: [
 			{ title: "No", field: "no" },

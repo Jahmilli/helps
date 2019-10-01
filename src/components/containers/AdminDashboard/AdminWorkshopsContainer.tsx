@@ -1,24 +1,16 @@
 import * as React from "react";
 import WorkshopsOverview from "../../presentational/AdminDashboard/WorkshopsOverview";
-import CenteredTabs from "../../presentational/CenteredTabs";
-import { Typography } from "@material-ui/core";
+import WorkshopStatus from "../../presentational/WorkshopStatus";
 import { RouteComponentProps } from "react-router";
 
 type AdminWorkshopsContainerProps = RouteComponentProps<any> & {};
 
-const workshopTabs = [
-	{
-		title: "Current"
-	},
-	{
-		title: "Archived"
-	}
-];
+
+var workshopTabs = ["Current", "Archived"];
 
 const AdminWorkshopsContainer: React.SFC<AdminWorkshopsContainerProps> = props => {
-	const { path } = props.match;
 	const [state, setState] = React.useState({
-		tab: "Current"
+		tab: workshopTabs[0]
 	});
 
 	const myCallbackTab = (tabSelected: string) => {
@@ -28,12 +20,10 @@ const AdminWorkshopsContainer: React.SFC<AdminWorkshopsContainerProps> = props =
 	};
 
 	return (
-		<div>
+		<div style={{ margin: '0 5%' }}>
 			<br />
-			<Typography variant="h3">Workshops</Typography>
-			<CenteredTabs workshopTabs={workshopTabs} props={props} callbackTab={myCallbackTab} />
-			{console.log("tab:" + state.tab)}
-			{state.tab === "Current" ? (
+			<WorkshopStatus workshopTabs={workshopTabs} callbackTab={myCallbackTab} />
+			{state.tab === workshopTabs[0] ? (
 				<WorkshopsOverview props={props} tab={state.tab} />
 			) : (
 					<WorkshopsOverview props={props} tab={state.tab} />
