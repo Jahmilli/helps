@@ -9,18 +9,19 @@ import { RouteComponentProps } from 'react-router';
 import { typography } from '@material-ui/system';
 
 
-const icons = {
-    Add: () => <Add /> as React.ReactElement<SvgIconProps>
-}
-
 type AvailableSessionsProps = RouteComponentProps<any> & {
     isAdmin: boolean;
 } 
 
 const AdminReport: React.FunctionComponent<AvailableSessionsProps> = (props) => {
-    
+
     return (
         <div>
+            <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
+                <Button id="submit" color="primary" size="large" > Session Report</Button>
+                <Button id="submit" color="primary" size="large" > Workshop Report</Button>
+            </div>
+
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Typography variant="h3"> Reports </Typography>
             </div>
@@ -34,10 +35,11 @@ const AdminReport: React.FunctionComponent<AvailableSessionsProps> = (props) => 
                 <ul>
                 Select a report
                 </ul>
+
                 <form>
                     <div className="BookedSessions">
                         <label>
-                            <input type="radio" value="option1" checked={true} />
+                            <input type="radio" id="BookedSessions" value="option1" checked={true} />
                             Booked Sessions
                         </label>
                     </div>
