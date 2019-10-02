@@ -3,16 +3,14 @@ import UserContext from '../../../UserContext';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
 import getStudentWorkshops from '../../../logic/functions/getStudentWorkshops';
 import MaterialTable from 'material-table';
-import { Route } from 'react-router';
-import { Link } from 'react-router-dom';
-import StudentWorkshopDetail from '../../presentational/StudentDashboard/StudentWorkshopDetails';
+import { RouteComponentProps } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 
-interface StudentWorkShopProps { }
+type StudentWorkShopProps = RouteComponentProps<any> & {}
 
 let workshopData:any;
 
-const StudentWorkshopRegistration: React.FunctionComponent<StudentWorkShopProps> = () => {
-
+const StudentWorkshopRegistration: React.FunctionComponent<StudentWorkShopProps> = (props) => {
     const [sessions, setSessions] = React.useState<Array<ISession>>([]);
     const context = React.useContext(UserContext);
 
@@ -40,7 +38,7 @@ const StudentWorkshopRegistration: React.FunctionComponent<StudentWorkShopProps>
                     { title: 'name', field: 'name' },
                     {render: rowData => <Link to={{
                         pathname: '/student/StudentWorkshopDetail',
-                        state: [{id: 1, name: 'Ford', color: 'red'}]
+                        state: rowData
                       }}> Your Page </Link>}
                 ]
                 }
@@ -50,4 +48,4 @@ const StudentWorkshopRegistration: React.FunctionComponent<StudentWorkShopProps>
     );
 };
 
-export default StudentWorkshopRegistration;
+export default withRouter(StudentWorkshopRegistration);

@@ -4,17 +4,17 @@ import { ISession, ISessionDetails } from "../../../logic/domains/sessionDetails
 import EditableTable from "../EditableTable";
 import { Add } from "@material-ui/icons";
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
-import { Route } from 'react-router';
+import { withRouter, RouteComponentProps } from 'react-router';
 
-interface SessionDetails {
-	// data: ISessionDetails;
-}
+type SessionDetails = RouteComponentProps<any> & {};
 
 const icons = {
 	Add: () => <Add /> as React.ReactElement<SvgIconProps>
 };
 
-const StudentWorkshopDetail: React.FunctionComponent<SessionDetails> = ({ }) => {
+const StudentWorkshopDetail: React.FunctionComponent<SessionDetails> = (props) => {
+	console.log('state from router is ', props.location.state);
+	const { name } = props.location.state;
 	const [state, setState] = React.useState({});
 	
 
@@ -48,10 +48,10 @@ const StudentWorkshopDetail: React.FunctionComponent<SessionDetails> = ({ }) => 
 			
 		// </div>
 		<div style={{ margin: '0 3%' }}>
-			<h1>Hello from details</h1>
+			<h1>{ name || 'Workshop Name was Empty'}</h1>
 			<h1></h1>
 		</div>
 	);
 };
 
-export default StudentWorkshopDetail;
+export default withRouter(StudentWorkshopDetail);
