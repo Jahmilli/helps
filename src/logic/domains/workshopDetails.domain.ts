@@ -1,5 +1,5 @@
 export interface Workshop {
-    _id?: string;
+    _id: string;
     no: ICheckBox; // Should be a date object
     skillSet: string; // Should be a date object
     shortTitle: string;

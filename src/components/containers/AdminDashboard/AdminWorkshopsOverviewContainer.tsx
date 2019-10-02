@@ -3,12 +3,12 @@ import WorkshopsOverview from "../../presentational/AdminDashboard/WorkshopsOver
 import WorkshopStatus from "../../presentational/WorkshopStatus";
 import { RouteComponentProps } from "react-router";
 
-type AdminWorkshopsContainerProps = RouteComponentProps<any> & {};
+type AdminWorkshopsOverviewContainerProps = RouteComponentProps<any> & {};
 
 
 const workshopTabs = ["Current", "Archived"];
 
-const AdminWorkshopsContainer: React.SFC<AdminWorkshopsContainerProps> = props => {
+const AdminWorkshopsOverviewContainer: React.SFC<AdminWorkshopsOverviewContainerProps> = props => {
 	const [state, setState] = React.useState({
 		tab: workshopTabs[0]
 	});
@@ -32,4 +32,4 @@ const AdminWorkshopsContainer: React.SFC<AdminWorkshopsContainerProps> = props =
 	);
 };
 
-export default AdminWorkshopsContainer;
+export default AdminWorkshopsOverviewContainer;

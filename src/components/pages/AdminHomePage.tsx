@@ -10,7 +10,8 @@ import LoginPage from "./LoginPage";
 import navbarTabs from "./__data__/data.adminNavbarTabs.json";
 import AdminSessionContainer from "../containers/AdminDashboard/AdminSessionContainer";
 import BookSessionContainer from "../containers/AdminDashboard/BookSessionContainer";
-import AdminWorkshopsContainer from "../containers/AdminDashboard/AdminWorkshopsContainer";
+import AdminWorkshopsOverviewContainer from "../containers/AdminDashboard/AdminWorkshopsOverviewContainer";
+import AdminWorkshopCreateContainer from "../containers/AdminDashboard/AdminWorkshopCreateContainer";
 
 interface AdminHomePageProps {
 	auth: Auth;
@@ -45,7 +46,11 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
 				<Route path={`/admin/bookSession`} render={props => <BookSessionContainer />} />
 				<Route
 					path={`${path}/workshops`}
-					render={props => <AdminWorkshopsContainer {...props} />}
+					render={props => <AdminWorkshopsOverviewContainer {...props} />}
+				/>
+				<Route
+					path={`${path}/workshops/amenddetails/:workshopId`}
+					render={props => <AdminWorkshopCreateContainer />}
 				/>
 			</div>
 			<Footer />
