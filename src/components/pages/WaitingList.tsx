@@ -10,10 +10,10 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { ISession, ISessionDetails } from '../../logic/domains/sessionDetails.domain';
 import { Session } from 'inspector';
 import { Typography } from '@material-ui/core';
-import classes from '*.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import EditableTable from '../presentational/EditableTable';
+import { AvailableSessionsStyle } from '../presentational/AdminDashboard/styles';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -30,8 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type WaitingListProps = RouteComponentProps<any> & {
-    sessionData:ISession;
-    
+  sessionData: Array<ISession>;
   
 }
 
@@ -39,6 +38,7 @@ const WaitingList: React.FunctionComponent<WaitingListProps> = (props) => {
   
   const [state, setState] = React.useState({});
   const [isAdminDisplay, setIsAdminDisplay] = React.useState(false);
+  const classes = AvailableSessionsStyle();
 
   const handleAdminDisplayChange = (event: any) => {
       setIsAdminDisplay(!isAdminDisplay);
@@ -47,7 +47,7 @@ const WaitingList: React.FunctionComponent<WaitingListProps> = (props) => {
   
 
   React.useEffect(() => {
-      if (props.sessionData.waitingList) {
+      if (props.sessionData) {
           setState({
               columns: [
                 
@@ -55,10 +55,10 @@ const WaitingList: React.FunctionComponent<WaitingListProps> = (props) => {
                  
               ],
 
-              data: props.sessionData.waitingList.map((waitingList: ISessionDetails) => waitingList)
+              data: props.sessionData.map((waitingList: ISession) => waitingList)
           });
       }
-  }, [props.sessionData.waitingList, isAdminDisplay]);
+  }, [props.sessionData, isAdminDisplay]);
 
 
 

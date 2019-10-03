@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Route } from 'react-router';
@@ -11,6 +11,9 @@ import WaitingList from './WaitingList';
 import navbarTabs from './__data__/data.adminNavbarTabs.json';
 import AdminSessionContainer from '../containers/AdminDashboard/AdminSessionContainer';
 import BookSessionContainer from '../containers/AdminDashboard/BookSessionContainer';
+import WaitingListContainer from '../containers/AdminDashboard/WaitingListContainer';
+
+
 
 interface AdminHomePageProps {
     auth: Auth;
@@ -40,7 +43,7 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
                 <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
                 <Route path={`${path}/sessions`} render={(props) => <AdminSessionContainer {...props} /> } />
                 <Route path={`/admin/bookSession`} render={(props) => <BookSessionContainer /> } />
-                <Route path={`${path}/waitingList`} render={(props) => <WaitingList{...props}/> } />
+                <Route path={`${path}/waitingList`} render={(props) => <WaitingListContainer {...props}/> } />
             </div>
             <Footer />
         </div>
