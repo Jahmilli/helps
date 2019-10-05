@@ -16,6 +16,7 @@ export const setBookedSessions = (data: any): Array<any> => {
             faculty,
             status,
             degree,
+            didAttend: 'true',
             studentId,
             subjectName,
             assignmentType,
@@ -72,7 +73,7 @@ export const setNotAttendedSessions = (data: any): Array<any> => {
             bookedBy: 'nope',
             studentId,
             preferredName,
-            attended: 'dont have this',
+            didAttend: 'true',
             subjectName,
             assignmentType,
             registrationDate: 'nor do we have this'

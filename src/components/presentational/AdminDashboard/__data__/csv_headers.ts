@@ -42,7 +42,7 @@ export const bookedSessionsHeaders = [
     { label: "Status", key: "status" },
     { label: "Degree", key: "degree" },
     // { label: "degreeDetails", key: "degreeDetails" }, Dont have this data yet
-    // { label: "Attended ?", key: "attended" }, Dont have this data yet
+    { label: "Attended ?", key: "didAttend" },
     { label: "Subject Name", key: "subjectName" },
     { label: "Assignment Type", key: "assignmentType" },
     // { label: "Registration on Date", key: "registrationOnDate" }, Dont know what this is...
@@ -95,7 +95,7 @@ export const notAttendedSessionsHeaders = [
     { label: "Booked By", key: "bookedBy" },
     { label: "preferred First Name", key: "preferredName" },
     { label: "Student Id", key: "studentId" },
-    { label: "Attended ?", key: "attended" },
+    { label: "Attended ?", key: "didAttend" },
     { label: "Subject name", key: "subjectName" },
     { label: "Assignment Type", key: "assignmentType" },
     { label: "Registration", key: "registrationDate" }

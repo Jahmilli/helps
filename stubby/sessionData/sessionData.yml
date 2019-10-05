@@ -23,3 +23,11 @@
     status: 200
     latency: 200
     file: sessionData/payload.json
+
+- request:
+    url: ^/api/v1/session/reports$
+    method: GET
+  response:
+    status: 200
+    latency: 200
+    file: sessionData/allSessions.json

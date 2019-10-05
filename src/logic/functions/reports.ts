@@ -7,5 +7,5 @@ export interface ReportsPayload {
 
 export const getAllBookedSessions = async (payload?: ReportsPayload) => {
     const queryParams = payload ? `?startDate=${payload.startDate}&endDate=${payload.endDate}` : '';
-    return await get(`/api/v1/session${queryParams}`);
+    return await get(`/api/v1/session/reports${queryParams}`);
 }
