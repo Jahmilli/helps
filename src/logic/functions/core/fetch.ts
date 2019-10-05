@@ -1,4 +1,4 @@
-const AUTH_TOKEN = 'access_token';
+// const AUTH_TOKEN = 'access_token';
 export type Options = {};
 
 // Will be used with the JWT token
@@ -36,7 +36,7 @@ const coreFetch = async (
         let response = undefined;
         if (options) {
             response = await fetch(url, { headers });
-        } else  {
+        } else {
             response = await fetch(url, init);
         }
         if (response.ok) {
@@ -47,8 +47,8 @@ const coreFetch = async (
     });
 };
 
-// Will be used to get the JWT token
-const getAuthToken = (): string => {
-    let authToken: string | null = localStorage.getItem(AUTH_TOKEN);
-    return authToken != null ? (JSON.parse(authToken) as AuthToken).value : '';
-};
+// Will be used to get the JWT token, which is supposed to be passed to the backend
+// const getAuthToken = (): string => {
+//     let authToken: string | null = localStorage.getItem(AUTH_TOKEN);
+//     return authToken != null ? (JSON.parse(authToken) as AuthToken).value : '';
+// };

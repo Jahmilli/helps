@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography, Button, Icon } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
 import EditableTable, { EditOptions } from '../EditableTable';
 import { Add } from '@material-ui/icons';

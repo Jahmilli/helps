@@ -1,8 +1,8 @@
 import React from 'react';
 import { Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@material-ui/core';
-import { CSVLink } from 'react-csv';
-// import { Radio } from '@material-ui/icons';
+import { CSVLink, CSVDownload } from 'react-csv';
 
+// Maybe should be an enum for the val, not sure...
 const data = [
     "Booked sessions",
     "Cancelled sessions",
@@ -28,12 +28,20 @@ const excelData = [
 const SessionReports: React.FunctionComponent = () => {
 
     const [state, setState] = React.useState("");
+    const [shouldDownload, setShouldDownload] = React.useState(false);
     const handleSelection = (event: any) => {
         setState(event.target.value);
     }
+    const handleDownload = () => {
+        switch (state) {
+            case "Booked sessions":
 
-    const getCurrentData = () => {
-        return new Date().toLocaleDateString("en-AUS").replace(/[\/_]/g, "");
+
+        }
+    }
+
+    const getCurrentDate = () => {
+        return new Date().toLocaleDateString("en-AUS").replace(/[/_]/g, "");
     }
 
     return (
@@ -53,12 +61,18 @@ const SessionReports: React.FunctionComponent = () => {
                     <FormControlLabel onChange={handleSelection} checked={"Students in waiting list" === state} value="Students in waiting list" control={<Radio />} label="Students in the waiting list" />
                 </RadioGroup>
             </FormControl>
-            <Typography variant="body1">- Step 3: Press "Submit" button</Typography>
-            <CSVLink data={excelData} headers={excelHeaders}
-                filename={`session_reports_${getCurrentData()}.csv`}
-                target="_blank">
+            <Typography variant="body1">- Step 3: Press "Download" button</Typography>
+            <Button id="submitBooking" color="primary" size="large" onClick={handleDownload}>
                 Download
-            </CSVLink>
+			</Button>
+            {shouldDownload ?
+                <CSVDownload data={excelData} headers={excelHeaders}
+                    filename={`session_reports_${getCurrentDate()}.csv`}
+                    target="_blank">
+                    Download
+                </CSVDownload>
+                : null
+            }
         </div>
     );
 }

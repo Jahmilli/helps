@@ -16,16 +16,16 @@ const PrivateRoute = ({ component: Component, auth, ...rest }: any) => (
     <Route
         {...rest}
         render={(props) => auth.isAuthenticated() === true
-          ? <Component auth={auth} {...props} />
-          : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
-      />
+            ? <Component auth={auth} {...props} />
+            : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />}
+    />
 );
 
-const Routing: React.FunctionComponent<RoutingProps> = ({auth}) => {
+const Routing: React.FunctionComponent<RoutingProps> = ({ auth }) => {
     return (
         <Router>
             <Switch>
-                <Route path="/" exact={true} render={() => <HomePage auth={auth} />} />
+                <Route path="/" exact={true} render={() => <HomePage />} />
                 <Route path="/login" render={() => <LoginPage auth={auth} />} />
                 <Route path="/callback" render={() => <Callback auth={auth} />} />
                 <Route path="/student" render={(props: any) => <StudentHomePage auth={auth} props={props} />} />
