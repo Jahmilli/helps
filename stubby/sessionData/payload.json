@@ -9,6 +9,10 @@
         "type": "Random Type",
         "currentBooking": {
             "studentId": "12097365",
+            "preferredName": "SMD",
+            "faculty": "FEIT",
+            "status": "smegma",
+            "degree": "Bachelors of Architectural Design",
             "reason": "Learning how to design a Highly available architecture",
             "subjectName": "Software Architecture",
             "assignmentType": "Group",
@@ -22,7 +26,6 @@
                 "bookingAnswer5": true,
                 "bookingAnswer6": true,
                 "bookingAnswer7": true
-            
             }
         },
         "waitingList": []
@@ -36,7 +39,11 @@
         "advisor": "Phil Gilbert",
         "type": "Random Type",
         "currentBooking": {
-            "studentId": "12097365",
+            "studentId": "120973325",
+            "preferredName": "Woody",
+            "faculty": "FEIT",
+            "status": "LIGMA",
+            "degree": "Bachelors of Business is BS",
             "reason": "Figuring out the meaning of life...",
             "subjectName": "Business Requirements & Modelling",
             "assignmentType": "Group",
@@ -50,7 +57,6 @@
                 "bookingAnswer5": true,
                 "bookingAnswer6": true,
                 "bookingAnswer7": true
-            
             }
         },
         "waitingList": [
@@ -69,19 +75,8 @@
                     "bookingAnswer5": true,
                     "bookingAnswer6": true,
                     "bookingAnswer7": true
-                
                 }
             }
         ]
-    },
-    {
-        "id": "aaasd0824732204nadms",
-        "date": "19/09/2003",
-        "startTime": "17:00:00",
-        "endTime": "19:00:00",
-        "room": "CB11.01.01",
-        "advisor": "Mark Donovan",
-        "type": "Random Type",
-        "waitingList": []
     }
 ]

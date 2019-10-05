@@ -1,8 +1,8 @@
-export const student_data = [
+export const studentDataHeaders = [
     { label: "Student ID", key: "studentId" },
     { label: "Given Name", key: "givenName" },
     { label: "Family Name", key: "familyName" },
-    { label: "Preferred First Name", key: "preferredFirstName" },
+    { label: "Preferred First Name", key: "preferredName" },
     { label: "DOB", key: "dateOfBirth" },
     { label: "Gender", key: "gender" },
     { label: "Special Needs", key: "specialNeeds" },
@@ -27,8 +27,8 @@ export const student_data = [
     // { label: "FamilyName", key: "familyName" },
 ];
 
-export const bookedSessions = [
-    { label: "Session Id", key: "sessionId" },
+export const bookedSessionsHeaders = [
+    { label: "Session Id", key: "id" },
     { label: "Date", key: "date" },
     { label: "Start Time", key: "startTime" },
     { label: "endTime", key: "endTime" },
@@ -36,7 +36,7 @@ export const bookedSessions = [
     { label: "Advisor", key: "advisor" },
     { label: "Type", key: "type" },
     { label: "Booked By", key: "bookedBy" },
-    { label: "preferred First Name", key: "preferredFirstName" },
+    { label: "Preferred First Name", key: "preferredName" },
     { label: "Student Id", key: "studentId" },
     { label: "Faculty", key: "faculty" },
     { label: "Status", key: "status" },
@@ -46,17 +46,17 @@ export const bookedSessions = [
     { label: "Subject Name", key: "subjectName" },
     { label: "Assignment Type", key: "assignmentType" },
     // { label: "Registration on Date", key: "registrationOnDate" }, Dont know what this is...
-    { label: "I need help - Answering the assignment question (please provide the question to your advisor)", key: "needHelpAnsweringQuestion" },
-    { label: "I need help - Addressing the marking criteria (please provide the criteria to your advisor)", key: "needHelpWithMarkingCriteria" },
-    { label: "I need help - Structure", key: "iNeedHelpWithStructure" },
-    { label: "I need help - Paragraph Development", key: "iNeedHelpParagraph" },
-    { label: "I need help - Referencing", key: "iNeedHelpReferencing" },
-    { label: "I need help - Grammar", key: "iNeedHelpGrammar" },
-    { label: "I need help - Other, please specify below", key: "iNeedHelpOther" }
+    { label: "I need help - Answering the assignment question (please provide the question to your advisor)", key: "bookingAnswer1" },
+    { label: "I need help - Addressing the marking criteria (please provide the criteria to your advisor)", key: "bookingAnswer2" },
+    { label: "I need help - Structure", key: "bookingAnswer3" },
+    { label: "I need help - Paragraph Development", key: "bookingAnswer4" },
+    { label: "I need help - Referencing", key: "bookingAnswer5" },
+    { label: "I need help - Grammar", key: "bookingAnswer6" },
+    { label: "I need help - Other, please specify below", key: "bookingAnswer7" }
 ];
 
-export const cancelledSessions = [
-    { label: "Session Id", key: "sessionId" },
+export const cancelledSessionsHeaders = [
+    { label: "Session Id", key: "id" },
     { label: "Date", key: "date" },
     { label: "Start Time", key: "startTime" },
     { label: "endTime", key: "endTime" },
@@ -64,7 +64,7 @@ export const cancelledSessions = [
     { label: "Advisor", key: "advisor" },
     { label: "Type", key: "type" },
     { label: "Booked By", key: "bookedBy" },
-    { label: "preferred First Name", key: "preferredFirstName" },
+    { label: "preferred First Name", key: "preferredName" },
     { label: "Student Id", key: "studentId" },
     { label: "Cancelled on", key: "cancelledOn" },
     { label: "Subject name", key: "subjectName" },
@@ -72,8 +72,8 @@ export const cancelledSessions = [
     { label: "Registration", key: "registrationDate" }
 ];
 
-export const sessionsHavingWaitingLists = [
-    { label: "Session Id", key: "sessionId" },
+export const sessionsHavingWaitingListsHeaders = [
+    { label: "Session Id", key: "id" },
     { label: "Date", key: "date" },
     { label: "Start Time", key: "startTime" },
     { label: "endTime", key: "endTime" },
@@ -84,8 +84,8 @@ export const sessionsHavingWaitingLists = [
     { label: "Waited by", key: "waitedBy" },
 ]
 
-export const notAttendedSessions = [
-    { label: "Session Id", key: "sessionId" },
+export const notAttendedSessionsHeaders = [
+    { label: "Session Id", key: "id" },
     { label: "Date", key: "date" },
     { label: "Start Time", key: "startTime" },
     { label: "endTime", key: "endTime" },
@@ -93,7 +93,7 @@ export const notAttendedSessions = [
     { label: "Advisor", key: "advisor" },
     { label: "Type", key: "type" },
     { label: "Booked By", key: "bookedBy" },
-    { label: "preferred First Name", key: "preferredFirstName" },
+    { label: "preferred First Name", key: "preferredName" },
     { label: "Student Id", key: "studentId" },
     { label: "Attended ?", key: "attended" },
     { label: "Subject name", key: "subjectName" },
@@ -101,8 +101,8 @@ export const notAttendedSessions = [
     { label: "Registration", key: "registrationDate" }
 ];
 
-export const notBookedSessions = [
-    { label: "Session Id", key: "sessionId" },
+export const notBookedSessionsHeaders = [
+    { label: "Session Id", key: "id" },
     { label: "Date", key: "date" },
     { label: "Start Time", key: "startTime" },
     { label: "endTime", key: "endTime" },
@@ -112,7 +112,7 @@ export const notBookedSessions = [
 ];
 
 
-export const workshopSkillSetDetails = [
+export const workshopSkillSetDetailsHeaders = [
     { label: "Skill Set", key: "skillSet" },
     { label: "Workshop Id", key: "workshopId" },
     { label: "Topic", key: "topic" },
@@ -123,7 +123,7 @@ export const workshopSkillSetDetails = [
     { label: "Student ID", key: "studentId" },
     { label: "Given Name", key: "givenName" },
     { label: "Family Name", key: "familyName" },
-    { label: "Preferred First Name", key: "preferredFirstName" },
+    { label: "Preferred First Name", key: "preferredName" },
     { label: "DOB", key: "dateOfBirth" },
     { label: "Gender", key: "gender" },
     { label: "Special Needs", key: "specialNeeds" },
@@ -146,7 +146,7 @@ export const workshopSkillSetDetails = [
     { label: "CAF", key: "caf" }
 ];
 
-export const workshopSkillSetSummary = [
+export const workshopSkillSetSummaryHeaders = [
     { label: "Student ID", key: "studentId" },
     { label: "Name", key: "name" },
     { label: "Faculty", key: "faculty" },

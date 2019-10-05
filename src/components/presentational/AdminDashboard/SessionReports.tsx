@@ -1,9 +1,12 @@
 import React from 'react';
 import { Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@material-ui/core';
-import { CSVLink, CSVDownload } from 'react-csv';
+import { CSVDownload } from 'react-csv';
+import { getAllBookedSessions } from '../../../logic/functions/reports';
+import { setBookedSessions } from './__data__/csv_data';
+import { bookedSessionsHeaders } from './__data__/csv_headers';
 
 // Maybe should be an enum for the val, not sure...
-const data = [
+const options = [
     "Booked sessions",
     "Cancelled sessions",
     "Sessions with waiting lists",
@@ -13,31 +16,47 @@ const data = [
     "Summary of students booking the sessions"
 ];
 
-const excelHeaders = [
-    { label: "First Name", key: "firstname" },
-    { label: "Last Name", key: "lastname" },
-    { label: "Email", key: "email" }
-];
-
-const excelData = [
-    { firstname: "Ahmed", lastname: "Tomi", email: "ah@smthing.co.com" },
-    { firstname: "Raed", lastname: "Labes", email: "rl@smthing.co.com" },
-    { firstname: "Yezzi", lastname: "Min l3b", email: "ymin@cocococo.com" }
-];
-
+interface CSVData {
+    headers: Array<any>;
+    data: Array<any>;
+}
 const SessionReports: React.FunctionComponent = () => {
 
-    const [state, setState] = React.useState("");
+    const [downloadOption, setDownloadOption] = React.useState("");
     const [shouldDownload, setShouldDownload] = React.useState(false);
-    const handleSelection = (event: any) => {
-        setState(event.target.value);
-    }
-    const handleDownload = () => {
-        switch (state) {
-            case "Booked sessions":
-
-
+    const [headers, setHeaders] = React.useState<Array<any>>([]);
+    const [data, setData] = React.useState<Array<any>>([]);
+    const [csvData, setCsvData] = React.useState<CSVData>({
+        headers: [],
+        data: []
+    });
+    React.useEffect(() => {
+        let shouldShow = false;
+        if (csvData.data.length > 0) {
+            shouldShow = true;
         }
+        setShouldDownload(shouldShow);
+    }, [csvData.data]);
+
+    const handleSelection = (event: any) => {
+        setDownloadOption(event.target.value);
+    }
+
+    const handleDownload = async () => {
+        let finalData: any = [];
+        let finalHeaders: any = [];
+        switch (downloadOption) {
+            case "Booked sessions": {
+                let sessionsData = await getAllBookedSessions();
+                finalData = setBookedSessions(sessionsData);
+                finalHeaders = bookedSessionsHeaders;
+            }
+                break;
+        }
+        setCsvData({
+            data: finalData,
+            headers: finalHeaders
+        })
     }
 
     const getCurrentDate = () => {
@@ -53,12 +72,12 @@ const SessionReports: React.FunctionComponent = () => {
             <FormControl component="fieldset">
                 <FormLabel component="legend">Step 2: Select a report</FormLabel>
                 <RadioGroup aria-label="sessions" name="customized-radios">
-                    {data.map((value: string, index: number) => {
-                        return <FormControlLabel onChange={handleSelection} checked={value === state} value={value} control={<Radio />} label={value} />
+                    {options.map((value: string, index: number) => {
+                        return <FormControlLabel key={index} onChange={handleSelection} checked={value === downloadOption} value={value} control={<Radio />} label={value} />
                     })}
-                    <FormControlLabel onChange={handleSelection} checked={"Student history" === state} value="Student history" control={<Radio />} label="Student history:" />
-                    <FormControlLabel onChange={handleSelection} checked={"Advisors comment" === state} value="Advisors comment" control={<Radio />} label="Advisors' comment:" />
-                    <FormControlLabel onChange={handleSelection} checked={"Students in waiting list" === state} value="Students in waiting list" control={<Radio />} label="Students in the waiting list" />
+                    <FormControlLabel onChange={handleSelection} checked={"Student history" === downloadOption} value="Student history" control={<Radio />} label="Student history:" />
+                    <FormControlLabel onChange={handleSelection} checked={"Advisors comment" === downloadOption} value="Advisors comment" control={<Radio />} label="Advisors' comment:" />
+                    <FormControlLabel onChange={handleSelection} checked={"Students in waiting list" === downloadOption} value="Students in waiting list" control={<Radio />} label="Students in the waiting list" />
                 </RadioGroup>
             </FormControl>
             <Typography variant="body1">- Step 3: Press "Download" button</Typography>
@@ -66,8 +85,8 @@ const SessionReports: React.FunctionComponent = () => {
                 Download
 			</Button>
             {shouldDownload ?
-                <CSVDownload data={excelData} headers={excelHeaders}
-                    filename={`session_reports_${getCurrentDate()}.csv`}
+                <CSVDownload data={csvData.data} headers={csvData.headers}
+                    filename={`session_reports_${getCurrentDate()}.csv`} // This does not work, its a bug in react-csv
                     target="_blank">
                     Download
                 </CSVDownload>
