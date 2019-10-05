@@ -2,8 +2,14 @@ import React from 'react';
 import { Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@material-ui/core';
 import { CSVDownload } from 'react-csv';
 import { getAllBookedSessions } from '../../../logic/functions/reports';
-import { setBookedSessions } from './__data__/csv_data';
-import { bookedSessionsHeaders } from './__data__/csv_headers';
+import { setBookedSessions, setCancelledSessions, setSessionsWithWaitingLists, setNotAttendedSessions, setNotBookedSessions } from './__data__/csv_data';
+import {
+    bookedSessionsHeaders,
+    cancelledSessionsHeaders,
+    sessionsHavingWaitingListsHeaders,
+    notAttendedSessionsHeaders,
+    notBookedSessionsHeaders
+} from './__data__/csv_headers';
 
 // Maybe should be an enum for the val, not sure...
 const options = [
@@ -36,7 +42,7 @@ const SessionReports: React.FunctionComponent = () => {
             shouldShow = true;
         }
         setShouldDownload(shouldShow);
-    }, [csvData.data]);
+    }, [downloadOption, csvData.data]);
 
     const handleSelection = (event: any) => {
         setDownloadOption(event.target.value);
@@ -50,9 +56,39 @@ const SessionReports: React.FunctionComponent = () => {
                 let sessionsData = await getAllBookedSessions();
                 finalData = setBookedSessions(sessionsData);
                 finalHeaders = bookedSessionsHeaders;
-            }
-                break;
+            }; break;
+            case "Cancelled sessions": {
+                let sessionsData = await getAllBookedSessions();
+                finalData = setCancelledSessions(sessionsData);
+                finalHeaders = cancelledSessionsHeaders;
+            }; break;
+            case "Sessions with waiting lists": {
+                let sessionsData = await getAllBookedSessions();
+                finalData = setSessionsWithWaitingLists(sessionsData);
+                finalHeaders = sessionsHavingWaitingListsHeaders;
+            }; break;
+            case "Non-attended sessions": {
+                let sessionsData = await getAllBookedSessions();
+                finalData = setNotAttendedSessions(sessionsData);
+                finalHeaders = notAttendedSessionsHeaders;
+            }; break;
+            case "Non-booked sessions": {
+                let sessionsData = await getAllBookedSessions();
+                finalData = setNotBookedSessions(sessionsData);
+                finalHeaders = notBookedSessionsHeaders;
+            }; break;
+            // case "Non-attended sessions": {
+            //     let sessionsData = await getAllBookedSessions();
+            //     finalData = setCancelledSessions(sessionsData);
+            //     finalHeaders = bookedSessionsHeaders;
+            // }; break;
+            // case "Non-attended sessions": {
+            //     let sessionsData = await getAllBookedSessions();
+            //     finalData = setCancelledSessions(sessionsData);
+            //     finalHeaders = bookedSessionsHeaders;
+            // }; break;
         }
+
         setCsvData({
             data: finalData,
             headers: finalHeaders
