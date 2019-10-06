@@ -105,7 +105,6 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
                 isCurrentBooking: false
             }
         }
-        console.log(tempData);
         try {
             //@ts-ignore
             await bookSession(tempData);
@@ -115,7 +114,7 @@ const BookSessionContainer:React.FunctionComponent<BookSessionContainerProps> = 
         } catch(err) {
             // TODO: Change alert to using a toast message or something
             alert('An error occurred when booking');
-            console.log('An error occurred when booking session', err);
+            console.error('An error occurred when booking session', err);
         }
     }
 

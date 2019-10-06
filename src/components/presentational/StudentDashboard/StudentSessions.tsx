@@ -16,9 +16,8 @@ interface StudentSessionsTableProps {
 
 const StudentSessionsTable: React.FunctionComponent<StudentSessionsTableProps> = ({ data }) => {
     const [state, setState] = React.useState({});
-    
+
     React.useEffect(() => {
-        console.log('data is ', data);
         if (data) {
             setState({
                 columns: [
@@ -38,15 +37,15 @@ const StudentSessionsTable: React.FunctionComponent<StudentSessionsTableProps> =
         <div>
             <Typography variant="h2">Sessions available</Typography>
             <EditableTable state={state} setState={setState} actions={[{
-                    icon: icons.Add,
-                    tooltip: 'Book Session',
-                    onClick: (event: any, rowData: ISession) => console.log(rowData)
-                }
+                icon: icons.Add,
+                tooltip: 'Book Session',
+                onClick: (event: any, rowData: ISession) => console.log(rowData)
+            }
             ]}
-            options={{ toolbar: false, paging: false }}/>
+                options={{ toolbar: false, paging: false }} tableTitle={"Student Sessions"} />
         </div>
     );
 };
-    
+
 
 export default StudentSessionsTable;

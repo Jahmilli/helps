@@ -6,6 +6,8 @@ import registerStudent from '../../logic/functions/registerStudent';
 import Auth from '../../logic/functions/core/Auth.js';
 import RegistrationField from '../presentational/StudentDashboard/RegistrationField';
 import RegistrationCheckbox from '../presentational/StudentDashboard/RegistrationCheckbox';
+import LanguageSelect from '../common/LanguageSelect';
+import CountryOfOriginSelect from '../common/CountryOfOrigin';
 
 interface RegistrationFormProps {
     auth: Auth;
@@ -31,6 +33,8 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
         gender: '',
         degree: '',
         status: '',
+        language: '',
+        countryOfOrigin: '',
         education: educationInitialState,
         upcomingSessions: sessionObject,
         previousSessions: sessionObject,
@@ -59,16 +63,13 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
 
     const submitStudentDetails = async (event: any) => {
         event.preventDefault();
-        console.log(values);
         try {
             let response: any = await registerStudent(values);
-            console.log('response is ', response);
             let auth0Response = await auth.updateUserMetaData(response._id, true);
-            console.log(auth0Response);
             alert('Successfully registered');
         } catch (err) {
             // TODO: Don't use an alert, display using a Snackbar or something
-            console.log('An error occured when registering', err);
+            console.error('An error occured when registering', err);
             alert('An error occured during registration, please try a different email or try again later...');
         }
     }
@@ -143,6 +144,8 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
                         labelPlacement="top"
                         />
                 </RadioGroup>
+                <LanguageSelect handleChange={handleStudentDetailsChange} value={values.language} />
+                <CountryOfOriginSelect handleChange={handleStudentDetailsChange} value={values.countryOfOrigin} />
             </div>
             <div className={classes.rightLockup}>
                 <FormGroup>

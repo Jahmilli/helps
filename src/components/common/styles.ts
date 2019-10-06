@@ -41,3 +41,9 @@ export const studentNavbarStyles = makeStyles({
     flexGrow: 1,
   }
 });
+
+export const languageSelectStyles = makeStyles({
+    select: {
+        width: '100%'
+    }
+  });

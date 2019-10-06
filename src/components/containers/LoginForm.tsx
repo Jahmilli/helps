@@ -1,97 +1,39 @@
-import React, { useState } from 'react';
-import { Button, Typography, FormControl, InputLabel, Input, FormHelperText, IconButton } from '@material-ui/core';
-import { Close as CloseIcon } from '@material-ui/icons';
+import React from 'react';
+import { Button, Typography, TextField } from '@material-ui/core';
 import Auth from '../../logic/functions/core/Auth';
-import { loginFormStyles } from './styles';
-import MySnackbarContentWrapper from '../presentational/SnackBarContentWrapper';
-
-interface UserDetails {
-    username: string;
-    password: string;
-    authFailed: boolean;
-}
+import logo from '../../images/uts-logo.png';
 
 interface LoginFormProps {
-    auth: Auth;
+    classes: any;
+    formikProps: any;
 }
 
-const LoginForm: React.FunctionComponent<LoginFormProps> = ({ auth }) => {
-    const initialUserDetailsState = {
-        username: '',
-        password: '',
-        authFailed: false
-    } as UserDetails;
-    const [userDetails, setUserDetails] = useState<UserDetails>(initialUserDetailsState);
-    
-    const handleChange = (name: string) => (event: any) => {
-        setUserDetails({
-            ...userDetails,
-            [name]: event.target.value
-        });
-    }
-    const handleSubmit = async (event: any) => {
-        event.preventDefault();
-        try {
-            await auth.login(userDetails.username, userDetails.password);
-        } catch (err) {
-            setUserDetails({
-                ...userDetails,
-                authFailed: true
-            })
-        }
-    }
-
-    const handleIconClick = (event: any) => {
-        setUserDetails({
-            ...userDetails,
-            authFailed: false
-        })
-    }
-    
-    const classes = loginFormStyles();
+const LoginForm: React.FunctionComponent<LoginFormProps> = ({ classes, formikProps }) => {
     return (
-        <div style={{ display: 'flex', justifyContent: 'center'}}>
-            <div className={classes.gridLockup}>
-                <div className={classes.loginLockup}>
-                <form onSubmit={handleSubmit}>
-                    <Typography className={classes.title} variant="h2">Login</Typography>
-                        <FormControl fullWidth={true}>
-                            <InputLabel htmlFor="username-field">Email address</InputLabel>
-                            <Input 
-                            aria-describedby="username-field"
-                                id="username"
-                                onChange={handleChange('username')}
-                                value={userDetails.username}
-                            />
-                            <FormHelperText id="username-field">We'll never share your email.</FormHelperText>
-                        </FormControl>
-
-                        <FormControl fullWidth={true}>
-                            <InputLabel htmlFor="password-field">Password</InputLabel>
-                            <Input 
-                                aria-describedby="password-field" 
-                                type="password"
-                                id="password"
-                                onChange={handleChange('password')}
-                                value={userDetails.password}
-                            />
-                        </FormControl>
-                        <Button className={classes.useWhite} id="signInButton" color="primary" size="large" type="submit">Sign In</Button>
-                        { userDetails.authFailed ? 
-                        <MySnackbarContentWrapper
-                            variant="error"
-                            className={classes.margin}
-                            message="Login Failed">
-                                <IconButton key="close" aria-label="close" color="inherit" onClick={handleIconClick}>
-                                    <CloseIcon className={classes.icon} />
-                                </IconButton>
-                        </MySnackbarContentWrapper>
-                        : ''
-                        }
-                    </form>
-                </div>
-            </div>
-        </div>
+        <form onSubmit={formikProps.handleSubmit}>
+            <img src={logo} className={classes.logo} alt="UTS Logo" />
+            <Typography variant="h1" style={{fontSize: 32, fontWeight: 'bold', color: 'black', textAlign:'start'}}>Log In</Typography>
+            <TextField
+                className={classes.textfield}
+                label="email"
+                name="email"
+                value={formikProps.values.email}
+                onChange={formikProps.handleChange}
+                onBlur={formikProps.handleBlur}
+                helperText={(formikProps.errors.email && formikProps.touched.email) && formikProps.errors.email}
+            />
+            <TextField
+                className={classes.textfield}
+                label="password"
+                name="password"
+                type="password"
+                value={formikProps.values.password}
+                onChange={formikProps.handleChange}
+                onBlur={formikProps.handleBlur}
+                helperText={(formikProps.errors.password && formikProps.touched.password) && formikProps.errors.password}
+            />
+            <button type="submit" className={classes.submitBtn}>Submit</button>
+        </form>
     );
 };
 

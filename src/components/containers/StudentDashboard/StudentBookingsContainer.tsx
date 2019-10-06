@@ -11,14 +11,12 @@ const StudentBookingsContainer:React.FunctionComponent<StudentBookingsContainerP
     const [sessions, setSessions] = React.useState<Array<ISession>>([]);
     // const [workshopSessions, setWorkshopSession] = React.useState<any>();
     const context = React.useContext(UserContext);
-    console.log('context is ', context);
 
     React.useEffect(() => {
         async function callGetCurrentSessions() {
             try {
                 let details = await getCurrentSessions(context.userDetails.studentId);
                 setSessions(details);
-                console.log('sessions are ', details);
             } catch(err) {
                 alert('An error occurred when getting current sessions');
             }

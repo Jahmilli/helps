@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { FormControlLabel, Radio, RadioGroup, Typography, FormGroup } from '@material-ui/core';
+import { FormControlLabel, Radio, RadioGroup, Typography, FormGroup, Button } from '@material-ui/core';
 import { registrationFormStyles } from '../../containers/styles';
 import { IStudentDetails, Course, IStudentSessionIds } from '../../../logic/domains/studentDetails.domain';
 import RegistrationField from './RegistrationField';
 import RegistrationCheckbox from './RegistrationCheckbox';
 import UserContext from '../../../UserContext';
+import LanguageSelect from '../../common/LanguageSelect';
+import CountryOfOriginSelect from '../../common/CountryOfOrigin';
+import updateStudentDetails from '../../../logic/functions/updateStudentDetails';
 
 interface StudentDetailsProps {}
 
@@ -30,6 +33,8 @@ const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
         gender: '',
         degree: '',
         status: '',
+        language: '',
+        countryOfOrigin: '',
         education: educationInitialState,
         upcomingSessions: sessionObject,
         previousSessions: sessionObject,
@@ -38,10 +43,7 @@ const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
     const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState);
     React.useEffect(() => {
         if (userDetails.userDetails) {
-            console.log('user detais are ', userDetails);
             setValues(userDetails.userDetails);
-        } else {
-            console.log('user details are empty', userDetails);
         }
     }, [userDetails]);
     
@@ -64,9 +66,19 @@ const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
         setValues(details);
     }
 
+    const submitStudentDetails = async (event: any) => {
+        event.preventDefault();
+        try {
+            let response: any = await updateStudentDetails(values);
+            alert('Successfully updated');
+        } catch (err) {
+            alert('An error occured during registration, please try a different email or try again later...');
+        }
+    }
+
     const classes = registrationFormStyles();
     return (
-        <form className={classes.registrationLockup}>
+        <form className={classes.registrationLockup} onSubmit={submitStudentDetails}>
             <div className={classes.leftLockup}>
                 <RegistrationField id="studentId" title="Student ID" label="12345678" value={values.studentId} handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="email" title="Email" label="student123@student.uts.edu.au" value={values.email} handleChange={handleStudentDetailsChange} classes={classes} />
@@ -134,6 +146,8 @@ const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
                         labelPlacement="top"
                         />
                 </RadioGroup>
+                <LanguageSelect handleChange={handleStudentDetailsChange} value={values.language} />
+                <CountryOfOriginSelect handleChange={handleStudentDetailsChange} value={values.countryOfOrigin} />
             </div>
             <div className={classes.rightLockup}>
                 <FormGroup>
@@ -146,6 +160,7 @@ const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
                     <RegistrationCheckbox id="insearchDiploma" label="Insearch Diploma" index={6} value={values.education[6]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
                     <RegistrationCheckbox id="foundationCourse" label="Foundation Course" index={7} value={values.education[7]} updateEducationCheckbox={updateEducationCheckbox} updateMark={updateMark} classes={classes} />
                 </FormGroup>
+                <Button id="submitStudentDetailsBtn" color="primary" size="large" type="submit">Submit</Button>
             </div>
         </form>
     );

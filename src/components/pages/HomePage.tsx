@@ -7,14 +7,6 @@ interface HomePageProps {
 };
 
 const HomePage: React.FunctionComponent<HomePageProps> = ({ auth }) => {
-    React.useEffect(() => {
-        const callGetTest = async () => {
-            let data = await getTestData();
-            console.log(data);
-        };
-        callGetTest();
-    }, []);
-
     return (
         <div>
             <h1>Hello World</h1>

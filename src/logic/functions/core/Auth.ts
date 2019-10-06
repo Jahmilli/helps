@@ -68,8 +68,7 @@ export default class Auth {
                 // TODO: Will need to check email or something to verify user is student or admin and redirect on that.
                 window.location.pathname = '/student/register';
             } else if (err) {
-                console.log('An error occurred during authentication');
-                console.log(err);
+                console.error('An error occurred during authentication', err);
             }
         });
     }
@@ -106,7 +105,6 @@ export default class Auth {
         // if (!TEMPORARY_ACCESS_TOKEN) {
         //     return;
         // }
-        console.log('setting up auth manage');
         const auth0Manage = new auth0.Management({
             domain: 'uts-helps.au.auth0.com',
             token: TEMPORARY_ACCESS_TOKEN || ''
@@ -127,7 +125,7 @@ export default class Auth {
                 metaDataObject, 
                 (err: auth0.Auth0Error | null, profile: Auth0UserProfile) => {
                     if (err) {
-                        console.log('An error occurred when updating usermetadata', err);
+                        console.error('An error occurred when updating usermetadata', err);
                         return reject('error occurred when updating usermetadata');
                         // throw Error('error occurred when updating usermetadata');
                     } else {
@@ -140,16 +138,16 @@ export default class Auth {
     readUserMetaData(): Promise<any> {
         const profile = this.getProfile();
         if (!profile.userId) {
-            return Promise.reject('You have not logged in....');
+            return Promise.reject(null);
         }
-        console.log('reading user metadata');
         return new Promise((resolve, reject) => {
             this.auth0Manage.getUser(profile.userId, 
                 (err: auth0.Auth0Error | null, userProfile: auth0.Auth0UserProfile) => {
                     if (err) {
+                        console.error('err occurred when reading metadata', err);
                         return reject(err);
                     }
-                    console.log('profile is ', userProfile.user_metadata);
+                    
                     profile.isRegisteredUser = userProfile.user_metadata.isRegisteredUser;
                     return resolve(userProfile.user_metadata);
             }); 
