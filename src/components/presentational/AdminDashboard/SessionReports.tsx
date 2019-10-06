@@ -37,28 +37,29 @@ const SessionReports: React.FunctionComponent = () => {
         startDate: new Date(),
         endDate: new Date()
     });
+
     const [downloadOption, setDownloadOption] = React.useState("");
-    const [shouldDownload, setShouldDownload] = React.useState(false);
     const [csvData, setCsvData] = React.useState<CSVData>({
         headers: [],
         data: []
     });
 
     React.useEffect(() => {
-        let shouldShow = false;
         const getSessionData = async () => {
             if (sessionsData.length === 0) {
-                let result: any = await getAllBookedSessions();
-                setSessionsData(result);
+                try {
+                    let result: any = await getAllBookedSessions();
+                    setSessionsData(result);
+                } catch (err) {
+                    alert("an error occurred when downloading session data");
+                }
             }
         }
         getSessionData();
 
         if (csvData.data.length > 0) {
-            shouldShow = true;
             renderCsvDownload();
         }
-        setShouldDownload(shouldShow);
     }, [downloadOption, csvData.data]);
 
     const handleDateChange = (date: any) => (name: string) => {
@@ -71,7 +72,6 @@ const SessionReports: React.FunctionComponent = () => {
 
     const handleSelection = (event: any) => {
         setDownloadOption(event.target.value);
-        setShouldDownload(false);
         setCsvData({
             headers: [],
             data: []
@@ -132,7 +132,6 @@ const SessionReports: React.FunctionComponent = () => {
             data: finalData,
             headers: finalHeaders
         });
-        console.log('finaldata is ', finalData);
     }
 
     const getCurrentDate = () => {
@@ -185,7 +184,7 @@ const SessionReports: React.FunctionComponent = () => {
                 </RadioGroup>
             </FormControl>
             <Typography variant="body1">- Step 3: Press "Download" button</Typography>
-            <Button id="submitBooking" color="primary" size="large" onClick={handleDownload}>
+            <Button id="submitBooking" color="primary" size="large" onClick={handleDownload} title="Please select an option">
                 Download
 			</Button>
             {csvDownloads}
