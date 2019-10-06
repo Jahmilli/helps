@@ -1,5 +1,7 @@
 import React from 'react';
 import { Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@material-ui/core';
+import DateFnsUtils from '@date-io/moment';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import { CSVDownload } from 'react-csv';
 import { getAllBookedSessions } from '../../../logic/functions/reports';
 import { setBookedSessions, setCancelledSessions, setSessionsWithWaitingLists, setNotAttendedSessions, setNotBookedSessions } from './__data__/csv_data';
@@ -10,6 +12,7 @@ import {
     notAttendedSessionsHeaders,
     notBookedSessionsHeaders
 } from './__data__/csv_headers';
+import { DATE_FORMAT, filterByDate } from '../../utils/Constants';
 
 // Maybe should be an enum for the val, not sure...
 const options = [
@@ -28,6 +31,11 @@ interface CSVData {
 }
 const SessionReports: React.FunctionComponent = () => {
     const [sessionsData, setSessionsData] = React.useState([]);
+
+    const [dateRange, setDateRange] = React.useState({
+        startDate: new Date(),
+        endDate: new Date()
+    });
     const [downloadOption, setDownloadOption] = React.useState("");
     const [shouldDownload, setShouldDownload] = React.useState(false);
     const [csvData, setCsvData] = React.useState<CSVData>({
@@ -50,6 +58,14 @@ const SessionReports: React.FunctionComponent = () => {
         setShouldDownload(shouldShow);
     }, [downloadOption, csvData.data]);
 
+    const handleDateChange = (date: any) => (name: string) => {
+
+        setDateRange({
+            ...dateRange,
+            [name]: date.toDate()
+        })
+    }
+
     const handleSelection = (event: any) => {
         setDownloadOption(event.target.value);
         setShouldDownload(false);
@@ -66,39 +82,41 @@ const SessionReports: React.FunctionComponent = () => {
         </CSVDownload>
     )
 
+
     const handleDownload = async () => {
         let finalData: any = [];
         let finalHeaders: any = [];
+        let filteredData = filterByDate(sessionsData, dateRange.startDate, dateRange.endDate);
 
         switch (downloadOption) {
             case "Booked sessions":
-                finalData = setBookedSessions(sessionsData);
+                finalData = setBookedSessions(filteredData);
                 finalHeaders = bookedSessionsHeaders;
                 break;
             case "Cancelled sessions":
-                finalData = setCancelledSessions(sessionsData);
+                finalData = setCancelledSessions(filteredData);
                 finalHeaders = cancelledSessionsHeaders;
                 break;
             case "Sessions with waiting lists":
-                finalData = setSessionsWithWaitingLists(sessionsData);
+                finalData = setSessionsWithWaitingLists(filteredData);
                 finalHeaders = sessionsHavingWaitingListsHeaders;
                 break;
             case "Non-attended sessions":
-                finalData = setNotAttendedSessions(sessionsData);
+                finalData = setNotAttendedSessions(filteredData);
                 finalHeaders = notAttendedSessionsHeaders;
                 break;
             case "Non-booked sessions":
-                finalData = setNotBookedSessions(sessionsData);
+                finalData = setNotBookedSessions(filteredData);
                 finalHeaders = notBookedSessionsHeaders;
                 break;
             // case "Non-attended sessions": {
             //     let sessionsData = await getAllBookedSessions();
-            //     finalData = setCancelledSessions(sessionsData);
+            //     finalData = setCancelledSessions(filteredData);
             //     finalHeaders = bookedSessionsHeaders;
             // }; break;
             // case "Non-attended sessions": {
             //     let sessionsData = await getAllBookedSessions();
-            //     finalData = setCancelledSessions(sessionsData);
+            //     finalData = setCancelledSessions(filteredData);
             //     finalHeaders = bookedSessionsHeaders;
             // }; break;
         }
@@ -110,7 +128,7 @@ const SessionReports: React.FunctionComponent = () => {
     }
 
     const getCurrentDate = () => {
-        return new Date().toLocaleDateString("en-AUS").replace(/[/_]/g, "");
+        return new Date().toLocaleDateString().replace(/[/_]/g, "");
     }
 
     return (
@@ -118,6 +136,34 @@ const SessionReports: React.FunctionComponent = () => {
             <Typography variant="h2">Reports</Typography>
             <div>
                 <Typography variant="body1">Step 1: Select a period from: </Typography>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <KeyboardDatePicker
+                        disableToolbar
+                        variant="inline"
+                        format={DATE_FORMAT}
+                        margin="normal"
+                        id="date-picker-inline"
+                        label="Start Date"
+                        value={dateRange.startDate}
+                        onChange={(date: any) => handleDateChange(date)("startDate")}
+                        KeyboardButtonProps={{
+                            'aria-label': 'change date',
+                        }}
+                    />
+                    <KeyboardDatePicker
+                        disableToolbar
+                        variant="inline"
+                        format={DATE_FORMAT}
+                        margin="normal"
+                        id="date-picker-inline"
+                        label="Start Date"
+                        value={dateRange.endDate}
+                        onChange={(date: any) => handleDateChange(date)("endDate")}
+                        KeyboardButtonProps={{
+                            'aria-label': 'change date',
+                        }}
+                    />
+                </MuiPickersUtilsProvider>
             </div>
             <FormControl component="fieldset">
                 <FormLabel component="legend">Step 2: Select a report</FormLabel>

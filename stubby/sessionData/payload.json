@@ -1,9 +1,9 @@
 [
     {
         "id": "vasnd1082471204niodsa",
-        "date": "01/01/2000",
-        "startTime": "12:00:00",
-        "endTime": "15:00:00",
+        "date": "01/03/2000",
+        "startTime": "12:00",
+        "endTime": "15:00",
         "room": "CB11.01.01",
         "advisor": "John Kennedy",
         "type": "Random Type",
@@ -32,9 +32,9 @@
     },
     {
         "id": "va21410asdo120njsnad9",
-        "date": "04/20/2004",
-        "startTime": "09:30:00",
-        "endTime": "12:45:00",
+        "date": "04/03/2004",
+        "startTime": "09:30",
+        "endTime": "12:45",
         "room": "CB11.01.01",
         "advisor": "Phil Gilbert",
         "type": "Random Type",
