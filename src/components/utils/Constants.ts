@@ -25,11 +25,13 @@ export const isValidTime = (time: string): boolean => {
 }
 
 export const filterByDate = (data: any, startDate: any, endDate: any) => {
+    console.log('data is ', data);
     console.log('startDate is ', startDate);
     console.log('endDate is ', endDate);
     // console.log('date is ', data);
     const filteredData = data.filter((val: any) => {
-        let tempDate = new Date(val.date);
+        let tempDate = moment(val.date, DATE_FORMAT).toDate();
+        console.log('tempdata is ', tempDate);
         return tempDate >= startDate && tempDate <= endDate;
     });
     return filteredData;

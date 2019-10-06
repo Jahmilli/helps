@@ -5,7 +5,6 @@ import EditableTable, { EditOptions } from "../EditableTable";
 import { createNewSessions } from "../../../logic/functions/createNewSessions";
 import { createSessionStyle } from "./styles";
 import { isValidDate, isEmpty, DATE_FORMAT, TIME_FORMAT, isValidTime } from "../../utils/Constants";
-import moment from "moment";
 
 interface CreateSessionsProps { }
 
@@ -66,7 +65,7 @@ const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
 				alert("An error occurred when creating the sessions");
 			}
 		} else {
-			alert("Please fill in all fields for your new sessions");
+			alert("Please fill in all fields for your new sessions in the correct format");
 		}
 	};
 

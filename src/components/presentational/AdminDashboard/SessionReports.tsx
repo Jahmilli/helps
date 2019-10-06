@@ -47,6 +47,7 @@ const SessionReports: React.FunctionComponent = () => {
         const getSessionData = async () => {
             if (sessionsData.length === 0) {
                 let result: any = await getAllBookedSessions();
+                console.log('result is ', result);
                 setSessionsData(result);
             }
         }
@@ -59,7 +60,6 @@ const SessionReports: React.FunctionComponent = () => {
     }, [downloadOption, csvData.data]);
 
     const handleDateChange = (date: any) => (name: string) => {
-
         setDateRange({
             ...dateRange,
             [name]: date.toDate()
@@ -87,7 +87,7 @@ const SessionReports: React.FunctionComponent = () => {
         let finalData: any = [];
         let finalHeaders: any = [];
         let filteredData = filterByDate(sessionsData, dateRange.startDate, dateRange.endDate);
-
+        console.log('filtered data is ', filteredData);
         switch (downloadOption) {
             case "Booked sessions":
                 finalData = setBookedSessions(filteredData);
