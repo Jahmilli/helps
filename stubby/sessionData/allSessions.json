@@ -1,0 +1,3002 @@
+[
+    {
+        "id": "3a543e1f-4827-487a-9e92-95a9b7475aa4",
+        "date": "09/01/2012",
+        "startTime": "08:59",
+        "endTime": "02:44",
+        "room": "11.01.32",
+        "advisor": "Stormie Mendus",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 1,
+            "preferredName": "Peria Dagwell",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Aenean sitet justo. Morbi ut odio.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Sed vel enim sitet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sitet nulla.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "940bda31-97e2-46ec-9a07-979dfd3eedb1",
+        "date": "07/01/2012",
+        "startTime": "10:05",
+        "endTime": "04:49",
+        "room": "11.01.32",
+        "advisor": "Ede McFade",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 62,
+            "preferredName": "Annnora Strewther",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "5594860e-b7cb-4ead-b131-3cb83c8b6808",
+        "date": "06/05/2012",
+        "startTime": "07:23",
+        "endTime": "09:03",
+        "room": "11.01.32",
+        "advisor": "Maynard Sollner",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 43,
+            "preferredName": "Burke Eastope",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Nunc nisl.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "dbfe1aea-936e-419d-ac5f-ec20b7db5151",
+        "date": "07/06/2010",
+        "startTime": "09:52",
+        "endTime": "01:07",
+        "room": "11.01.32",
+        "advisor": "Shannah Swainston",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 35,
+            "preferredName": "Lita Madge",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Duis bibendum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "39e3bf82-c203-4658-86d8-33648c163d8a",
+        "date": "07/08/2010",
+        "startTime": "04:24",
+        "endTime": "04:02",
+        "room": "11.01.32",
+        "advisor": "Adel Jancy",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 53,
+            "preferredName": "Antonella Martonfi",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Nunc purus. Phasellus in felis.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sitet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "148d1ce2-22a6-4c4e-8465-64a2d849a23a",
+        "date": "04/01/2010",
+        "startTime": "05:03",
+        "endTime": "12:27",
+        "room": "11.01.32",
+        "advisor": "Artus Olivetta",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 65,
+            "preferredName": "Frazier Norway",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sitet, sem.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "f202d0ee-8b5a-448f-8f01-7f74e3c11fb8",
+        "date": "10/28/2018",
+        "startTime": "12:44",
+        "endTime": "03:56",
+        "room": "11.01.32",
+        "advisor": "Jephthah Tremollet",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 88,
+            "preferredName": "Tom MacGarvey",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Suspendisse ornare consequat lectus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "cf766805-4c84-4de2-800a-430c731d51df",
+        "date": "07/01/2010",
+        "startTime": "06:45",
+        "endTime": "08:26",
+        "room": "11.01.32",
+        "advisor": "Paulette Varah",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 27,
+            "preferredName": "Joana Fawdrey",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Aenean auctor gravida sem.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "abd3e27c-d3ab-45ca-ab1d-9bbb610aebbc",
+        "date": "12/31/2018",
+        "startTime": "01:25",
+        "endTime": "06:24",
+        "room": "11.01.32",
+        "advisor": "Virgie Reignould",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 86,
+            "preferredName": "Sharyl Munt",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Mauris lacinia sapien quis libero. Nullam sitet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "9d668611-0d90-48de-91d8-66bf9f19d2cd",
+        "date": "05/09/2010",
+        "startTime": "04:03",
+        "endTime": "09:27",
+        "room": "11.01.32",
+        "advisor": "Arly Banting",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 84,
+            "preferredName": "Regina Weems",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Duis consequat dui nec nisi volutpat eleifend.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sitet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "fa937727-1842-4373-99fc-d7c2a9b5f0c1",
+        "date": "02/03/2010",
+        "startTime": "07:17",
+        "endTime": "05:40",
+        "room": "11.01.32",
+        "advisor": "Colline Saville",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 7,
+            "preferredName": "Priscella Plant",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "In hac habitasse platea dictumst.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sitet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "16e0706e-8821-430b-95be-f9824f58fd12",
+        "date": "07/05/2010",
+        "startTime": "07:51",
+        "endTime": "03:40",
+        "room": "11.01.32",
+        "advisor": "Mae Beddoes",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 94,
+            "preferredName": "Nadia Manssuer",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "b284a30d-bd25-4e1e-9300-e63011a7eef7",
+        "date": "08/09/2010",
+        "startTime": "03:26",
+        "endTime": "05:58",
+        "room": "11.01.32",
+        "advisor": "Danni Bridell",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 1,
+            "preferredName": "Damara Skentelbery",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "In quis justo. Maecenas rhoncus aliquam lacus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "47e52597-db96-44fa-a4c7-b8b19c3b0d9f",
+        "date": "11/4/2018",
+        "startTime": "06:15",
+        "endTime": "05:22",
+        "room": "11.01.32",
+        "advisor": "Neville Chastaing",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 90,
+            "preferredName": "Ferdy Langran",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Nam dui.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Lorem ipsum dolor sitet, consectetuer adipiscing elit. Proin risus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "547e8417-704a-4f3d-9f10-bc513b081056",
+        "date": "12/3/2018",
+        "startTime": "12:41",
+        "endTime": "01:27",
+        "room": "11.01.32",
+        "advisor": "Yasmin Egre",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 71,
+            "preferredName": "Julianna Linner",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Maecenas ut massa quis augue luctus tincidunt.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "ed9d7845-0f82-4f83-8e7e-787fc2748611",
+        "date": "07/03/2010",
+        "startTime": "11:12",
+        "endTime": "10:03",
+        "room": "11.01.32",
+        "advisor": "Griselda Wanklin",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 67,
+            "preferredName": "Rosabel Armfield",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Integer ac leo. Pellentesque ultrices mattis odio.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "cd7d8e4b-fbce-46a3-aa63-54f9c7244eca",
+        "date": "06/04/2005",
+        "startTime": "12:51",
+        "endTime": "05:26",
+        "room": "11.01.32",
+        "advisor": "Meriel Goldring",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 59,
+            "preferredName": "Cassy Spenceley",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Vivamus tortor. Duis mattis egestas metus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sitet erat.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "f7db1f9c-4709-4f98-8ac9-5aeb014aa513",
+        "date": "09/01/2005",
+        "startTime": "11:22",
+        "endTime": "02:24",
+        "room": "11.01.32",
+        "advisor": "Griffy Ivic",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 80,
+            "preferredName": "Kin Cafferty",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Aliquam sitet diam in magna bibendum imperdiet.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Phasellus sitet erat.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "4aa598b3-1051-4292-8437-5739bb1ffb43",
+        "date": "05/02/2005",
+        "startTime": "08:36",
+        "endTime": "06:40",
+        "room": "11.01.32",
+        "advisor": "Aldous Agate",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 43,
+            "preferredName": "Kain Plom",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Pellentesque ultrices mattis odio. Donec vitae nisi.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sitet eros.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "09769f13-4889-448f-972b-bd3ddacd3f33",
+        "date": "09/03/2005",
+        "startTime": "03:23",
+        "endTime": "03:08",
+        "room": "11.01.32",
+        "advisor": "Nick Grene",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 59,
+            "preferredName": "Yancy Mockes",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Ut tellus. Nulla ut erat id mauris vulputate elementum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sitet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "ddc7b42b-511f-45dd-bcfa-a59b61462686",
+        "date": "01/01/2005",
+        "startTime": "06:41",
+        "endTime": "12:17",
+        "room": "11.01.32",
+        "advisor": "Allegra Gauvin",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 78,
+            "preferredName": "Nerti Talks",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sitet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "931473c1-c146-42f1-b5b1-e99fc0f86ea0",
+        "date": "01/04/2005",
+        "startTime": "10:56",
+        "endTime": "08:13",
+        "room": "11.01.32",
+        "advisor": "Cate Hearnshaw",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 47,
+            "preferredName": "Anatola Gooke",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Nulla facilisi. Cras non velit nec nisi vulputate nonummy.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sitet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sitet turpis elementum ligula vehicula consequat.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "7effaec8-a5e4-4c83-9f34-440d64fee26c",
+        "date": "02/01/2005",
+        "startTime": "05:04",
+        "endTime": "04:26",
+        "room": "11.01.32",
+        "advisor": "Ashia Skelhorne",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 61,
+            "preferredName": "Kizzie Ickov",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Nam tristique tortor eu pede.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Aliquam sitet diam in magna bibendum imperdiet.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "2dbba969-461d-4269-a42f-464e1a5c9ef7",
+        "date": "12/22/2018",
+        "startTime": "02:38",
+        "endTime": "02:09",
+        "room": "11.01.32",
+        "advisor": "Clifford Pedler",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 72,
+            "preferredName": "Neale Booton",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Lorem ipsum dolor sitet, consectetuer adipiscing elit.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "99a23d43-afbc-4bba-a6d1-8947388dc1c1",
+        "date": "10/01/2005",
+        "startTime": "12:22",
+        "endTime": "12:33",
+        "room": "11.01.32",
+        "advisor": "Novelia Ivain",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 11,
+            "preferredName": "Kaitlyn Albers",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "413a6d72-9f7d-4103-87e2-68d608839601",
+        "date": "11/25/2018",
+        "startTime": "02:43",
+        "endTime": "12:38",
+        "room": "11.01.32",
+        "advisor": "Kati Goodburn",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 63,
+            "preferredName": "Lu Giamitti",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sitet diam in magna bibendum imperdiet.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "d003cbd1-3088-45b4-9e74-b0f1d7c82a99",
+        "date": "06/02/2005",
+        "startTime": "04:26",
+        "endTime": "02:01",
+        "room": "11.01.32",
+        "advisor": "Hewett Arons",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 22,
+            "preferredName": "Bartie Negal",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "In hac habitasse platea dictumst.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "7f0bf3b0-eb5c-421c-9967-3a567da0f639",
+        "date": "12/8/2018",
+        "startTime": "05:46",
+        "endTime": "03:06",
+        "room": "11.01.32",
+        "advisor": "Tyler Tarburn",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 70,
+            "preferredName": "Leon Philipeau",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "In hac habitasse platea dictumst.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "f1850e45-fab6-4119-b843-ed6004e2439f",
+        "date": "11/21/2018",
+        "startTime": "09:26",
+        "endTime": "12:54",
+        "room": "11.01.32",
+        "advisor": "Bernita Demaine",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 10,
+            "preferredName": "Courtney Witts",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Donec dapibus. Duis at velit eu est congue elementum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sitet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "184c6110-55e2-4a04-b564-ea920096effc",
+        "date": "11/6/2018",
+        "startTime": "10:28",
+        "endTime": "03:45",
+        "room": "11.01.32",
+        "advisor": "Norma Iston",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 64,
+            "preferredName": "Talyah Danigel",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Quisque id justo sitet sapien dignissim vestibulum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Donec quis orci eget orci vehicula condimentum.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "37c529db-b0f0-4e53-ab45-b47ee9d6d311",
+        "date": "01/05/2005",
+        "startTime": "01:04",
+        "endTime": "11:32",
+        "room": "11.01.32",
+        "advisor": "Dudley Delatour",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 98,
+            "preferredName": "Westley Skerm",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Sed vel enim sitet nunc viverra dapibus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Aenean lectus. Pellentesque eget nunc.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "1b0f7e65-da5d-488b-9bb9-c79771a3890e",
+        "date": "12/24/2018",
+        "startTime": "07:32",
+        "endTime": "04:59",
+        "room": "11.01.32",
+        "advisor": "Egor Ben",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 98,
+            "preferredName": "Chaddy Moorhouse",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "fb48bc28-92b2-4f21-aca5-e74c80390bd6",
+        "date": "03/08/2005",
+        "startTime": "02:43",
+        "endTime": "01:11",
+        "room": "11.01.32",
+        "advisor": "Chris Spivey",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 36,
+            "preferredName": "Kristien McGoogan",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Donec ut mauris eget massa tempor convallis.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sitet justo. Morbi ut odio.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "114c1ec6-06f1-46a3-918d-7ca1ac2f754d",
+        "date": "04/02/2005",
+        "startTime": "04:18",
+        "endTime": "03:46",
+        "room": "11.01.32",
+        "advisor": "Grace Ponceford",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 93,
+            "preferredName": "Alana Kase",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sitet, sem.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sitet eros.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "8e28f922-4d19-4781-a48c-0c1fc98dabff",
+        "date": "06/01/2005",
+        "startTime": "08:24",
+        "endTime": "04:40",
+        "room": "11.01.32",
+        "advisor": "Saundra Alessandone",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 68,
+            "preferredName": "Sky Bogart",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Ut tellus. Nulla ut erat id mauris vulputate elementum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "ade07924-6ae8-4b31-a016-7e89cd755992",
+        "date": "08/01/2008",
+        "startTime": "04:53",
+        "endTime": "10:20",
+        "room": "11.01.32",
+        "advisor": "Son Headan",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 7,
+            "preferredName": "Obadiah Frugier",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Quisque ut erat. Curabitur gravida nisi at nibh.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sitet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "d28da86c-2485-4155-ae8d-ae77ec666149",
+        "date": "07/05/2008",
+        "startTime": "06:26",
+        "endTime": "04:26",
+        "room": "11.01.32",
+        "advisor": "Iolande Troak",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 54,
+            "preferredName": "Avril McJury",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Etiam vel augue. Vestibulum rutrum rutrum neque.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "37b404bb-fbce-4bc9-af19-fa9c8d9e258e",
+        "date": "05/06/2008",
+        "startTime": "10:21",
+        "endTime": "07:49",
+        "room": "11.01.32",
+        "advisor": "Robinson Pryde",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 65,
+            "preferredName": "Angelico Swetenham",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sitet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "402be54c-2397-4c1a-99cd-e04f82e2b158",
+        "date": "06/05/2008",
+        "startTime": "05:37",
+        "endTime": "08:55",
+        "room": "11.01.32",
+        "advisor": "Blanche Jenne",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 71,
+            "preferredName": "Andrea Hansel",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Maecenas pulvinar lobortis est. Phasellus sitet erat. Nulla tempus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "37a74437-5535-4064-b6eb-9fd94ba197f6",
+        "date": "10/22/2018",
+        "startTime": "02:24",
+        "endTime": "01:27",
+        "room": "11.01.32",
+        "advisor": "Clerissa Christaeas",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 11,
+            "preferredName": "Laurel Trenaman",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "841063f8-fbd5-4610-aa9f-d4f50bd6bf3c",
+        "date": "11/4/2018",
+        "startTime": "11:06",
+        "endTime": "06:38",
+        "room": "11.01.32",
+        "advisor": "Leon Mawer",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 39,
+            "preferredName": "Oberon Bambrick",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Maecenas tincidunt lacus at velit.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Aliquam sitet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sitet eleifend pede libero quis orci.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "fabafa0f-7ec9-4616-8424-078443a8384f",
+        "date": "01/02/2008",
+        "startTime": "04:08",
+        "endTime": "10:56",
+        "room": "11.01.32",
+        "advisor": "Leoline Pretley",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 26,
+            "preferredName": "Evelina Brixey",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "41f160af-01f3-45f3-9387-d607df71c4e1",
+        "date": "06/08/2008",
+        "startTime": "07:34",
+        "endTime": "01:23",
+        "room": "11.01.32",
+        "advisor": "Marleen Standbrooke",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 53,
+            "preferredName": "Dru Breazeall",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Lorem ipsum dolor sitet, consectetuer adipiscing elit. Proin risus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "f39dbf23-7041-454a-8c22-c2ce29d21c7e",
+        "date": "12/24/2018",
+        "startTime": "10:32",
+        "endTime": "04:50",
+        "room": "11.01.32",
+        "advisor": "Axel Jurges",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 76,
+            "preferredName": "Taddeo Kemston",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Mauris lacinia sapien quis libero. Nullam sitet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "2e041bbd-281d-4483-83f4-c3d2387dc62d",
+        "date": "01/07/2008",
+        "startTime": "08:28",
+        "endTime": "11:45",
+        "room": "11.01.32",
+        "advisor": "Georgie Tropman",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 21,
+            "preferredName": "Dyane Leahy",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "In hac habitasse platea dictumst.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sitet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sitet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "6b0c6cc6-af21-4c4f-a0a5-24d7a001a4ae",
+        "date": "07/02/2008",
+        "startTime": "05:29",
+        "endTime": "10:16",
+        "room": "11.01.32",
+        "advisor": "Cornelius Dobrowski",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 22,
+            "preferredName": "Rhett Fewless",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "1f7bdb4d-9cbc-4337-8456-8043b414ffb4",
+        "date": "01/01/2008",
+        "startTime": "02:45",
+        "endTime": "04:11",
+        "room": "11.01.32",
+        "advisor": "Tamas Wearden",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 3,
+            "preferredName": "Joshua Yukhnevich",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Morbi non lectus. Aliquam sitet diam in magna bibendum imperdiet.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "f4892a52-d434-4e71-b444-32c9619decfa",
+        "date": "02/01/2008",
+        "startTime": "06:24",
+        "endTime": "09:09",
+        "room": "11.01.32",
+        "advisor": "Bink Portwaine",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 48,
+            "preferredName": "Rabi Lampel",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "5758e5c9-7a21-4fb9-9d0b-b30d33bf0f78",
+        "date": "05/01/2008",
+        "startTime": "08:30",
+        "endTime": "08:20",
+        "room": "11.01.32",
+        "advisor": "Philomena Woolfall",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 40,
+            "preferredName": "Tate Bettington",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Vestibulum ac est lacinia nisi venenatis tristique.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Aenean sitet justo. Morbi ut odio.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "fa6a1aa9-54de-403e-85e6-3bc761dfb54c",
+        "date": "06/03/2008",
+        "startTime": "11:00",
+        "endTime": "03:30",
+        "room": "11.01.32",
+        "advisor": "Eugenius Dinsey",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 18,
+            "preferredName": "Hartwell Cluderay",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Donec dapibus. Duis at velit eu est congue elementum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Pellentesque viverra pede ac diam.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "3128455b-3f4b-4058-a8eb-87c39cb7ed33",
+        "date": "05/01/2008",
+        "startTime": "06:43",
+        "endTime": "10:28",
+        "room": "11.01.32",
+        "advisor": "Mufi Tritton",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 84,
+            "preferredName": "Veda Jaumet",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Phasellus in felis.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sitet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "61323671-e41c-4a83-8dc0-089bbb5f33ce",
+        "date": "06/06/2019",
+        "startTime": "09:46",
+        "endTime": "11:36",
+        "room": "11.01.32",
+        "advisor": "Elaine Thomason",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 71,
+            "preferredName": "Berni Sciusscietto",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sitet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sitet turpis elementum ligula vehicula consequat.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "9cc68d26-e51c-424a-9df2-1547537c1bb1",
+        "date": "03/01/2019",
+        "startTime": "04:57",
+        "endTime": "02:15",
+        "room": "11.01.32",
+        "advisor": "Jo-ann De Biasio",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 35,
+            "preferredName": "Star Castelli",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "4a0253e1-4f8c-4425-b12e-4fd2df3f67e1",
+        "date": "03/03/2019",
+        "startTime": "03:41",
+        "endTime": "12:09",
+        "room": "11.01.32",
+        "advisor": "Odilia Darcy",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 88,
+            "preferredName": "Silvia Whiten",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Vestibulum ac est lacinia nisi venenatis tristique.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sitet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "b3fcb1db-49ed-4836-ba67-714fa276bfdd",
+        "date": "10/22/2019",
+        "startTime": "05:38",
+        "endTime": "09:56",
+        "room": "11.01.32",
+        "advisor": "Katharyn Peagrim",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 58,
+            "preferredName": "Regan Jayes",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Aliquam sitet diam in magna bibendum imperdiet.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Mauris lacinia sapien quis libero. Nullam sitet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "e346f694-38d3-4557-b908-d7861f3db862",
+        "date": "08/09/2014",
+        "startTime": "11:56",
+        "endTime": "07:53",
+        "room": "11.01.32",
+        "advisor": "Willie Lafoy",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 3,
+            "preferredName": "Oliver Lidell",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sitet eleifend pede libero quis orci.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Phasellus sitet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "5e413df0-810b-4e48-abaa-5f3258473bd1",
+        "date": "07/05/2014",
+        "startTime": "03:33",
+        "endTime": "05:13",
+        "room": "11.01.32",
+        "advisor": "Jeniece Banfield",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 59,
+            "preferredName": "Desdemona Forsdicke",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "1843111f-171b-4855-8d07-137de9526ca3",
+        "date": "04/09/2014",
+        "startTime": "03:04",
+        "endTime": "06:03",
+        "room": "11.01.32",
+        "advisor": "Fayre Stonnell",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 42,
+            "preferredName": "Olive Lghan",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Morbi non lectus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sitet eleifend pede libero quis orci. Nullam molestie nibh in lectus. Pellentesque at nulla.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "e79d6329-d598-42db-b309-18041823ea31",
+        "date": "03/03/2014",
+        "startTime": "10:41",
+        "endTime": "05:34",
+        "room": "11.01.32",
+        "advisor": "Dione Simms",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 84,
+            "preferredName": "Windy Norrie",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Duis ac nibh.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "b7d27571-00c7-4a6f-82aa-7d859eef12c3",
+        "date": "09/01/2014",
+        "startTime": "10:17",
+        "endTime": "04:53",
+        "room": "11.01.32",
+        "advisor": "Theodosia Limeburn",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 48,
+            "preferredName": "Tatiania Coetzee",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sitet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "c7f0acd0-e28f-4758-9c7b-d27fb52eee5d",
+        "date": "06/08/2014",
+        "startTime": "12:48",
+        "endTime": "08:22",
+        "room": "11.01.32",
+        "advisor": "Valaree Rieflin",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 22,
+            "preferredName": "Katheryn Allibon",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "38e5cb3a-5dd1-4c89-989b-8dad03f144cf",
+        "date": "08/04/2014",
+        "startTime": "09:28",
+        "endTime": "10:27",
+        "room": "11.01.32",
+        "advisor": "Robbin Dossetter",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 46,
+            "preferredName": "Joann Hearst",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Duis at velit eu est congue elementum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sitet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "4a1fc973-da3a-4ddf-b145-cb16dd451a03",
+        "date": "04/06/2014",
+        "startTime": "06:04",
+        "endTime": "09:58",
+        "room": "11.01.32",
+        "advisor": "Fionnula Greenman",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 78,
+            "preferredName": "Davina Notti",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Maecenas pulvinar lobortis est. Phasellus sitet erat.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sitet lobortis sapien sapien non mi.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "d0c0e2c9-f42c-4317-b959-46523350b0fe",
+        "date": "02/07/2014",
+        "startTime": "06:48",
+        "endTime": "05:57",
+        "room": "11.01.32",
+        "advisor": "Boniface Blasgen",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 57,
+            "preferredName": "Luciano Aimeric",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "In eleifend quam a odio.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sitet lobortis sapien sapien non mi. Integer ac neque.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "56b8c9a3-e011-4b7d-848a-7cc8ac1cefd8",
+        "date": "07/06/2014",
+        "startTime": "09:25",
+        "endTime": "10:01",
+        "room": "11.01.32",
+        "advisor": "Casey Tretwell",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 68,
+            "preferredName": "Ara Glowinski",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Maecenas ut massa quis augue luctus tincidunt.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Phasellus sitet erat. Nulla tempus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "4430bd41-15bb-4b83-978c-926c8b478904",
+        "date": "04/03/2014",
+        "startTime": "05:44",
+        "endTime": "10:01",
+        "room": "11.01.32",
+        "advisor": "Codi Yarn",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 59,
+            "preferredName": "Pooh Coule",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Lorem ipsum dolor sitet, consectetuer adipiscing elit.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sitet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sitet, consectetuer adipiscing elit.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "6103cb32-ab72-42a3-88b8-2165460d1c20",
+        "date": "04/06/2014",
+        "startTime": "08:35",
+        "endTime": "10:11",
+        "room": "11.01.32",
+        "advisor": "Tamara Rihosek",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 63,
+            "preferredName": "Yettie Jodkowski",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Nullam sitet turpis elementum ligula vehicula consequat. Morbi a ipsum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sitet, sem. Fusce consequat. Nulla nisl.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "8ccb07d7-769f-4138-bd4d-f51b2dd43511",
+        "date": "11/11/2019",
+        "startTime": "08:20",
+        "endTime": "04:59",
+        "room": "11.01.32",
+        "advisor": "Jedd Dods",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 40,
+            "preferredName": "Les Gonzalvo",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sitet nunc viverra dapibus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "390ecba8-5f7b-4d9f-a411-22e7a6e5c9e1",
+        "date": "08/01/2014",
+        "startTime": "03:44",
+        "endTime": "01:05",
+        "room": "11.01.32",
+        "advisor": "Lars Kellick",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 79,
+            "preferredName": "Jermain Vala",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Morbi non lectus. Aliquam sitet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sitet eleifend pede libero quis orci.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "a415565e-be81-4cf8-9fb0-c83b19d78def",
+        "date": "03/07/2014",
+        "startTime": "06:28",
+        "endTime": "03:31",
+        "room": "11.01.32",
+        "advisor": "Gerek Birdis",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 76,
+            "preferredName": "Haydon Peacher",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Mauris enim leo, rhoncus sed, vestibulum sitet, cursus id, turpis.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Aenean lectus. Pellentesque eget nunc.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "0f32af63-b069-4038-acc0-49bc1500eff5",
+        "date": "01/04/2014",
+        "startTime": "12:37",
+        "endTime": "01:27",
+        "room": "11.01.32",
+        "advisor": "Herman Liveing",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 29,
+            "preferredName": "Tabb Glandfield",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sitet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sitet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "63932100-fae2-4b90-b91b-e6f3a8999e8f",
+        "date": "04/09/2015",
+        "startTime": "02:30",
+        "endTime": "09:30",
+        "room": "11.01.32",
+        "advisor": "Renell Vogl",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 21,
+            "preferredName": "Britni Kimbrey",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sitet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "7cdc24dd-0744-484c-8c31-0d8940e1e1b6",
+        "date": "02/09/2015",
+        "startTime": "05:43",
+        "endTime": "11:18",
+        "room": "11.01.32",
+        "advisor": "Doti Vann",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 72,
+            "preferredName": "Addie Got",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Mauris ullamcorper purus sitet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sitet, sem. Fusce consequat. Nulla nisl. Nunc nisl.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "815bdda0-28d4-46e9-ba98-f28744d8de81",
+        "date": "09/02/2015",
+        "startTime": "06:32",
+        "endTime": "11:31",
+        "room": "11.01.32",
+        "advisor": "Hanni Collecott",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 52,
+            "preferredName": "Adele Jiggen",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sitet erat.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "ca6b27f3-aa9d-4bd3-a50d-1959cfded724",
+        "date": "06/08/2015",
+        "startTime": "10:00",
+        "endTime": "12:08",
+        "room": "11.01.32",
+        "advisor": "Chevalier Sattin",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 9,
+            "preferredName": "Yulma O'Hagirtie",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "90ddafe6-13f4-4489-a3f9-53e9e790e286",
+        "date": "12/25/2019",
+        "startTime": "11:58",
+        "endTime": "01:28",
+        "room": "11.01.32",
+        "advisor": "Franciskus Smallsman",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 59,
+            "preferredName": "Nikolaos Cecely",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Sed ante. Vivamus tortor.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sitet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sitet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "8da2bfc0-704a-4d73-a4a8-abce53d646e9",
+        "date": "04/07/2015",
+        "startTime": "10:25",
+        "endTime": "12:17",
+        "room": "11.01.32",
+        "advisor": "Melita Ryland",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 70,
+            "preferredName": "Corine Siene",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Phasellus sitet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "39b764b1-f57a-42cc-905f-94e1ebd6e8c2",
+        "date": "08/05/2015",
+        "startTime": "03:07",
+        "endTime": "05:18",
+        "room": "11.01.32",
+        "advisor": "Israel Nelson",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 53,
+            "preferredName": "Rickard Armall",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Duis consequat dui nec nisi volutpat eleifend.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Quisque id justo sitet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "2b2212d1-bca1-4014-b1a0-d1b4e4709d9d",
+        "date": "12/8/2019",
+        "startTime": "11:49",
+        "endTime": "11:57",
+        "room": "11.01.32",
+        "advisor": "Marsh Mulcahy",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 9,
+            "preferredName": "Ralf Proud",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "4d0a731e-323a-4a66-8e8e-ba2f93c38679",
+        "date": "07/06/2015",
+        "startTime": "05:03",
+        "endTime": "09:36",
+        "room": "11.01.32",
+        "advisor": "Brynna Clayson",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 94,
+            "preferredName": "Delia Frisel",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "c259b2e5-c6b5-4061-ac90-da246b195aef",
+        "date": "01/01/2015",
+        "startTime": "07:52",
+        "endTime": "04:38",
+        "room": "11.01.32",
+        "advisor": "Mabelle Raddan",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 19,
+            "preferredName": "Mella Shapera",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "765ba648-cd1f-4460-b849-cead105c74c2",
+        "date": "06/08/2015",
+        "startTime": "11:53",
+        "endTime": "06:10",
+        "room": "11.01.32",
+        "advisor": "Ethel Imesen",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 65,
+            "preferredName": "Demetra Cleevely",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Aliquam non mauris.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "674d3dc4-4484-48b7-b122-64d8d38e90f0",
+        "date": "10/31/2019",
+        "startTime": "12:35",
+        "endTime": "10:05",
+        "room": "11.01.32",
+        "advisor": "Chrissie Sampey",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 46,
+            "preferredName": "Charlton Suddell",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Donec ut mauris eget massa tempor convallis.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "0ef3894d-ce91-4109-a090-c7741020f2e6",
+        "date": "01/06/2015",
+        "startTime": "09:28",
+        "endTime": "11:43",
+        "room": "11.01.32",
+        "advisor": "Charles McKag",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 22,
+            "preferredName": "Hadleigh Weald",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sitet sapien dignissim vestibulum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sitet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "518b54fb-e15c-48bc-beed-0795da829ece",
+        "date": "03/01/2015",
+        "startTime": "12:42",
+        "endTime": "09:47",
+        "room": "11.01.32",
+        "advisor": "Kin Doumerc",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 1,
+            "preferredName": "Walsh Tivnan",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "4b1c5c35-718a-47ec-bc4d-62a2b43f4b5d",
+        "date": "10/28/2019",
+        "startTime": "05:52",
+        "endTime": "04:15",
+        "room": "11.01.32",
+        "advisor": "Leeland Glassborow",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 33,
+            "preferredName": "Miguel Hebner",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Donec posuere metus vitae ipsum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "dc3f6034-7aa2-4c26-8a6d-9fce69bda781",
+        "date": "07/01/2012",
+        "startTime": "08:02",
+        "endTime": "03:55",
+        "room": "11.01.32",
+        "advisor": "Calli Heinrich",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 60,
+            "preferredName": "Lela Mowen",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Quisque ut erat.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "In eleifend quam a odio.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "aae8fca2-3925-4820-9b60-02e1c494800a",
+        "date": "10/18/2019",
+        "startTime": "08:35",
+        "endTime": "01:57",
+        "room": "11.01.32",
+        "advisor": "Shelbi Lambert",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 56,
+            "preferredName": "Bunni Sedgeman",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Etiam justo. Etiam pretium iaculis justo.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Morbi ut odio.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "e028da76-a295-4359-8cd2-6e4cc14efffc",
+        "date": "05/07/2012",
+        "startTime": "10:10",
+        "endTime": "02:03",
+        "room": "11.01.32",
+        "advisor": "Jessa Sebastian",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 16,
+            "preferredName": "Janine Lang",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Fusce consequat. Nulla nisl.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "a502b658-6126-4aa6-83a7-cd32ddbc3f52",
+        "date": "01/09/2012",
+        "startTime": "03:16",
+        "endTime": "04:42",
+        "room": "11.01.32",
+        "advisor": "Marga Thomsson",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 51,
+            "preferredName": "Muriel Bridgwater",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Pellentesque at nulla.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sitet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "d4e4fd95-5e14-4617-9363-8cc8a448e0f3",
+        "date": "09/03/2012",
+        "startTime": "06:14",
+        "endTime": "08:43",
+        "room": "11.01.32",
+        "advisor": "Constantino Bertomier",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 62,
+            "preferredName": "Giff Lafayette",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "b03034aa-dc13-40c2-a3e3-ab8711dbba50",
+        "date": "11/3/2019",
+        "startTime": "05:51",
+        "endTime": "04:42",
+        "room": "11.01.32",
+        "advisor": "Eveleen Hartas",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 24,
+            "preferredName": "Cassandra Puttock",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Sed sagittis.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "036771a1-c28b-4384-aa32-b9dc8358f0d9",
+        "date": "08/02/2012",
+        "startTime": "02:36",
+        "endTime": "04:30",
+        "room": "11.01.32",
+        "advisor": "Waylin Piotrkowski",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 71,
+            "preferredName": "Petr Pole",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Aenean lectus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "1d915bd9-33a0-4fe7-baf3-ee3ced5ac2f0",
+        "date": "08/02/2012",
+        "startTime": "04:28",
+        "endTime": "12:48",
+        "room": "11.01.32",
+        "advisor": "Marsh Cato",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 91,
+            "preferredName": "Ruddie Bollini",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sitet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sitet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "3fe3d34b-1d12-4999-9cd3-7e1787a77b4a",
+        "date": "03/03/2012",
+        "startTime": "03:33",
+        "endTime": "11:15",
+        "room": "11.01.32",
+        "advisor": "Paulina Gillbey",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 16,
+            "preferredName": "Michelina Petric",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Lorem ipsum dolor sitet, consectetuer adipiscing elit.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Quisque id justo sitet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "d07f093e-09b0-47e5-b224-e24437599a20",
+        "date": "04/09/2012",
+        "startTime": "06:24",
+        "endTime": "11:20",
+        "room": "11.01.32",
+        "advisor": "Elene Loosmore",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 78,
+            "preferredName": "Ethel Allbrook",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "84e20f7f-db2c-4fba-b10d-a131f950ec07",
+        "date": "03/05/2012",
+        "startTime": "06:52",
+        "endTime": "09:48",
+        "room": "11.01.32",
+        "advisor": "Gris Kiddell",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 31,
+            "preferredName": "Angel Sirr",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Suspendisse potenti. Nullam porttitor lacus at turpis.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": false,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": true,
+                "bookingAnswer5": false,
+                "bookingAnswer6": true,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "a13da666-b82e-47c1-885c-94c21467661b",
+        "date": "11/9/2019",
+        "startTime": "11:21",
+        "endTime": "07:16",
+        "room": "11.01.32",
+        "advisor": "Otis Houlaghan",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 60,
+            "preferredName": "Claudell Ismead",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": true,
+            "additionalHelpDetails": "Donec dapibus.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": true,
+                "bookingAnswer4": false,
+                "bookingAnswer5": false,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    },
+    {
+        "id": "c4a77530-363c-4277-8dc2-325ef1ffe596",
+        "date": "06/03/2012",
+        "startTime": "12:39",
+        "endTime": "02:50",
+        "room": "11.01.32",
+        "advisor": "Olenolin Whatling",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 43,
+            "preferredName": "Robb Hallgalley",
+            "faculty": "FEIT",
+            "status": "Male",
+            "degree": "Software Engineering",
+            "reason": "Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sitet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Aenean sitet justo.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": false,
+                "bookingAnswer3": false,
+                "bookingAnswer4": false,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": true
+            }
+        }
+    },
+    {
+        "id": "5844026c-2eb9-40e9-9c17-7ce01f66c478",
+        "date": "11/7/2019",
+        "startTime": "05:05",
+        "endTime": "09:32",
+        "room": "11.01.32",
+        "advisor": "Fawne Van't Hoff",
+        "type": "Type Goes Here",
+        "currentBooking": {
+            "studentId": 72,
+            "preferredName": "Elvera Shawcroft",
+            "faculty": "FEIT",
+            "status": "Female",
+            "degree": "Software Engineering",
+            "reason": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor.",
+            "subjectName": "SES2A",
+            "assignmentType": "group",
+            "isGroupAssignment": false,
+            "additionalHelpDetails": "Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst.",
+            "needsHelpWithOptions": {
+                "bookingAnswer1": true,
+                "bookingAnswer2": true,
+                "bookingAnswer3": false,
+                "bookingAnswer4": true,
+                "bookingAnswer5": true,
+                "bookingAnswer6": false,
+                "bookingAnswer7": false
+            }
+        }
+    }
+]

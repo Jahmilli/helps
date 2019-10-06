@@ -9,10 +9,10 @@ import LanguageSelect from '../../common/LanguageSelect';
 import CountryOfOriginSelect from '../../common/CountryOfOrigin';
 import updateStudentDetails from '../../../logic/functions/updateStudentDetails';
 
-interface StudentDetailsProps {}
+interface StudentDetailsProps { }
 
 const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
-    const courseTitles = ['hsc', 'ielts', 'toefl', 'tafe', 'cult', 'insearchDeep', 'insearchDiploma', 'foundationCourse'] ;
+    const courseTitles = ['hsc', 'ielts', 'toefl', 'tafe', 'cult', 'insearchDeep', 'insearchDiploma', 'foundationCourse'];
     const educationInitialState: Array<Course> = courseTitles.map((title: string) => new Course(title));
     const userDetails = React.useContext(UserContext);
 
@@ -39,29 +39,29 @@ const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
         upcomingSessions: sessionObject,
         previousSessions: sessionObject,
     } as IStudentDetails;
-    
+
     const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState);
     React.useEffect(() => {
         if (userDetails.userDetails) {
             setValues(userDetails.userDetails);
         }
     }, [userDetails]);
-    
+
     const handleStudentDetailsChange = (details: string) => (event: any) => {
         setValues({
             ...values,
             [details]: event.target.value
         });
     }
-    
+
     const updateEducationCheckbox = (index: number) => (event: any) => {
-        const details = {...values};
+        const details = { ...values };
         details.education[index].isChecked = !details.education[index].isChecked;
         setValues(details);
     }
 
     const updateMark = (index: number) => (event: any) => {
-        const details = {...values};
+        const details = { ...values };
         details.education[index].mark = event.target.value
         setValues(details);
     }
@@ -69,7 +69,7 @@ const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
     const submitStudentDetails = async (event: any) => {
         event.preventDefault();
         try {
-            let response: any = await updateStudentDetails(values);
+            await updateStudentDetails(values);
             alert('Successfully updated');
         } catch (err) {
             alert('An error occured during registration, please try a different email or try again later...');
@@ -88,7 +88,7 @@ const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
                 <RegistrationField id="courseId" title="Course ID" label="C10026" value={values.courseId} handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="preferredContactNumber" title="Preferred Contact Number" value={values.preferredContactNumber} label="0412345678" handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="dateOfBirth" title="Date of Birth" label="01/01/2000" value={values.dateOfBirth} handleChange={handleStudentDetailsChange} classes={classes} />
-                
+
                 <Typography className={classes.textFieldHeader} variant="body1">Gender</Typography>
                 <RadioGroup aria-label="position" name="gender" value={values.gender} onChange={handleStudentDetailsChange("gender")} row>
                     <FormControlLabel value="male"
@@ -96,55 +96,55 @@ const StudentDetails: React.FunctionComponent<StudentDetailsProps> = () => {
                         control={<Radio color="primary" />}
                         label="Male"
                         labelPlacement="top"
-                        />
+                    />
                     <FormControlLabel
                         value="female"
                         className={classes.input}
                         control={<Radio color="primary" />}
                         label="Female"
                         labelPlacement="top"
-                        />
+                    />
                     <FormControlLabel
                         value="other"
                         className={classes.input}
                         control={<Radio color="primary" />}
                         label="Other"
                         labelPlacement="top"
-                        />
+                    />
                 </RadioGroup>
                 <Typography className={classes.textFieldHeader} variant="body1">Degree</Typography>
-                <RadioGroup aria-label="position" name="degree" value={values.degree} onChange={handleStudentDetailsChange("degree")}row>
+                <RadioGroup aria-label="position" name="degree" value={values.degree} onChange={handleStudentDetailsChange("degree")} row>
                     <FormControlLabel
                         value="undergraduate"
                         className={classes.input}
                         control={<Radio color="primary" />}
                         label="Undergraduate"
                         labelPlacement="top"
-                        />
+                    />
                     <FormControlLabel
                         className={classes.input}
                         value="postgraduate"
                         control={<Radio color="primary" />}
                         label="Postgraduate"
                         labelPlacement="top"
-                        />
+                    />
                 </RadioGroup>
                 <Typography className={classes.textFieldHeader} variant="body1">Status</Typography>
-                <RadioGroup aria-label="position" name="status" value={values.status} onChange={handleStudentDetailsChange("status")}row>
+                <RadioGroup aria-label="position" name="status" value={values.status} onChange={handleStudentDetailsChange("status")} row>
                     <FormControlLabel
                         value="resident"
                         className={classes.input}
                         control={<Radio color="primary" />}
                         label="Resident"
                         labelPlacement="top"
-                        />
+                    />
                     <FormControlLabel
                         value="international"
                         className={classes.input}
                         control={<Radio color="primary" />}
                         label="International"
                         labelPlacement="top"
-                        />
+                    />
                 </RadioGroup>
                 <LanguageSelect handleChange={handleStudentDetailsChange} value={values.language} />
                 <CountryOfOriginSelect handleChange={handleStudentDetailsChange} value={values.countryOfOrigin} />

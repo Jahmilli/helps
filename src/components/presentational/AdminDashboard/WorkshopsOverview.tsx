@@ -8,7 +8,7 @@ import {
 } from "./../../../logic/functions/getAvailableWorkshops";
 import { Workshop } from "../../../logic/domains/workshopDetails.domain";
 import EditableTable, { EditOptions } from "../../presentational/EditableTable";
-import { Add, Archive, Details } from "@material-ui/icons";
+import { Add, Archive } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
 
@@ -131,7 +131,7 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 	}, [tab]);
 
 	const handleArchiveWorkshop = (eventData: Workshop) => {
-		if (tab == "Current") {
+		if (tab === "Current") {
 			setWorkshopToArchive(eventData);
 		} else {
 			setWorkshopToCurrent(eventData);
@@ -148,7 +148,7 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 				actions={[
 					{
 						icon: icons.Archive,
-						tooltip: tab == "Current" ? "Archive" : "Unarchive",
+						tooltip: tab === "Current" ? "Archive" : "Unarchive",
 						onClick: (event: any, rowData: Workshop) => handleArchiveWorkshop(rowData)
 					}
 				]}
