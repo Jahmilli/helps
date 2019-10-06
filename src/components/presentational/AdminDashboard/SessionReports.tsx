@@ -31,6 +31,7 @@ interface CSVData {
 }
 const SessionReports: React.FunctionComponent = () => {
     const [sessionsData, setSessionsData] = React.useState([]);
+    const [csvDownloads, setCsvDownloads] = React.useState<any>();
 
     const [dateRange, setDateRange] = React.useState({
         startDate: new Date(),
@@ -42,12 +43,12 @@ const SessionReports: React.FunctionComponent = () => {
         headers: [],
         data: []
     });
+
     React.useEffect(() => {
         let shouldShow = false;
         const getSessionData = async () => {
             if (sessionsData.length === 0) {
                 let result: any = await getAllBookedSessions();
-                console.log('result is ', result);
                 setSessionsData(result);
             }
         }
@@ -55,6 +56,7 @@ const SessionReports: React.FunctionComponent = () => {
 
         if (csvData.data.length > 0) {
             shouldShow = true;
+            renderCsvDownload();
         }
         setShouldDownload(shouldShow);
     }, [downloadOption, csvData.data]);
@@ -63,7 +65,8 @@ const SessionReports: React.FunctionComponent = () => {
         setDateRange({
             ...dateRange,
             [name]: date.toDate()
-        })
+        });
+        setCsvDownloads(null);
     }
 
     const handleSelection = (event: any) => {
@@ -73,21 +76,25 @@ const SessionReports: React.FunctionComponent = () => {
             headers: [],
             data: []
         });
+        setCsvDownloads(null);
     }
-    const renderCsvDownload = () => (
-        <CSVDownload data={csvData.data} headers={csvData.headers}
-            filename={`session_reports_${getCurrentDate()}.csv`} // This does not work, its a bug in react-csv
-            target="_blank">
-            Download
-        </CSVDownload>
-    )
+    const renderCsvDownload = () => {
+
+        const csvDownload = (
+            <CSVDownload data={csvData.data} headers={csvData.headers}
+                filename={`session_reports_${getCurrentDate()}.csv`} // This does not work, its a bug in react-csv
+                target="_blank">
+                Download
+            </CSVDownload>
+        );
+        setCsvDownloads(csvDownload);
+    }
 
 
     const handleDownload = async () => {
         let finalData: any = [];
         let finalHeaders: any = [];
         let filteredData = filterByDate(sessionsData, dateRange.startDate, dateRange.endDate);
-        console.log('filtered data is ', filteredData);
         switch (downloadOption) {
             case "Booked sessions":
                 finalData = setBookedSessions(filteredData);
@@ -124,7 +131,8 @@ const SessionReports: React.FunctionComponent = () => {
         setCsvData({
             data: finalData,
             headers: finalHeaders
-        })
+        });
+        console.log('finaldata is ', finalData);
     }
 
     const getCurrentDate = () => {
@@ -180,15 +188,7 @@ const SessionReports: React.FunctionComponent = () => {
             <Button id="submitBooking" color="primary" size="large" onClick={handleDownload}>
                 Download
 			</Button>
-            {shouldDownload ?
-                // <CSVDownload data={csvData.data} headers={csvData.headers}
-                //     filename={`session_reports_${getCurrentDate()}.csv`} // This does not work, its a bug in react-csv
-                //     target="_blank">
-                //     Download
-                // </CSVDownload>
-                renderCsvDownload()
-                : null
-            }
+            {csvDownloads}
         </div>
     );
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import TopTabs from '../../presentational/AdminDashboard/TopTabs';
 import { Button } from '@material-ui/core';
 import SessionReports from '../../presentational/AdminDashboard/SessionReports';
 import WorkshopReports from '../../presentational/AdminDashboard/WorkshopReports';
