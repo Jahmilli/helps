@@ -14,7 +14,7 @@ const icons = {
 
 const StudentWorkshopDetail: React.FunctionComponent<SessionDetails> = (props) => {
 	console.log('state from router is ', props.location.state);
-	const { name } = props.location.state;
+	const { name, id } = props.location.state;
 	const [state, setState] = React.useState({});
 	
 
@@ -49,7 +49,7 @@ const StudentWorkshopDetail: React.FunctionComponent<SessionDetails> = (props) =
 		// </div>
 		<div style={{ margin: '0 3%' }}>
 			<h1>{ name || 'Workshop Name was Empty'}</h1>
-			<h1></h1>
+			<h1>id is {id}</h1>
 		</div>
 	);
 };
