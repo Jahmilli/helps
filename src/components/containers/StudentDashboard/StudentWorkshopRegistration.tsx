@@ -8,7 +8,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 type StudentWorkShopProps = RouteComponentProps<any> & {}
 
-let workshopData:any;
+let workshopData: any;
 
 const StudentWorkshopRegistration: React.FunctionComponent<StudentWorkShopProps> = (props) => {
     const [sessions, setSessions] = React.useState<Array<ISession>>([]);
@@ -27,7 +27,7 @@ const StudentWorkshopRegistration: React.FunctionComponent<StudentWorkShopProps>
         }
     }, []);
 
-    return (      
+    return (
         <div style={{ margin: '0 3%' }}>
             <h1>Here are some workshops</h1>
             <MaterialTable
@@ -36,10 +36,12 @@ const StudentWorkshopRegistration: React.FunctionComponent<StudentWorkShopProps>
                 columns={[
                     { title: 'Id', field: 'id' },
                     { title: 'name', field: 'name' },
-                    {render: rowData => <Link to={{
-                        pathname: '/student/StudentWorkshopDetail',
-                        state: rowData
-                      }}> Your Page </Link>}
+                    {
+                        render: rowData => <Link to={{
+                            pathname: '/student/StudentWorkshopDetail',
+                            state: rowData
+                        }}> More Information </Link>
+                    }
                 ]
                 }
                 data={workshopData}
