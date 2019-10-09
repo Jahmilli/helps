@@ -13,7 +13,7 @@ import BookSessionContainer from "../containers/AdminDashboard/BookSessionContai
 import AdminWorkshopsOverviewContainer from "../containers/AdminDashboard/AdminWorkshopsOverviewContainer";
 import AdminWorkshopCreateContainer from "../containers/AdminDashboard/AdminWorkshopCreateContainer";
 import ReportsContainer from "../containers/AdminDashboard/ReportsContainer";
-
+import AdminRoom from "../presentational/AdminDashboard/AdminRoom";
 interface AdminHomePageProps {
 	auth: Auth;
 	props: any;
@@ -58,6 +58,7 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
 					path={`${path}/reports`}
 					render={props => <ReportsContainer />}
 				/>
+				<Route path={`/admin/room`} render={props => < AdminRoom/>} />
 			</div>
 			<Footer />
 		</div>
