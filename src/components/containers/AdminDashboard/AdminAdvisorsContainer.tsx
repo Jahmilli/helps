@@ -6,7 +6,6 @@ import { RouteComponentProps } from 'react-router';
 import { getAvailableSessions } from '../../../logic/functions/getAvailableSessions';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
 import AvailableAdvisors from '../../presentational/AdminDashboard/AvailableAdvisors';
-import InactiveAdvisors from '../../presentational/AdminDashboard/InactiveAdvisors';
 
 type AdminAdvisorsContainerProps = RouteComponentProps<any> & {}
 
@@ -31,7 +30,6 @@ const AdminAdvisorsContainer: React.FunctionComponent<AdminAdvisorsContainerProp
             <Route path={`${path}`} exact={true} render={() => (
                 <div>
                     <AvailableAdvisors advisorData={sessions} isAdmin={false} />
-                    <InactiveAdvisors />
                 </div>
                 )} />
         </div>

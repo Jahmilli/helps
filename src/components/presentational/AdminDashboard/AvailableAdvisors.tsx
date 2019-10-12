@@ -1,22 +1,43 @@
 import * as React from 'react';
 import { Typography, Button } from '@material-ui/core';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
-import EditableTable, { EditOptions } from '../EditableTable';
-import { Add } from '@material-ui/icons';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import EnhancedTable from '../SelectableTable'
 import TextField from '@material-ui/core/TextField';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
-const icons = {
-    Add: () => <Add /> as React.ReactElement<SvgIconProps>
-}
-
 type AvailableSessionsProps = RouteComponentProps<any> & {
     advisorData: Array<ISession>;
     isAdmin: boolean;
+}
+
+interface Data {
+  staffNum: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+const dataStuff = [
+  createData('12903909', "Ethan", "Goh", "ethanemail@email.com"),
+  createData('20098844', "Jane", "Citizen", "20098844@email.com"),
+  createData('30185872', "Christiana", "Sherman", "sherman@email.com"),
+  createData('76424730', "Anais", "Xiong", "aiong@email.com"),
+  createData('60551318', "Persephone", "Walters", "walters@email.com"),
+  createData('83979354', "Andy", "Millar", "mandy@email.com"),
+  createData('77639826', "Veronika", "Yang", "veroniang@email.com"),
+  createData('55489167', "Dhruv", "Pena", "dhena@email.com"),
+  createData('19309107', "Kimora", "Blaese", "kiilaese@email.com"),
+
+];  
+
+const inactiveUsers = [
+  createData('76677413', "Austin", "Moreno", "aoreno@email.com"),
+];
+
+function createData(staffNum :string, firstName :string, lastName :string, email :string) {
+  return { staffNum, firstName, lastName, email };
 }
 
 interface State {
@@ -48,14 +69,10 @@ const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (prop
     const [values, setValues] = React.useState<State>({
       name: ''
     });
-  
-    const handleChange = (name: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [name]: event.target.value });
-    };
-  
+
     return (
         <div>
-            <EnhancedTable tableTitle = "Available Advisors" rows = {[]}/>
+            <EnhancedTable tableTitle = "Available Advisors" rows = {dataStuff}/>
             <Typography variant="h6">
                     Please Note:
             </Typography>
@@ -65,7 +82,6 @@ const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (prop
             </Typography>
             
             <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>   
-                <Button id="delete" color="primary" size="large" >Delete</Button>
                 <Button id="update" color="primary" size="large" >Update</Button>
                 <Button id="inactive" color="primary" size="large" >Inactive</Button>
             </div>
@@ -75,11 +91,10 @@ const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (prop
             </Typography>
             <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>   
                 <TextField
-                    id="name"
-                    label="Name"
+                    id="idNum"
+                    label="ID Number"
                     className={classes.textField}
                     defaultValue={""}
-                    onChange={handleChange('name')}
                     margin="normal"
                 />
                 <TextField
@@ -87,7 +102,6 @@ const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (prop
                     label="First Name"
                     className={classes.textField}
                     defaultValue={""}
-                    onChange={handleChange('name')}
                     margin="normal"
                 />
                 <TextField
@@ -95,18 +109,20 @@ const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (prop
                     label="Last Name"
                     className={classes.textField}
                     defaultValue={""}
-                    onChange={handleChange('name')}
                     margin="normal"
-                />
+                />  
                 <TextField
                     id="email"
                     label="Email"
                     className={classes.textField}
                     defaultValue={""}
-                    onChange={handleChange('name')}
                     margin="normal"
                 />
-                <Button id="addAdvisor" color="primary" size="large" >Add Advisor</Button>
+                <Button id="addAdvisor" color="primary" size="large">Add Advisor</Button>
+            </div>
+            <EnhancedTable tableTitle = "Inactive Advisors" rows = {inactiveUsers}/>
+            <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>   
+              <Button id="makeActive" color="primary" size="large" >Active</Button>
             </div>
         </div>
     );
