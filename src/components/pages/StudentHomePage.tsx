@@ -10,6 +10,7 @@ import navbarTabs from './__data__/data.studentNavbarTabs.json';
 import Auth from '../../logic/functions/core/Auth';
 import LoginPage from './LoginPage';
 import StudentBookingsContainer from '../containers/StudentDashboard/StudentBookingsContainer';
+import FaqContainer from '../containers/StudentDashboard/FaqContainer';
 import StudentDetails from '../presentational/StudentDashboard/StudentDetails';
 
 interface StudentHomePageProps {
@@ -45,7 +46,7 @@ const StudentHomePage: React.FunctionComponent<StudentHomePageProps> = ({ auth, 
                 <Route path={`${path}/myBookings`} component={() => <StudentBookingsContainer />} />
                 <Route path={`${path}/workshopRegistration`} component={() => <h1>Workshop Registration</h1>} />
                 <Route path={`${path}/programs`} component={() => <h1>Programs</h1>} />
-                <Route path={`${path}/faq`} component={() => <h1>FAQ</h1>} />
+                <Route path={`${path}/faq`} component={() => <FaqContainer />} />
                 <Route path={`${path}/exit`} component={() => <div><h1>Logout</h1>
                 {auth.logout()}</div>} />
             </div>
