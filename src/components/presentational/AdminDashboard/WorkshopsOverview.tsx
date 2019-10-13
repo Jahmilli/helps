@@ -1,15 +1,14 @@
 import * as React from "react";
 import {
-	getCurrentWorkshops,
-	getArchivedWorkshops,
+	getWorkshops,
 	postWorkshop,
-	setWorkshopToArchive,
-	setWorkshopToCurrent
+	updateWorkshop,
+	removeWorkshop
 } from "./../../../logic/functions/getAvailableWorkshops";
 import { Workshop } from "../../../logic/domains/workshopDetails.domain";
 import EditableTable, { EditOptions } from "../../presentational/EditableTable";
 import { Add, Archive, Details } from "@material-ui/icons";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
 
 export interface WorkshopOverviewProps {
@@ -54,7 +53,6 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 	};
 
 	const amendDetails = (eventData: Workshop) => (event: React.MouseEvent) => {
-		console.log(eventData)
 		props.history.push({
 			pathname: `${props.match.path}/amenddetails/${eventData._id}`,
 			// pathname: `${props.match.path}/amenddetails`,
@@ -85,64 +83,77 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 
 	const submitNewWorkshops = async () => {
 		if (validateWorkshops()) {
-			const tempData = state.data as Array<Workshop>;
-			for (let index in state.data) {
-				tempData[index] = { ...tempData[index] };
-				// TODO: delete tableData key and value
-			}
-			try {
-				await postWorkshop(tempData);
-				alert("Sessions created");
-			} catch (err) {
-				alert("An error occurred when creating the sessions");
+			for (const workshop of state.data) {
+				if (workshop._id == null) {
+					workshop.status = "Current";
+					try {
+						await postWorkshop(workshop);
+						alert("Workshops created");
+					} catch (err) {
+						alert("An error occurred when creating the sessions");
+					}
+				} else {
+					await updateWorkshop(workshop._id, workshop);
+				}
 			}
 		} else {
 			alert("Please fill in all fields for your new sessions");
 		}
+		callGetWorkshops();
 	};
+
+	async function callGetWorkshops() {
+		let details = [] as Array<Workshop>;
+		details = await getWorkshops();
+
+		var workshopsTab = [] as Array<Workshop>;
+
+		details.forEach(workshop => {
+			if (workshop.status == tab) workshopsTab.push(workshop);
+		});
+
+		console.log(workshopsTab);
+
+		setState({
+			columns: [
+				{ title: "No", field: "no" },
+				{ title: "Skill-Set", field: "skillSet" },
+				{ title: "Short Title", field: "shortTitle" },
+				{
+					title: "Set Workshop",
+					field: "setWorkshops",
+					editable: "never",
+					render: (rowData: Workshop) => <div>{renderWaitingList(rowData)}</div>
+				}
+			],
+			data: workshopsTab.map((workshop: Workshop) => {
+				return workshop;
+			})
+		});
+	}
 
 	React.useEffect(() => {
 		if (tab) {
-			async function callGetWorkshops() {
-				let details = null;
-				if (tab === "Current") {
-					details = await getCurrentWorkshops();
-				} else {
-					details = await getArchivedWorkshops();
-				}
-
-				setState({
-					columns: [
-						{ title: "No", field: "no" },
-						{ title: "Skill-Set", field: "skillSet" },
-						{ title: "Short Title", field: "shortTitle" },
-						{
-							title: "Set Workshop",
-							field: "setWorkshops",
-							editable: "never",
-							render: (rowData: Workshop) => <div>{renderWaitingList(rowData)}</div>
-						}
-					],
-					data: details.map((Workshop: Workshop) => {
-						return Workshop;
-					})
-				});
-			}
 			callGetWorkshops();
 		}
 	}, [tab]);
 
-	const handleArchiveWorkshop = (eventData: Workshop) => {
+	const handleArchiveWorkshop = async (eventData: Workshop) => {
+		var newStatus = null;
 		if (tab == "Current") {
-			setWorkshopToArchive(eventData);
+			newStatus = "Archived";
 		} else {
-			setWorkshopToCurrent(eventData);
+			newStatus = "Current";
 		}
+		eventData.status = newStatus;
+		await updateWorkshop(eventData._id, eventData);
+		callGetWorkshops();
 	};
 
 	return (
 		<div>
 			<br />
+			<Typography variant="h2">{tab} Workshops</Typography>
 			<br />
 			<EditableTable
 				state={state}
@@ -156,8 +167,9 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 				]}
 				options={{ paging: false }}
 				editOptions={editOptions}
-				tableTitle={"Create Workshops"}
+				tableTitle={""}
 			/>
+			<br />
 			<Button id="submitBooking" color="primary" size="large" onClick={submitNewWorkshops}>
 				Save Workshops
 			</Button>
