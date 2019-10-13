@@ -23,11 +23,7 @@ const AdminWorkshopsOverviewContainer: React.SFC<AdminWorkshopsOverviewContainer
 		<div style={{ margin: '0 5%' }}>
 			<br />
 			<WorkshopStatus workshopTabs={workshopTabs} callbackTab={myCallbackTab} />
-			{state.tab === workshopTabs[0] ? (
-				<WorkshopsOverview props={props} tab={state.tab} />
-			) : (
-					<WorkshopsOverview props={props} tab={state.tab} />
-				)}
+			<WorkshopsOverview props={props} tab={state.tab} />
 		</div>
 	);
 };
