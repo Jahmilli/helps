@@ -29,7 +29,6 @@ const dataStuff = [
   createData('77639826', "Veronika", "Yang", "veroniang@email.com"),
   createData('55489167', "Dhruv", "Pena", "dhena@email.com"),
   createData('19309107', "Kimora", "Blaese", "kiilaese@email.com"),
-
 ];  
 
 const inactiveUsers = [
@@ -66,9 +65,29 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (props) => {
     const classes = useStyles();
-    const [values, setValues] = React.useState<State>({
-      name: ''
+    const [values, setValues] = React.useState<Data>({
+      staffNum: "",
+      firstName: "",
+      lastName: "",
+      email: "",
     });
+
+    const handleUpdateIdNum = (event: any) => {
+      setValues(event.target.value);
+    }
+    const handleUpdateFirstName= (event: any) => {
+      setValues(event.target.value);
+    }
+    const handleUpdateLastName = (event: any) => {
+      setValues(event.target.value);
+    }
+    const handleUpdateEmail = (event: any) => {
+      setValues(event.target.value);
+    }
+
+    function addStuff(){
+      dataStuff.push(createData(values.staffNum, values.firstName, values.lastName, values.email));
+    }
 
     return (
         <div>
@@ -94,6 +113,8 @@ const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (prop
                     id="idNum"
                     label="ID Number"
                     className={classes.textField}
+                    value={values.staffNum}
+                    onChange={handleUpdateIdNum}
                     defaultValue={""}
                     margin="normal"
                 />
@@ -101,24 +122,30 @@ const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (prop
                     id="first-name"
                     label="First Name"
                     className={classes.textField}
+                    value={values.firstName}
                     defaultValue={""}
+                    onChange={handleUpdateFirstName}
                     margin="normal"
                 />
                 <TextField
                     id="last-name"
                     label="Last Name"
                     className={classes.textField}
+                    value={values.lastName}
                     defaultValue={""}
+                    onChange={handleUpdateLastName}
                     margin="normal"
                 />  
                 <TextField
                     id="email"
                     label="Email"
                     className={classes.textField}
+                    value={values.email}
                     defaultValue={""}
+                    onChange={handleUpdateEmail}
                     margin="normal"
                 />
-                <Button id="addAdvisor" color="primary" size="large">Add Advisor</Button>
+                <Button id="addAdvisor" color="primary" size="large" onClick={addStuff}>Add Advisor</Button>
             </div>
             <EnhancedTable tableTitle = "Inactive Advisors" rows = {inactiveUsers}/>
             <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>   
