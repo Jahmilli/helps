@@ -111,6 +111,10 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 			if (workshop.status == tab) workshopsTab.push(workshop);
 		});
 
+		workshopsTab.sort((a, b) =>
+			parseInt(String(a.no)) - parseInt(String(b.no))
+		)
+
 		console.log(workshopsTab);
 
 		setState({
