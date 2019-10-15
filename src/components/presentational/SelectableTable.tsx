@@ -78,7 +78,7 @@ const headCells: headCell[] = [
   { id: 'staffNum', numeric: false, disablePadding: true, label: 'Staff Number' },
   { id: 'firstName', numeric: true, disablePadding: false, label: 'First Name' },
   { id: 'lastName', numeric: true, disablePadding: false, label: 'Last Name' },
-  { id: 'email', numeric: true, disablePadding: false, label: 'email' },
+  { id: 'email', numeric: true, disablePadding: false, label: 'Email' },
 ];
 
 interface EnhancedTableProps {
@@ -105,7 +105,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={numSelected === rowCount}
             onChange={onSelectAllClick}
-            inputProps={{ 'aria-label': 'select all desserts' }}
+            inputProps={{ 'aria-label': 'select all users' }}
           />
         </TableCell>
         {headCells.map(headCell => (
@@ -167,6 +167,11 @@ interface EnhancedTableToolbarProps {
   tableName: string;
 }
 
+function deleteFunc(){
+  console.log("yeet");
+
+}
+
 const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
@@ -193,7 +198,7 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
       <div className={classes.actions}>
         {numSelected > 0 ? (
           <Tooltip title="Delete">
-            <IconButton aria-label="delete">
+            <IconButton aria-label="delete" onClick={deleteFunc}>
               <DeleteIcon />
             </IconButton>
           </Tooltip>

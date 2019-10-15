@@ -17,6 +17,7 @@ interface Data {
   firstName: string;
   lastName: string;
   email: string;
+  [key:string]: string;
 }
 
 const dataStuff = [
@@ -65,28 +66,31 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (props) => {
     const classes = useStyles();
-    const [values, setValues] = React.useState<Data>({
-      staffNum: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-    });
+    const [staffNum, setStaffNum] = React.useState<string>("");
+    const [firstName, setFirstName] = React.useState<string>("");
+    const [lastName, setLastName] = React.useState<string>("");
+    const [email, setEmail] = React.useState<string>("");
 
     const handleUpdateIdNum = (event: any) => {
-      setValues(event.target.value);
+      setStaffNum(event.target.value);
     }
     const handleUpdateFirstName= (event: any) => {
-      setValues(event.target.value);
+      setFirstName(event.target.value);
     }
     const handleUpdateLastName = (event: any) => {
-      setValues(event.target.value);
+      setLastName(event.target.value);
     }
     const handleUpdateEmail = (event: any) => {
-      setValues(event.target.value);
+      setEmail(event.target.value);
     }
 
     function addStuff(){
-      dataStuff.push(createData(values.staffNum, values.firstName, values.lastName, values.email));
+      if(staffNum.length < 8){
+        console.log("denied");
+      }
+      else{
+        dataStuff.push(createData(staffNum, firstName, lastName, email));
+      }
     }
 
     return (
@@ -113,17 +117,15 @@ const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (prop
                     id="idNum"
                     label="ID Number"
                     className={classes.textField}
-                    value={values.staffNum}
+                    value={staffNum}
                     onChange={handleUpdateIdNum}
-                    defaultValue={""}
                     margin="normal"
                 />
                 <TextField
                     id="first-name"
                     label="First Name"
                     className={classes.textField}
-                    value={values.firstName}
-                    defaultValue={""}
+                    value={firstName}
                     onChange={handleUpdateFirstName}
                     margin="normal"
                 />
@@ -131,8 +133,7 @@ const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (prop
                     id="last-name"
                     label="Last Name"
                     className={classes.textField}
-                    value={values.lastName}
-                    defaultValue={""}
+                    value={lastName}
                     onChange={handleUpdateLastName}
                     margin="normal"
                 />  
@@ -140,8 +141,7 @@ const AvailableAdvisors: React.FunctionComponent<AvailableSessionsProps> = (prop
                     id="email"
                     label="Email"
                     className={classes.textField}
-                    value={values.email}
-                    defaultValue={""}
+                    value={email}
                     onChange={handleUpdateEmail}
                     margin="normal"
                 />
