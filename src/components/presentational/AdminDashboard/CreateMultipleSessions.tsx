@@ -25,7 +25,7 @@ const CreateMultipleSessions: React.SFC<CreateMultipleSessionsProps> = ({ worksh
             { title: "Days", field: "endTime" },
             { title: "Max", field: "type" },
             { title: "C/O", field: "type" },
-            { title: "Remiender", field: "type" },
+            { title: "Reminder", field: "type" },
             { title: "Room", field: "room" },
         ],
         data: [{} as ISession]
@@ -80,16 +80,13 @@ const CreateMultipleSessions: React.SFC<CreateMultipleSessionsProps> = ({ worksh
 				added.
 			</Typography>
             <CreateMultipleSessionsTable
+                workshop={workshop}
                 state={state}
                 setState={setState}
-                options={{ paging: false }}
                 editOptions={editOptions}
                 tableTitle={"Create Multiple Sessions"}
             />
             <br />
-            <Button id="submitBooking" color="primary" size="large" onClick={submitNewSessions}>
-                Book Multiple Sessions
-			</Button>
         </div>
     );
 };

@@ -28,7 +28,7 @@ const AdminWorkshopCreateContainer: React.SFC<AdminWorkshopCreateContainerProps>
 			</Typography>
 			<br />
 			<WorkshopStatus workshopTabs={sessionTab} callbackTab={myCallbackTab} />
-            {state.tab === sessionTab[0] ? <CreateWorkshopSessions props={props} /> : <CreateMultipleSessions workshop={props.location.state.eventData} />}
+			{state.tab === sessionTab[0] ? <CreateWorkshopSessions props={props} /> : <CreateMultipleSessions  workshop={props.location.state.eventData} />}
 		</div>
 	);
 };

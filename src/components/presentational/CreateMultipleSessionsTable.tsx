@@ -1,20 +1,20 @@
 import React from 'react';
-import MaterialTable from 'material-table';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
-import {
-  Edit,
-  Clear,
-  Add,
-  Check,
-  FilterList,
-  Remove,
-} from '@material-ui/icons'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
+import { createNewSessions } from "../../logic/functions/createNewSessions";
+import { TextField, NativeSelect, Button, FormGroup } from '@material-ui/core';
+import { ISession } from '../../logic/domains/sessionDetails.domain';
 
 
 interface EditableTableProps {
+  workshop: any;
   state: any;
   setState: any;
-  options?: any; // View https://material-table.com/#/docs/all-props for values that can be passed in for options
   editOptions?: EditOptions;
   tableTitle: any;
 }
@@ -36,17 +36,78 @@ interface Column {
   lookup?: any
 }
 
-const icons = {
-  Add: () => <Add /> as React.ReactElement<SvgIconProps>,
-  Check: () => <Check /> as React.ReactElement<SvgIconProps>,
-  Edit: () => <Edit /> as React.ReactElement<SvgIconProps>,
-  Clear: () => <Clear /> as React.ReactElement<SvgIconProps>,
-  Filter: () => <FilterList /> as React.ReactElement<SvgIconProps>,
-  ThirdStateCheck: () => <Remove /> as React.ReactElement<SvgIconProps>,
+ interface Data {
+    startDate: string,
+    weeks: string,
+    days: string,
+    room: string,
+    max: string,
+    co: string,
+    reminder: string,
 }
 
-const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, setState, options, editOptions, tableTitle }) => {
-  let editOptionsObj: any = {};
+const EditableTable: React.FunctionComponent<EditableTableProps> = ({ workshop, state, setState, editOptions, tableTitle }) => {
+    let editOptionsObj: any = {};
+    let data: Data = {
+        startDate: "",
+        co: "",
+        days: "",
+        max: "",
+        reminder: "",
+        room: "",
+        weeks: ""
+    };
+
+    const isEmpty = (str: string): boolean => {
+        return 0 === str.length;
+    };
+
+    const validateSessions = (): boolean => {
+            if (
+                isEmpty(data.co) ||
+                isEmpty(data.max) ||
+                isEmpty(data.room) ||
+                isEmpty(data.startDate) ||
+                isEmpty(data.weeks)
+            ) {
+                return false;
+            }
+        return true;
+    };
+
+    const submitNewSessions = async () => {
+        if (validateSessions()) {
+            const tempData = state.data as Array<ISession>;
+            tempData[0] = { ...tempData[0], advisor: "current advisor" };
+            try {
+                await createNewSessions(tempData);
+                alert("Sessions created");
+            } catch (err) {
+                alert("An error occurred when creating the sessions");
+            }
+        } else {
+            alert("Please fill in all fields for your new sessions");
+        }      
+    };
+
+    const handleChange = (name: keyof typeof state) => (event: React.ChangeEvent<HTMLInputElement>) => {
+
+        if (name === "start-date") {
+            data.startDate = event.target.value;
+        } else if (name === "weeks") {
+            data.weeks = event.target.value;
+        } else if (name === "room") {
+            data.room = event.target.value;
+        } else if (name === "max") {
+            data.max = event.target.value;
+        } else if (name === "co") {
+            data.co = event.target.value;
+        } else if (name === "reminder") {
+            data.reminder = event.target.value;
+        } else if (name.toString().includes("checked")) {
+            setState({ ...state, [name]: event.target.checked });
+        }
+    };
 
   if (editOptions) {
     if (editOptions.canAdd) {
@@ -84,16 +145,98 @@ const EditableTable: React.FunctionComponent<EditableTableProps> = ({ state, set
     }
   }
   return (
-    <MaterialTable
-      title={tableTitle}
-      options={{ ...options, search: false }}
-      // @ts-ignore
-      icons={icons}
-      // @ts-ignore
-      columns={state.columns}
-      data={state.data}
-      // @ts-ignore
-    />
+    <div>
+        <h4>{tableTitle}</h4>
+        <Table className="multipleSessionTable" aria-label="simple table">
+            <TableHead>
+                <TableRow>
+                    <TableCell>Start Date</TableCell>
+                    <TableCell >Weeks</TableCell>
+                    <TableCell >Days</TableCell>
+                    <TableCell >Room</TableCell>
+                    <TableCell >Max</TableCell>
+                    <TableCell >C/O</TableCell>
+                    <TableCell >Reminder</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                    <TableCell>
+                        <TextField
+                            id="start-date"
+                            className="start-date"
+                            type="date"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            onChange={handleChange('start-date')}
+                        />
+                    </TableCell>
+                    <TableCell>
+                        <TextField
+                            id="weeks"
+                            className="weeks"
+                            placeholder="2"
+                            onChange={handleChange('weeks')}
+                        />
+                    </TableCell>
+                      <TableCell>
+                          <FormGroup row>
+                              <FormControlLabel control={<Checkbox value="checkedA" onChange={handleChange('checkedA')} color="primary" />} label="Mon" />
+                              <FormControlLabel control={<Checkbox value="checkedB" onChange={handleChange('checkedB')} color="primary" />} label="Tue" />
+                              <FormControlLabel control={<Checkbox value="checkedC" onChange={handleChange('checkedC')} color="primary" />} label="Wed" />
+                              <FormControlLabel control={<Checkbox value="checkedD" onChange={handleChange('checkedD')} color="primary" />} label="Thu" />
+                              <FormControlLabel control={<Checkbox value="checkedE" onChange={handleChange('checkedE')} color="primary" />} label="Fri" />
+                              <FormControlLabel control={<Checkbox value="checkedF" onChange={handleChange('checkedF')} color="primary" />} label="Sat" />
+                              <FormControlLabel control={<Checkbox value="checkedG" onChange={handleChange('checkedG')} color="primary" />} label="Sun" />
+                          </FormGroup>
+                    </TableCell>
+                    <TableCell>
+                        <TextField
+                            id="room"
+                            className="room"
+                              placeholder="B11.8.101"
+                              onChange={handleChange('room')}
+                        />
+                    </TableCell>
+                    <TableCell>
+                          <TextField
+                              id="max"
+                              className="max"
+                              placeholder="35"
+                              onChange={handleChange('max')}
+                        />
+                    </TableCell>
+                    <TableCell>
+                        <TextField
+                            id="co"
+                            className="co"
+                              placeholder="24"
+                              onChange={handleChange('co')}
+                        />
+                    </TableCell>
+                    <TableCell>
+                        <NativeSelect
+                              defaultValue="All"
+                              className="reminder"
+                              name="reminder"
+                              onChangeCapture={handleChange('reminder')}
+                            inputProps={{
+                                name: 'reminder',
+                                id: 'reminder',
+                            }}
+                        >
+                            <option value="All">All</option>
+                            <option value="None">None</option>
+                        </NativeSelect>
+                    </TableCell>
+                </TableRow>
+            </TableBody>
+          </Table>
+          <Button id="submitBooking" color="primary" size="large" onClick={submitNewSessions}>
+              Book Multiple Sessions for {workshop.shortTitle}
+		  </Button>
+    </div>
   );
 }
 
