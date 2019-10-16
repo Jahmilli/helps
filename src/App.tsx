@@ -10,7 +10,7 @@ interface AppProps {
 
 const App: React.FC<AppProps> = ({ auth }) => {
   // TODO: Will need to make sure this is working with admins once we have admins in database.
-  const [ userDetails, setUserDetails ] = React.useState();
+  const [userDetails, setUserDetails] = React.useState();
 
   React.useEffect(() => {
     async function getUserDetails() {
@@ -19,18 +19,17 @@ const App: React.FC<AppProps> = ({ auth }) => {
         try {
           const details = await getStudentDetails(metaData._id);
           setUserDetails(details);
-        } catch(err) {
+        } catch (err) {
           console.error('An error occurred when getting student details', err);
         }
       }
-
     }
     getUserDetails();
   }, [auth]);
 
   return (
     <UserContext.Provider value={{ userDetails }}>
-      <Routing auth={auth}/>
+      <Routing auth={auth} />
     </UserContext.Provider>
   );
 }

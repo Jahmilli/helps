@@ -1,6 +1,7 @@
 {
-    "python.linting.pylintArgs": ["--load-plugins=pylint_django"],
-    "window.zoomLevel": -1,
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django"
+    ],
     "editor.wordWrap": "off",
     "editor.formatOnSave": true,
     "javascript.updateImportsOnFileMove.enabled": "always",

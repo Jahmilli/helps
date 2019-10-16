@@ -8,14 +8,15 @@ export interface IWorkshopSession {
     room: string;
     maxStudents: string;
     cutoff: string;
-    waitingList: Array<String>
+    waitingList: Array<string>
     confirmedList: Array<IWorkshopSessionDetails>;
     targetGroup: string;
     sessionCoverage: string;
 }
 
 export interface IWorkshopSessionDetails {
-    [studentId: string]: any;
+    _id?: string;
+    studentId: string;
     dateBooked: string;
-    attended: boolean;
+    attended: string;
 }

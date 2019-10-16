@@ -91,9 +91,6 @@ const CreateSessions: React.FunctionComponent<CreateSessionsProps> = ({ props })
                         alert("An error occurred when creating the sessions");
                     }
                 } else {
-                    console.log('Session');
-                    console.log(session);
-                    console.log('---------');
                     await updateWorkshopSession(workshopId, session._id, session);
                 }
             }
