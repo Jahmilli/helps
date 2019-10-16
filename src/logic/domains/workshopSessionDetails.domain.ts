@@ -17,5 +17,5 @@ export interface IWorkshopSession {
 export interface IWorkshopSessionDetails {
     [studentId: string]: any;
     dateBooked: string;
-    attended: boolean;
+    attended: string;
 }

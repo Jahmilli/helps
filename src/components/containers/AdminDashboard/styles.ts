@@ -38,6 +38,14 @@ export const createWorkshopSessionDetailStyle = makeStyles(theme => ({
         width: 100,
         height: 400
     },
+    paperWaiting: {
+        padding: theme.spacing(1),
+        margin: 'auto',
+        width: 150,
+        height: 35,
+        textAlign: "center",
+        textAlignVertical: "center"
+    },
     column: {
         float: "left",
         width: 33.33
