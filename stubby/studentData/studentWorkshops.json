@@ -1,12 +1,21 @@
 [
 	{
 		"id": 1,
-		"name": "Write a resume workshop",
+		"name": "Maths Revision",
 		"reason": "Review",
 		"subjectName": "Maths",
 		"assignmentType": "Report",
-		"needsHelpWithOptions": "",
-		"additionalHelpDetails": "no further help required",
-		"isGroupAssignment": "boolean"
+		"additionalHelpDetails": "No further help required",
+		"location": "CB11.04.102"
+	},
+
+	{
+		"id": 2,
+		"name": "English Test",
+		"reason": "Revision",
+		"subjectName": "English Studies",
+		"assignmentType": "Exam",
+		"additionalHelpDetails": "Need help with clarification",
+		"location": "CB08.04.103"
 	}
 ]

@@ -25,35 +25,17 @@ const StudentWorkshopDetail: React.FunctionComponent<SessionDetails> = props => 
 		reason,
 		subjectName,
 		assignmentType,
-		needsHelpWithOptions,
 		additionalHelpDetails,
-		isGroupAssignment
+		location
 	} = props.location.state;
 	const [state, setState] = React.useState({});
 
 	return (
 		<div style={{ margin: "0 3%" }}>
 			<Typography display="block">Subject name: {subjectName}</Typography>
+			<Typography display="block">Location: {location}</Typography>
 			<Typography display="block">Reason: {reason}</Typography>
 			<Typography display="block">Type of Assignment: {assignmentType}</Typography>
-			<Typography display="block">
-				{" "}
-				Fields that require attention: {needsHelpWithOptions}
-			</Typography>
-			<RadioGroup aria-label="position" name="Fields that require attention:" row>
-				<FormControlLabel
-					value="Writing"
-					control={<Radio color="primary" />}
-					label="Writing"
-					labelPlacement="top"
-				/>
-				<FormControlLabel
-					value="Numbers"
-					control={<Radio color="primary" />}
-					label="Numbers"
-					labelPlacement="top"
-				/>
-			</RadioGroup>
 			<Typography display="block">Addtional information: {additionalHelpDetails}</Typography>
 			<Button id="BookBtn" color="primary" size="small" type="submit" variant="outlined">
 				Register for workshop
