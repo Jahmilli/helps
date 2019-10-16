@@ -32,14 +32,21 @@ const StudentWorkshopDetail: React.FunctionComponent<SessionDetails> = props => 
 
 	return (
 		<div style={{ margin: "0 3%" }}>
+			<div style={{ margin: "1.0%" }}>
+				<Typography variant="h4" display="block">
+					Workshop details
+				</Typography>
+			</div>
 			<Typography display="block">Subject name: {subjectName}</Typography>
 			<Typography display="block">Location: {location}</Typography>
 			<Typography display="block">Reason: {reason}</Typography>
 			<Typography display="block">Type of Assignment: {assignmentType}</Typography>
 			<Typography display="block">Addtional information: {additionalHelpDetails}</Typography>
-			<Button id="BookBtn" color="primary" size="small" type="submit" variant="outlined">
-				Register for workshop
-			</Button>
+			<div style={{ margin: "1.0%" }}>
+				<Button id="BookBtn" color="primary" size="small" type="submit" variant="outlined">
+					Register for workshop
+				</Button>
+			</div>
 		</div>
 	);
 };
