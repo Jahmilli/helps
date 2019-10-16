@@ -8,7 +8,7 @@ export interface ISession {
     type: string;
     currentBooking: ISessionDetails;
     waitingList: Array<ISessionDetails>
-    // attendedNotAttended: string; (not sure what this is)
+    attendedNotAttended: string;
 }
 
 export interface ISessionDetails {
@@ -18,7 +18,7 @@ export interface ISessionDetails {
     assignmentType: string;
     isGroupAssignment: boolean;
     needsHelpWithOptions: ICheckBox;
-    additionalHelpDetails: string; 
+    additionalHelpDetails: string;
 }
 
 export interface ICheckBox {
