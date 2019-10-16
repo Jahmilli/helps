@@ -1,13 +1,16 @@
 import * as React from "react";
 import { createSessionStyle } from "./styles";
-import EditableTable, { EditOptions } from "../EditableTable";
+// import EditableTable, { EditOptions } from "../EditableTable";
+import CreateMultipleSessionsTable, { EditOptions } from "../CreateMultipleSessionsTable";
 import { ISession } from "../../../logic/domains/sessionDetails.domain";
 import { createNewSessions } from "../../../logic/functions/createNewSessions";
 import { Typography, Button } from "@material-ui/core";
 
-export interface CreateMultipleSessionsProps {}
+export interface CreateMultipleSessionsProps {
+    workshop: any;
+}
 
-const CreateMultipleSessions: React.SFC<CreateMultipleSessionsProps> = () => {
+const CreateMultipleSessions: React.SFC<CreateMultipleSessionsProps> = ({ workshop }) => {
     const classes = createSessionStyle();
     const editOptions = {
         canAdd: true,
@@ -76,7 +79,7 @@ const CreateMultipleSessions: React.SFC<CreateMultipleSessionsProps> = () => {
                 Please note: all the fields are compulsory, otherwise that session will not be
 				added.
 			</Typography>
-            <EditableTable
+            <CreateMultipleSessionsTable
                 state={state}
                 setState={setState}
                 options={{ paging: false }}
@@ -85,7 +88,7 @@ const CreateMultipleSessions: React.SFC<CreateMultipleSessionsProps> = () => {
             />
             <br />
             <Button id="submitBooking" color="primary" size="large" onClick={submitNewSessions}>
-                Book Session
+                Book Multiple Sessions
 			</Button>
         </div>
     );
