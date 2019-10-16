@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Typography, Button, InputLabel } from '@material-ui/core';
+import { Typography, Button, InputLabel} from '@material-ui/core';
 import { ISession } from '../../../logic/domains/sessionDetails.domain';
 import EditableTable, { EditOptions } from '../EditableTable';
-import { Add } from '@material-ui/icons';
+import { Add, ArrowDropDown } from '@material-ui/icons';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
@@ -14,7 +14,7 @@ type AvailableSessionsProps = RouteComponentProps<any> & {
     isAdmin: boolean;
 } 
 
-const AdminReport: React.FunctionComponent<AvailableSessionsProps> = (props) => {
+const AdminWorkShopReport: React.FunctionComponent<AvailableSessionsProps> = (props) => {
         return (
         <div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -32,75 +32,58 @@ const AdminReport: React.FunctionComponent<AvailableSessionsProps> = (props) => 
                 </ul>
 
                 <form>
-                    <div className="BookedSessions">
-                        <label>
-                            <input type="radio" id="BookedSessions" value="option1" checked={true} />
-                            Booked Sessions
-                        </label>
-                    </div>
-                    <div className="CancelledSessions">
-                        <label>
-                            <input type="radio" value="option1" checked={false} />
-                            Cancelled sessions
-                        </label>
-                    </div>
                     <div className="SessionWaitingList">
                         <label>
                             <input type="radio" value="option1" checked={false} />
-                            Sessions having waiting lists
+                            Workshop skill-sets details
                         </label>
+                            <div>
+                            Workshop skill-sets
+                                <select>
+                                    <option value="1"> Improve Your Writing </option>
+                                    <option value="2"> Improve Your Grammar </option>
+                                    <option value="3"> Improve Your Speaking </option>
+                                    <option value="4"> WriteNow! Writing Support Sessions</option>
+                                    <option value="5"> U:PASS </option>
+                                    <option value="6"> Conversations@UTS </option>
+                                    <option value="7"> Academic Writing Boot Camp Feb 2019</option>
+                                    <option value="7"> Summer Special Workshops 2018-2019</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                Workshop Topics
+                                <select>
+                                    <option value="1"> Starting Your Assignment </option>
+                                    <option value="2"> What is Academic Writing? </option>
+                                    <option value="3"> How to Communicate Effectively? </option>
+                                    <option value="4"> Time Management </option>
+                                    <option value="5"> U:PASS </option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <input type='checkbox' name='test' /> Booking
+                                <input type='checkbox' name='test' /> Waiting
+                                <input type='checkbox' name='test' /> Include student profiles
+                            </div>
                     </div>
+                </form>
+                <form>
                     <div className="NotAttendedSessions">
                         <label>
                             <input type="radio" value="option1" checked={false} />
-                            Not-attended sessions
-                        </label>
-                    </div>
-                    <div className="NonBookedSessions">
-                        <label>
-                            <input type="radio" value="option1" checked={false} />
-                            Non-booked sessions
-                        </label>
-                    </div>
-                    <div className="StudentProfileData">
-                        <label>
-                            <input type="radio" value="option1" checked={false} />
-                            Student profile data
-                        </label>
-                    </div>
-                    <div className="Summary">
-                        <label>
-                            <input type="radio" value="option1" checked={false} />
-                            Summary of students booking the sessions
-                        </label>
-                    </div>
-                    <div className="StudentHistory">
-                        <label>
-                            <input type="radio" value="option1" checked={false} />
-                                Student history:   ID:<input type="text" />
-                        </label>
-                        
-                            
-                    </div>
-                    <div className="AdvisorsComment">
-                        <label>
-                            <input type="radio" value="option1" checked={false} />
-                                Advisors' comment:  ID:<input type="text" />
-                        </label>
-                    </div>
-                    <div className="StudentWaitingList">
-                        <label>
-                            <input type="radio" value="option1" checked={false} />
-                            Students in the waiting list
+                            Workshop skill-sets summary
                         </label>
                     </div>
                 </form>
             </Typography>
 
-            <Typography variant="h6"> Step 3: </Typography>
             <Typography variant="body1"> <ul> Press "Submit" button </ul>
-                </Typography>
-            
+
+             </Typography>
+
+
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Button id="submit" color="primary" size="large" > Submit</Button>
             </div>
@@ -111,4 +94,4 @@ const AdminReport: React.FunctionComponent<AvailableSessionsProps> = (props) => 
 };
 
 
-export default withRouter(AdminReport);
+export default withRouter(AdminWorkShopReport);
