@@ -29,14 +29,22 @@ export const createWorkshopSessionDetailStyle = makeStyles(theme => ({
     paper: {
         padding: theme.spacing(2),
         margin: 'auto',
-        width: 400,
-        height: 500
+        width: 600,
+        height: 1000
     },
     paperBooking: {
         padding: theme.spacing(2),
         margin: 'auto',
         width: 100,
-        height: 400
+        height: 30
+    },
+    paperBookingTitle: {
+        padding: theme.spacing(2),
+        margin: 'auto',
+        width: 100,
+        height: 20,
+        textAlign: "center",
+        textAlignVertical: "center"
     },
     paperWaiting: {
         padding: theme.spacing(1),
