@@ -54,7 +54,7 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 	};
 
 	const amendDetails = (eventData: Workshop) => (event: React.MouseEvent) => {
-		console.log(eventData)
+		console.log(eventData);
 		props.history.push({
 			pathname: `${props.match.path}/amenddetails/${eventData._id}`,
 			// pathname: `${props.match.path}/amenddetails`,

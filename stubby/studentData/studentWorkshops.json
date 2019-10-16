@@ -1,11 +1,12 @@
 [
-    {
-        "id": 1,
-        "name": "Write a resume workshop",
-        "reason": "Review",
-        "subjectName": "Maths",
-        "assignmentType": "Report",
-        "needsHelpWithOptions": "",
-        "additionalHelpDetails": "no further help required"
-    }
+	{
+		"id": 1,
+		"name": "Write a resume workshop",
+		"reason": "Review",
+		"subjectName": "Maths",
+		"assignmentType": "Report",
+		"needsHelpWithOptions": "",
+		"additionalHelpDetails": "no further help required",
+		"isGroupAssignment": "boolean"
+	}
 ]
