@@ -1,7 +1,8 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import { Typography } from "@material-ui/core";
-import WorkshopSessionDetails from "../../presentational/AdminDashboard/WorkshopSessionDetails";
+import WorkshopSessionDetailsContainer from "./WorkshopSessionDetailsContainer";
+import WorkshopSessionBookingContainer from "./WorkshopSessionBookingContainer";
 
 type AdminWorkshopSessionDetailsProps = RouteComponentProps<any> & {};
 
@@ -19,10 +20,19 @@ const AdminWorkshopSessionDetails: React.SFC<AdminWorkshopSessionDetailsProps> =
         <div style={{ margin: "0 5%" }}>
             <br />
             <Typography variant="h4">
-                Edit: {props.location.state.eventData.Topic}
+                Edit Workshop Session: {props.location.state.eventData.topic}
             </Typography>
             <br />
-            <WorkshopSessionDetails props={props} />
+            <br />
+            <WorkshopSessionDetailsContainer props={props} session={props.location.state.eventData} />
+            <br />
+            <br />
+            <Typography variant="h4">
+                Student List
+            </Typography>
+            <br />
+            <br />
+            <WorkshopSessionBookingContainer props={props} session={props.location.state.eventData} />
         </div>
     );
 };

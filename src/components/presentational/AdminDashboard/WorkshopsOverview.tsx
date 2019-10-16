@@ -67,7 +67,6 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 	};
 
 	const validateWorkshops = (): boolean => {
-		console.log(state.data);
 		for (let workshop of state.data) {
 			if (
 				isEmpty(workshop.no.toString()) ||
@@ -114,8 +113,6 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 		workshopsTab.sort((a, b) =>
 			parseInt(String(a.no)) - parseInt(String(b.no))
 		)
-
-		console.log(workshopsTab);
 
 		setState({
 			columns: [
