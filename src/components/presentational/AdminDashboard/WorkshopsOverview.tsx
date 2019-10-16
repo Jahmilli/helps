@@ -55,7 +55,6 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 	const amendDetails = (eventData: Workshop) => (event: React.MouseEvent) => {
 		props.history.push({
 			pathname: `${props.match.path}/amenddetails/${eventData._id}`,
-			// pathname: `${props.match.path}/amenddetails`,
 			state: {
 				eventData,
 				isCurrentBooking: false
@@ -111,6 +110,10 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 		details.forEach(workshop => {
 			if (workshop.status == tab) workshopsTab.push(workshop);
 		});
+
+		workshopsTab.sort((a, b) =>
+			parseInt(String(a.no)) - parseInt(String(b.no))
+		)
 
 		console.log(workshopsTab);
 

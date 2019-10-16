@@ -20,8 +20,7 @@ export const post = async (url: string, payload: any, options?: Options) => {
 };
 
 // generic put request
-export const put = async (url: string, id: string, payload: any, options?: Options) => {
-	url = url + "/" + id;
+export const put = async (url: string, payload: any, options?: Options) => {
 	return await coreFetch(url, options, "put", payload);
 };
 

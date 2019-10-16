@@ -14,5 +14,5 @@ export const removeWorkshop = async (id: string) => {
 };
 
 export const updateWorkshop = async (id: string, data: Workshop) => {
-	return await put("/api/v1/workshop/update", id, JSON.stringify(data));
+	return await put(`/api/v1/workshop/update/${id}`, JSON.stringify(data));
 };
