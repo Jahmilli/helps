@@ -24,11 +24,12 @@ const AdminWorkshopCreateContainer: React.SFC<AdminWorkshopCreateContainerProps>
 	return (
 		<div style={{ margin: "0 5%" }}>
 			<br />
-			{console.log(props.location.state.eventData)}
-			<Typography variant="h3">{props.location.state.eventData.shortTitle}</Typography>
+			<Typography variant="h4">
+				Create Sessions: {props.location.state.eventData.shortTitle}
+			</Typography>
 			<br />
 			<WorkshopStatus workshopTabs={sessionTab} callbackTab={myCallbackTab} />
-			{state.tab === sessionTab[0] ? <CreateSessions /> : <CreateMultipleSessions />}
+			{state.tab === sessionTab[0] ? <CreateWorkshopSessions props={props} /> : <CreateMultipleSessions workshop={props.location.state.eventData} />}
 		</div>
 	);
 };
