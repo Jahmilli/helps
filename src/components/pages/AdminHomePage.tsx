@@ -11,6 +11,7 @@ import navbarTabs from './__data__/data.adminNavbarTabs.json';
 import AdminSessionContainer from '../containers/AdminDashboard/AdminSessionContainer';
 import BookSessionContainer from '../containers/AdminDashboard/BookSessionContainer';
 import AdminReportContainer from '../containers/AdminDashboard/AdminReportContainer';
+import AdminWorkShopReportContainer from '../containers/AdminDashboard/AdminWorkShopReportContainer';
 
 
 interface AdminHomePageProps {
@@ -41,6 +42,7 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
                 <Route path={`${path}/login`} render={() => <LoginPage auth={auth} /> } />
                 <Route path={`${path}/sessions`} render={(props) => <AdminSessionContainer {...props} />} />
                 <Route path={`${path}/reports`} render={(props) => <AdminReportContainer {...props} />} />
+                <Route path={`${path}/reports/workshops`} render={(props) => <AdminWorkShopReportContainer {...props} />} />
                 <Route path={`/admin/bookSession`} render={(props) => <BookSessionContainer /> } />
             </div>
             <Footer />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TopTabs from '../../presentational/AdminDashboard/TopTabs';
+import AdminTopTabs from '../../presentational/AdminDashboard/AdminTopTabs';
 import { Route } from 'react-router';
 import FilterSessions from '../../presentational/AdminDashboard/FilterSessions';
 import { RouteComponentProps } from 'react-router';
@@ -18,6 +18,7 @@ const AdminReportContainer: React.FunctionComponent<AdminReportContainerProps> =
 
     return (
         <div style={{ margin: '0 5%' }}>
+            <AdminTopTabs/>
             <Route path={`${path}`} exact={true} render={() => (
                 <div>
                     <AdminReport isAdmin={false}/>

@@ -18,7 +18,7 @@ const AdminReport: React.FunctionComponent<AvailableSessionsProps> = (props) => 
         return (
         <div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Typography variant="h3"> Reports </Typography>
+                <Typography variant="h3"> Workshop Reports </Typography>
             </div>
 
             <Typography variant="h6"> Step 1: </Typography>
