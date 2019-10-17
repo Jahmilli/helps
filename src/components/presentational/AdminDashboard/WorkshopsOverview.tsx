@@ -54,15 +54,10 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 	};
 
 	const amendDetails = (eventData: Workshop) => (event: React.MouseEvent) => {
-<<<<<<< HEAD
 		console.log(eventData);
 		props.history.push({
 			pathname: `${props.match.path}/amenddetails/${eventData._id}`,
 			// pathname: `${props.match.path}/amenddetails`,
-=======
-		props.history.push({
-			pathname: `${props.match.path}/amendDetails/${eventData._id}`,
->>>>>>> develop
 			state: {
 				eventData,
 				isCurrentBooking: false
@@ -138,11 +133,7 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 	}, [tab]);
 
 	const handleArchiveWorkshop = (eventData: Workshop) => {
-<<<<<<< HEAD
-		if (tab == "Current") {
-=======
 		if (tab === "Current") {
->>>>>>> develop
 			setWorkshopToArchive(eventData);
 		} else {
 			setWorkshopToCurrent(eventData);
@@ -159,11 +150,7 @@ const WorkshopOverview: React.SFC<WorkshopOverviewProps> = ({ props, tab }) => {
 				actions={[
 					{
 						icon: icons.Archive,
-<<<<<<< HEAD
-						tooltip: tab == "Current" ? "Archive" : "Unarchive",
-=======
 						tooltip: tab === "Current" ? "Archive" : "Unarchive",
->>>>>>> develop
 						onClick: (event: any, rowData: Workshop) => handleArchiveWorkshop(rowData)
 					}
 				]}

@@ -4,14 +4,9 @@ import { ISession } from "../../../logic/domains/sessionDetails.domain";
 import EditableTable, { EditOptions } from "../EditableTable";
 import { createNewSessions } from "../../../logic/functions/createNewSessions";
 import { createSessionStyle } from "./styles";
-<<<<<<< HEAD
-
-interface CreateSessionsProps {}
-=======
 import { isValidDate, isEmpty, DATE_FORMAT, TIME_FORMAT, isValidTime } from "../../utils/Constants";
 
-interface CreateSessionsProps { }
->>>>>>> develop
+interface CreateSessionsProps {}
 
 // Column headings in the table used in this component
 const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
@@ -32,27 +27,23 @@ const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
 			{ title: "Type", field: "type" }
 		],
 		// @ts-ignore
-		data: [{
-			date: DATE_FORMAT,
-			startTime: TIME_FORMAT,
-			endTime: TIME_FORMAT,
-			room: '',
-			type: ''
-		} as ISession]
+		data: [
+			{
+				date: DATE_FORMAT,
+				startTime: TIME_FORMAT,
+				endTime: TIME_FORMAT,
+				room: "",
+				type: ""
+			} as ISession
+		]
 	});
 
 	const validateSessions = (): boolean => {
 		for (let session of state.data) {
 			if (
-<<<<<<< HEAD
-				isEmpty(session.date) ||
-				(isEmpty(session.startTime) ||
-					isEmpty(session.endTime) ||
-=======
 				!isValidDate(session.date) ||
 				(!isValidTime(session.startTime) ||
 					!isValidTime(session.endTime) ||
->>>>>>> develop
 					isEmpty(session.room) ||
 					isEmpty(session.type))
 			) {
@@ -76,11 +67,7 @@ const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
 				alert("An error occurred when creating the sessions");
 			}
 		} else {
-<<<<<<< HEAD
-			alert("Please fill in all fields for your new sessions");
-=======
 			alert("Please fill in all fields for your new sessions in the correct format");
->>>>>>> develop
 		}
 	};
 
