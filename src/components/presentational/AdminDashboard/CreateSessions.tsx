@@ -4,9 +4,8 @@ import { ISession } from "../../../logic/domains/sessionDetails.domain";
 import EditableTable, { EditOptions } from "../EditableTable";
 import { createNewSessions } from "../../../logic/functions/createNewSessions";
 import { createSessionStyle } from "./styles";
-import { isValidDate, isEmpty, DATE_FORMAT, TIME_FORMAT, isValidTime } from "../../utils/Constants";
 
-interface CreateSessionsProps { }
+interface CreateSessionsProps {}
 
 // Column headings in the table used in this component
 const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
@@ -26,22 +25,19 @@ const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
 			// { title: 'A/NA', field: '' },
 			{ title: "Type", field: "type" }
 		],
-		// @ts-ignore
-		data: [{
-			date: DATE_FORMAT,
-			startTime: TIME_FORMAT,
-			endTime: TIME_FORMAT,
-			room: '',
-			type: ''
-		} as ISession]
+		data: [{} as ISession]
 	});
+
+	const isEmpty = (str: string): boolean => {
+		return !str || 0 === str.length;
+	};
 
 	const validateSessions = (): boolean => {
 		for (let session of state.data) {
 			if (
-				!isValidDate(session.date) ||
-				(!isValidTime(session.startTime) ||
-					!isValidTime(session.endTime) ||
+				isEmpty(session.date) ||
+				(isEmpty(session.startTime) ||
+					isEmpty(session.endTime) ||
 					isEmpty(session.room) ||
 					isEmpty(session.type))
 			) {
@@ -65,7 +61,7 @@ const CreateSessions: React.FunctionComponent<CreateSessionsProps> = () => {
 				alert("An error occurred when creating the sessions");
 			}
 		} else {
-			alert("Please fill in all fields for your new sessions in the correct format");
+			alert("Please fill in all fields for your new sessions");
 		}
 	};
 
