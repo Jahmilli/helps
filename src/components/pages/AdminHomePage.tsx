@@ -54,13 +54,7 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
 					path={`${path}/workshops/amenddetails/:workshopId`}
 					render={props => <AdminWorkshopCreateContainer />}
 				/>
-<<<<<<< HEAD
-=======
-				<Route
-					path={`${path}/reports`}
-					render={props => <ReportsContainer />}
-				/>
->>>>>>> develop
+				<Route path={`${path}/reports`} render={props => <ReportsContainer />} />
 			</div>
 			<Footer />
 		</div>
