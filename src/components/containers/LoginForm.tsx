@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Typography, TextField } from '@material-ui/core';
-import Auth from '../../logic/functions/core/Auth';
+import { Typography, TextField } from '@material-ui/core';
 import logo from '../../images/uts-logo.png';
 
 interface LoginFormProps {
@@ -12,7 +11,7 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({ classes, formikPro
     return (
         <form onSubmit={formikProps.handleSubmit}>
             <img src={logo} className={classes.logo} alt="UTS Logo" />
-            <Typography variant="h1" style={{fontSize: 32, fontWeight: 'bold', color: 'black', textAlign:'start'}}>Log In</Typography>
+            <Typography variant="h1" style={{ fontSize: 32, fontWeight: 'bold', color: 'black', textAlign: 'start' }}>Log In</Typography>
             <TextField
                 className={classes.textfield}
                 label="email"

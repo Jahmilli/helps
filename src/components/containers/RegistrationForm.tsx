@@ -14,7 +14,7 @@ interface RegistrationFormProps {
 }
 
 const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth }) => {
-    const courseTitles = ['hsc', 'ielts', 'toefl', 'tafe', 'cult', 'insearchDeep', 'insearchDiploma', 'foundationCourse'] ;
+    const courseTitles = ['hsc', 'ielts', 'toefl', 'tafe', 'cult', 'insearchDeep', 'insearchDiploma', 'foundationCourse'];
     const educationInitialState: Array<Course> = courseTitles.map((title: string) => new Course(title));
     const sessionObject = {
         sessionIds: [],
@@ -39,7 +39,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
         upcomingSessions: sessionObject,
         previousSessions: sessionObject,
     } as IStudentDetails;
-    
+
     const [values, setValues] = useState<IStudentDetails>(studentDetailsInitialState);
 
     const handleStudentDetailsChange = (details: string) => (event: any) => {
@@ -48,15 +48,15 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
             [details]: event.target.value
         });
     }
-    
+
     const updateEducationCheckbox = (index: number) => (event: any) => {
-        const details = {...values};
+        const details = { ...values };
         details.education[index].isChecked = !details.education[index].isChecked;
         setValues(details);
     }
 
     const updateMark = (index: number) => (event: any) => {
-        const details = {...values};
+        const details = { ...values };
         details.education[index].mark = event.target.value
         setValues(details);
     }
@@ -65,7 +65,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
         event.preventDefault();
         try {
             let response: any = await registerStudent(values);
-            let auth0Response = await auth.updateUserMetaData(response._id, true);
+            await auth.updateUserMetaData(response._id, true);
             alert('Successfully registered');
         } catch (err) {
             // TODO: Don't use an alert, display using a Snackbar or something
@@ -86,7 +86,7 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
                 <RegistrationField id="courseId" title="Course ID" label="C10026" value={values.courseId} handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="preferredContactNumber" title="Preferred Contact Number" value={values.preferredContactNumber} label="0412345678" handleChange={handleStudentDetailsChange} classes={classes} />
                 <RegistrationField id="dateOfBirth" title="Date of Birth" label="01/01/2000" value={values.dateOfBirth} handleChange={handleStudentDetailsChange} classes={classes} />
-                
+
                 <Typography className={classes.textFieldHeader} variant="body1">Gender</Typography>
                 <RadioGroup aria-label="position" name="gender" value={values.gender} onChange={handleStudentDetailsChange("gender")} row>
                     <FormControlLabel value="male"
@@ -94,55 +94,55 @@ const RegistrationForm: React.FunctionComponent<RegistrationFormProps> = ({ auth
                         control={<Radio color="primary" />}
                         label="Male"
                         labelPlacement="top"
-                        />
+                    />
                     <FormControlLabel
                         value="female"
                         className={classes.input}
                         control={<Radio color="primary" />}
                         label="Female"
                         labelPlacement="top"
-                        />
+                    />
                     <FormControlLabel
                         value="other"
                         className={classes.input}
                         control={<Radio color="primary" />}
                         label="Other"
                         labelPlacement="top"
-                        />
+                    />
                 </RadioGroup>
                 <Typography className={classes.textFieldHeader} variant="body1">Degree</Typography>
-                <RadioGroup aria-label="position" name="degree" value={values.degree} onChange={handleStudentDetailsChange("degree")}row>
+                <RadioGroup aria-label="position" name="degree" value={values.degree} onChange={handleStudentDetailsChange("degree")} row>
                     <FormControlLabel
                         value="undergraduate"
                         className={classes.input}
                         control={<Radio color="primary" />}
                         label="Undergraduate"
                         labelPlacement="top"
-                        />
+                    />
                     <FormControlLabel
                         className={classes.input}
                         value="postgraduate"
                         control={<Radio color="primary" />}
                         label="Postgraduate"
                         labelPlacement="top"
-                        />
+                    />
                 </RadioGroup>
                 <Typography className={classes.textFieldHeader} variant="body1">Status</Typography>
-                <RadioGroup aria-label="position" name="status" value={values.status} onChange={handleStudentDetailsChange("status")}row>
+                <RadioGroup aria-label="position" name="status" value={values.status} onChange={handleStudentDetailsChange("status")} row>
                     <FormControlLabel
                         value="resident"
                         className={classes.input}
                         control={<Radio color="primary" />}
                         label="Resident"
                         labelPlacement="top"
-                        />
+                    />
                     <FormControlLabel
                         value="international"
                         className={classes.input}
                         control={<Radio color="primary" />}
                         label="International"
                         labelPlacement="top"
-                        />
+                    />
                 </RadioGroup>
                 <LanguageSelect handleChange={handleStudentDetailsChange} value={values.language} />
                 <CountryOfOriginSelect handleChange={handleStudentDetailsChange} value={values.countryOfOrigin} />

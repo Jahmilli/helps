@@ -12,6 +12,7 @@ import AdminSessionContainer from "../containers/AdminDashboard/AdminSessionCont
 import BookSessionContainer from "../containers/AdminDashboard/BookSessionContainer";
 import AdminWorkshopsOverviewContainer from "../containers/AdminDashboard/AdminWorkshopsOverviewContainer";
 import AdminWorkshopCreateContainer from "../containers/AdminDashboard/AdminWorkshopCreateContainer";
+import ReportsContainer from "../containers/AdminDashboard/ReportsContainer";
 
 interface AdminHomePageProps {
 	auth: Auth;
@@ -53,6 +54,13 @@ const AdminHomePage: React.FunctionComponent<AdminHomePageProps> = ({ auth, prop
 					path={`${path}/workshops/amenddetails/:workshopId`}
 					render={props => <AdminWorkshopCreateContainer />}
 				/>
+<<<<<<< HEAD
+=======
+				<Route
+					path={`${path}/reports`}
+					render={props => <ReportsContainer />}
+				/>
+>>>>>>> develop
 			</div>
 			<Footer />
 		</div>
